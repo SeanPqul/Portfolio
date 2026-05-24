@@ -1,21 +1,21 @@
 ---
-import DSLRViewfinder from "./DSLRViewfinder.astro";
+import FloatingStatsCard from "./FloatingStatsCard.astro";
 import TerminalConsole from "./TerminalConsole.astro";
-import { Terminal, Camera } from "@lucide/astro";
+import { Terminal, User } from "@lucide/astro";
 ---
 
-<div class="w-full flex flex-col gap-3">
+<div class="w-full flex flex-col gap-3 group/deck">
   <!-- Tab Switcher Bar -->
   <div class="flex items-center justify-between">
     <div class="flex items-center gap-1.5 bg-white/[0.03] border border-white/6 p-1 rounded-full select-none">
-      <!-- Camera Tab Button -->
+      <!-- Profile Tab Button -->
       <button 
-        id="deck-tab-camera" 
+        id="deck-tab-profile" 
         class="flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold font-display cursor-pointer transition-all duration-300 bg-mint text-bg-deep font-extrabold shadow-sm"
-        aria-label="Switch to profile camera view"
+        aria-label="Switch to profile card view"
       >
-        <Camera size={13} class="shrink-0" />
-        <span>Live Camera</span>
+        <User size={13} class="shrink-0" />
+        <span>Profile Card</span>
       </button>
 
       <!-- Terminal Tab Button -->
@@ -32,15 +32,15 @@ import { Terminal, Camera } from "@lucide/astro";
     <!-- Active Indicator HUD light -->
     <div class="hidden sm:flex items-center gap-1.5 text-[9px] font-mono text-muted uppercase tracking-wider pr-2">
       <span class="size-1.5 rounded-full bg-mint animate-pulse" id="deck-status-dot"></span>
-      <span id="deck-status-text">Camera Active</span>
+      <span id="deck-status-text">Profile Active</span>
     </div>
   </div>
 
   <!-- Content Deck (Wrapper) -->
   <div class="relative w-full">
-    <!-- Camera Viewfinder Tab Pane -->
-    <div id="deck-pane-camera" class="block transition-all duration-300">
-      <DSLRViewfinder />
+    <!-- Profile Card Tab Pane -->
+    <div id="deck-pane-profile" class="block transition-all duration-300">
+      <FloatingStatsCard />
     </div>
 
     <!-- Terminal Console Tab Pane -->
@@ -52,34 +52,34 @@ import { Terminal, Camera } from "@lucide/astro";
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const tabCamera = document.getElementById("deck-tab-camera");
+    const tabProfile = document.getElementById("deck-tab-profile");
     const tabTerminal = document.getElementById("deck-tab-terminal");
-    const paneCamera = document.getElementById("deck-pane-camera");
+    const paneProfile = document.getElementById("deck-pane-profile");
     const paneTerminal = document.getElementById("deck-pane-terminal");
     const statusDot = document.getElementById("deck-status-dot");
     const statusText = document.getElementById("deck-status-text");
 
-    if (!tabCamera || !tabTerminal || !paneCamera || !paneTerminal) return;
+    if (!tabProfile || !tabTerminal || !paneProfile || !paneTerminal) return;
 
-    // A. Switch to Camera View
-    function showCamera() {
+    // A. Switch to Profile View
+    function showProfile() {
       // 1. Update button styling
-      tabCamera?.classList.add("bg-mint", "text-bg-deep", "font-extrabold");
-      tabCamera?.classList.remove("text-muted", "font-medium");
+      tabProfile?.classList.add("bg-mint", "text-bg-deep", "font-extrabold");
+      tabProfile?.classList.remove("text-muted", "font-medium");
       
       tabTerminal?.classList.remove("bg-mint", "text-bg-deep", "font-extrabold");
       tabTerminal?.classList.add("text-muted", "font-medium");
 
       // 2. Toggle panes
-      paneCamera?.classList.remove("hidden");
-      paneCamera?.classList.add("block");
+      paneProfile?.classList.remove("hidden");
+      paneProfile?.classList.add("block");
       
       paneTerminal?.classList.remove("block");
       paneTerminal?.classList.add("hidden");
 
       // 3. Update status text
       if (statusDot) statusDot.style.backgroundColor = "var(--color-mint)";
-      if (statusText) statusText.textContent = "Camera Active";
+      if (statusText) statusText.textContent = "Profile Active";
     }
 
     // B. Switch to Terminal View
@@ -88,15 +88,15 @@ import { Terminal, Camera } from "@lucide/astro";
       tabTerminal?.classList.add("bg-mint", "text-bg-deep", "font-extrabold");
       tabTerminal?.classList.remove("text-muted", "font-medium");
       
-      tabCamera?.classList.remove("bg-mint", "text-bg-deep", "font-extrabold");
-      tabCamera?.classList.add("text-muted", "font-medium");
+      tabProfile?.classList.remove("bg-mint", "text-bg-deep", "font-extrabold");
+      tabProfile?.classList.add("text-muted", "font-medium");
 
       // 2. Toggle panes
       paneTerminal?.classList.remove("hidden");
       paneTerminal?.classList.add("block");
       
-      paneCamera?.classList.remove("block");
-      paneCamera?.classList.add("hidden");
+      paneProfile?.classList.remove("block");
+      paneProfile?.classList.add("hidden");
 
       // 3. Update status text
       if (statusDot) statusDot.style.backgroundColor = "var(--color-amber)";
@@ -110,7 +110,7 @@ import { Terminal, Camera } from "@lucide/astro";
     }
 
     // C. Event Listeners
-    tabCamera.addEventListener("click", showCamera);
+    tabProfile.addEventListener("click", showProfile);
     tabTerminal.addEventListener("click", showTerminal);
   });
 </script>
