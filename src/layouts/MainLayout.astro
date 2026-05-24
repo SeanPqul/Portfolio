@@ -1,0 +1,83 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  url?: string;
+  ogImage?: string;
+}
+
+const { 
+  title, 
+  description, 
+  url = "https://github.com/SeanPqul", 
+  ogImage = "/favicon.svg" 
+} = Astro.props;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Sean Paul S. Lapasanda",
+  "url": url,
+  "jobTitle": "Full Stack Developer",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "Philippines"
+  },
+  "sameAs": [
+    "https://github.com/SeanPqul",
+    "https://www.linkedin.com/in/sean-paul-lapasanda-219117241/"
+  ],
+  "knowsAbout": [
+    "Laravel", "React", "TypeScript", "React Native", "Expo", "REST APIs", "MySQL", "Convex"
+  ]
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#0b0f14" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" 
+      rel="stylesheet" 
+    />
+
+    <!-- Structured JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

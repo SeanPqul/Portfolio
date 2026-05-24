@@ -1,0 +1,702 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import DeveloperDeck from "../components/DeveloperDeck.astro";
+import BrowserMockup from "../components/BrowserMockup.astro";
+import MobileMockup from "../components/MobileMockup.astro";
+import McDonaldsIcon from "../components/McDonaldsIcon.astro";
+import {
+  ArrowUpRight,
+  Database,
+  ExternalLink,
+  Layers,
+  Mail,
+  MapPin,
+  ServerCog,
+  ShieldCheck,
+  Smartphone,
+  Sparkles,
+  Terminal,
+  Send,
+  Briefcase,
+  GraduationCap,
+  Code,
+} from "@lucide/astro";
+
+const navItems = ["Projects", "Experience", "Skills", "Contact"];
+
+const profileLinks = [
+  {
+    id: "link-github",
+    label: "GitHub",
+    href: "https://github.com/SeanPqul",
+    icon: ExternalLink,
+  },
+  {
+    id: "link-linkedin",
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/sean-paul-lapasanda-219117241/",
+    icon: ExternalLink,
+  },
+  {
+    id: "link-email",
+    label: "Email",
+    href: "mailto:seanpaullapasanda@gmail.com",
+    icon: Mail,
+  },
+];
+
+const highlights = [
+  {
+    value: "Laravel & React",
+    label: "web applications",
+  },
+  {
+    value: "React Native & Expo",
+    label: "mobile applications",
+  },
+  {
+    value: "APIs & Databases",
+    label: "backend integrations",
+  },
+];
+
+const skills = [
+  {
+    title: "Frontend Development",
+    icon: Layers,
+    items: ["React", "TypeScript", "Vite", "Tailwind CSS", "Nuxt.js", "Component Systems"],
+  },
+  {
+    title: "Backend Engineering",
+    icon: Terminal,
+    items: ["Laravel", "REST APIs", "Sanctum Auth", "RBAC Policies", "Controller Actions"],
+  },
+  {
+    title: "Database & Cloud",
+    icon: Database,
+    items: ["MySQL", "Convex NoSQL", "Docker", "Cloudflare Networks", "Amazon S3"],
+  },
+  {
+    title: "Mobile Solutions",
+    icon: Smartphone,
+    items: ["React Native", "Expo", "Biometric Auth", "Document Uploads", "Push Alerts"],
+  },
+];
+
+const timelineItems = [
+  {
+    id: "ojt",
+    type: "experience",
+    role: "Software Developer Intern / OJT",
+    company: "F.M. Morata Customs Brokerage & Law Firm",
+    date: "Feb 2026 — May 2026",
+    bullets: [
+      "Built backend REST APIs using Laravel, implementing Sanctum token authentication, request validations, and role access policies.",
+      "Developed frontend features using React, TypeScript, and Vite, incorporating modular components and routing states.",
+      "Improved document upload and transaction filtering workflows for brokerage operations."
+    ],
+    highlight: true,
+    icon: Briefcase,
+    accentColor: "text-mint",
+    borderColor: "hover:border-mint/30",
+    innerGlowColor: "group-hover:bg-mint/10",
+    glowColor: "bg-mint/5",
+    dotColor: "before:bg-mint",
+    tag: "OJT Internship",
+    techTags: ["Laravel", "React", "TypeScript", "MySQL"]
+  },
+  {
+    id: "education",
+    type: "education",
+    role: "BS in Information Technology (BSIT)",
+    company: "STI College Davao",
+    date: "2022 — 2026",
+    bullets: [
+      "Studied core computer science and IT concepts, specializing in database systems, computer networking, and system design.",
+      "Developed the EMEDICARD Capstone digital health card mobile app using React Native, Expo, and Convex NoSQL.",
+      "Implemented mobile QR code scanning verification and shared TypeScript schema validations across backend functions."
+    ],
+    highlight: false,
+    icon: GraduationCap,
+    accentColor: "text-sky",
+    borderColor: "hover:border-sky/30",
+    innerGlowColor: "group-hover:bg-sky/10",
+    glowColor: "bg-sky/5",
+    dotColor: "before:bg-sky",
+    tag: "Academic Program",
+    techTags: ["Database Management", "Systems Analysis", "Network Design", "Software Engineering", "OOP"]
+  },
+  {
+    id: "mcdonalds",
+    type: "experience",
+    role: "Crew Trainer",
+    company: "McDonald's Philippines",
+    date: "Sep 2022 — Apr 2026",
+    bullets: [
+      "Trained and mentored new crew members on kitchen stations, operational procedures, and safety guidelines.",
+      "Performed standard kitchen production and service crew duties while executing crew trainer responsibilities.",
+      "Demonstrated strong time management by balancing shifts and training duties alongside full-time college studies."
+    ],
+    highlight: false,
+    icon: McDonaldsIcon,
+    accentColor: "text-amber",
+    borderColor: "hover:border-amber/30",
+    innerGlowColor: "group-hover:bg-amber/10",
+    glowColor: "bg-amber/5",
+    dotColor: "before:bg-amber",
+    tag: "Operational Focus",
+    techTags: ["Operations", "Time Management", "Teamwork"]
+  },
+  {
+    id: "shs",
+    type: "education",
+    role: "TVL-ICT (CSS) NCII",
+    company: "Cabantian National High School",
+    date: "2020 — 2022",
+    bullets: [
+      "Completed the Technical-Vocational-Livelihood (TVL) Track, specializing in the Information and Communications Technology (ICT) Strand.",
+      "Studied networking principles and completed hands-on training in computer systems installation, diagnostics, and network configuration.",
+      "Completed specialized Computer Systems Servicing (CSS) NC II server installation training at Interface Computer College through the Joint Delivery Voucher Program (JDVP), successfully earning the TESDA NC II credential."
+    ],
+    highlight: false,
+    icon: Code,
+    accentColor: "text-[#a78bfa]",
+    borderColor: "hover:border-[#a78bfa]/30",
+    innerGlowColor: "group-hover:bg-[#a78bfa]/10",
+    glowColor: "bg-[#a78bfa]/5",
+    dotColor: "before:bg-[#a78bfa]",
+    tag: "Secondary Education",
+    techTags: ["Computer Systems Servicing", "Computer Networking", "Server Configuration"]
+  },
+];
+---
+
+<MainLayout
+  title="Sean Paul Lapasanda | Full Stack Software Engineer"
+  description="Portfolio of Sean Paul S. Lapasanda, a full-stack engineer building Laravel, React, React Native, and TypeScript systems."
+>
+  <header class="page-shell sticky top-0 z-50 py-4">
+    <nav
+      class="glass flex items-center justify-between rounded-full px-5 py-3.5 text-sm text-ink"
+      aria-label="Primary navigation"
+    >
+      <a href="#top" id="logo" class="flex items-center gap-2 font-semibold group">
+        <span class="grid size-8 place-items-center rounded-full bg-mint text-bg-deep group-hover:scale-105 transition-transform duration-300">
+          <Terminal size={17} />
+        </span>
+        <span class="hidden sm:inline font-display font-bold tracking-tight text-ink group-hover:text-mint transition-colors">Sean Paul</span>
+      </a>
+      <div class="hidden items-center gap-1.5 md:flex">
+        {
+          navItems.map((item) => (
+            <a
+              id={`nav-link-${item.toLowerCase()}`}
+              href={`#${item.toLowerCase()}`}
+              class="rounded-full px-4 py-2 text-muted font-medium transition hover:bg-white/8 hover:text-ink"
+            >
+              {item}
+            </a>
+          ))
+        }
+      </div>
+      <a
+        id="nav-contact-button"
+        href="#contact"
+        class="inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-xs font-bold text-bg-deep transition hover:bg-mint hover:-translate-y-0.5 hover:shadow-lg hover:shadow-mint/20"
+      >
+        <Mail size={14} />
+        Let's Talk
+      </a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- Hero Section -->
+    <section class="page-shell grid min-h-[calc(100vh-6rem)] items-center gap-10 py-10 lg:grid-cols-[1.1fr_0.9fr] lg:py-14">
+      <div class="scroll-reveal">
+        <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-ink/90">
+          <Briefcase size={14} class="text-mint" />
+          <span>Available for remote & hybrid opportunities</span>
+        </div>
+        <h1 class="text-balance max-w-4xl font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-ink sm:text-5xl lg:text-6xl">
+          Full-stack developer building <span class="text-mint">web</span> and <span class="text-sky">mobile</span> applications.
+        </h1>
+        <p class="mt-6 max-w-2xl text-base leading-relaxed text-[#cfc6b8]">
+          I build practical web dashboards, workflow tools, and mobile features with clean interfaces, reliable APIs, and database-backed functionality.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a
+            id="hero-cta-projects"
+            href="#projects"
+            class="inline-flex items-center gap-2 rounded-full bg-mint px-5.5 py-3 text-sm font-extrabold text-[#07100d] transition hover:-translate-y-0.5 hover:bg-[#7af0c8] hover:shadow-lg hover:shadow-mint/20"
+          >
+            Explore Projects
+            <ArrowUpRight size={18} />
+          </a>
+          <a
+            id="hero-cta-contact"
+            href="#contact"
+            class="inline-flex items-center gap-2 rounded-full border border-white/15 px-5.5 py-3 text-sm font-bold text-ink transition hover:-translate-y-0.5 hover:border-amber hover:text-amber"
+          >
+            <Mail size={18} />
+            Get in Touch
+          </a>
+        </div>
+        <div class="mt-10 flex flex-wrap items-center gap-4 text-xs text-muted">
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/6 bg-white/[0.02] px-3.5 py-2">
+            <MapPin size={14} class="text-sky" />
+            Philippines
+          </span>
+          {
+            profileLinks.map(({ id, label, href, icon: Icon }) => (
+              <a
+                id={id}
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noreferrer" : undefined}
+                class="inline-flex items-center gap-2 rounded-full border border-white/6 px-3.5 py-2 hover:border-mint hover:text-mint bg-white/[0.01]"
+              >
+                <Icon size={14} />
+                {label}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive CLI & profile -->
+      <div class="scroll-reveal" style="transition-delay: 150ms;">
+        <DeveloperDeck />
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="border-y border-white/10 bg-bg-card py-20 relative">
+      <!-- Background Glow -->
+      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-mint/5 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="page-shell relative z-10">
+        <div class="mb-14 max-w-3xl scroll-reveal">
+          <p class="section-kicker">Featured Work</p>
+          <h2 class="mt-3 font-display text-3xl font-extrabold leading-tight text-ink sm:text-4xl">
+            Production-ready systems designed for real operations.
+          </h2>
+          <p class="mt-4 text-sm leading-relaxed text-muted">
+            Case studies of full-stack web and mobile systems built to solve operational bottlenecks, secure sensitive client databases, and speed up field audits.
+          </p>
+        </div>
+
+        <div class="grid gap-12">
+          
+          <!-- Project 1: MorataFMS (Browser on right) -->
+          <article class="scroll-reveal grid gap-8 rounded-3xl border border-white/8 bg-bg-deep/55 p-6 hover:border-mint/20 transition-all duration-300 lg:grid-cols-[1.1fr_0.9fr] lg:p-8">
+            <div class="flex flex-col justify-between h-full">
+              <div>
+                <div class="flex items-center gap-3">
+                  <span class="grid size-9 place-items-center rounded-lg bg-mint/10 text-mint border border-mint/20">
+                    <ServerCog size={20} />
+                  </span>
+                  <div>
+                    <p class="text-[9px] font-extrabold tracking-widest text-mint uppercase">Web Application</p>
+                    <h3 class="text-2xl font-bold font-display text-ink mt-0.5">MorataFMS</h3>
+                  </div>
+                </div>
+                
+                <div class="mt-6 space-y-4 text-sm leading-relaxed text-[#cfc6b8]">
+                  <p>
+                    A web application built during my OJT to digitize file tracking and shipment logs at F.M. Morata Customs Brokerage & Law Firm.
+                  </p>
+                  
+                  <div class="pt-2">
+                    <strong class="text-ink block mb-2 text-xs uppercase tracking-wider text-muted">Key Details:</strong>
+                    <ul class="space-y-2 text-xs text-muted pl-4 list-disc">
+                      <li>Set up user role permissions using Laravel policies to control document access.</li>
+                      <li>Built backend REST APIs using Laravel Sanctum for authentication and request validation.</li>
+                      <li>Developed front-end dashboard panels using React, TypeScript, and Vite.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-8 flex flex-wrap gap-1.5">
+                {["Laravel", "React", "TypeScript", "Vite", "MySQL", "Sanctum", "RBAC"].map((tech) => (
+                  <span class="rounded-full border border-white/6 bg-white/4 px-3 py-1 text-xs font-medium text-muted">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <!-- Browser Mockup -->
+            <div class="flex items-center justify-center mockup-container">
+              <BrowserMockup />
+            </div>
+          </article>
+
+          <!-- Project 2: EMEDICARD (Mobile on left, staggered) -->
+          <article class="scroll-reveal grid gap-8 rounded-3xl border border-white/8 bg-bg-deep/55 p-6 hover:border-sky/20 transition-all duration-300 lg:grid-cols-[0.8fr_1.2fr] lg:p-8">
+            <!-- Mobile Mockup (First on large viewports for staggering) -->
+            <div class="flex items-center justify-center mockup-container order-last lg:order-first">
+              <MobileMockup />
+            </div>
+
+            <div class="flex flex-col justify-between h-full">
+              <div>
+                <div class="flex items-center gap-3">
+                  <span class="grid size-9 place-items-center rounded-lg bg-sky/10 text-sky border border-sky/20">
+                    <Smartphone size={20} />
+                  </span>
+                  <div>
+                    <p class="text-[9px] font-extrabold tracking-widest text-sky uppercase">Mobile Application</p>
+                    <h3 class="text-2xl font-bold font-display text-ink mt-0.5">EMEDICARD</h3>
+                  </div>
+                </div>
+                
+                <div class="mt-6 space-y-4 text-sm leading-relaxed text-[#cfc6b8]">
+                  <p>
+                    A mobile application built as a capstone project to display digital health cards and verify member credentials using a QR code scanner.
+                  </p>
+                  
+                  <div class="pt-2">
+                    <strong class="text-ink block mb-2 text-xs uppercase tracking-wider text-muted">Key Details:</strong>
+                    <ul class="space-y-2 text-xs text-muted pl-4 list-disc">
+                      <li>Created the QR scanner interface and camera integration in the mobile app.</li>
+                      <li>Organized a TypeScript monorepo to share validation schemas between the app and the Convex database.</li>
+                      <li>Integrated document uploads and status notification triggers.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-8 flex flex-wrap gap-1.5">
+                {["React Native", "Expo", "TypeScript", "Convex NoSQL", "QR Verification"].map((tech) => (
+                  <span class="rounded-full border border-white/6 bg-white/4 px-3 py-1 text-xs font-medium text-muted">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="page-shell py-20">
+      <div class="mb-12 scroll-reveal text-center">
+        <p class="section-kicker">Journey</p>
+        <h2 class="mt-3 font-display text-3xl font-extrabold text-ink sm:text-4xl">
+          Work &amp; Education
+        </h2>
+      </div>
+
+      <!-- Alternating Split Timeline Container -->
+      <div class="relative space-y-12 lg:space-y-6 mt-10">
+        <!-- Vertical Center Timeline Line -->
+        <div class="absolute left-3.5 lg:left-1/2 lg:-translate-x-1/2 top-2 bottom-2 w-[1px] bg-white/10"></div>
+
+        {
+          timelineItems.map((item) => (
+            <div class="relative flex flex-col lg:flex-row items-center justify-between w-full group/timeline">
+              <!-- Center Dot Node -->
+              <div class="absolute left-3.5 lg:left-1/2 lg:-translate-x-1/2 top-[38px] lg:top-1/2 lg:-translate-y-1/2 z-10 flex flex-col items-center">
+                <div class={`w-3.5 h-3.5 rounded-full border-2 transition-transform duration-300 group-hover/timeline:scale-125 bg-bg-deep ${
+                  item.highlight 
+                    ? `${item.accentColor} border-current shadow-[0_0_8px_rgba(255,255,255,0.15)]`
+                    : `border-white/20 group-hover/timeline:border-current ${item.accentColor}`
+                }`}></div>
+              </div>
+
+              <!-- Left Column: Education details on left, hidden spacer for experience -->
+              <div class={`w-full lg:w-[calc(50%-2.5rem)] order-1 ${item.type === 'education' ? 'block pl-10 lg:pl-0' : 'hidden lg:block lg:opacity-0 lg:pointer-events-none'}`}>
+                {item.type === 'education' && (
+                  <article class={`scroll-reveal glass rounded-2xl p-5 border border-white/8 ${item.borderColor} hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden group/card flex flex-col justify-between`}>
+                    <span class={`absolute -right-8 -top-8 size-20 ${item.glowColor} rounded-full blur-xl ${item.innerGlowColor} transition-all duration-300 pointer-events-none`}></span>
+                    
+                    <div>
+                      <!-- Header -->
+                      <div class="flex items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                          <span class={`grid size-9 place-items-center rounded-xl bg-white/[0.03] border border-white/8 ${item.accentColor}`}>
+                            <item.icon size={18} />
+                          </span>
+                          <span class="text-[9px] font-mono font-bold tracking-widest text-muted uppercase">
+                            {item.tag}
+                          </span>
+                        </div>
+                        <span class="font-mono text-[9px] px-2 py-0.5 rounded-full bg-white/5 text-muted border border-white/5">
+                          {item.date}
+                        </span>
+                      </div>
+
+                      <!-- Title & Company -->
+                      <div class="mt-3.5 text-left">
+                        <h3 class={`text-base font-bold font-display transition-colors group-hover/card:${item.accentColor} ${item.highlight ? item.accentColor : "text-ink"}`}>
+                          {item.role}
+                        </h3>
+                        <p class="text-xs text-muted font-medium mt-1">{item.company}</p>
+                      </div>
+
+                      <!-- Bullets -->
+                      <ul class="mt-4 space-y-2.5 text-xs text-[#cfc6b8] list-none leading-relaxed text-left">
+                        {item.bullets.map((bullet) => (
+                          <li class={`relative pl-4 before:absolute before:left-0 before:top-2 before:size-1.5 before:rounded-full ${item.dotColor}`}>
+                            {bullet}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <!-- Tech Tags -->
+                    {item.techTags && item.techTags.length > 0 && (
+                      <div class="mt-5 flex flex-wrap gap-1 justify-start">
+                        {item.techTags.map((tech) => (
+                          <span class="rounded bg-white/4 border border-white/5 px-2 py-0.5 text-[10px] font-medium text-muted transition-colors group-hover/card:border-current group-hover/card:text-ink">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </article>
+                )}
+              </div>
+
+              <!-- Right Column: Experience details on right, hidden spacer for education -->
+              <div class={`w-full lg:w-[calc(50%-2.5rem)] order-2 ${item.type === 'experience' ? 'block pl-10 lg:pl-0' : 'hidden lg:block lg:opacity-0 lg:pointer-events-none'}`}>
+                {item.type === 'experience' && (
+                  <article class={`scroll-reveal glass rounded-2xl p-5 border border-white/8 ${item.borderColor} hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden group/card flex flex-col justify-between`}>
+                    <span class={`absolute -right-8 -top-8 size-20 ${item.glowColor} rounded-full blur-xl ${item.innerGlowColor} transition-all duration-300 pointer-events-none`}></span>
+                    
+                    <div>
+                      <!-- Header -->
+                      <div class="flex items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                          <span class={`grid size-9 place-items-center rounded-xl bg-white/[0.03] border border-white/8 ${item.accentColor}`}>
+                            <item.icon size={18} />
+                          </span>
+                          <span class="text-[9px] font-mono font-bold tracking-widest text-muted uppercase">
+                            {item.tag}
+                          </span>
+                        </div>
+                        <span class="font-mono text-[9px] px-2 py-0.5 rounded-full bg-white/5 text-muted border border-white/5">
+                          {item.date}
+                        </span>
+                      </div>
+
+                      <!-- Title & Company -->
+                      <div class="mt-3.5 text-left">
+                        <h3 class={`text-base font-bold font-display transition-colors group-hover/card:${item.accentColor} ${item.highlight ? item.accentColor : "text-ink"}`}>
+                          {item.role}
+                        </h3>
+                        <p class="text-xs text-muted font-medium mt-1">{item.company}</p>
+                      </div>
+
+                      <!-- Bullets -->
+                      <ul class="mt-4 space-y-2.5 text-xs text-[#cfc6b8] list-none leading-relaxed text-left">
+                        {item.bullets.map((bullet) => (
+                          <li class={`relative pl-4 before:absolute before:left-0 before:top-2 before:size-1.5 before:rounded-full ${item.dotColor}`}>
+                            {bullet}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <!-- Tech Tags -->
+                    {item.techTags && item.techTags.length > 0 && (
+                      <div class="mt-5 flex flex-wrap gap-1 justify-start">
+                        {item.techTags.map((tech) => (
+                          <span class="rounded bg-white/4 border border-white/5 px-2 py-0.5 text-[10px] font-medium text-muted transition-colors group-hover/card:border-current group-hover/card:text-ink">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </article>
+                )}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Technical Stack Section -->
+    <section id="skills" class="bg-bg-card py-20 relative">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(102,224,181,0.04),transparent_50%)] pointer-events-none"></div>
+      
+      <div class="page-shell relative z-10">
+        <div class="mb-14 max-w-3xl scroll-reveal">
+          <p class="section-kicker">Technical Stack</p>
+          <h2 class="mt-3 font-display text-3xl font-extrabold leading-tight text-ink sm:text-4xl">
+            Tools and stacks I use to ship robust software products.
+          </h2>
+        </div>
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {
+            skills.map(({ title, icon: Icon, items }) => (
+              <article class="scroll-reveal glass rounded-2xl p-5 hover:-translate-y-1 hover:border-mint/20 transition-all duration-300">
+                <div class="mb-6 flex items-center justify-between">
+                  <h3 class="text-sm font-bold text-ink font-display uppercase tracking-wide">{title}</h3>
+                  <Icon size={20} class="text-mint" />
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                  {
+                    items.map((item) => (
+                      <span class="rounded bg-white/4 border border-white/5 px-2 py-1 text-[11px] font-medium text-muted">
+                        {item}
+                      </span>
+                    ))
+                  }
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="page-shell py-20">
+      <div class="glass grid gap-10 rounded-3xl p-7 border border-white/8 hover:border-white/12 transition-all md:grid-cols-[1.1fr_0.9fr] md:p-10 relative overflow-hidden">
+        <!-- Glow background -->
+        <span class="absolute -left-16 -top-16 size-48 bg-amber/5 rounded-full blur-3xl pointer-events-none"></span>
+
+        <div class="scroll-reveal">
+          <p class="section-kicker">Get In Touch</p>
+          <h2 class="mt-3 font-display text-3xl font-extrabold leading-tight text-ink sm:text-4xl">
+            Let's build something practical together.
+          </h2>
+          <p class="mt-5 text-sm leading-relaxed text-[#cfc6b8]">
+            I am open to junior full-stack, frontend, backend, or mobile developer roles. Authorized to work in the Philippines, available for remote or hybrid positions.
+          </p>
+
+          <div class="mt-8 flex flex-col gap-3.5 max-w-sm">
+            {
+              profileLinks.map(({ id, label, href, icon: Icon }) => (
+                <a
+                  id={`${id}-footer`}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noreferrer" : undefined}
+                  class="inline-flex items-center gap-3.5 rounded-full border border-white/8 bg-[#0b0f14]/40 px-5 py-3 text-xs font-bold text-ink hover:bg-white/5 hover:border-mint hover:text-mint"
+                >
+                  <Icon size={16} class="shrink-0" />
+                  <span>{label}</span>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="scroll-reveal bg-white/[0.02] border border-white/6 rounded-2xl p-5 md:p-6" style="transition-delay: 150ms;">
+          <h3 class="text-base font-bold font-display text-ink mb-4">Send a Message</h3>
+          
+          <form id="contact-form" class="space-y-4" onsubmit="event.preventDefault();">
+            <div>
+              <label for="form-name" class="block text-[10px] font-bold text-muted uppercase tracking-wider mb-1">Your Name</label>
+              <input 
+                type="text" 
+                id="form-name" 
+                required 
+                placeholder="John Doe"
+                class="w-full bg-[#0b0f14]/50 border border-white/8 rounded-lg px-3 py-2 text-xs text-ink outline-none focus:border-mint transition"
+              />
+            </div>
+            <div>
+              <label for="form-email" class="block text-[10px] font-bold text-muted uppercase tracking-wider mb-1">Email Address</label>
+              <input 
+                type="email" 
+                id="form-email" 
+                required 
+                placeholder="john@example.com"
+                class="w-full bg-[#0b0f14]/50 border border-white/8 rounded-lg px-3 py-2 text-xs text-ink outline-none focus:border-mint transition"
+              />
+            </div>
+            <div>
+              <label for="form-message" class="block text-[10px] font-bold text-muted uppercase tracking-wider mb-1">Message</label>
+              <textarea 
+                id="form-message" 
+                required 
+                rows="4" 
+                placeholder="Hi Sean, I'd love to chat about an opportunity..."
+                class="w-full bg-[#0b0f14]/50 border border-white/8 rounded-lg px-3 py-2 text-xs text-ink outline-none focus:border-mint transition resize-none"
+              ></textarea>
+            </div>
+            
+            <button 
+              type="submit" 
+              id="form-submit"
+              class="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-mint hover:bg-[#7af0c8] text-bg-deep font-extrabold text-xs px-4 py-2.5 transition duration-200 cursor-pointer shadow-md hover:shadow-mint/20"
+            >
+              <Send size={12} />
+              Send Message
+            </button>
+          </form>
+          
+          <!-- Success feedback (hidden by default) -->
+          <div id="form-success" class="hidden rounded-lg bg-mint/5 border border-mint/20 p-3 mt-4 text-center">
+            <p class="text-xs font-bold text-mint">Message Sent Successfully! 🎉</p>
+            <p class="text-[10px] text-muted mt-1">Thank you for reaching out, Sean will get back to you shortly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/6 py-10 bg-bg-deep/40">
+    <div class="page-shell flex flex-col justify-between gap-4 text-xs text-muted sm:flex-row sm:items-center">
+      <p class="font-medium">&copy; 2026 Sean Paul S. Lapasanda. All rights reserved.</p>
+      <p class="inline-flex items-center gap-1">
+        <span>Engineered with</span>
+        <a href="https://astro.build" target="_blank" rel="noreferrer" class="text-mint hover:underline font-bold">Astro</a>
+        <span>&amp;</span>
+        <a href="https://tailwindcss.com" target="_blank" rel="noreferrer" class="text-sky hover:underline font-bold">Tailwind CSS v4</a>
+      </p>
+    </div>
+  </footer>
+</MainLayout>
+
+<!-- Client scripts for scroll animations and form submission simulation -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // 1. Intersection Observer for Scroll entry animations
+    const elements = document.querySelectorAll(".scroll-reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target); // Animate once
+        }
+      });
+    }, {
+      threshold: 0.05,
+      rootMargin: "0px 0px -50px 0px"
+    });
+
+    elements.forEach(el => observer.observe(el));
+
+    // 2. Simple contact form submission simulation
+    const form = document.getElementById("contact-form") as HTMLFormElement;
+    const successBox = document.getElementById("form-success");
+    const submitBtn = document.getElementById("form-submit");
+
+    if (form && successBox && submitBtn) {
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        
+        // Disable button & show sending state
+        submitBtn.setAttribute("disabled", "true");
+        submitBtn.innerHTML = "Sending...";
+        
+        setTimeout(() => {
+          // Hide form inputs and show success box
+          form.classList.add("hidden");
+          successBox.classList.remove("hidden");
+        }, 1200);
+      });
+    }
+
+  });
+</script>

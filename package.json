@@ -1,0 +1,21 @@
+{
+  "name": "sean-portfolio",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.12.1",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1 --port 3000",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@lucide/astro": "^1.16.0",
+    "@tailwindcss/vite": "^4.1.8",
+    "astro": "^6.3.7",
+    "tailwindcss": "^4.1.8"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  }
+}

@@ -1,0 +1,118 @@
+---
+import { Search, Filter, RefreshCw, FileText, CheckCircle, Clock } from "@lucide/astro";
+---
+
+<div class="mockup-card glass rounded-2xl border border-white/10 bg-bg-card/90 shadow-2xl overflow-hidden text-xs text-[#f7f3ea] max-w-full w-full select-none">
+  <!-- Browser Chrome Top Bar -->
+  <div class="flex items-center gap-3 border-b border-white/8 bg-white/[0.02] px-4 py-3">
+    <div class="flex items-center gap-1.5 shrink-0">
+      <span class="size-2.5 rounded-full bg-[#ff5f56]"></span>
+      <span class="size-2.5 rounded-full bg-[#ffbd2e]"></span>
+      <span class="size-2.5 rounded-full bg-[#27c93f]"></span>
+    </div>
+    <!-- URL Address Bar -->
+    <div class="flex-1 max-w-md mx-auto flex items-center justify-between gap-2 rounded-lg bg-[#0b0f14]/60 border border-white/5 px-3 py-1 font-mono text-[10px] text-muted">
+      <div class="flex items-center gap-1.5 truncate">
+        <span class="text-mint">https://</span>
+        <span class="truncate">fms.morata-brokerage.com/shipments</span>
+      </div>
+      <RefreshCw size={8} class="text-muted shrink-0 cursor-pointer hover:text-white" />
+    </div>
+    <span class="w-10 shrink-0"></span> <!-- spacer -->
+  </div>
+
+  <!-- App Interface Mockup -->
+  <div class="grid grid-cols-[120px_1fr] h-[250px] bg-[#0d1218]/40">
+    <!-- Sidebar -->
+    <aside class="border-r border-white/6 bg-white/[0.01] p-3 space-y-4">
+      <div class="flex items-center gap-2 px-1">
+        <div class="size-4 rounded bg-mint flex items-center justify-center text-[10px] text-bg-deep font-bold font-mono">&lt;&gt;</div>
+        <span class="font-bold text-[10px] tracking-wide uppercase text-mint">MorataFMS</span>
+      </div>
+      <nav class="space-y-1">
+        <span class="flex items-center gap-2 rounded bg-white/5 px-2 py-1.5 text-[10px] font-semibold text-white">
+          <FileText size={10} class="text-mint" /> Shipments
+        </span>
+        <span class="flex items-center gap-2 px-2 py-1.5 text-[10px] font-medium text-muted hover:text-white transition cursor-pointer">
+          <Clock size={10} /> Active Files
+        </span>
+        <span class="flex items-center gap-2 px-2 py-1.5 text-[10px] font-medium text-muted hover:text-white transition cursor-pointer">
+          <CheckCircle size={10} /> Approvals
+        </span>
+      </nav>
+    </aside>
+
+    <!-- Main Content Panel -->
+    <main class="p-3 overflow-hidden flex flex-col gap-3">
+      <!-- Toolbar -->
+      <div class="flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2 bg-[#0b0f14]/50 border border-white/5 rounded px-2 py-1 flex-1 max-w-[150px]">
+          <Search size={10} class="text-muted" />
+          <span class="text-muted text-[10px]">Search files...</span>
+        </div>
+        <div class="flex gap-1">
+          <span class="flex items-center gap-1 border border-white/10 rounded px-1.5 py-0.5 text-[9px] font-medium text-muted bg-white/[0.02]">
+            <Filter size={8} /> Filters
+          </span>
+          <span class="rounded bg-mint text-bg-deep px-1.5 py-0.5 text-[9px] font-bold">
+            + New File
+          </span>
+        </div>
+      </div>
+
+      <!-- Shipment Table -->
+      <div class="flex-1 overflow-y-auto border border-white/8 rounded-lg bg-bg-deep/30">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b border-white/8 bg-white/[0.02] text-[9px] text-muted font-semibold">
+              <th class="p-2">Reference</th>
+              <th class="p-2">Client / Goods</th>
+              <th class="p-2">Status</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5 text-[10px]">
+            <tr class="hover:bg-white/[0.02] transition">
+              <td class="p-2 font-mono text-amber">M-2026-085</td>
+              <td class="p-2">
+                <div class="font-bold text-white">Nippon Trading</div>
+                <div class="text-[8px] text-muted">Electronics / Tokyo</div>
+              </td>
+              <td class="p-2">
+                <span class="inline-flex items-center gap-1 rounded-full bg-amber/10 border border-amber/20 px-1.5 py-0.5 text-[8px] font-bold text-amber">
+                  <span class="size-1 rounded-full bg-amber animate-pulse"></span>
+                  Customs Verification
+                </span>
+              </td>
+            </tr>
+            <tr class="hover:bg-white/[0.02] transition">
+              <td class="p-2 font-mono text-sky">M-2026-084</td>
+              <td class="p-2">
+                <div class="font-bold text-white">Apex Steel Corp</div>
+                <div class="text-[8px] text-muted">Raw Metal / Seattle</div>
+              </td>
+              <td class="p-2">
+                <span class="inline-flex items-center gap-1 rounded-full bg-sky/10 border border-sky/20 px-1.5 py-0.5 text-[8px] font-bold text-sky">
+                  <span class="size-1 rounded-full bg-sky"></span>
+                  In Transit
+                </span>
+              </td>
+            </tr>
+            <tr class="hover:bg-white/[0.02] transition">
+              <td class="p-2 font-mono text-mint">M-2026-081</td>
+              <td class="p-2">
+                <div class="font-bold text-white">Pacific Logistics</div>
+                <div class="text-[8px] text-muted">Agricultural / Sydney</div>
+              </td>
+              <td class="p-2">
+                <span class="inline-flex items-center gap-1 rounded-full bg-mint/10 border border-mint/20 px-1.5 py-0.5 text-[8px] font-bold text-mint">
+                  <span class="size-1 rounded-full bg-mint"></span>
+                  Approved & Released
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>

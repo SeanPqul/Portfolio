@@ -1,0 +1,127 @@
+---
+import { Terminal } from "@lucide/astro";
+---
+
+<div class="glass flex h-[360px] w-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-bg-card font-mono text-sm text-[#f7f3ea] shadow-2xl">
+  <!-- Terminal Header Bar -->
+  <div class="flex items-center justify-between border-b border-white/10 bg-white/[0.03] px-4 py-2.5">
+    <div class="flex items-center gap-2">
+      <span class="size-3 rounded-full bg-[#ff5f56]"></span>
+      <span class="size-3 rounded-full bg-[#ffbd2e]"></span>
+      <span class="size-3 rounded-full bg-[#27c93f]"></span>
+    </div>
+    <div class="flex items-center gap-1.5 text-xs text-muted">
+      <Terminal size={12} />
+      <span>sean@portfolio:~</span>
+    </div>
+    <span class="w-10"></span> <!-- Spacer for alignment -->
+  </div>
+
+  <!-- Terminal Output/Input Area -->
+  <div id="terminal-body" class="flex-1 overflow-y-auto p-4 space-y-2 select-text scrollbar-thin scrollbar-thumb-white/10">
+    <div class="text-mint">Sean OS v1.0.0 (Astro-powered CLI)</div>
+    <div class="text-muted">Type <span class="text-amber">help</span> to list available commands.</div>
+    <div class="h-1"></div>
+
+    <!-- Commands History -->
+    <div id="terminal-history" class="space-y-2"></div>
+
+    <!-- Input Line -->
+    <div class="flex items-center gap-2">
+      <span class="text-mint">sean@portfolio:~$</span>
+      <div class="relative flex-1">
+        <input 
+          type="text" 
+          id="terminal-input" 
+          class="w-full border-none bg-transparent p-0 text-[#f7f3ea] outline-none focus:ring-0" 
+          autocomplete="off" 
+          autocorrect="off" 
+          autocapitalize="off" 
+          spellcheck="false" 
+          maxlength="50"
+          aria-label="Terminal CLI input"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const terminalBody = document.getElementById("terminal-body");
+    const terminalInput = document.getElementById("terminal-input") as HTMLInputElement;
+    const terminalHistory = document.getElementById("terminal-history");
+
+    if (!terminalInput || !terminalHistory || !terminalBody) return;
+
+    // Focus input on terminal area click
+    terminalBody.addEventListener("click", () => {
+      terminalInput.focus();
+    });
+
+    const commands: Record<string, string> = {
+      help: `Available commands:<br>
+  - <span class="text-amber">about</span>      : Learn more about Sean Paul<br>
+  - <span class="text-amber">projects</span>   : Showcase of key web and mobile systems<br>
+  - <span class="text-amber">skills</span>     : List technical stacks used<br>
+  - <span class="text-amber">anime</span>      : See my early custom CSS project on MyAnimeList<br>
+  - <span class="text-amber">contact</span>    : Find links to get in touch<br>
+  - <span class="text-amber">clear</span>      : Clear the terminal console screen`,
+      about: `I'm Sean Paul S. Lapasanda, a Full-Stack Developer focused on building web applications, workflow tools, APIs, and mobile features.
+  I work with Laravel, React, and React Native to connect clean interfaces with database-backed functionality, while continuing to learn and adapt to new technologies.`,
+      projects: `Featured projects:<br><br>
+  1. <span class="text-mint font-bold">MorataFMS</span>: Web application built with Laravel and React to digitize legal file tracking and brokerage case status logs.<br>
+  2. <span class="text-sky font-bold">EMEDICARD</span>: Mobile application built with React Native and Convex to verify member health credentials using a QR code scanner.`,
+      skills: `<span class="text-mint font-bold">Frontend:</span> React, TypeScript, Tailwind CSS, Next.js, Vite, reusable UI components<br>
+  <span class="text-mint font-bold">Backend:</span> Laravel APIs, Sanctum authentication, role permissions, request validation<br>
+  <span class="text-mint font-bold">Database & Cloud:</span> MySQL, Convex NoSQL, Docker, Cloudflare, Amazon S3<br>
+  <span class="text-mint font-bold">Mobile:</span> React Native, Expo, document uploads, QR code verification`,
+      contact: `Let's connect! You can reach me via:<br>
+  - <span class="text-sky">Email:</span> <a href="mailto:seanpaullapasanda@gmail.com" class="text-mint hover:underline">seanpaullapasanda@gmail.com</a><br>
+  - <span class="text-sky">GitHub:</span> <a href="https://github.com/SeanPqul" target="_blank" class="text-mint hover:underline">https://github.com/SeanPqul</a><br>
+  - <span class="text-sky">LinkedIn:</span> <a href="https://www.linkedin.com/in/sean-paul-lapasanda-219117241/" target="_blank" class="text-mint hover:underline">LinkedIn Profile</a>`,
+    };
+
+    terminalInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const fullValue = terminalInput.value.trim();
+        const cmd = fullValue.toLowerCase();
+        
+        if (!fullValue) return;
+
+        // Print input in history
+        const inputLine = document.createElement("div");
+        inputLine.innerHTML = `<span class="text-mint">sean@portfolio:~$</span> <span class="text-white">${fullValue}</span>`;
+        terminalHistory.appendChild(inputLine);
+
+        // Process command
+        const outputLine = document.createElement("div");
+        outputLine.className = "pl-2 text-muted leading-relaxed";
+
+        if (cmd === "clear") {
+          terminalHistory.innerHTML = "";
+          terminalInput.value = "";
+          return;
+        } else if (cmd === "sudo") {
+          outputLine.innerHTML = `<span class="text-[#ff5f56] font-bold">Permission denied:</span> Sean did not give you root access. Try regular commands instead.`;
+        } else if (cmd in commands) {
+          outputLine.innerHTML = commands[cmd];
+        } else if (cmd === "mcdonalds" || cmd === "mcdo") {
+          outputLine.innerHTML = `🍟 <span class="text-amber font-bold">Crew Trainer (2022 - 2026):</span> Worked part-time kitchen shifts and trained new team members while balancing academic studies. Developed communication, teamwork, and operational discipline.`;
+        } else if (cmd === "anime" || cmd === "mal" || cmd === "myanimelist") {
+          outputLine.innerHTML = `🌸 <span class="text-[#a78bfa] font-bold">MyAnimeList CSS Customization (2022):</span> Forked a GitHub repository and customized its CSS stylesheets to design a custom dark, glassmorphic layout for my list. View it here: <a href="https://myanimelist.net/animelist/madfaker?status=2" target="_blank" class="text-mint hover:underline">https://myanimelist.net/animelist/madfaker</a>`;
+        } else {
+          outputLine.innerHTML = `ash: command not found: <span class="text-[#ff5f56]">${fullValue}</span>. Type <span class="text-amber">help</span> to view commands.`;
+        }
+
+        terminalHistory.appendChild(outputLine);
+        terminalInput.value = "";
+        
+        // Auto-scroll to bottom
+        setTimeout(() => {
+          terminalBody.scrollTop = terminalBody.scrollHeight;
+        }, 10);
+      }
+    });
+  });
+</script>

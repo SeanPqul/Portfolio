@@ -1,0 +1,116 @@
+---
+import DSLRViewfinder from "./DSLRViewfinder.astro";
+import TerminalConsole from "./TerminalConsole.astro";
+import { Terminal, Camera } from "@lucide/astro";
+---
+
+<div class="w-full flex flex-col gap-3">
+  <!-- Tab Switcher Bar -->
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-1.5 bg-white/[0.03] border border-white/6 p-1 rounded-full select-none">
+      <!-- Camera Tab Button -->
+      <button 
+        id="deck-tab-camera" 
+        class="flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold font-display cursor-pointer transition-all duration-300 bg-mint text-bg-deep font-extrabold shadow-sm"
+        aria-label="Switch to profile camera view"
+      >
+        <Camera size={13} class="shrink-0" />
+        <span>Live Camera</span>
+      </button>
+
+      <!-- Terminal Tab Button -->
+      <button 
+        id="deck-tab-terminal" 
+        class="flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium font-display cursor-pointer transition-all duration-300 text-muted hover:text-ink"
+        aria-label="Switch to CLI terminal console"
+      >
+        <Terminal size={13} class="shrink-0" />
+        <span>Terminal CLI</span>
+      </button>
+    </div>
+
+    <!-- Active Indicator HUD light -->
+    <div class="hidden sm:flex items-center gap-1.5 text-[9px] font-mono text-muted uppercase tracking-wider pr-2">
+      <span class="size-1.5 rounded-full bg-mint animate-pulse" id="deck-status-dot"></span>
+      <span id="deck-status-text">Camera Active</span>
+    </div>
+  </div>
+
+  <!-- Content Deck (Wrapper) -->
+  <div class="relative w-full">
+    <!-- Camera Viewfinder Tab Pane -->
+    <div id="deck-pane-camera" class="block transition-all duration-300">
+      <DSLRViewfinder />
+    </div>
+
+    <!-- Terminal Console Tab Pane -->
+    <div id="deck-pane-terminal" class="hidden transition-all duration-300">
+      <TerminalConsole />
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const tabCamera = document.getElementById("deck-tab-camera");
+    const tabTerminal = document.getElementById("deck-tab-terminal");
+    const paneCamera = document.getElementById("deck-pane-camera");
+    const paneTerminal = document.getElementById("deck-pane-terminal");
+    const statusDot = document.getElementById("deck-status-dot");
+    const statusText = document.getElementById("deck-status-text");
+
+    if (!tabCamera || !tabTerminal || !paneCamera || !paneTerminal) return;
+
+    // A. Switch to Camera View
+    function showCamera() {
+      // 1. Update button styling
+      tabCamera?.classList.add("bg-mint", "text-bg-deep", "font-extrabold");
+      tabCamera?.classList.remove("text-muted", "font-medium");
+      
+      tabTerminal?.classList.remove("bg-mint", "text-bg-deep", "font-extrabold");
+      tabTerminal?.classList.add("text-muted", "font-medium");
+
+      // 2. Toggle panes
+      paneCamera?.classList.remove("hidden");
+      paneCamera?.classList.add("block");
+      
+      paneTerminal?.classList.remove("block");
+      paneTerminal?.classList.add("hidden");
+
+      // 3. Update status text
+      if (statusDot) statusDot.style.backgroundColor = "var(--color-mint)";
+      if (statusText) statusText.textContent = "Camera Active";
+    }
+
+    // B. Switch to Terminal View
+    function showTerminal() {
+      // 1. Update button styling
+      tabTerminal?.classList.add("bg-mint", "text-bg-deep", "font-extrabold");
+      tabTerminal?.classList.remove("text-muted", "font-medium");
+      
+      tabCamera?.classList.remove("bg-mint", "text-bg-deep", "font-extrabold");
+      tabCamera?.classList.add("text-muted", "font-medium");
+
+      // 2. Toggle panes
+      paneTerminal?.classList.remove("hidden");
+      paneTerminal?.classList.add("block");
+      
+      paneCamera?.classList.remove("block");
+      paneCamera?.classList.add("hidden");
+
+      // 3. Update status text
+      if (statusDot) statusDot.style.backgroundColor = "var(--color-amber)";
+      if (statusText) statusText.textContent = "Console Shell";
+
+      // Focus input automatically inside terminal when opened
+      const termInput = document.getElementById("terminal-input") as HTMLInputElement;
+      if (termInput) {
+        setTimeout(() => termInput.focus(), 50);
+      }
+    }
+
+    // C. Event Listeners
+    tabCamera.addEventListener("click", showCamera);
+    tabTerminal.addEventListener("click", showTerminal);
+  });
+</script>
