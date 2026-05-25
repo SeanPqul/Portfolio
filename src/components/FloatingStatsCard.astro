@@ -1,5 +1,5 @@
 ---
-import { GraduationCap, Briefcase, Code, ShieldCheck, Camera } from "@lucide/astro";
+import { Globe, Smartphone, Code, Camera } from "@lucide/astro";
 ---
 
 <div class="relative w-full flex items-center justify-center py-10 px-6 sm:px-10 overflow-visible min-h-[420px]">
@@ -49,41 +49,41 @@ import { GraduationCap, Briefcase, Code, ShieldCheck, Camera } from "@lucide/ast
     />
   </div>
 
-  <!-- FLOATING BADGE 1: BSIT Graduate (Top Left) -->
+  <!-- FLOATING BADGE 1: Web Systems (Top Right) -->
   <div 
-    class="absolute top-6 left-2 sm:-left-6 z-20 animate-float pointer-events-auto"
+    class="absolute top-6 right-2 sm:-right-6 z-20 animate-float pointer-events-auto"
   >
     <article class="glass rounded-xl p-3 border border-white/8 hover:border-sky/30 hover:bg-sky/5 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-sky/5 w-[145px] sm:w-[160px] text-left">
       <div class="flex items-center gap-2 mb-1">
         <span class="grid size-6 place-items-center rounded-lg bg-sky/10 border border-sky/20 text-sky">
-          <GraduationCap size={13} />
+          <Globe size={13} />
         </span>
-        <span class="text-[9px] font-mono font-bold text-sky uppercase tracking-wider">Education</span>
+        <span class="text-[9px] font-mono font-bold text-sky uppercase tracking-wider">Solutions</span>
       </div>
-      <p class="text-xs font-bold text-ink">BSIT Graduate</p>
-      <p class="text-[8px] text-muted leading-tight mt-0.5">STI College Davao (2022 — 2026)</p>
+      <p class="text-sm font-extrabold font-display text-ink leading-tight">Web Systems</p>
+      <p class="text-[8px] text-muted leading-tight mt-1">File tracking & logistics platforms</p>
     </article>
   </div>
 
-  <!-- FLOATING BADGE 2: OJT Developer (Top Right) -->
+  <!-- FLOATING BADGE 2: Mobile Apps (Middle Left) -->
   <div 
-    class="absolute top-12 right-2 sm:-right-6 z-20 animate-float-delayed pointer-events-auto"
+    class="absolute top-1/2 -translate-y-1/2 left-2 sm:-left-8 z-20 animate-float-delayed pointer-events-auto"
   >
     <article class="glass rounded-xl p-3 border border-white/8 hover:border-mint/30 hover:bg-mint/5 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-mint/5 w-[145px] sm:w-[160px] text-left">
       <div class="flex items-center gap-2 mb-1">
         <span class="grid size-6 place-items-center rounded-lg bg-mint/10 border border-mint/20 text-mint">
-          <Briefcase size={13} />
+          <Smartphone size={13} />
         </span>
-        <span class="text-[9px] font-mono font-bold text-mint uppercase tracking-wider">Internship</span>
+        <span class="text-[9px] font-mono font-bold text-mint uppercase tracking-wider">Mobile</span>
       </div>
-      <p class="text-xs font-bold text-ink">OJT Developer</p>
-      <p class="text-[8px] text-muted leading-tight mt-0.5">F.M. Morata Law Firm (Laravel/React)</p>
+      <p class="text-sm font-extrabold font-display text-ink leading-tight">Mobile Apps</p>
+      <p class="text-[8px] text-muted leading-tight mt-1">QR verification & digital card apps</p>
     </article>
   </div>
 
-  <!-- FLOATING BADGE 3: Laravel & React Core Stack (Bottom Left) -->
+  <!-- FLOATING BADGE 3: Tech Stack (Bottom Right) -->
   <div 
-    class="absolute bottom-16 left-0 sm:-left-8 z-20 animate-float pointer-events-auto"
+    class="absolute bottom-10 right-2 sm:-right-8 z-20 animate-float pointer-events-auto"
     style="animation-delay: 1.5s;"
   >
     <article class="glass rounded-xl p-3 border border-white/8 hover:border-amber/30 hover:bg-amber/5 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-amber/5 w-[145px] sm:w-[160px] text-left">
@@ -91,27 +91,10 @@ import { GraduationCap, Briefcase, Code, ShieldCheck, Camera } from "@lucide/ast
         <span class="grid size-6 place-items-center rounded-lg bg-amber/10 border border-amber/20 text-amber">
           <Code size={13} />
         </span>
-        <span class="text-[9px] font-mono font-bold text-amber uppercase tracking-wider">Core Stacks</span>
+        <span class="text-[9px] font-mono font-bold text-amber uppercase tracking-wider">Tech Stack</span>
       </div>
-      <p class="text-xs font-bold text-ink">Laravel & React</p>
-      <p class="text-[8px] text-muted leading-tight mt-0.5">Web APIs & Mobile React Native apps</p>
-    </article>
-  </div>
-
-  <!-- FLOATING BADGE 4: TESDA NC II CSS (Bottom Right) -->
-  <div 
-    class="absolute bottom-10 right-0 sm:-right-8 z-20 animate-float-delayed pointer-events-auto"
-    style="animation-delay: 0.5s;"
-  >
-    <article class="glass rounded-xl p-3 border border-white/8 hover:border-[#a78bfa]/30 hover:bg-[#a78bfa]/5 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#a78bfa]/5 w-[145px] sm:w-[160px] text-left">
-      <div class="flex items-center gap-2 mb-1">
-        <span class="grid size-6 place-items-center rounded-lg bg-[#a78bfa]/10 border border-[#a78bfa]/20 text-[#a78bfa]">
-          <ShieldCheck size={13} />
-        </span>
-        <span class="text-[9px] font-mono font-bold text-[#a78bfa] uppercase tracking-wider">Credential</span>
-      </div>
-      <p class="text-xs font-bold text-ink">NC II CSS Certified</p>
-      <p class="text-[8px] text-muted leading-tight mt-0.5">TESDA computer systems servicing</p>
+      <p class="text-sm font-extrabold font-display text-ink leading-tight">Laravel, React & More</p>
+      <p class="text-[8px] text-muted leading-tight mt-1">TypeScript · MySQL · React Native</p>
     </article>
   </div>
 
@@ -185,3 +168,4 @@ import { GraduationCap, Briefcase, Code, ShieldCheck, Camera } from "@lucide/ast
 
   });
 </script>
+
