@@ -2,21 +2,7 @@
 import { Terminal } from "@lucide/astro";
 ---
 
-<div class="glass flex h-[420px] w-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-bg-card font-mono text-sm text-[#f7f3ea] shadow-2xl">
-  <!-- Terminal Header Bar -->
-  <div class="flex items-center justify-between border-b border-white/10 bg-white/[0.03] px-4 py-2.5">
-    <div class="flex items-center gap-2">
-      <span class="size-3 rounded-full bg-[#ff5f56]"></span>
-      <span class="size-3 rounded-full bg-[#ffbd2e]"></span>
-      <span class="size-3 rounded-full bg-[#27c93f]"></span>
-    </div>
-    <div class="flex items-center gap-1.5 text-xs text-muted">
-      <Terminal size={12} />
-      <span>ichihara@bash:~</span>
-    </div>
-    <span class="w-10"></span> <!-- Spacer for alignment -->
-  </div>
-
+<div class="flex-1 flex flex-col overflow-hidden w-full font-mono text-sm text-[#f7f3ea] bg-[#070b0e]">
   <!-- Terminal Output/Input Area -->
   <div id="terminal-body" class="flex-1 overflow-y-auto p-4 space-y-2 select-text scrollbar-thin scrollbar-thumb-white/10">
     <div id="terminal-last-login" class="text-muted text-xs">Loading session...</div>
@@ -69,9 +55,26 @@ import { Terminal } from "@lucide/astro";
 
     if (!terminalInput || !terminalHistory || !terminalBody) return;
 
-    // Focus input on terminal area click
+    // Track whether user has manually scrolled up — if so, don't force-scroll on new output
+    let userScrolledUp = false;
+    terminalBody.addEventListener("scroll", () => {
+      const distanceFromBottom = terminalBody.scrollHeight - terminalBody.scrollTop - terminalBody.clientHeight;
+      userScrolledUp = distanceFromBottom > 80;
+    });
+
+    // Focus input on terminal area click — preventScroll so we don't jump down
     terminalBody.addEventListener("click", () => {
-      terminalInput.focus();
+      terminalInput.focus({ preventScroll: true });
+    });
+
+    // Scroll to bottom only when the user actually starts typing
+    terminalInput.addEventListener("keydown", (e) => {
+      const isTypingKey = e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey;
+      const isBackspace = e.key === "Backspace";
+      if ((isTypingKey || isBackspace) && userScrolledUp) {
+        userScrolledUp = false;
+        terminalBody.scrollTop = terminalBody.scrollHeight;
+      }
     });
 
     const commands: Record<string, string> = {
@@ -86,15 +89,15 @@ import { Terminal } from "@lucide/astro";
   I work with Laravel, React, and React Native to connect clean interfaces with database-backed functionality, while continuing to learn and adapt to new technologies.`,
       projects: `Featured projects:<br><br>
   1. <span class="text-amber font-bold">MorataFMS</span>: Web application built with Laravel and React to digitize legal file tracking and brokerage case status logs.<br>
-  2. <span class="text-sky font-bold">EMEDICARD</span>: Mobile application built with React Native and Convex to verify member health credentials using a QR code scanner.`,
-      skills: `<span class="text-amber font-bold">Frontend:</span> React, TypeScript, Tailwind CSS, Next.js, Vite, reusable UI components<br>
-  <span class="text-amber font-bold">Backend:</span> Laravel APIs, Sanctum authentication, role permissions, request validation<br>
-  <span class="text-amber font-bold">Database & Cloud:</span> MySQL, Convex NoSQL, Docker, Cloudflare, Amazon S3<br>
-  <span class="text-amber font-bold">Mobile:</span> React Native, Expo, document uploads, QR code verification`,
+  2. <span class="text-amber font-bold">EMEDICARD</span>: Mobile application built with React Native and Convex to verify member health credentials using a QR code scanner.`,
+      skills: `<span class="text-sky font-bold">Frontend:</span> React, TypeScript, Tailwind CSS, Next.js, Vite, reusable UI components<br>
+  <span class="text-sky font-bold">Backend:</span> Laravel APIs, Sanctum authentication, role permissions, request validation<br>
+  <span class="text-sky font-bold">Database & Cloud:</span> MySQL, Convex NoSQL, Docker, Cloudflare, Amazon S3<br>
+  <span class="text-sky font-bold">Mobile:</span> React Native, Expo, document uploads, QR code verification`,
       contact: `Let's connect! You can reach me via:<br>
-  - <span class="text-sky">Email:</span> <a href="mailto:seanpaullapasanda@gmail.com" class="text-amber hover:underline">seanpaullapasanda@gmail.com</a><br>
-  - <span class="text-sky">GitHub:</span> <a href="https://github.com/SeanPqul" target="_blank" class="text-amber hover:underline">https://github.com/SeanPqul</a><br>
-  - <span class="text-sky">LinkedIn:</span> <a href="https://www.linkedin.com/in/sean-paul-lapasanda-219117241/" target="_blank" class="text-amber hover:underline">LinkedIn Profile</a>`,
+  - <span class="text-sky font-bold">Email:</span> <a href="mailto:seanpaullapasanda@gmail.com" class="text-amber hover:underline">seanpaullapasanda@gmail.com</a><br>
+  - <span class="text-sky font-bold">GitHub:</span> <a href="https://github.com/SeanPqul" target="_blank" class="text-amber hover:underline">https://github.com/SeanPqul</a><br>
+  - <span class="text-sky font-bold">LinkedIn:</span> <a href="https://www.linkedin.com/in/sean-paul-lapasanda-219117241/" target="_blank" class="text-amber hover:underline">LinkedIn Profile</a>`,
     };
 
     const cmdHistory: string[] = [];
@@ -121,12 +124,19 @@ import { Terminal } from "@lucide/astro";
 
         // Process command
         const outputLine = document.createElement("div");
-        outputLine.className = "pl-2 text-muted leading-relaxed";
+        outputLine.className = "pl-2 text-muted leading-relaxed text-xs";
 
         if (cmd === "clear") {
           terminalHistory.innerHTML = "";
           terminalInput.value = "";
           return;
+        } else if (cmd === "exit" || cmd === "profile" || cmd === "gui" || cmd === "close" || cmd === "camera") {
+          const closeBtn = document.getElementById("window-dot-close");
+          if (closeBtn) {
+            closeBtn.click();
+            terminalInput.value = "";
+            return;
+          }
         } else if (cmd === "sudo") {
           outputLine.innerHTML = `<span class="text-[#ff5f56] font-bold">Permission denied:</span> Sean did not give you root access. Try regular commands instead.`;
         } else if (parts[0].toLowerCase() === "cat") {
@@ -191,16 +201,18 @@ import { Terminal } from "@lucide/astro";
         } else if (cmd === "anime" || cmd === "mal" || cmd === "myanimelist") {
           outputLine.innerHTML = `🌸 <span class="text-[#a78bfa] font-bold">MyAnimeList CSS Customization (2022):</span> Forked a GitHub repository and customized its CSS stylesheets to design a custom dark, glassmorphic layout for my list. View it here: <a href="https://myanimelist.net/animelist/madfaker?status=2" target="_blank" class="text-mint hover:underline">https://myanimelist.net/animelist/madfaker</a>`;
         } else {
-          outputLine.innerHTML = `ash: command not found: <span class="text-[#ff5f56]">${fullValue}</span>. Type <span class="text-amber">help</span> to view commands.`;
+          outputLine.innerHTML = `bash: command not found: <span class="text-[#ff5f56]">${fullValue}</span>. Type <span class="text-amber">help</span> to view commands.`;
         }
 
         terminalHistory.appendChild(outputLine);
         terminalInput.value = "";
         
-        // Auto-scroll to bottom
-        setTimeout(() => {
-          terminalBody.scrollTop = terminalBody.scrollHeight;
-        }, 10);
+        // Auto-scroll to bottom only if the user hasn't scrolled up to read/copy
+        if (!userScrolledUp) {
+          setTimeout(() => {
+            terminalBody.scrollTop = terminalBody.scrollHeight;
+          }, 10);
+        }
       } else if (e.key === "ArrowUp") {
         e.preventDefault();
         if (cmdHistory.length > 0) {

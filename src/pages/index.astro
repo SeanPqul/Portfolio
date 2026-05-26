@@ -16,6 +16,7 @@ import {
   Smartphone,
   Sparkles,
   Terminal,
+  User,
   Send,
   Briefcase,
   GraduationCap,
@@ -263,6 +264,21 @@ const timelineItems = [
               </a>
             ))
           }
+          
+          <!-- Interactive CLI Toggle Button (UX Pattern C) -->
+          <button
+            id="hero-cli-toggle"
+            class="inline-flex items-center gap-2 rounded-full border border-white/6 px-3.5 py-2 hover:border-mint hover:text-mint bg-white/[0.02] cursor-pointer hover:scale-102 transition-all duration-300 font-mono select-none"
+            aria-label="Toggle CLI Terminal"
+          >
+            <span id="hero-cli-icon-terminal" class="flex items-center">
+              <Terminal size={14} class="text-mint shrink-0" />
+            </span>
+            <span id="hero-cli-icon-profile" class="hidden items-center">
+              <User size={14} class="text-sky shrink-0" />
+            </span>
+            <span id="hero-cli-text" class="text-ink">Launch CLI</span>
+          </button>
         </div>
       </div>
 
