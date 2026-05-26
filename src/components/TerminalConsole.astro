@@ -2,9 +2,9 @@
 import { Terminal } from "@lucide/astro";
 ---
 
-<div class="flex-1 flex flex-col overflow-hidden w-full font-mono text-sm text-[#f7f3ea] bg-[#070b0e]">
+<div class="flex-1 flex w-full min-w-0 flex-col overflow-hidden bg-[#070b0e] font-mono text-xs text-[#f7f3ea] sm:text-sm">
   <!-- Terminal Output/Input Area -->
-  <div id="terminal-body" class="flex-1 overflow-y-auto p-4 space-y-2 select-text scrollbar-thin scrollbar-thumb-white/10">
+  <div id="terminal-body" class="flex-1 space-y-2 overflow-y-auto p-3 select-text scrollbar-thin scrollbar-thumb-white/10 sm:p-4">
     <div id="terminal-last-login" class="text-muted text-xs">Loading session...</div>
     <div class="text-[#cfc6b8]">Welcome to Bash v5.2 (x86_64-pc-linux-gnu)</div>
     <div class="text-muted">Type <span class="text-amber">help</span> to list available commands.</div>
@@ -15,8 +15,8 @@ import { Terminal } from "@lucide/astro";
 
     <!-- Input Line -->
     <div class="flex items-center gap-2">
-      <span class="text-mint">ichihara@bash:~$</span>
-      <div class="relative flex-1">
+      <span class="shrink-0 text-[11px] text-mint sm:text-sm">ichihara@bash:~$</span>
+      <div class="relative min-w-0 flex-1">
         <input 
           type="text" 
           id="terminal-input" 

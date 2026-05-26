@@ -4,7 +4,7 @@ import TerminalConsole from "./TerminalConsole.astro";
 import { Terminal, User } from "@lucide/astro";
 ---
 
-<div class="w-full flex flex-col gap-3 group/deck relative overflow-visible">
+<div class="group/deck relative flex w-full min-w-0 flex-col gap-3 overflow-visible">
   <!-- Unified Window Container (Starts transparent & borderless for Profile Card view) -->
   <div 
     id="deck-window" 
@@ -33,19 +33,17 @@ import { Terminal, User } from "@lucide/astro";
     </div>
 
     <!-- Content Pane Area -->
-    <div class="relative w-full flex-1 flex flex-col">
+    <div class="relative flex w-full min-w-0 flex-1 flex-col">
       <!-- Profile Card Tab Pane -->
       <div id="deck-pane-profile" class="w-full flex-1">
         <FloatingStatsCard />
       </div>
 
       <!-- Terminal Console Tab Pane -->
-      <div id="deck-pane-terminal" class="hidden w-full h-[420px] flex flex-col">
+      <div id="deck-pane-terminal" class="hidden h-[min(420px,70svh)] w-full min-w-0 flex flex-col sm:h-[420px]">
         <TerminalConsole />
       </div>
     </div>
-  </div>
-
   </div>
 </div>
 

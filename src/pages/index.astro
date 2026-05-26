@@ -22,6 +22,7 @@ import {
   GraduationCap,
   Code,
   Globe,
+  Menu,
   Palette,
 } from "@lucide/astro";
 
@@ -178,16 +179,16 @@ const timelineItems = [
   title="Sean Paul Lapasanda | Full Stack Software Engineer"
   description="Portfolio of Sean Paul S. Lapasanda, a full-stack engineer building Laravel, React, React Native, and TypeScript systems."
 >
-  <header class="page-shell sticky top-0 z-50 py-4">
+  <header class="page-shell sticky top-0 z-50 py-3 sm:py-4">
     <nav
-      class="glass flex items-center justify-between rounded-full px-5 py-3.5 text-sm text-ink"
+      class="glass grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-2xl px-3 py-3 text-sm text-ink sm:rounded-full sm:px-5 sm:py-3.5 md:flex md:flex-wrap md:justify-between"
       aria-label="Primary navigation"
     >
-      <a href="#top" id="logo" class="flex items-center gap-2 font-semibold group">
-        <span class="grid size-8 place-items-center rounded-full bg-mint text-bg-deep group-hover:scale-105 transition-transform duration-300">
+      <a href="#top" id="logo" class="flex min-w-0 items-center gap-2 font-semibold group">
+        <span class="grid size-9 shrink-0 place-items-center rounded-full bg-mint text-bg-deep transition-transform duration-300 group-hover:scale-105 sm:size-8">
           <Terminal size={17} />
         </span>
-        <span class="hidden sm:inline font-display font-bold tracking-tight text-ink group-hover:text-mint transition-colors">Sean Paul</span>
+        <span class="font-display text-sm font-bold tracking-tight text-ink transition-colors group-hover:text-mint sm:text-base">Sean Paul</span>
       </a>
       <div class="hidden items-center gap-1.5 md:flex">
         {
@@ -205,33 +206,65 @@ const timelineItems = [
       <a
         id="nav-contact-button"
         href="#contact"
-        class="inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-xs font-bold text-bg-deep transition hover:bg-mint hover:-translate-y-0.5 hover:shadow-lg hover:shadow-mint/20"
+        aria-label="Contact Sean Paul"
+        class="hidden min-h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-ink px-4 py-2 text-xs font-bold text-bg-deep transition hover:-translate-y-0.5 hover:bg-mint hover:shadow-lg hover:shadow-mint/20 md:inline-flex"
       >
         <Mail size={14} />
-        Let's Talk
+        <span>Let's Talk</span>
       </a>
+      <button
+        id="mobile-menu-toggle"
+        type="button"
+        class="inline-flex min-h-11 max-w-full shrink-0 items-center justify-center gap-2 rounded-full border border-white/8 bg-white/[0.03] px-3.5 text-xs font-bold text-ink transition hover:border-mint hover:text-mint md:hidden"
+        aria-controls="mobile-nav-panel"
+        aria-expanded="false"
+      >
+        <Menu size={16} />
+        <span id="mobile-menu-label">Menu</span>
+      </button>
+      <div
+        id="mobile-nav-panel"
+        class="col-span-2 hidden w-full border-t border-white/8 pt-3 md:hidden"
+      >
+        <div class="grid gap-2">
+        {
+          navItems.map((item) => (
+            <a
+              id={`mobile-nav-link-${item.toLowerCase()}`}
+              href={`#${item.toLowerCase()}`}
+              class="mobile-nav-link inline-flex min-h-11 items-center justify-between rounded-xl border border-white/6 bg-white/[0.02] px-4 text-sm font-semibold text-muted transition hover:border-mint hover:text-mint"
+            >
+              <span>{item}</span>
+              <ArrowUpRight size={15} />
+            </a>
+          ))
+        }
+        </div>
+      </div>
     </nav>
   </header>
 
   <main id="top">
     <!-- Hero Section -->
-    <section class="page-shell grid min-h-[calc(100vh-6rem)] items-center gap-10 py-10 lg:grid-cols-[1.1fr_0.9fr] lg:py-14">
+    <section class="page-shell grid items-center gap-10 py-10 sm:py-12 lg:min-h-[calc(100svh-6rem)] lg:grid-cols-[1.1fr_0.9fr] lg:py-14">
       <div class="scroll-reveal">
         <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-ink/90">
           <Globe size={14} class="text-mint" />
           <span>Available for remote & hybrid opportunities</span>
         </div>
-        <h1 class="text-balance max-w-4xl font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-ink sm:text-5xl lg:text-6xl">
-          Full-stack developer building <span class="text-mint">web</span> and <span class="text-sky">mobile</span> applications.
+        <h1 class="fluid-heading max-w-4xl font-display font-extrabold leading-[1.05] tracking-tight text-ink sm:text-balance">
+          <span class="block sm:inline">Full-stack developer</span>
+          <span class="block sm:inline"> building <span class="text-mint">web</span> and</span>
+          <span class="block sm:inline"> <span class="text-sky">mobile</span> applications.</span>
         </h1>
         <p class="mt-6 max-w-2xl text-base leading-relaxed text-[#cfc6b8]">
           I build web systems and mobile apps that digitize real operations — backed by structured databases, secure APIs, and clean user interfaces.
         </p>
-        <div class="mt-8 flex flex-wrap gap-4">
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
           <a
             id="hero-cta-projects"
             href="#projects"
-            class="inline-flex items-center gap-2 rounded-full bg-mint px-5.5 py-3 text-sm font-extrabold text-[#07100d] transition hover:-translate-y-0.5 hover:bg-[#7af0c8] hover:shadow-lg hover:shadow-mint/20"
+            class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-mint px-5.5 py-3 text-sm font-extrabold text-[#07100d] transition hover:-translate-y-0.5 hover:bg-[#7af0c8] hover:shadow-lg hover:shadow-mint/20 sm:justify-start"
           >
             Explore Projects
             <ArrowUpRight size={18} />
@@ -239,13 +272,13 @@ const timelineItems = [
           <a
             id="hero-cta-contact"
             href="#contact"
-            class="inline-flex items-center gap-2 rounded-full border border-white/15 px-5.5 py-3 text-sm font-bold text-ink transition hover:-translate-y-0.5 hover:border-amber hover:text-amber"
+            class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/15 px-5.5 py-3 text-sm font-bold text-ink transition hover:-translate-y-0.5 hover:border-amber hover:text-amber sm:justify-start"
           >
             <Mail size={18} />
             Get in Touch
           </a>
         </div>
-        <div class="mt-10 flex flex-wrap items-center gap-4 text-xs text-muted">
+        <div class="mt-10 grid grid-cols-2 items-center gap-3 text-xs text-muted sm:flex sm:flex-wrap sm:gap-4">
           <span class="inline-flex items-center gap-2 rounded-full border border-white/6 bg-white/[0.02] px-3.5 py-2">
             <MapPin size={14} class="text-sky" />
             Philippines
@@ -257,7 +290,7 @@ const timelineItems = [
                 href={href}
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel={href.startsWith("http") ? "noreferrer" : undefined}
-                class="inline-flex items-center gap-2 rounded-full border border-white/6 px-3.5 py-2 hover:border-mint hover:text-mint bg-white/[0.01]"
+                class="inline-flex min-h-10 items-center gap-2 rounded-full border border-white/6 bg-white/[0.01] px-3.5 py-2 hover:border-mint hover:text-mint"
               >
                 <Icon size={14} />
                 {label}
@@ -268,7 +301,7 @@ const timelineItems = [
           <!-- Interactive CLI Toggle Button (UX Pattern C) -->
           <button
             id="hero-cli-toggle"
-            class="inline-flex items-center gap-2 rounded-full border border-white/6 px-3.5 py-2 hover:border-mint hover:text-mint bg-white/[0.02] cursor-pointer hover:scale-102 transition-all duration-300 font-mono select-none"
+            class="col-span-2 inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-white/6 bg-white/[0.02] px-3.5 py-2 font-mono transition-all duration-300 hover:scale-102 hover:border-mint hover:text-mint cursor-pointer select-none sm:col-span-1 sm:justify-start"
             aria-label="Toggle CLI Terminal"
           >
             <span id="hero-cli-icon-terminal" class="flex items-center">
@@ -289,7 +322,7 @@ const timelineItems = [
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="border-y border-white/10 bg-bg-card py-20 relative">
+    <section id="projects" class="fluid-section relative border-y border-white/10 bg-bg-card">
       <!-- Background Glow -->
       <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-mint/5 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -307,7 +340,7 @@ const timelineItems = [
         <div class="grid gap-12">
           
           <!-- Project 1: MorataFMS (Browser on right) -->
-          <article class="scroll-reveal grid gap-8 rounded-3xl border border-white/8 bg-bg-deep/55 p-6 hover:border-mint/20 transition-all duration-300 lg:grid-cols-[1.1fr_0.9fr] lg:p-8">
+          <article class="scroll-reveal grid gap-8 overflow-hidden rounded-2xl border border-white/8 bg-bg-deep/55 p-4 transition-all duration-300 hover:border-mint/20 sm:p-6 lg:grid-cols-[1.1fr_0.9fr] lg:p-8">
             <div class="flex flex-col justify-between h-full">
               <div>
                 <div class="flex items-center gap-3">
@@ -346,15 +379,15 @@ const timelineItems = [
             </div>
 
             <!-- Browser Mockup -->
-            <div class="flex items-center justify-center mockup-container">
+            <div class="mockup-container flex min-w-0 items-center justify-center">
               <BrowserMockup />
             </div>
           </article>
 
           <!-- Project 2: EMEDICARD (Mobile on left, staggered) -->
-          <article class="scroll-reveal grid gap-8 rounded-3xl border border-white/8 bg-bg-deep/55 p-6 hover:border-sky/20 transition-all duration-300 lg:grid-cols-[0.8fr_1.2fr] lg:p-8">
+          <article class="scroll-reveal grid gap-8 overflow-hidden rounded-2xl border border-white/8 bg-bg-deep/55 p-4 transition-all duration-300 hover:border-sky/20 sm:p-6 lg:grid-cols-[0.8fr_1.2fr] lg:p-8">
             <!-- Mobile Mockup (First on large viewports for staggering) -->
-            <div class="flex items-center justify-center mockup-container order-last lg:order-first">
+            <div class="mockup-container order-last flex min-w-0 items-center justify-center lg:order-first">
               <MobileMockup />
             </div>
 
@@ -401,7 +434,7 @@ const timelineItems = [
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="page-shell py-20">
+    <section id="experience" class="page-shell fluid-section">
       <div class="mb-12 scroll-reveal text-center">
         <p class="section-kicker">Journey</p>
         <h2 class="mt-3 font-display text-3xl font-extrabold text-ink sm:text-4xl">
@@ -429,13 +462,13 @@ const timelineItems = [
               <!-- Left Column: Education details on left, hidden spacer for experience -->
               <div class={`w-full lg:w-[calc(50%-2.5rem)] order-1 ${item.type === 'education' ? 'block pl-10 lg:pl-0' : 'hidden lg:block lg:opacity-0 lg:pointer-events-none'}`}>
                 {item.type === 'education' && (
-                  <article class={`scroll-reveal glass rounded-2xl p-5 border border-white/8 ${item.borderColor} hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden group/card flex flex-col justify-between`}>
+                  <article class={`scroll-reveal glass rounded-2xl border border-white/8 p-4 sm:p-5 ${item.borderColor} hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden group/card flex flex-col justify-between`}>
                     <span class={`absolute -right-8 -top-8 size-20 ${item.glowColor} rounded-full blur-xl ${item.innerGlowColor} transition-all duration-300 pointer-events-none`}></span>
                     
                     <div>
                       <!-- Header -->
-                      <div class="flex items-center justify-between gap-3">
-                        <div class="flex items-center gap-3">
+                      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                        <div class="flex min-w-0 items-center gap-3">
                           <span class={`grid size-9 place-items-center rounded-xl bg-white/[0.03] border border-white/8 ${item.accentColor}`}>
                             <item.icon size={18} />
                           </span>
@@ -443,7 +476,7 @@ const timelineItems = [
                             {item.tag}
                           </span>
                         </div>
-                        <span class="font-mono text-[9px] px-2 py-0.5 rounded-full bg-white/5 text-muted border border-white/5">
+                        <span class="w-fit rounded-full border border-white/5 bg-white/5 px-2 py-0.5 font-mono text-[9px] text-muted">
                           {item.date}
                         </span>
                       </div>
@@ -483,13 +516,13 @@ const timelineItems = [
               <!-- Right Column: Experience details on right, hidden spacer for education -->
               <div class={`w-full lg:w-[calc(50%-2.5rem)] order-2 ${item.type === 'experience' ? 'block pl-10 lg:pl-0' : 'hidden lg:block lg:opacity-0 lg:pointer-events-none'}`}>
                 {item.type === 'experience' && (
-                  <article class={`scroll-reveal glass rounded-2xl p-5 border border-white/8 ${item.borderColor} hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden group/card flex flex-col justify-between`}>
+                  <article class={`scroll-reveal glass rounded-2xl border border-white/8 p-4 sm:p-5 ${item.borderColor} hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden group/card flex flex-col justify-between`}>
                     <span class={`absolute -right-8 -top-8 size-20 ${item.glowColor} rounded-full blur-xl ${item.innerGlowColor} transition-all duration-300 pointer-events-none`}></span>
                     
                     <div>
                       <!-- Header -->
-                      <div class="flex items-center justify-between gap-3">
-                        <div class="flex items-center gap-3">
+                      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                        <div class="flex min-w-0 items-center gap-3">
                           <span class={`grid size-9 place-items-center rounded-xl bg-white/[0.03] border border-white/8 ${item.accentColor}`}>
                             <item.icon size={18} />
                           </span>
@@ -497,7 +530,7 @@ const timelineItems = [
                             {item.tag}
                           </span>
                         </div>
-                        <span class="font-mono text-[9px] px-2 py-0.5 rounded-full bg-white/5 text-muted border border-white/5">
+                        <span class="w-fit rounded-full border border-white/5 bg-white/5 px-2 py-0.5 font-mono text-[9px] text-muted">
                           {item.date}
                         </span>
                       </div>
@@ -540,7 +573,7 @@ const timelineItems = [
     </section>
 
     <!-- Technical Stack Section -->
-    <section id="skills" class="bg-bg-card py-20 relative">
+    <section id="skills" class="fluid-section relative bg-bg-card">
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(102,224,181,0.04),transparent_50%)] pointer-events-none"></div>
       
       <div class="page-shell relative z-10">
@@ -550,7 +583,7 @@ const timelineItems = [
             Tools and stacks I use to ship robust software products.
           </h2>
         </div>
-        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(min(15rem,100%),1fr))] gap-5">
           {
             skills.map(({ title, icon: Icon, items }) => (
               <article class="scroll-reveal glass rounded-2xl p-5 hover:-translate-y-1 hover:border-mint/20 transition-all duration-300">
@@ -575,8 +608,8 @@ const timelineItems = [
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="page-shell py-20">
-      <div class="glass grid gap-10 rounded-3xl p-7 border border-white/8 hover:border-white/12 transition-all md:grid-cols-[1.1fr_0.9fr] md:p-10 relative overflow-hidden">
+    <section id="contact" class="page-shell fluid-section">
+      <div class="glass relative grid gap-10 overflow-hidden rounded-2xl border border-white/8 p-5 transition-all hover:border-white/12 sm:p-7 md:grid-cols-[1.1fr_0.9fr] md:p-10">
         <!-- Glow background -->
         <span class="absolute -left-16 -top-16 size-48 bg-amber/5 rounded-full blur-3xl pointer-events-none"></span>
 
@@ -597,7 +630,7 @@ const timelineItems = [
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noreferrer" : undefined}
-                  class="inline-flex items-center gap-3.5 rounded-full border border-white/8 bg-[#0b0f14]/40 px-5 py-3 text-xs font-bold text-ink hover:bg-white/5 hover:border-mint hover:text-mint"
+                  class="inline-flex min-h-11 w-full items-center gap-3.5 rounded-full border border-white/8 bg-[#0b0f14]/40 px-5 py-3 text-xs font-bold text-ink hover:bg-white/5 hover:border-mint hover:text-mint"
                 >
                   <Icon size={16} class="shrink-0" />
                   <span>{label}</span>
@@ -666,7 +699,7 @@ const timelineItems = [
   <footer class="border-t border-white/6 py-10 bg-bg-deep/40">
     <div class="page-shell flex flex-col justify-between gap-4 text-xs text-muted sm:flex-row sm:items-center">
       <p class="font-medium">&copy; 2026 Sean Paul S. Lapasanda. All rights reserved.</p>
-      <p class="inline-flex items-center gap-1">
+      <p class="inline-flex flex-wrap items-center gap-1">
         <span>Engineered with</span>
         <a href="https://astro.build" target="_blank" rel="noreferrer" class="text-mint hover:underline font-bold">Astro</a>
         <span>&amp;</span>
@@ -695,7 +728,34 @@ const timelineItems = [
 
     elements.forEach(el => observer.observe(el));
 
-    // 2. Simple contact form submission simulation
+    // 2. Mobile navigation disclosure
+    const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+    const mobileNavPanel = document.getElementById("mobile-nav-panel");
+    const mobileMenuLabel = document.getElementById("mobile-menu-label");
+    const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+
+    function setMobileMenu(open: boolean) {
+      if (!mobileMenuToggle || !mobileNavPanel || !mobileMenuLabel) return;
+
+      mobileMenuToggle.setAttribute("aria-expanded", String(open));
+      mobileMenuLabel.textContent = open ? "Close" : "Menu";
+      mobileNavPanel.classList.toggle("hidden", !open);
+    }
+
+    mobileMenuToggle?.addEventListener("click", () => {
+      const isOpen = mobileMenuToggle.getAttribute("aria-expanded") === "true";
+      setMobileMenu(!isOpen);
+    });
+
+    mobileNavLinks.forEach((link) => {
+      link.addEventListener("click", () => setMobileMenu(false));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setMobileMenu(false);
+    });
+
+    // 3. Simple contact form submission simulation
     const form = document.getElementById("contact-form") as HTMLFormElement;
     const successBox = document.getElementById("form-success");
     const submitBtn = document.getElementById("form-submit");
