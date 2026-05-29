@@ -1,8 +1,6 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import DeveloperDeck from "../components/DeveloperDeck.astro";
-import BrowserMockup from "../components/BrowserMockup.astro";
-import MobileMockup from "../components/MobileMockup.astro";
 import McDonaldsIcon from "../components/McDonaldsIcon.astro";
 import {
   ArrowUpRight,
@@ -12,14 +10,17 @@ import {
   Mail,
   MapPin,
   ServerCog,
-  ShieldCheck,
   Smartphone,
-  Sparkles,
   Terminal,
+  User,
   Send,
   Briefcase,
+  Bot,
   GraduationCap,
   Code,
+  Globe,
+  Menu,
+  X,
 } from "@lucide/astro";
 
 const navItems = ["Projects", "Experience", "Skills", "Contact"];
@@ -62,26 +63,56 @@ const highlights = [
 
 const skills = [
   {
-    title: "Frontend Development",
+    title: "Frontend",
     icon: Layers,
-    items: ["React", "TypeScript", "Vite", "Tailwind CSS", "Nuxt.js", "Component Systems"],
+    items: ["React", "TypeScript", "Vite", "Tailwind CSS", "Next.js", "Nuxt.js"],
   },
   {
-    title: "Backend Engineering",
+    title: "Backend",
     icon: Terminal,
-    items: ["Laravel", "REST APIs", "Sanctum Auth", "RBAC Policies", "Controller Actions"],
+    items: ["Laravel", "PHP", "Node.js", "TypeScript", "Convex Functions", "MySQL", "Convex DB", "Clerk"],
   },
   {
-    title: "Database & Cloud",
+    title: "Cloud & DevOps",
     icon: Database,
-    items: ["MySQL", "Convex NoSQL", "Docker", "Cloudflare Networks", "Amazon S3"],
+    items: ["Docker", "Cloudflare", "Amazon S3"],
   },
   {
-    title: "Mobile Solutions",
+    title: "Mobile",
     icon: Smartphone,
-    items: ["React Native", "Expo", "Biometric Auth", "Document Uploads", "Push Alerts"],
+    items: ["React Native", "Expo", "Expo Router"],
+  },
+  {
+    title: "AI Agents",
+    icon: Bot,
+    items: ["Codex", "Claude Code", "Antigravity"],
   },
 ];
+
+const techIcons: Record<string, string> = {
+  "React": "/tech-icons/react.svg",
+  "React Native": "/tech-icons/react.svg",
+  "TypeScript": "/tech-icons/typescript.svg",
+  "Vite": "/tech-icons/vite.svg",
+  "Tailwind CSS": "/tech-icons/tailwindcss.svg",
+  "Next.js": "/tech-icons/nextdotjs.svg",
+  "Nuxt.js": "/tech-icons/nuxt.svg",
+  "Laravel": "/tech-icons/laravel.svg",
+  "PHP": "/tech-icons/php.svg",
+  "Node.js": "/tech-icons/nodedotjs.svg",
+  "Convex Functions": "/tech-icons/convex.svg",
+  "Convex DB": "/tech-icons/convex.svg",
+  "MySQL": "/tech-icons/mysql.svg",
+  "Clerk": "/tech-icons/clerk.svg",
+  "Docker": "/tech-icons/docker.svg",
+  "Cloudflare": "/tech-icons/cloudflare.svg",
+  "Amazon S3": "/tech-icons/amazon-s3.svg",
+  "Expo": "/tech-icons/expo.svg",
+  "Expo Router": "/tech-icons/expo.svg",
+  "Codex": "/tech-icons/codex.svg",
+  "Claude Code": "/tech-icons/claude.svg",
+  "Antigravity": "/tech-icons/antigravity.svg",
+};
 
 const timelineItems = [
   {
@@ -91,7 +122,7 @@ const timelineItems = [
     company: "F.M. Morata Customs Brokerage & Law Firm",
     date: "Feb 2026 — May 2026",
     bullets: [
-      "Built backend REST APIs using Laravel, implementing Sanctum token authentication, request validations, and role access policies.",
+      "Built backend REST APIs using Laravel, implementing request validation and role access policies.",
       "Developed frontend features using React, TypeScript, and Vite, incorporating modular components and routing states.",
       "Improved document upload and transaction filtering workflows for brokerage operations."
     ],
@@ -113,7 +144,7 @@ const timelineItems = [
     date: "2022 — 2026",
     bullets: [
       "Studied core computer science and IT concepts, specializing in database systems, computer networking, and system design.",
-      "Developed the EMEDICARD Capstone digital health card mobile app using React Native, Expo, and Convex NoSQL.",
+      "Developed the EMEDICARD Capstone web and mobile health card management system using React Native, Expo, and Convex NoSQL.",
       "Implemented mobile QR code scanning verification and shared TypeScript schema validations across backend functions."
     ],
     highlight: false,
@@ -175,16 +206,16 @@ const timelineItems = [
   title="Sean Paul Lapasanda | Full Stack Software Engineer"
   description="Portfolio of Sean Paul S. Lapasanda, a full-stack engineer building Laravel, React, React Native, and TypeScript systems."
 >
-  <header class="page-shell sticky top-0 z-50 py-4">
+  <header class="page-shell sticky top-0 z-50 py-3 sm:py-4">
     <nav
-      class="glass flex items-center justify-between rounded-full px-5 py-3.5 text-sm text-ink"
+      class="glass grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-2xl px-3 py-3 text-sm text-ink sm:rounded-full sm:px-5 sm:py-3.5 md:flex md:flex-wrap md:justify-between"
       aria-label="Primary navigation"
     >
-      <a href="#top" id="logo" class="flex items-center gap-2 font-semibold group">
-        <span class="grid size-8 place-items-center rounded-full bg-mint text-bg-deep group-hover:scale-105 transition-transform duration-300">
+      <a href="#top" id="logo" class="flex min-w-0 items-center gap-2 font-semibold group">
+        <span class="grid size-9 shrink-0 place-items-center rounded-full bg-mint text-bg-deep transition-transform duration-300 group-hover:scale-105 sm:size-8">
           <Terminal size={17} />
         </span>
-        <span class="hidden sm:inline font-display font-bold tracking-tight text-ink group-hover:text-mint transition-colors">Sean Paul</span>
+        <span class="font-display text-sm font-bold tracking-tight text-ink transition-colors group-hover:text-mint sm:text-base">Sean Paul</span>
       </a>
       <div class="hidden items-center gap-1.5 md:flex">
         {
@@ -202,33 +233,65 @@ const timelineItems = [
       <a
         id="nav-contact-button"
         href="#contact"
-        class="inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-xs font-bold text-bg-deep transition hover:bg-mint hover:-translate-y-0.5 hover:shadow-lg hover:shadow-mint/20"
+        aria-label="Contact Sean Paul"
+        class="hidden min-h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-ink px-4 py-2 text-xs font-bold text-bg-deep transition hover:-translate-y-0.5 hover:bg-mint hover:shadow-lg hover:shadow-mint/20 md:inline-flex"
       >
         <Mail size={14} />
-        Let's Talk
+        <span>Let's Talk</span>
       </a>
+      <button
+        id="mobile-menu-toggle"
+        type="button"
+        class="inline-flex min-h-11 max-w-full shrink-0 items-center justify-center gap-2 rounded-full border border-white/8 bg-white/[0.03] px-3.5 text-xs font-bold text-ink transition hover:border-mint hover:text-mint md:hidden"
+        aria-controls="mobile-nav-panel"
+        aria-expanded="false"
+      >
+        <Menu size={16} />
+        <span id="mobile-menu-label">Menu</span>
+      </button>
+      <div
+        id="mobile-nav-panel"
+        class="col-span-2 hidden w-full border-t border-white/8 pt-3 md:hidden"
+      >
+        <div class="grid gap-2">
+        {
+          navItems.map((item) => (
+            <a
+              id={`mobile-nav-link-${item.toLowerCase()}`}
+              href={`#${item.toLowerCase()}`}
+              class="mobile-nav-link inline-flex min-h-11 items-center justify-between rounded-xl border border-white/6 bg-white/[0.02] px-4 text-sm font-semibold text-muted transition hover:border-mint hover:text-mint"
+            >
+              <span>{item}</span>
+              <ArrowUpRight size={15} />
+            </a>
+          ))
+        }
+        </div>
+      </div>
     </nav>
   </header>
 
   <main id="top">
     <!-- Hero Section -->
-    <section class="page-shell grid min-h-[calc(100vh-6rem)] items-center gap-10 py-10 lg:grid-cols-[1.1fr_0.9fr] lg:py-14">
+    <section class="page-shell grid items-center gap-10 py-10 sm:py-12 lg:min-h-[calc(100svh-6rem)] lg:grid-cols-[1.1fr_0.9fr] lg:py-14">
       <div class="scroll-reveal">
         <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-ink/90">
-          <Briefcase size={14} class="text-mint" />
+          <Globe size={14} class="text-mint" />
           <span>Available for remote & hybrid opportunities</span>
         </div>
-        <h1 class="text-balance max-w-4xl font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-ink sm:text-5xl lg:text-6xl">
-          Full-stack developer building <span class="text-mint">web</span> and <span class="text-sky">mobile</span> applications.
+        <h1 class="fluid-heading max-w-4xl font-display font-extrabold leading-[1.05] tracking-tight text-ink sm:text-balance">
+          <span class="block sm:inline">Full-stack developer</span>
+          <span class="block sm:inline"> building <span class="text-mint">web</span> and</span>
+          <span class="block sm:inline"> <span class="text-sky">mobile</span> applications.</span>
         </h1>
         <p class="mt-6 max-w-2xl text-base leading-relaxed text-[#cfc6b8]">
-          I build practical web dashboards, workflow tools, and mobile features with clean interfaces, reliable APIs, and database-backed functionality.
+          I build web systems and mobile apps that digitize real operations — backed by structured databases, secure APIs, and clean user interfaces.
         </p>
-        <div class="mt-8 flex flex-wrap gap-4">
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
           <a
             id="hero-cta-projects"
             href="#projects"
-            class="inline-flex items-center gap-2 rounded-full bg-mint px-5.5 py-3 text-sm font-extrabold text-[#07100d] transition hover:-translate-y-0.5 hover:bg-[#7af0c8] hover:shadow-lg hover:shadow-mint/20"
+            class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-mint px-5.5 py-3 text-sm font-extrabold text-[#07100d] transition hover:-translate-y-0.5 hover:bg-[#7af0c8] hover:shadow-lg hover:shadow-mint/20 sm:justify-start"
           >
             Explore Projects
             <ArrowUpRight size={18} />
@@ -236,13 +299,13 @@ const timelineItems = [
           <a
             id="hero-cta-contact"
             href="#contact"
-            class="inline-flex items-center gap-2 rounded-full border border-white/15 px-5.5 py-3 text-sm font-bold text-ink transition hover:-translate-y-0.5 hover:border-amber hover:text-amber"
+            class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/15 px-5.5 py-3 text-sm font-bold text-ink transition hover:-translate-y-0.5 hover:border-amber hover:text-amber sm:justify-start"
           >
             <Mail size={18} />
             Get in Touch
           </a>
         </div>
-        <div class="mt-10 flex flex-wrap items-center gap-4 text-xs text-muted">
+        <div class="mt-10 grid grid-cols-2 items-center gap-3 text-xs text-muted sm:flex sm:flex-wrap sm:gap-4">
           <span class="inline-flex items-center gap-2 rounded-full border border-white/6 bg-white/[0.02] px-3.5 py-2">
             <MapPin size={14} class="text-sky" />
             Philippines
@@ -254,13 +317,28 @@ const timelineItems = [
                 href={href}
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel={href.startsWith("http") ? "noreferrer" : undefined}
-                class="inline-flex items-center gap-2 rounded-full border border-white/6 px-3.5 py-2 hover:border-mint hover:text-mint bg-white/[0.01]"
+                class="inline-flex min-h-10 items-center gap-2 rounded-full border border-white/6 bg-white/[0.01] px-3.5 py-2 hover:border-mint hover:text-mint"
               >
                 <Icon size={14} />
                 {label}
               </a>
             ))
           }
+          
+          <!-- Interactive CLI Toggle Button (UX Pattern C) -->
+          <button
+            id="hero-cli-toggle"
+            class="col-span-2 inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-white/6 bg-white/[0.02] px-3.5 py-2 font-mono transition-all duration-300 hover:scale-102 hover:border-mint hover:text-mint cursor-pointer select-none sm:col-span-1 sm:justify-start"
+            aria-label="Toggle CLI Terminal"
+          >
+            <span id="hero-cli-icon-terminal" class="flex items-center">
+              <Terminal size={14} class="text-mint shrink-0" />
+            </span>
+            <span id="hero-cli-icon-profile" class="hidden items-center">
+              <User size={14} class="text-sky shrink-0" />
+            </span>
+            <span id="hero-cli-text" class="text-ink">Launch CLI</span>
+          </button>
         </div>
       </div>
 
@@ -271,119 +349,105 @@ const timelineItems = [
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="border-y border-white/10 bg-bg-card py-20 relative">
-      <!-- Background Glow -->
-      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-mint/5 rounded-full blur-3xl pointer-events-none"></div>
+    <section id="projects" class="fluid-section relative border-y border-white/10 bg-bg-card">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-mint/30 to-transparent"></div>
+      <div class="absolute left-1/2 top-24 h-72 w-3/4 -translate-x-1/2 rounded-full bg-mint/5 blur-3xl pointer-events-none"></div>
 
       <div class="page-shell relative z-10">
-        <div class="mb-14 max-w-3xl scroll-reveal">
-          <p class="section-kicker">Featured Work</p>
-          <h2 class="mt-3 font-display text-3xl font-extrabold leading-tight text-ink sm:text-4xl">
-            Production-ready systems designed for real operations.
-          </h2>
-          <p class="mt-4 text-sm leading-relaxed text-muted">
-            Case studies of full-stack web and mobile systems built to solve operational bottlenecks, secure sensitive client databases, and speed up field audits.
-          </p>
+        <div class="mb-8 flex flex-col gap-5 scroll-reveal lg:flex-row lg:items-end lg:justify-between">
+          <div class="max-w-3xl">
+            <p class="section-kicker">Featured Work</p>
+            <h2 class="mt-3 font-display text-3xl font-extrabold leading-tight text-ink sm:text-4xl">
+              Selected systems across web, backend, and mobile workflows.
+            </h2>
+            <p class="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
+              Two focused projects from internship and capstone work, summarized by product context, contribution focus, and stack.
+            </p>
+          </div>
+          <div class="flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs text-muted">
+            <span class="font-mono font-bold text-mint">02</span>
+            selected projects
+          </div>
         </div>
 
-        <div class="grid gap-12">
-          
-          <!-- Project 1: MorataFMS (Browser on right) -->
-          <article class="scroll-reveal grid gap-8 rounded-3xl border border-white/8 bg-bg-deep/55 p-6 hover:border-mint/20 transition-all duration-300 lg:grid-cols-[1.1fr_0.9fr] lg:p-8">
-            <div class="flex flex-col justify-between h-full">
-              <div>
-                <div class="flex items-center gap-3">
-                  <span class="grid size-9 place-items-center rounded-lg bg-mint/10 text-mint border border-mint/20">
-                    <ServerCog size={20} />
+        <div class="space-y-4">
+          <article class="group scroll-reveal rounded-2xl border border-white/10 bg-bg-deep/55 p-5 transition-all duration-300 hover:border-mint/30 sm:p-6">
+            <div class="grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
+              <div class="min-w-0">
+                <div class="flex flex-wrap items-center gap-3">
+                  <span class="rounded-md border border-mint/25 bg-mint/8 px-2.5 py-1 font-mono text-xs font-black text-mint">01</span>
+                  <span class="inline-flex items-center gap-1.5 rounded-full border border-mint/15 bg-mint/8 px-3 py-1 text-xs font-bold text-mint">
+                    <ServerCog size={13} />
+                    Web Application
                   </span>
-                  <div>
-                    <p class="text-[9px] font-extrabold tracking-widest text-mint uppercase">Web Application</p>
-                    <h3 class="text-2xl font-bold font-display text-ink mt-0.5">MorataFMS</h3>
-                  </div>
+                  <span class="rounded-full border border-white/8 bg-white/[0.03] px-3 py-1 text-xs text-muted">OJT Project</span>
                 </div>
-                
-                <div class="mt-6 space-y-4 text-sm leading-relaxed text-[#cfc6b8]">
-                  <p>
-                    A web application built during my OJT to digitize file tracking and shipment logs at F.M. Morata Customs Brokerage & Law Firm.
-                  </p>
-                  
-                  <div class="pt-2">
-                    <strong class="text-ink block mb-2 text-xs uppercase tracking-wider text-muted">Key Details:</strong>
-                    <ul class="space-y-2 text-xs text-muted pl-4 list-disc">
-                      <li>Set up user role permissions using Laravel policies to control document access.</li>
-                      <li>Built backend REST APIs using Laravel Sanctum for authentication and request validation.</li>
-                      <li>Developed front-end dashboard panels using React, TypeScript, and Vite.</li>
-                    </ul>
-                  </div>
+                <h3 class="mt-4 font-display text-2xl font-extrabold text-ink">MorataFMS</h3>
+                <p class="mt-3 max-w-3xl text-sm leading-relaxed text-[#cfc6b8]">
+                  An operations system for brokerage and legal workflows, focused on import/export transaction tracking, document handling, archiving, and role-based access.
+                </p>
+                <div class="mt-5 flex flex-wrap gap-2">
+                  {["Laravel", "React", "TypeScript", "Vite", "MySQL"].map((tech) => (
+                    <span class="rounded-full border border-white/8 bg-white/[0.03] px-3 py-1 text-xs font-medium text-muted">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
 
-              <div class="mt-8 flex flex-wrap gap-1.5">
-                {["Laravel", "React", "TypeScript", "Vite", "MySQL", "Sanctum", "RBAC"].map((tech) => (
-                  <span class="rounded-full border border-white/6 bg-white/4 px-3 py-1 text-xs font-medium text-muted">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <!-- Browser Mockup -->
-            <div class="flex items-center justify-center mockup-container">
-              <BrowserMockup />
+              <button
+                type="button"
+                class="project-modal-trigger inline-flex w-fit items-center gap-2 rounded-full border border-mint/20 bg-mint/10 px-4 py-2 text-xs font-extrabold text-mint transition hover:bg-mint hover:text-bg-deep lg:col-span-2"
+                data-project-modal-target="morata-modal"
+                aria-haspopup="dialog"
+              >
+                View Details
+                <ArrowUpRight size={14} />
+              </button>
             </div>
           </article>
 
-          <!-- Project 2: EMEDICARD (Mobile on left, staggered) -->
-          <article class="scroll-reveal grid gap-8 rounded-3xl border border-white/8 bg-bg-deep/55 p-6 hover:border-sky/20 transition-all duration-300 lg:grid-cols-[0.8fr_1.2fr] lg:p-8">
-            <!-- Mobile Mockup (First on large viewports for staggering) -->
-            <div class="flex items-center justify-center mockup-container order-last lg:order-first">
-              <MobileMockup />
-            </div>
-
-            <div class="flex flex-col justify-between h-full">
-              <div>
-                <div class="flex items-center gap-3">
-                  <span class="grid size-9 place-items-center rounded-lg bg-sky/10 text-sky border border-sky/20">
-                    <Smartphone size={20} />
+          <article class="group scroll-reveal rounded-2xl border border-white/10 bg-bg-deep/55 p-5 transition-all duration-300 hover:border-sky/30 sm:p-6">
+            <div class="grid gap-5">
+              <div class="min-w-0">
+                <div class="flex flex-wrap items-center gap-3">
+                  <span class="rounded-md border border-sky/25 bg-sky/8 px-2.5 py-1 font-mono text-xs font-black text-sky">02</span>
+                  <span class="inline-flex items-center gap-1.5 rounded-full border border-sky/15 bg-sky/8 px-3 py-1 text-xs font-bold text-sky">
+                    <Smartphone size={13} />
+                    Web & Mobile System
                   </span>
-                  <div>
-                    <p class="text-[9px] font-extrabold tracking-widest text-sky uppercase">Mobile Application</p>
-                    <h3 class="text-2xl font-bold font-display text-ink mt-0.5">EMEDICARD</h3>
-                  </div>
+                  <span class="rounded-full border border-white/8 bg-white/[0.03] px-3 py-1 text-xs text-muted">Capstone</span>
                 </div>
-                
-                <div class="mt-6 space-y-4 text-sm leading-relaxed text-[#cfc6b8]">
-                  <p>
-                    A mobile application built as a capstone project to display digital health cards and verify member credentials using a QR code scanner.
-                  </p>
-                  
-                  <div class="pt-2">
-                    <strong class="text-ink block mb-2 text-xs uppercase tracking-wider text-muted">Key Details:</strong>
-                    <ul class="space-y-2 text-xs text-muted pl-4 list-disc">
-                      <li>Created the QR scanner interface and camera integration in the mobile app.</li>
-                      <li>Organized a TypeScript monorepo to share validation schemas between the app and the Convex database.</li>
-                      <li>Integrated document uploads and status notification triggers.</li>
-                    </ul>
-                  </div>
+                <h3 class="mt-4 font-display text-2xl font-extrabold text-ink">EMEDICARD</h3>
+                <p class="mt-3 max-w-3xl text-sm leading-relaxed text-[#cfc6b8]">
+                  A web and mobile health card management system for classification-based applications, required document uploads, admin review, payment/orientation, QR verification, and generated certificates.
+                </p>
+                <div class="mt-5 flex flex-wrap gap-2">
+                  {["React Native", "Expo", "Next.js", "TypeScript", "Convex", "Clerk"].map((tech) => (
+                    <span class="rounded-full border border-white/8 bg-white/[0.03] px-3 py-1 text-xs font-medium text-muted">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
 
-              <div class="mt-8 flex flex-wrap gap-1.5">
-                {["React Native", "Expo", "TypeScript", "Convex NoSQL", "QR Verification"].map((tech) => (
-                  <span class="rounded-full border border-white/6 bg-white/4 px-3 py-1 text-xs font-medium text-muted">
-                    {tech}
-                  </span>
-                ))}
-              </div>
+              <button
+                type="button"
+                class="project-modal-trigger inline-flex w-fit items-center gap-2 rounded-full border border-sky/20 bg-sky/10 px-4 py-2 text-xs font-extrabold text-sky transition hover:bg-sky hover:text-bg-deep"
+                data-project-modal-target="emedicard-modal"
+                aria-haspopup="dialog"
+              >
+                View Details
+                <ArrowUpRight size={14} />
+              </button>
             </div>
           </article>
-
         </div>
       </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="page-shell py-20">
+    <section id="experience" class="page-shell fluid-section">
       <div class="mb-12 scroll-reveal text-center">
         <p class="section-kicker">Journey</p>
         <h2 class="mt-3 font-display text-3xl font-extrabold text-ink sm:text-4xl">
@@ -411,13 +475,13 @@ const timelineItems = [
               <!-- Left Column: Education details on left, hidden spacer for experience -->
               <div class={`w-full lg:w-[calc(50%-2.5rem)] order-1 ${item.type === 'education' ? 'block pl-10 lg:pl-0' : 'hidden lg:block lg:opacity-0 lg:pointer-events-none'}`}>
                 {item.type === 'education' && (
-                  <article class={`scroll-reveal glass rounded-2xl p-5 border border-white/8 ${item.borderColor} hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden group/card flex flex-col justify-between`}>
+                  <article class={`scroll-reveal glass rounded-2xl border border-white/8 p-4 sm:p-5 ${item.borderColor} hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden group/card flex flex-col justify-between`}>
                     <span class={`absolute -right-8 -top-8 size-20 ${item.glowColor} rounded-full blur-xl ${item.innerGlowColor} transition-all duration-300 pointer-events-none`}></span>
                     
                     <div>
                       <!-- Header -->
-                      <div class="flex items-center justify-between gap-3">
-                        <div class="flex items-center gap-3">
+                      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                        <div class="flex min-w-0 items-center gap-3">
                           <span class={`grid size-9 place-items-center rounded-xl bg-white/[0.03] border border-white/8 ${item.accentColor}`}>
                             <item.icon size={18} />
                           </span>
@@ -425,7 +489,7 @@ const timelineItems = [
                             {item.tag}
                           </span>
                         </div>
-                        <span class="font-mono text-[9px] px-2 py-0.5 rounded-full bg-white/5 text-muted border border-white/5">
+                        <span class="w-fit rounded-full border border-white/5 bg-white/5 px-2 py-0.5 font-mono text-[9px] text-muted">
                           {item.date}
                         </span>
                       </div>
@@ -465,13 +529,13 @@ const timelineItems = [
               <!-- Right Column: Experience details on right, hidden spacer for education -->
               <div class={`w-full lg:w-[calc(50%-2.5rem)] order-2 ${item.type === 'experience' ? 'block pl-10 lg:pl-0' : 'hidden lg:block lg:opacity-0 lg:pointer-events-none'}`}>
                 {item.type === 'experience' && (
-                  <article class={`scroll-reveal glass rounded-2xl p-5 border border-white/8 ${item.borderColor} hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden group/card flex flex-col justify-between`}>
+                  <article class={`scroll-reveal glass rounded-2xl border border-white/8 p-4 sm:p-5 ${item.borderColor} hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden group/card flex flex-col justify-between`}>
                     <span class={`absolute -right-8 -top-8 size-20 ${item.glowColor} rounded-full blur-xl ${item.innerGlowColor} transition-all duration-300 pointer-events-none`}></span>
                     
                     <div>
                       <!-- Header -->
-                      <div class="flex items-center justify-between gap-3">
-                        <div class="flex items-center gap-3">
+                      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                        <div class="flex min-w-0 items-center gap-3">
                           <span class={`grid size-9 place-items-center rounded-xl bg-white/[0.03] border border-white/8 ${item.accentColor}`}>
                             <item.icon size={18} />
                           </span>
@@ -479,7 +543,7 @@ const timelineItems = [
                             {item.tag}
                           </span>
                         </div>
-                        <span class="font-mono text-[9px] px-2 py-0.5 rounded-full bg-white/5 text-muted border border-white/5">
+                        <span class="w-fit rounded-full border border-white/5 bg-white/5 px-2 py-0.5 font-mono text-[9px] text-muted">
                           {item.date}
                         </span>
                       </div>
@@ -522,17 +586,16 @@ const timelineItems = [
     </section>
 
     <!-- Technical Stack Section -->
-    <section id="skills" class="bg-bg-card py-20 relative">
+    <section id="skills" class="fluid-section relative bg-bg-card">
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(102,224,181,0.04),transparent_50%)] pointer-events-none"></div>
       
       <div class="page-shell relative z-10">
         <div class="mb-14 max-w-3xl scroll-reveal">
-          <p class="section-kicker">Technical Stack</p>
-          <h2 class="mt-3 font-display text-3xl font-extrabold leading-tight text-ink sm:text-4xl">
-            Tools and stacks I use to ship robust software products.
+          <h2 class="font-display text-3xl font-extrabold leading-tight text-ink sm:text-4xl">
+            Tech Stack
           </h2>
         </div>
-        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(min(15rem,100%),1fr))] gap-5">
           {
             skills.map(({ title, icon: Icon, items }) => (
               <article class="scroll-reveal glass rounded-2xl p-5 hover:-translate-y-1 hover:border-mint/20 transition-all duration-300">
@@ -543,7 +606,20 @@ const timelineItems = [
                 <div class="flex flex-wrap gap-1.5">
                   {
                     items.map((item) => (
-                      <span class="rounded bg-white/4 border border-white/5 px-2 py-1 text-[11px] font-medium text-muted">
+                      <span class="inline-flex items-center gap-1.5 rounded border border-white/5 bg-white/4 px-2 py-1 text-[11px] font-medium text-muted">
+                        {techIcons[item] ? (
+                          <img
+                            src={techIcons[item]}
+                            alt=""
+                            aria-hidden="true"
+                            class="size-3.5 shrink-0"
+                            loading="lazy"
+                          />
+                        ) : (
+                          <span class="grid size-3.5 shrink-0 place-items-center rounded-[4px] border border-white/10 bg-white/5 font-mono text-[8px] font-black text-mint/80">
+                            {item.slice(0, 1)}
+                          </span>
+                        )}
                         {item}
                       </span>
                     ))
@@ -557,8 +633,8 @@ const timelineItems = [
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="page-shell py-20">
-      <div class="glass grid gap-10 rounded-3xl p-7 border border-white/8 hover:border-white/12 transition-all md:grid-cols-[1.1fr_0.9fr] md:p-10 relative overflow-hidden">
+    <section id="contact" class="page-shell fluid-section">
+      <div class="glass relative grid gap-10 overflow-hidden rounded-2xl border border-white/8 p-5 transition-all hover:border-white/12 sm:p-7 md:grid-cols-[1.1fr_0.9fr] md:p-10">
         <!-- Glow background -->
         <span class="absolute -left-16 -top-16 size-48 bg-amber/5 rounded-full blur-3xl pointer-events-none"></span>
 
@@ -579,7 +655,7 @@ const timelineItems = [
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noreferrer" : undefined}
-                  class="inline-flex items-center gap-3.5 rounded-full border border-white/8 bg-[#0b0f14]/40 px-5 py-3 text-xs font-bold text-ink hover:bg-white/5 hover:border-mint hover:text-mint"
+                  class="inline-flex min-h-11 w-full items-center gap-3.5 rounded-full border border-white/8 bg-[#0b0f14]/40 px-5 py-3 text-xs font-bold text-ink hover:bg-white/5 hover:border-mint hover:text-mint"
                 >
                   <Icon size={16} class="shrink-0" />
                   <span>{label}</span>
@@ -645,15 +721,247 @@ const timelineItems = [
     </section>
   </main>
 
-  <footer class="border-t border-white/6 py-10 bg-bg-deep/40">
-    <div class="page-shell flex flex-col justify-between gap-4 text-xs text-muted sm:flex-row sm:items-center">
-      <p class="font-medium">&copy; 2026 Sean Paul S. Lapasanda. All rights reserved.</p>
-      <p class="inline-flex items-center gap-1">
-        <span>Engineered with</span>
-        <a href="https://astro.build" target="_blank" rel="noreferrer" class="text-mint hover:underline font-bold">Astro</a>
-        <span>&amp;</span>
-        <a href="https://tailwindcss.com" target="_blank" rel="noreferrer" class="text-sky hover:underline font-bold">Tailwind CSS v4</a>
-      </p>
+  <div
+    id="morata-modal"
+    class="project-modal fixed inset-0 z-[100] hidden items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="morata-modal-title"
+  >
+    <div class="project-modal-panel max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-2xl border border-white/10 bg-[#0c1016] shadow-2xl">
+      <div class="sticky top-0 z-10 flex items-center justify-between border-b border-white/8 bg-[#0c1016]/95 px-5 py-4 backdrop-blur sm:px-6">
+        <div>
+          <a href="#projects" class="text-[11px] font-bold text-muted hover:text-mint">Project Details</a>
+          <h2 id="morata-modal-title" class="mt-1 font-display text-2xl font-extrabold text-ink">MorataFMS</h2>
+        </div>
+        <button
+          type="button"
+          class="project-modal-close grid size-9 place-items-center rounded-full text-muted transition hover:bg-white/8 hover:text-ink"
+          aria-label="Close MorataFMS details"
+        >
+          <X size={18} />
+        </button>
+      </div>
+
+      <div class="grid gap-8 p-5 sm:p-6 lg:grid-cols-[minmax(18rem,0.72fr)_minmax(0,1.28fr)]">
+        <div class="min-w-0 space-y-5">
+          <div>
+            <p class="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted">Context</p>
+            <p class="mt-2 text-base leading-relaxed text-[#cfc6b8]">
+              Internal operations system for F.M. Morata, supporting brokerage and legal workflows through structured import/export transaction tracking, records, documents, and archiving.
+            </p>
+          </div>
+
+          <div class="border-t border-white/8 pt-4">
+            <p class="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted">My Role</p>
+            <p class="mt-2 text-sm leading-relaxed text-muted">
+              Built Laravel API work and React dashboard features for records, uploads, filters, role access, and transaction oversight during internship work.
+            </p>
+          </div>
+
+          <div class="border-t border-white/8 pt-4">
+            <p class="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted">Key Work</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              {["Import/export workflows", "Document handling", "Transaction filters", "Request validation", "Access policies"].map((item) => (
+                <span class="rounded-full border border-mint/15 bg-mint/8 px-3 py-1 text-xs font-bold text-mint">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <div class="overflow-hidden rounded-xl border border-white/10 bg-black/30">
+            <img
+              src="/projects/morata_landing.png"
+              alt="MorataFMS public landing screen"
+              class="w-full object-contain"
+              loading="lazy"
+            />
+          </div>
+          <p class="text-xs leading-relaxed text-muted">
+            Public-facing landing screen shown as portfolio-safe project proof.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    id="emedicard-modal"
+    class="project-modal fixed inset-0 z-[100] hidden items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="emedicard-modal-title"
+  >
+    <div class="project-modal-panel max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-2xl border border-white/10 bg-[#0c1016] shadow-2xl">
+      <div class="sticky top-0 z-10 flex items-center justify-between border-b border-white/8 bg-[#0c1016]/95 px-5 py-4 backdrop-blur sm:px-6">
+        <div>
+          <a href="#projects" class="text-[11px] font-bold text-muted hover:text-sky">Project Details</a>
+          <h2 id="emedicard-modal-title" class="mt-1 font-display text-2xl font-extrabold text-ink">EMEDICARD</h2>
+        </div>
+        <button
+          type="button"
+          class="project-modal-close grid size-9 place-items-center rounded-full text-muted transition hover:bg-white/8 hover:text-ink"
+          aria-label="Close EMEDICARD details"
+        >
+          <X size={18} />
+        </button>
+      </div>
+
+      <div class="grid gap-8 p-5 sm:p-6 lg:grid-cols-[0.72fr_1.28fr]">
+        <div class="space-y-5">
+          <div>
+            <p class="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted">Context</p>
+            <p class="mt-2 text-base leading-relaxed text-[#cfc6b8]">
+              Web and mobile health card system for Davao City workflows, covering applications, required documents, payments, admin review, certificate release, and QR verification.
+            </p>
+          </div>
+
+          <div class="border-t border-white/8 pt-4">
+            <p class="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted">My Role</p>
+            <p class="mt-2 text-sm leading-relaxed text-muted">
+              Built mobile application flows and data-driven states for applicant submission, document uploads, payments, status tracking, and QR-ready card verification.
+            </p>
+          </div>
+
+          <div class="border-t border-white/8 pt-4">
+            <p class="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted">Key Work</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              {["Document upload flow", "Application review", "Payment states", "Certificate generation", "QR verification"].map((item) => (
+                <span class="rounded-full border border-sky/20 bg-sky/8 px-3 py-1 text-xs font-bold text-sky">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="min-w-0 space-y-4">
+          <div class="grid gap-3 xl:grid-cols-2">
+            {[
+              {
+                src: "/projects/emedicard/admin-review.png",
+                alt: "EMEDICARD web admin document verification screen",
+                label: "Web Admin Review",
+              },
+              {
+                src: "/projects/emedicard/sample-health-certificate.svg?v=4",
+                alt: "EMEDICARD sanitized sample health certificate",
+                label: "Sample Certificate",
+              },
+            ].map((preview) => (
+              <figure>
+                <button
+                  type="button"
+                  class="image-preview-trigger block w-full overflow-hidden rounded-xl border border-white/10 bg-[#e8e2d6] transition hover:border-sky/40 focus:outline-none focus:ring-2 focus:ring-sky/60"
+                  data-image-src={preview.src}
+                  data-image-alt={preview.alt}
+                  data-image-label={preview.label}
+                  aria-label={`Preview ${preview.label}`}
+                >
+                  <img
+                    src={preview.src}
+                    alt={preview.alt}
+                    class="aspect-[16/7] w-full object-contain"
+                    loading="lazy"
+                  />
+                </button>
+                <figcaption class="mt-2 text-[10px] font-bold uppercase tracking-[0.12em] text-muted">
+                  {preview.label}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+
+          <div class="flex min-w-0 gap-3 overflow-x-auto rounded-xl border border-white/10 bg-black/20 p-3">
+            {[
+              { src: "/projects/emedicard/card-type.png", alt: "EMEDICARD health card type selection screen", label: "Card Type" },
+              { src: "/projects/emedicard/document-requirements.png", alt: "EMEDICARD document requirements checklist screen", label: "Requirements" },
+              { src: "/projects/emedicard/upload-documents.png", alt: "EMEDICARD required document upload screen", label: "Upload Docs" },
+              { src: "/projects/emedicard/review-submit.png", alt: "EMEDICARD review and submit document summary screen", label: "Review" },
+              { src: "/projects/emedicard/payment-methods.png", alt: "EMEDICARD payment methods screen", label: "Payment" },
+              { src: "/projects/emedicard/health-card.png", alt: "EMEDICARD digital health card QR screen", label: "Health card" },
+            ].map((screen) => (
+              <figure class="w-32 shrink-0 sm:w-36">
+                <button
+                  type="button"
+                  class="image-preview-trigger block overflow-hidden rounded-2xl border border-white/10 bg-white transition hover:border-sky/40 focus:outline-none focus:ring-2 focus:ring-sky/60"
+                  data-image-src={screen.src}
+                  data-image-alt={screen.alt}
+                  data-image-label={screen.label}
+                  aria-label={`Preview ${screen.label} screen`}
+                >
+                  <img
+                    src={screen.src}
+                    alt={screen.alt}
+                    class="aspect-[9/19] w-full object-cover object-top"
+                    loading="lazy"
+                  />
+                </button>
+                <figcaption class="mt-2 text-center text-[10px] font-bold uppercase tracking-[0.12em] text-muted">
+                  {screen.label}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+          <p class="text-xs leading-relaxed text-muted">
+            Web admin review, sample certificate output, and selected screens from the latest mobile UI.
+          </p>
+          <p class="rounded-xl border border-white/8 bg-white/[0.025] px-3 py-2 text-xs leading-relaxed text-muted">
+            Academic capstone project. Screenshots use sample data and the system is not an official deployment.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    id="image-preview-modal"
+    class="fixed inset-0 z-[120] hidden items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="image-preview-title"
+  >
+    <div class="relative flex max-h-[94vh] w-full max-w-5xl flex-col items-center">
+      <button
+        type="button"
+        id="image-preview-close"
+        class="absolute right-2 top-2 z-10 grid size-10 place-items-center rounded-full border border-white/15 bg-black/60 text-ink transition hover:bg-white/10"
+        aria-label="Close image preview"
+      >
+        <X size={18} />
+      </button>
+      <div class="max-h-[88vh] overflow-auto rounded-2xl border border-white/10 bg-[#0c1016] p-3 shadow-2xl">
+        <img
+          id="image-preview-img"
+          src=""
+          alt=""
+          class="mx-auto block max-h-[82vh] min-w-[18rem] max-w-full rounded-xl object-contain"
+        />
+      </div>
+      <p id="image-preview-title" class="mt-3 text-center text-xs font-bold uppercase tracking-[0.14em] text-muted"></p>
+    </div>
+  </div>
+
+  <footer class="border-t border-white/8 bg-bg-deep/70 py-7">
+    <div class="page-shell flex flex-col justify-between gap-3 text-xs text-muted sm:flex-row sm:items-center">
+      <p>&copy; 2026 Sean Paul S. Lapasanda. All rights reserved.</p>
+      <div class="flex flex-wrap gap-x-4 gap-y-2 font-bold">
+        {profileLinks.map((link) => (
+          <a
+            href={link.href}
+            id={`${link.id}-footer`}
+            target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+            rel={link.href.startsWith("mailto:") ? undefined : "noreferrer"}
+            class="transition hover:text-ink"
+          >
+            {link.label}
+          </a>
+        ))}
+        <a href="#top" class="transition hover:text-ink">Back to top</a>
+      </div>
     </div>
   </footer>
 </MainLayout>
@@ -677,7 +985,128 @@ const timelineItems = [
 
     elements.forEach(el => observer.observe(el));
 
-    // 2. Simple contact form submission simulation
+    // 2. Mobile navigation disclosure
+    const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+    const mobileNavPanel = document.getElementById("mobile-nav-panel");
+    const mobileMenuLabel = document.getElementById("mobile-menu-label");
+    const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+
+    function setMobileMenu(open: boolean) {
+      if (!mobileMenuToggle || !mobileNavPanel || !mobileMenuLabel) return;
+
+      mobileMenuToggle.setAttribute("aria-expanded", String(open));
+      mobileMenuLabel.textContent = open ? "Close" : "Menu";
+      mobileNavPanel.classList.toggle("hidden", !open);
+    }
+
+    mobileMenuToggle?.addEventListener("click", () => {
+      const isOpen = mobileMenuToggle.getAttribute("aria-expanded") === "true";
+      setMobileMenu(!isOpen);
+    });
+
+    mobileNavLinks.forEach((link) => {
+      link.addEventListener("click", () => setMobileMenu(false));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setMobileMenu(false);
+    });
+
+    // 3. Project detail modals
+    const modalTriggers = document.querySelectorAll<HTMLElement>(".project-modal-trigger");
+    const modals = document.querySelectorAll<HTMLElement>(".project-modal");
+    const imagePreviewModal = document.getElementById("image-preview-modal");
+    const imagePreviewImg = document.getElementById("image-preview-img") as HTMLImageElement | null;
+    const imagePreviewTitle = document.getElementById("image-preview-title");
+    const imagePreviewClose = document.getElementById("image-preview-close");
+    const imagePreviewTriggers = document.querySelectorAll<HTMLElement>(".image-preview-trigger");
+    let activeModalTrigger: HTMLElement | null = null;
+    let activeImagePreviewTrigger: HTMLElement | null = null;
+
+    function closeProjectModal() {
+      modals.forEach((modal) => {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      });
+      document.body.style.overflow = "";
+      activeModalTrigger?.focus();
+      activeModalTrigger = null;
+    }
+
+    function openProjectModal(modalId: string, trigger: HTMLElement) {
+      const modal = document.getElementById(modalId);
+      if (!modal) return;
+
+      activeModalTrigger = trigger;
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      document.body.style.overflow = "hidden";
+      modal.querySelector<HTMLElement>(".project-modal-close")?.focus();
+    }
+
+    function closeImagePreview() {
+      imagePreviewModal?.classList.add("hidden");
+      imagePreviewModal?.classList.remove("flex");
+      activeImagePreviewTrigger?.focus();
+      activeImagePreviewTrigger = null;
+      if (imagePreviewImg) {
+        imagePreviewImg.src = "";
+        imagePreviewImg.alt = "";
+      }
+      if (imagePreviewTitle) imagePreviewTitle.textContent = "";
+    }
+
+    function openImagePreview(trigger: HTMLElement) {
+      if (!imagePreviewModal || !imagePreviewImg || !imagePreviewTitle) return;
+      const src = trigger.dataset.imageSrc;
+      if (!src) return;
+
+      activeImagePreviewTrigger = trigger;
+      imagePreviewImg.src = src;
+      imagePreviewImg.alt = trigger.dataset.imageAlt || "Project screen preview";
+      imagePreviewTitle.textContent = trigger.dataset.imageLabel || "";
+      imagePreviewModal.classList.remove("hidden");
+      imagePreviewModal.classList.add("flex");
+      imagePreviewClose?.focus();
+    }
+
+    modalTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        const modalId = trigger.dataset.projectModalTarget;
+        if (modalId) openProjectModal(modalId, trigger);
+      });
+    });
+
+    modals.forEach((modal) => {
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) closeProjectModal();
+      });
+
+      modal.querySelectorAll(".project-modal-close").forEach((button) => {
+        button.addEventListener("click", closeProjectModal);
+      });
+    });
+
+    imagePreviewTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => openImagePreview(trigger));
+    });
+
+    imagePreviewModal?.addEventListener("click", (event) => {
+      if (event.target === imagePreviewModal) closeImagePreview();
+    });
+
+    imagePreviewClose?.addEventListener("click", closeImagePreview);
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      if (imagePreviewModal?.classList.contains("flex")) {
+        closeImagePreview();
+        return;
+      }
+      closeProjectModal();
+    });
+
+    // 4. Simple contact form submission simulation
     const form = document.getElementById("contact-form") as HTMLFormElement;
     const successBox = document.getElementById("form-success");
     const submitBtn = document.getElementById("form-submit");

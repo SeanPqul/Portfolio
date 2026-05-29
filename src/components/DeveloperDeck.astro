@@ -1,106 +1,143 @@
 ---
-import DSLRViewfinder from "./DSLRViewfinder.astro";
+import FloatingStatsCard from "./FloatingStatsCard.astro";
 import TerminalConsole from "./TerminalConsole.astro";
-import { Terminal, Camera } from "@lucide/astro";
+import { Terminal, User } from "@lucide/astro";
 ---
 
-<div class="w-full flex flex-col gap-3">
-  <!-- Tab Switcher Bar -->
-  <div class="flex items-center justify-between">
-    <div class="flex items-center gap-1.5 bg-white/[0.03] border border-white/6 p-1 rounded-full select-none">
-      <!-- Camera Tab Button -->
-      <button 
-        id="deck-tab-camera" 
-        class="flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold font-display cursor-pointer transition-all duration-300 bg-mint text-bg-deep font-extrabold shadow-sm"
-        aria-label="Switch to profile camera view"
+<div class="group/deck relative flex w-full min-w-0 flex-col gap-3 overflow-visible">
+  <!-- Unified Window Container (Starts transparent & borderless for Profile Card view) -->
+  <div 
+    id="deck-window" 
+    class="flex w-full flex-col rounded-2xl relative transition-all duration-500 overflow-visible border border-transparent bg-transparent shadow-none"
+  >
+    
+    <!-- Unified Window Header Bar -->
+    <div 
+      id="deck-window-header" 
+      class="flex items-center justify-between border-b border-transparent px-4 py-3 select-none transition-all duration-500"
+    >
+      <!-- macOS-style window controls (hidden in Profile mode, shown in Terminal mode) -->
+      <div 
+        id="deck-window-dots" 
+        class="flex items-center gap-2 opacity-0 pointer-events-none transition-opacity duration-500"
       >
-        <Camera size={13} class="shrink-0" />
-        <span>Live Camera</span>
-      </button>
+        <span id="window-dot-close" class="size-3 rounded-full bg-[#ff5f56] opacity-80 hover:opacity-100 cursor-pointer transition-opacity" title="Close Terminal & show profile"></span>
+        <span class="size-3 rounded-full bg-[#ffbd2e] opacity-80 hover:opacity-100 transition-opacity"></span>
+        <span class="size-3 rounded-full bg-[#27c93f] opacity-80 hover:opacity-100 transition-opacity"></span>
+      </div>
+      
+      <!-- Spacer for centering header items -->
+      <div class="w-1"></div>
 
-      <!-- Terminal Tab Button -->
-      <button 
-        id="deck-tab-terminal" 
-        class="flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium font-display cursor-pointer transition-all duration-300 text-muted hover:text-ink"
-        aria-label="Switch to CLI terminal console"
-      >
-        <Terminal size={13} class="shrink-0" />
-        <span>Terminal CLI</span>
-      </button>
+
     </div>
 
-    <!-- Active Indicator HUD light -->
-    <div class="hidden sm:flex items-center gap-1.5 text-[9px] font-mono text-muted uppercase tracking-wider pr-2">
-      <span class="size-1.5 rounded-full bg-mint animate-pulse" id="deck-status-dot"></span>
-      <span id="deck-status-text">Camera Active</span>
-    </div>
-  </div>
+    <!-- Content Pane Area -->
+    <div class="relative flex w-full min-w-0 flex-1 flex-col">
+      <!-- Profile Card Tab Pane -->
+      <div id="deck-pane-profile" class="w-full flex-1">
+        <FloatingStatsCard />
+      </div>
 
-  <!-- Content Deck (Wrapper) -->
-  <div class="relative w-full">
-    <!-- Camera Viewfinder Tab Pane -->
-    <div id="deck-pane-camera" class="block transition-all duration-300">
-      <DSLRViewfinder />
-    </div>
-
-    <!-- Terminal Console Tab Pane -->
-    <div id="deck-pane-terminal" class="hidden transition-all duration-300">
-      <TerminalConsole />
+      <!-- Terminal Console Tab Pane -->
+      <div id="deck-pane-terminal" class="hidden h-[min(420px,70svh)] w-full min-w-0 flex flex-col sm:h-[420px]">
+        <TerminalConsole />
+      </div>
     </div>
   </div>
 </div>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const tabCamera = document.getElementById("deck-tab-camera");
-    const tabTerminal = document.getElementById("deck-tab-terminal");
-    const paneCamera = document.getElementById("deck-pane-camera");
+    const paneProfile = document.getElementById("deck-pane-profile");
     const paneTerminal = document.getElementById("deck-pane-terminal");
-    const statusDot = document.getElementById("deck-status-dot");
-    const statusText = document.getElementById("deck-status-text");
+    
+    const deckWindow = document.getElementById("deck-window");
+    const windowHeader = document.getElementById("deck-window-header");
+    const windowDots = document.getElementById("deck-window-dots");
+    const windowStatus = null; // removed
+    const windowDotClose = document.getElementById("window-dot-close");
 
-    if (!tabCamera || !tabTerminal || !paneCamera || !paneTerminal) return;
+    // References to the Hero CLI Toggle button on the left column of the page
+    const heroCliToggle = document.getElementById("hero-cli-toggle");
+    const heroCliIconTerminal = document.getElementById("hero-cli-icon-terminal");
+    const heroCliIconProfile = document.getElementById("hero-cli-icon-profile");
+    const heroCliText = document.getElementById("hero-cli-text");
 
-    // A. Switch to Camera View
-    function showCamera() {
-      // 1. Update button styling
-      tabCamera?.classList.add("bg-mint", "text-bg-deep", "font-extrabold");
-      tabCamera?.classList.remove("text-muted", "font-medium");
-      
-      tabTerminal?.classList.remove("bg-mint", "text-bg-deep", "font-extrabold");
-      tabTerminal?.classList.add("text-muted", "font-medium");
+    if (!paneProfile || !paneTerminal) return;
 
-      // 2. Toggle panes
-      paneCamera?.classList.remove("hidden");
-      paneCamera?.classList.add("block");
-      
-      paneTerminal?.classList.remove("block");
-      paneTerminal?.classList.add("hidden");
+    let currentMode = "profile";
 
-      // 3. Update status text
-      if (statusDot) statusDot.style.backgroundColor = "var(--color-mint)";
-      if (statusText) statusText.textContent = "Camera Active";
+    // A. Switch to Profile View
+    function showProfile() {
+      currentMode = "profile";
+
+      // 1. Toggle panes
+      paneProfile.classList.remove("hidden");
+      paneTerminal.classList.add("hidden");
+
+
+
+      // 3. Dissolve Window container styles in Profile mode
+      if (deckWindow) {
+        deckWindow.classList.remove("glass", "border-white/10", "shadow-2xl", "bg-bg-card", "overflow-hidden");
+        deckWindow.classList.add("border-transparent", "bg-transparent", "shadow-none", "overflow-visible");
+      }
+      if (windowHeader) {
+        windowHeader.classList.remove("border-white/10");
+        windowHeader.classList.add("border-transparent");
+      }
+      if (windowDots) {
+        windowDots.classList.add("opacity-0", "pointer-events-none");
+      }
+      if (windowStatus) {
+        windowStatus.classList.add("opacity-0", "pointer-events-none");
+      }
+
+      // 4. Update the Hero CLI Toggle button on the left side
+      if (heroCliIconTerminal) heroCliIconTerminal.classList.remove("hidden");
+      if (heroCliIconProfile) heroCliIconProfile.classList.add("hidden");
+      if (heroCliText) heroCliText.textContent = "Launch CLI";
+      if (heroCliToggle) {
+        heroCliToggle.classList.remove("border-amber/30", "text-amber");
+        heroCliToggle.classList.add("border-white/6", "text-muted");
+      }
     }
 
     // B. Switch to Terminal View
     function showTerminal() {
-      // 1. Update button styling
-      tabTerminal?.classList.add("bg-mint", "text-bg-deep", "font-extrabold");
-      tabTerminal?.classList.remove("text-muted", "font-medium");
-      
-      tabCamera?.classList.remove("bg-mint", "text-bg-deep", "font-extrabold");
-      tabCamera?.classList.add("text-muted", "font-medium");
+      currentMode = "terminal";
 
-      // 2. Toggle panes
-      paneTerminal?.classList.remove("hidden");
-      paneTerminal?.classList.add("block");
-      
-      paneCamera?.classList.remove("block");
-      paneCamera?.classList.add("hidden");
+      // 1. Toggle panes
+      paneTerminal.classList.remove("hidden");
+      paneProfile.classList.add("hidden");
 
-      // 3. Update status text
-      if (statusDot) statusDot.style.backgroundColor = "var(--color-amber)";
-      if (statusText) statusText.textContent = "Console Shell";
+
+
+      // 3. Restore Window wrapper (borders, glass background, shadow) in Terminal mode
+      if (deckWindow) {
+        deckWindow.classList.remove("border-transparent", "bg-transparent", "shadow-none", "overflow-visible");
+        deckWindow.classList.add("glass", "border-white/10", "shadow-2xl", "bg-bg-card", "overflow-hidden");
+      }
+      if (windowHeader) {
+        windowHeader.classList.remove("border-transparent");
+        windowHeader.classList.add("border-white/10");
+      }
+      if (windowDots) {
+        windowDots.classList.remove("opacity-0", "pointer-events-none");
+      }
+      if (windowStatus) {
+        windowStatus.classList.remove("opacity-0", "pointer-events-none");
+      }
+
+      // 4. Update the Hero CLI Toggle button on the left side
+      if (heroCliIconTerminal) heroCliIconTerminal.classList.add("hidden");
+      if (heroCliIconProfile) heroCliIconProfile.classList.remove("hidden");
+      if (heroCliText) heroCliText.textContent = "Close CLI";
+      if (heroCliToggle) {
+        heroCliToggle.classList.remove("border-white/6", "text-muted");
+        heroCliToggle.classList.add("border-amber/30", "text-amber");
+      }
 
       // Focus input automatically inside terminal when opened
       const termInput = document.getElementById("terminal-input") as HTMLInputElement;
@@ -110,7 +147,18 @@ import { Terminal, Camera } from "@lucide/astro";
     }
 
     // C. Event Listeners
-    tabCamera.addEventListener("click", showCamera);
-    tabTerminal.addEventListener("click", showTerminal);
+    // Toggle when clicking the hero social row toggle button
+    heroCliToggle?.addEventListener("click", () => {
+      if (currentMode === "profile") {
+        showTerminal();
+      } else {
+        showProfile();
+      }
+    });
+
+    // Close when clicking the macOS window red dot
+    windowDotClose?.addEventListener("click", () => {
+      showProfile();
+    });
   });
 </script>

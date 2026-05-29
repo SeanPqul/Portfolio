@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1380" height="743" viewBox="0 0 1380 743" role="img" aria-labelledby="title desc">
+  <title id="title">Sanitized sample health certificate mockup</title>
+  <desc id="desc">A neutral academic prototype certificate layout with sample data and no official government marks.</desc>
+  <rect width="1380" height="743" fill="#e7e4dc"/>
+  <rect x="255" y="26" width="870" height="690" fill="#fff2bd" stroke="#b99425" stroke-width="3"/>
+  <line x1="690" y1="26" x2="690" y2="716" stroke="#c8a84a" stroke-width="2"/>
+
+  <g opacity="0.13" transform="rotate(-22 690 371.5)">
+    <text x="238" y="392" font-family="Arial, sans-serif" font-size="72" font-weight="800" fill="#6f5f1b" letter-spacing="8">
+      ACADEMIC PROTOTYPE
+    </text>
+  </g>
+
+  <g font-family="Arial, sans-serif">
+    <text x="473" y="72" text-anchor="middle" font-size="14" fill="#43381a">Sample Form No. 102-A</text>
+
+    <rect x="432" y="86" width="82" height="82" rx="8" fill="#f8e7a3" stroke="#b99425" stroke-width="2"/>
+    <g fill="#162033">
+      <rect x="446" y="100" width="12" height="12"/>
+      <rect x="470" y="100" width="12" height="12"/>
+      <rect x="494" y="100" width="12" height="12"/>
+      <rect x="446" y="124" width="12" height="12"/>
+      <rect x="470" y="124" width="12" height="12"/>
+      <rect x="494" y="124" width="12" height="12"/>
+      <rect x="446" y="148" width="12" height="12"/>
+      <rect x="470" y="148" width="12" height="12"/>
+      <rect x="494" y="148" width="12" height="12"/>
+      <rect x="460" y="114" width="10" height="10" fill="#fff2bd"/>
+      <rect x="484" y="138" width="10" height="10" fill="#fff2bd"/>
+    </g>
+
+    <text x="473" y="199" text-anchor="middle" font-size="18" fill="#1b1f2a">SAMPLE HEALTH OFFICE</text>
+    <text x="473" y="226" text-anchor="middle" font-size="21" font-weight="700" fill="#111827">Health Services Unit</text>
+    <text x="473" y="252" text-anchor="middle" font-size="15" fill="#1b1f2a">Demo No. SAMPLE-0007</text>
+    <text x="473" y="302" text-anchor="middle" font-size="27" font-weight="800" fill="#111827">HEALTH CERTIFICATE</text>
+    <text x="473" y="333" text-anchor="middle" font-size="15" fill="#1b1f2a">This mock certificate is generated from sample data</text>
+    <text x="473" y="355" text-anchor="middle" font-size="15" fill="#1b1f2a">for portfolio demonstration only.</text>
+  </g>
+
+  <g font-family="Arial, sans-serif" font-size="16" fill="#111827">
+    <text x="285" y="409">Name: Example Applicant</text>
+    <line x1="285" y1="421" x2="670" y2="421" stroke="#c8a84a"/>
+    <text x="285" y="442">Occupation: Service Crew</text>
+    <line x1="285" y1="454" x2="670" y2="454" stroke="#c8a84a"/>
+    <text x="285" y="475">Age: 22</text>
+    <text x="370" y="475">Sex: Male</text>
+    <text x="468" y="475">Nationality: Filipino</text>
+    <line x1="285" y1="487" x2="670" y2="487" stroke="#c8a84a"/>
+    <text x="285" y="508">Workplace: Sample Workplace</text>
+    <line x1="285" y1="520" x2="670" y2="520" stroke="#c8a84a"/>
+  </g>
+
+  <rect x="286" y="552" width="104" height="104" fill="#d8e5ef" stroke="#8aa8be"/>
+  <circle cx="338" cy="590" r="23" fill="#6b8fb0"/>
+  <rect x="310" y="621" width="56" height="24" rx="12" fill="#6b8fb0"/>
+  <text x="338" y="670" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">sample photo</text>
+
+  <line x1="430" y1="598" x2="670" y2="598" stroke="#c8a84a"/>
+  <text x="550" y="583" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#1b1f2a">Signature</text>
+  <path d="M505 626c18-28 29 10 47-16 12-17 20 3 34-13" fill="none" stroke="#52616f" stroke-width="2"/>
+  <text x="550" y="652" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#111827">Sample Officer</text>
+  <text x="550" y="670" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#1b1f2a">Authorized Reviewer</text>
+
+  <line x1="285" y1="686" x2="670" y2="686" stroke="#c8a84a"/>
+
+  <text x="913" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#111827">IMPORTANT</text>
+  <text x="913" y="126" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#1b1f2a">This sample certificate is not transferable.</text>
+  <text x="913" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#1b1f2a">It is not an official government document.</text>
+  <text x="913" y="176" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#1b1f2a">Shown only as an academic prototype output.</text>
+
+  <g font-family="Arial, sans-serif" fill="#111827">
+    <rect x="724" y="210" width="178" height="64" fill="#ffe89a" stroke="#c8a84a"/>
+    <rect x="924" y="210" width="178" height="64" fill="#ffe89a" stroke="#c8a84a"/>
+    <text x="813" y="238" text-anchor="middle" font-size="18" font-weight="800">Nov 16, 2025</text>
+    <text x="813" y="258" text-anchor="middle" font-size="13">Date of Issuance</text>
+    <text x="1013" y="238" text-anchor="middle" font-size="18" font-weight="800">Nov 16, 2026</text>
+    <text x="1013" y="258" text-anchor="middle" font-size="13">Date of Expiration</text>
+  </g>
+
+  <g font-family="Arial, sans-serif" font-size="13" fill="#111827" stroke="#c8a84a">
+    <text x="913" y="327" text-anchor="middle" font-size="15" font-weight="800" stroke="none">URINALYSIS</text>
+    <rect x="724" y="340" width="378" height="98" fill="none"/>
+    <line x1="850" y1="340" x2="850" y2="438"/>
+    <line x1="976" y1="340" x2="976" y2="438"/>
+    <line x1="724" y1="370" x2="1102" y2="370"/>
+    <line x1="724" y1="405" x2="1102" y2="405"/>
+    <text x="787" y="361" text-anchor="middle" stroke="none">Date</text>
+    <text x="913" y="361" text-anchor="middle" stroke="none">Kind</text>
+    <text x="1039" y="361" text-anchor="middle" stroke="none">Exp Date</text>
+
+    <text x="913" y="477" text-anchor="middle" font-size="15" font-weight="800" stroke="none">X-RAY / SPUTUM</text>
+    <rect x="724" y="490" width="378" height="98" fill="none"/>
+    <line x1="850" y1="490" x2="850" y2="588"/>
+    <line x1="976" y1="490" x2="976" y2="588"/>
+    <line x1="724" y1="520" x2="1102" y2="520"/>
+    <line x1="724" y1="555" x2="1102" y2="555"/>
+    <text x="787" y="511" text-anchor="middle" stroke="none">Date</text>
+    <text x="913" y="511" text-anchor="middle" stroke="none">Kind</text>
+    <text x="1039" y="511" text-anchor="middle" stroke="none">Exp Date</text>
+
+    <text x="913" y="627" text-anchor="middle" font-size="15" font-weight="800" stroke="none">STOOL</text>
+    <rect x="724" y="640" width="378" height="55" fill="none"/>
+    <line x1="850" y1="640" x2="850" y2="695"/>
+    <line x1="976" y1="640" x2="976" y2="695"/>
+    <line x1="724" y1="668" x2="1102" y2="668"/>
+    <text x="787" y="660" text-anchor="middle" stroke="none">Date</text>
+    <text x="913" y="660" text-anchor="middle" stroke="none">Kind</text>
+    <text x="1039" y="660" text-anchor="middle" stroke="none">Exp Date</text>
+  </g>
+
+  <rect x="843" y="681" width="140" height="24" rx="12" fill="#111827" opacity="0.85"/>
+  <text x="913" y="698" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#fff2bd">SAMPLE ONLY</text>
+</svg>
