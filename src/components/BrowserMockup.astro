@@ -14,7 +14,7 @@ import { Search, Filter, RefreshCw, FileText, CheckCircle, Clock } from "@lucide
     <div class="mx-auto flex min-w-0 flex-1 items-center justify-between gap-2 rounded-lg border border-white/5 bg-[#0b0f14]/60 px-2 py-1 font-mono text-[8px] text-muted sm:max-w-md sm:px-3 sm:text-[10px]">
       <div class="flex items-center gap-1.5 truncate">
         <span class="text-mint">https://</span>
-        <span class="truncate">fms.morata-brokerage.com/shipments</span>
+        <span class="truncate">fms.morata-brokerage.com/transactions</span>
       </div>
       <RefreshCw size={8} class="text-muted shrink-0 cursor-pointer hover:text-white" />
     </div>
@@ -31,7 +31,7 @@ import { Search, Filter, RefreshCw, FileText, CheckCircle, Clock } from "@lucide
       </div>
       <nav class="space-y-1">
         <span class="flex items-center gap-2 rounded bg-white/5 px-2 py-1.5 text-[10px] font-semibold text-white">
-          <FileText size={10} class="text-mint" /> Shipments
+          <FileText size={10} class="text-mint" /> Transactions
         </span>
         <span class="flex items-center gap-2 px-2 py-1.5 text-[10px] font-medium text-muted hover:text-white transition cursor-pointer">
           <Clock size={10} /> Active Files
@@ -55,12 +55,12 @@ import { Search, Filter, RefreshCw, FileText, CheckCircle, Clock } from "@lucide
             <Filter size={8} /> Filters
           </span>
           <span class="rounded bg-mint text-bg-deep px-1.5 py-0.5 text-[9px] font-bold">
-            + New File
+            + New Record
           </span>
         </div>
       </div>
 
-      <!-- Shipment Table -->
+      <!-- Transaction Table -->
       <div class="flex-1 overflow-y-auto border border-white/8 rounded-lg bg-bg-deep/30">
         <table class="w-full table-fixed border-collapse text-left">
           <thead>
