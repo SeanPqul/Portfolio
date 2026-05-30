@@ -1,5 +1,16 @@
 ---
 import { Globe, Smartphone, Code, Camera, Disc, ShieldCheck, Focus } from "@lucide/astro";
+import profileImage from "../assets/profile.jpg?url";
+import profileImageTwo from "../assets/profile-2.jpg?url";
+import profileImageThree from "../assets/profile-3.jpg?url";
+import profileImageFour from "../assets/profile-4.jpg?url";
+
+const profileImages = [
+  { src: profileImage, pos: "16% 25%", zoom: "scale(1.7) translate(14%, 8%)" },
+  { src: profileImageTwo, pos: "16% 25%", zoom: "scale(1.7) translate(14%, 8%)" },
+  { src: profileImageThree, pos: "68% 15%", zoom: "scale(1.65) translate(-14%, 6%)" },
+  { src: profileImageFour, pos: "50% 15%", zoom: "scale(1.6) translate(0%, 6%)" },
+];
 ---
 
 <div class="relative mx-auto flex min-h-[420px] w-full max-w-[430px] flex-col items-center justify-center overflow-visible px-2 py-6 sm:min-h-[460px] sm:px-4 lg:max-w-none">
@@ -14,6 +25,7 @@ import { Globe, Smartphone, Code, Camera, Disc, ShieldCheck, Focus } from "@luci
     <!-- Camera Viewfinder Screen -->
     <div 
       id="profile-card-container"
+      data-profile-images={JSON.stringify(profileImages)}
       class="relative w-full aspect-[4/5] sm:aspect-[3/4] rounded-2xl border border-white/12 bg-black overflow-hidden shadow-2xl group/photo transition-all duration-500 hover:border-mint/30 hover:shadow-mint/5 cursor-pointer"
       title="Click to cycle photoshoot images"
       role="button"
@@ -104,7 +116,7 @@ import { Globe, Smartphone, Code, Camera, Disc, ShieldCheck, Focus } from "@luci
       <!-- Image -->
       <img 
         id="profile-card-image"
-        src="/profile.jpg" 
+        src={profileImage}
         alt="Sean Paul Lapasanda portrait" 
         class="w-full h-full object-cover object-[16%_25%] transition-all duration-700 ease-out"
         style="transform: scale(1); filter: blur(2px) contrast(0.95);"
@@ -177,12 +189,7 @@ import { Globe, Smartphone, Code, Camera, Disc, ShieldCheck, Focus } from "@luci
     if (!container || !img) return;
 
     // Photoshoot images with coordinates & specific zoom targets for focus modes
-    const images = [
-      { src: "/profile.jpg", pos: "16% 25%", zoom: "scale(1.7) translate(14%, 8%)" },
-      { src: "/profile-2.jpg", pos: "16% 25%", zoom: "scale(1.7) translate(14%, 8%)" },
-      { src: "/profile-3.jpg", pos: "68% 15%", zoom: "scale(1.65) translate(-14%, 6%)" },
-      { src: "/profile-4.jpg", pos: "50% 15%", zoom: "scale(1.6) translate(0%, 6%)" }
-    ];
+    const images = JSON.parse(container.dataset.profileImages || "[]");
 
     let currentIndex = 0;
     let isTransitioning = false;

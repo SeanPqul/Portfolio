@@ -2,10 +2,41 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import DeveloperDeck from "../components/DeveloperDeck.astro";
 import McDonaldsIcon from "../components/McDonaldsIcon.astro";
+import cvPdf from "../assets/docs/cv.pdf?url";
+import morataLandingImage from "../assets/projects/morata_landing.png?url";
+import emedicardAdminReviewImage from "../assets/projects/emedicard/admin-review.png?url";
+import emedicardCardTypeImage from "../assets/projects/emedicard/card-type.png?url";
+import emedicardDocumentRequirementsImage from "../assets/projects/emedicard/document-requirements.png?url";
+import emedicardHealthCardImage from "../assets/projects/emedicard/health-card.png?url";
+import emedicardPaymentMethodsImage from "../assets/projects/emedicard/payment-methods.png?url";
+import emedicardReviewSubmitImage from "../assets/projects/emedicard/review-submit.png?url";
+import emedicardCertificateImage from "../assets/projects/emedicard/sample-health-certificate.svg?url";
+import emedicardUploadDocumentsImage from "../assets/projects/emedicard/upload-documents.png?url";
+import reactIcon from "../assets/tech-icons/react.svg?url";
+import typescriptIcon from "../assets/tech-icons/typescript.svg?url";
+import viteIcon from "../assets/tech-icons/vite.svg?url";
+import tailwindIcon from "../assets/tech-icons/tailwindcss.svg?url";
+import nextIcon from "../assets/tech-icons/nextdotjs.svg?url";
+import nuxtIcon from "../assets/tech-icons/nuxt.svg?url";
+import laravelIcon from "../assets/tech-icons/laravel.svg?url";
+import phpIcon from "../assets/tech-icons/php.svg?url";
+import nodeIcon from "../assets/tech-icons/nodedotjs.svg?url";
+import convexFunctionsIcon from "../assets/tech-icons/convex-functions.svg?url";
+import convexIcon from "../assets/tech-icons/convex.svg?url";
+import mysqlIcon from "../assets/tech-icons/mysql.svg?url";
+import clerkIcon from "../assets/tech-icons/clerk.svg?url";
+import dockerIcon from "../assets/tech-icons/docker.svg?url";
+import cloudflareIcon from "../assets/tech-icons/cloudflare.svg?url";
+import amazonS3Icon from "../assets/tech-icons/amazon-s3.svg?url";
+import expoIcon from "../assets/tech-icons/expo.svg?url";
+import codexIcon from "../assets/tech-icons/codex.svg?url";
+import claudeIcon from "../assets/tech-icons/claude.svg?url";
+import antigravityIcon from "../assets/tech-icons/antigravity.svg?url";
 import {
   ArrowUpRight,
   Database,
   ExternalLink,
+  FileText,
   Layers,
   Mail,
   MapPin,
@@ -13,7 +44,6 @@ import {
   Smartphone,
   Terminal,
   User,
-  Send,
   Briefcase,
   Bot,
   GraduationCap,
@@ -25,7 +55,7 @@ import {
 
 export const prerender = true;
 
-const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+const cvHref = import.meta.env.DEV ? "/docs/cv.pdf" : cvPdf;
 
 const navItems = ["Projects", "Experience", "Skills", "Contact"];
 
@@ -94,28 +124,28 @@ const skills = [
 ];
 
 const techIcons: Record<string, string> = {
-  "React": "/tech-icons/react.svg",
-  "React Native": "/tech-icons/react.svg",
-  "TypeScript": "/tech-icons/typescript.svg",
-  "Vite": "/tech-icons/vite.svg",
-  "Tailwind CSS": "/tech-icons/tailwindcss.svg",
-  "Next.js": "/tech-icons/nextdotjs.svg",
-  "Nuxt.js": "/tech-icons/nuxt.svg",
-  "Laravel": "/tech-icons/laravel.svg",
-  "PHP": "/tech-icons/php.svg",
-  "Node.js": "/tech-icons/nodedotjs.svg",
-  "Convex Functions": "/tech-icons/convex-functions.svg",
-  "Convex DB": "/tech-icons/convex.svg",
-  "MySQL": "/tech-icons/mysql.svg",
-  "Clerk": "/tech-icons/clerk.svg",
-  "Docker": "/tech-icons/docker.svg",
-  "Cloudflare": "/tech-icons/cloudflare.svg",
-  "Amazon S3": "/tech-icons/amazon-s3.svg",
-  "Expo": "/tech-icons/expo.svg",
-  "Expo Router": "/tech-icons/expo.svg",
-  "Codex": "/tech-icons/codex.svg",
-  "Claude Code": "/tech-icons/claude.svg",
-  "Antigravity": "/tech-icons/antigravity.svg",
+  "React": reactIcon,
+  "React Native": reactIcon,
+  "TypeScript": typescriptIcon,
+  "Vite": viteIcon,
+  "Tailwind CSS": tailwindIcon,
+  "Next.js": nextIcon,
+  "Nuxt.js": nuxtIcon,
+  "Laravel": laravelIcon,
+  "PHP": phpIcon,
+  "Node.js": nodeIcon,
+  "Convex Functions": convexFunctionsIcon,
+  "Convex DB": convexIcon,
+  "MySQL": mysqlIcon,
+  "Clerk": clerkIcon,
+  "Docker": dockerIcon,
+  "Cloudflare": cloudflareIcon,
+  "Amazon S3": amazonS3Icon,
+  "Expo": expoIcon,
+  "Expo Router": expoIcon,
+  "Codex": codexIcon,
+  "Claude Code": claudeIcon,
+  "Antigravity": antigravityIcon,
 };
 
 const timelineItems = [
@@ -297,16 +327,18 @@ const timelineItems = [
             href="#projects"
             class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-mint px-5.5 py-3 text-sm font-extrabold text-[#07100d] transition hover:-translate-y-0.5 hover:bg-[#7af0c8] hover:shadow-lg hover:shadow-mint/20 sm:justify-start"
           >
-            Explore Projects
-            <ArrowUpRight size={18} />
+            <Briefcase size={18} />
+            View Work
           </a>
           <a
-            id="hero-cta-contact"
-            href="#contact"
-            class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/15 px-5.5 py-3 text-sm font-bold text-ink transition hover:-translate-y-0.5 hover:border-amber hover:text-amber sm:justify-start"
+            id="hero-cta-cv"
+            href={cvHref}
+            target="_blank"
+            rel="noreferrer"
+            class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-mint px-5.5 py-3 text-sm font-extrabold text-[#07100d] transition hover:-translate-y-0.5 hover:bg-[#7af0c8] hover:shadow-lg hover:shadow-mint/20 sm:justify-start"
           >
-            <Mail size={18} />
-            Get in Touch
+            <FileText size={18} />
+            View CV
           </a>
         </div>
         <div class="mt-10 grid grid-cols-2 items-center gap-3 text-xs text-muted sm:flex sm:flex-wrap sm:gap-4">
@@ -648,107 +680,63 @@ const timelineItems = [
             Let's build something practical together.
           </h2>
           <p class="mt-5 text-sm leading-relaxed text-[#cfc6b8]">
-            I am open to junior full-stack, frontend, backend, or mobile developer roles. Authorized to work in the Philippines, available for remote or hybrid positions.
+            I am open to junior full-stack, frontend, backend, or mobile developer roles, with availability for remote or hybrid positions.
           </p>
 
-          <div class="mt-8 flex flex-col gap-3.5 max-w-sm">
-            {
-              profileLinks.map(({ id, label, href, icon: Icon }) => (
-                <a
-                  id={`${id}-contact`}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel={href.startsWith("http") ? "noreferrer" : undefined}
-                  class="inline-flex min-h-11 w-full items-center gap-3.5 rounded-full border border-white/8 bg-[#0b0f14]/40 px-5 py-3 text-xs font-bold text-ink hover:bg-white/5 hover:border-mint hover:text-mint"
-                >
-                  <Icon size={16} class="shrink-0" />
-                  <span>{label}</span>
-                </a>
-              ))
-            }
+          <div class="mt-8 max-w-lg border-t border-white/8 pt-5">
+            <p class="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted">Current Focus</p>
+            <p class="mt-2 text-sm leading-relaxed text-muted">
+              Building practical web dashboards, backend APIs, and mobile workflows with Laravel, React, and React Native.
+            </p>
           </div>
         </div>
 
-        <!-- Contact Form -->
-        <div class="scroll-reveal bg-white/[0.02] border border-white/6 rounded-2xl p-5 md:p-6" style="transition-delay: 150ms;">
-          <h3 class="text-base font-bold font-display text-ink mb-4">Send a Message</h3>
-          
-          <form id="contact-form" class="space-y-4" novalidate>
-            <div class="hidden" aria-hidden="true">
-              <label for="form-website">Website</label>
-              <input
-                type="text"
-                id="form-website"
-                name="website"
-                tabindex="-1"
-                autocomplete="off"
-              />
-            </div>
-            <div>
-              <label for="form-name" class="block text-[10px] font-bold text-muted uppercase tracking-wider mb-1">Your Name</label>
-              <input 
-                type="text" 
-                id="form-name" 
-                name="name"
-                required 
-                minlength="2"
-                maxlength="80"
-                placeholder="John Doe"
-                class="w-full bg-[#0b0f14]/50 border border-white/8 rounded-lg px-3 py-2 text-xs text-ink outline-none focus:border-mint transition"
-              />
-            </div>
-            <div>
-              <label for="form-email" class="block text-[10px] font-bold text-muted uppercase tracking-wider mb-1">Email Address</label>
-              <input 
-                type="email" 
-                id="form-email" 
-                name="email"
-                required 
-                maxlength="120"
-                placeholder="john@example.com"
-                class="w-full bg-[#0b0f14]/50 border border-white/8 rounded-lg px-3 py-2 text-xs text-ink outline-none focus:border-mint transition"
-              />
-            </div>
-            <div>
-              <label for="form-message" class="block text-[10px] font-bold text-muted uppercase tracking-wider mb-1">Message</label>
-              <textarea 
-                id="form-message" 
-                name="message"
-                required 
-                minlength="10"
-                maxlength="2000"
-                rows="4" 
-                placeholder="Hi Sean, I'd love to chat about an opportunity..."
-                class="w-full bg-[#0b0f14]/50 border border-white/8 rounded-lg px-3 py-2 text-xs text-ink outline-none focus:border-mint transition resize-none"
-              ></textarea>
-            </div>
+        <!-- Contact Options -->
+        <div class="scroll-reveal flex flex-col justify-between rounded-2xl border border-white/6 bg-white/[0.02] p-5 md:p-6" style="transition-delay: 150ms;">
+          <div>
+            <p class="text-[10px] font-extrabold uppercase tracking-[0.16em] text-mint">Preferred Contact</p>
+            <h3 class="mt-3 font-display text-2xl font-extrabold leading-tight text-ink">
+              Reach out directly.
+            </h3>
+            <p class="mt-4 text-sm leading-relaxed text-muted">
+              For recruiter messages, collaboration, or project questions, send a direct email and I will reply when available.
+            </p>
+          </div>
 
-            {turnstileSiteKey && (
-              <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="dark"></div>
-            )}
-            
-            <button 
-              type="submit" 
-              id="form-submit"
-              class="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-mint hover:bg-[#7af0c8] text-bg-deep font-extrabold text-xs px-4 py-2.5 transition duration-200 cursor-pointer shadow-md hover:shadow-mint/20"
+          <div class="mt-8 space-y-3">
+            <a
+              href="mailto:seanpaullapasanda@gmail.com?subject=Portfolio%20Opportunity"
+              class="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-mint px-5 py-3 text-sm font-extrabold text-[#07100d] transition hover:-translate-y-0.5 hover:bg-[#7af0c8] hover:shadow-lg hover:shadow-mint/20"
             >
-              <Send size={12} />
-              <span id="form-submit-label">Send Message</span>
-            </button>
-          </form>
-          
-          <div id="form-status" class="hidden rounded-lg border p-3 mt-4 text-center" role="status" aria-live="polite">
-            <p id="form-status-title" class="text-xs font-bold"></p>
-            <p id="form-status-message" class="text-[10px] text-muted mt-1"></p>
+              <Mail size={18} />
+              Send Email
+            </a>
+
+            <div class="grid gap-3 sm:grid-cols-2">
+              <a
+                href="https://www.linkedin.com/in/sean-paul-lapasanda-219117241/"
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/8 bg-[#0b0f14]/40 px-4 py-2.5 text-xs font-bold text-ink transition hover:border-sky hover:text-sky"
+              >
+                <ExternalLink size={15} />
+                LinkedIn
+              </a>
+              <a
+                href={cvHref}
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/8 bg-[#0b0f14]/40 px-4 py-2.5 text-xs font-bold text-ink transition hover:border-amber hover:text-amber"
+              >
+                <FileText size={15} />
+                View CV
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </section>
   </main>
-
-  {turnstileSiteKey && (
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-  )}
 
   <div
     id="morata-modal"
@@ -803,7 +791,7 @@ const timelineItems = [
         <div class="space-y-3">
           <div class="overflow-hidden rounded-xl border border-white/10 bg-black/30">
             <img
-              src="/projects/morata_landing.png"
+              src={morataLandingImage}
               alt="MorataFMS public landing screen"
               class="w-full object-contain"
               loading="lazy"
@@ -871,12 +859,12 @@ const timelineItems = [
           <div class="grid gap-3 xl:grid-cols-2">
             {[
               {
-                src: "/projects/emedicard/admin-review.png",
+                src: emedicardAdminReviewImage,
                 alt: "EMEDICARD web admin document verification screen",
                 label: "Web Admin Review",
               },
               {
-                src: "/projects/emedicard/sample-health-certificate.svg?v=4",
+                src: emedicardCertificateImage,
                 alt: "EMEDICARD sanitized sample health certificate",
                 label: "Sample Certificate",
               },
@@ -906,12 +894,12 @@ const timelineItems = [
 
           <div class="flex min-w-0 gap-3 overflow-x-auto rounded-xl border border-white/10 bg-black/20 p-3">
             {[
-              { src: "/projects/emedicard/card-type.png", alt: "EMEDICARD health card type selection screen", label: "Card Type" },
-              { src: "/projects/emedicard/document-requirements.png", alt: "EMEDICARD document requirements checklist screen", label: "Requirements" },
-              { src: "/projects/emedicard/upload-documents.png", alt: "EMEDICARD required document upload screen", label: "Upload Docs" },
-              { src: "/projects/emedicard/review-submit.png", alt: "EMEDICARD review and submit document summary screen", label: "Review" },
-              { src: "/projects/emedicard/payment-methods.png", alt: "EMEDICARD payment methods screen", label: "Payment" },
-              { src: "/projects/emedicard/health-card.png", alt: "EMEDICARD digital health card QR screen", label: "Health card" },
+              { src: emedicardCardTypeImage, alt: "EMEDICARD health card type selection screen", label: "Card Type" },
+              { src: emedicardDocumentRequirementsImage, alt: "EMEDICARD document requirements checklist screen", label: "Requirements" },
+              { src: emedicardUploadDocumentsImage, alt: "EMEDICARD required document upload screen", label: "Upload Docs" },
+              { src: emedicardReviewSubmitImage, alt: "EMEDICARD review and submit document summary screen", label: "Review" },
+              { src: emedicardPaymentMethodsImage, alt: "EMEDICARD payment methods screen", label: "Payment" },
+              { src: emedicardHealthCardImage, alt: "EMEDICARD digital health card QR screen", label: "Health card" },
             ].map((screen) => (
               <figure class="w-32 shrink-0 sm:w-36">
                 <button
@@ -1134,81 +1122,6 @@ const timelineItems = [
       }
       closeProjectModal();
     });
-
-    // 4. Contact form submission
-    const form = document.getElementById("contact-form") as HTMLFormElement;
-    const statusBox = document.getElementById("form-status");
-    const statusTitle = document.getElementById("form-status-title");
-    const statusMessage = document.getElementById("form-status-message");
-    const submitBtn = document.getElementById("form-submit") as HTMLButtonElement | null;
-    const submitLabel = document.getElementById("form-submit-label");
-
-    function setFormStatus(type: "success" | "error", title: string, message: string) {
-      if (!statusBox || !statusTitle || !statusMessage) return;
-
-      statusBox.classList.remove("hidden", "bg-mint/5", "border-mint/20", "bg-red-500/5", "border-red-400/20");
-      statusTitle.classList.remove("text-mint", "text-red-300");
-
-      if (type === "success") {
-        statusBox.classList.add("bg-mint/5", "border-mint/20");
-        statusTitle.classList.add("text-mint");
-      } else {
-        statusBox.classList.add("bg-red-500/5", "border-red-400/20");
-        statusTitle.classList.add("text-red-300");
-      }
-
-      statusTitle.textContent = title;
-      statusMessage.textContent = message;
-    }
-
-    function setSubmitting(isSubmitting: boolean) {
-      if (!submitBtn || !submitLabel) return;
-
-      submitBtn.disabled = isSubmitting;
-      submitBtn.classList.toggle("cursor-not-allowed", isSubmitting);
-      submitBtn.classList.toggle("opacity-70", isSubmitting);
-      submitLabel.textContent = isSubmitting ? "Sending..." : "Send Message";
-    }
-
-    function resetTurnstile() {
-      const turnstile = (window as Window & { turnstile?: { reset: () => void } }).turnstile;
-      turnstile?.reset();
-    }
-
-    if (form && submitBtn) {
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        if (!form.reportValidity()) return;
-
-        setSubmitting(true);
-
-        try {
-          const response = await fetch("/api/contact", {
-            method: "POST",
-            body: new FormData(form),
-          });
-          const data = await response.json().catch(() => null) as { message?: string } | null;
-
-          if (!response.ok) {
-            throw new Error(data?.message || "Message could not be sent. Please try again later.");
-          }
-
-          form.reset();
-          resetTurnstile();
-          setFormStatus("success", "Message sent", "Thanks for reaching out. I will reply as soon as I can.");
-        } catch (error) {
-          resetTurnstile();
-          setFormStatus(
-            "error",
-            "Message not sent",
-            error instanceof Error ? error.message : "Something went wrong. You can still reach me by email."
-          );
-        } finally {
-          setSubmitting(false);
-        }
-      });
-    }
 
   });
 </script>

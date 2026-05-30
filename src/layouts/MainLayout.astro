@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import faviconUrl from "../assets/favicon.svg?url";
 
 interface Props {
   title: string;
@@ -12,7 +13,7 @@ const {
   title, 
   description, 
   url = "https://github.com/SeanPqul", 
-  ogImage = "/favicon.svg" 
+  ogImage = faviconUrl 
 } = Astro.props;
 
 const jsonLd = {
@@ -64,7 +65,7 @@ const jsonLd = {
     <meta property="twitter:image" content={ogImage} />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={faviconUrl} />
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

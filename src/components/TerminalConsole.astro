@@ -1,8 +1,17 @@
 ---
 import { Terminal } from "@lucide/astro";
+import yuukoImage from "../assets/yuuko.jpg?url";
+import yuukoImageTwo from "../assets/yuuko-2.jpg?url";
+import yuukoImageThree from "../assets/yuuko-3.jpg?url";
 ---
 
-<div class="flex-1 flex w-full min-w-0 flex-col overflow-hidden bg-[#070b0e] font-mono text-xs text-[#f7f3ea] sm:text-sm">
+<div
+  id="terminal-console"
+  data-yuuko-image={yuukoImage}
+  data-yuuko-image-two={yuukoImageTwo}
+  data-yuuko-image-three={yuukoImageThree}
+  class="flex-1 flex w-full min-w-0 flex-col overflow-hidden bg-[#070b0e] font-mono text-xs text-[#f7f3ea] sm:text-sm"
+>
   <!-- Terminal Output/Input Area -->
   <div id="terminal-body" class="flex-1 space-y-2 overflow-y-auto p-3 select-text scrollbar-thin scrollbar-thumb-white/10 sm:p-4">
     <div id="terminal-last-login" class="text-muted text-xs">Loading session...</div>
@@ -50,10 +59,15 @@ import { Terminal } from "@lucide/astro";
     }
 
     const terminalBody = document.getElementById("terminal-body");
+    const terminalConsole = document.getElementById("terminal-console");
     const terminalInput = document.getElementById("terminal-input") as HTMLInputElement;
     const terminalHistory = document.getElementById("terminal-history");
 
     if (!terminalInput || !terminalHistory || !terminalBody) return;
+
+    const yuukoImage = terminalConsole?.dataset.yuukoImage || "";
+    const yuukoImageTwo = terminalConsole?.dataset.yuukoImageTwo || "";
+    const yuukoImageThree = terminalConsole?.dataset.yuukoImageThree || "";
 
     // Track whether user has manually scrolled up — if so, don't force-scroll on new output
     let userScrolledUp = false;
@@ -176,7 +190,7 @@ import { Terminal } from "@lucide/astro";
           outputLine.innerHTML = `
 <div class="flex items-start gap-4 font-mono text-[11px] md:text-xs select-none py-1 leading-relaxed">
   <div class="hidden sm:block shrink-0 size-32 overflow-hidden rounded-lg border border-white/10 bg-bg-deep select-none cursor-pointer hover:opacity-90 active:scale-95 transition-all">
-    <img src="/yuuko-3.jpg" alt="Ichihara Yuuko" class="size-full object-cover" onclick="this.src = this.src.includes('yuuko-3.jpg') ? '/yuuko.jpg' : (this.src.includes('yuuko-2.jpg') ? '/yuuko-3.jpg' : '/yuuko-2.jpg')" />
+    <img src="${yuukoImageThree}" alt="Ichihara Yuuko" class="size-full object-cover" data-yuuko-cycle="true" data-yuuko-index="0" />
   </div>
   <div class="space-y-0.5">
     <div class="text-amber font-bold">ichihara@bash</div>
@@ -205,6 +219,16 @@ import { Terminal } from "@lucide/astro";
         }
 
         terminalHistory.appendChild(outputLine);
+        const cycleImage = outputLine.querySelector("[data-yuuko-cycle]") as HTMLImageElement | null;
+        if (cycleImage) {
+          const cycleImages = [yuukoImageThree, yuukoImage, yuukoImageTwo].filter(Boolean);
+          cycleImage.addEventListener("click", () => {
+            const currentIndex = Number(cycleImage.dataset.yuukoIndex || "0");
+            const nextIndex = (currentIndex + 1) % cycleImages.length;
+            cycleImage.dataset.yuukoIndex = String(nextIndex);
+            cycleImage.src = cycleImages[nextIndex];
+          });
+        }
         terminalInput.value = "";
         
         // Auto-scroll to bottom only if the user hasn't scrolled up to read/copy

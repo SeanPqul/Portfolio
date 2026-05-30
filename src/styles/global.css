@@ -152,7 +152,7 @@ a {
 }
 
 main > section[id] {
-  scroll-margin-top: 8rem;
+  scroll-margin-top: 1rem;
 }
 
 /* Timeline connections */
