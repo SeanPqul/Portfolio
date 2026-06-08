@@ -2,7 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import DeveloperDeck from "../components/DeveloperDeck.astro";
 import McDonaldsIcon from "../components/McDonaldsIcon.astro";
-import cvPdf from "../assets/docs/cv.pdf?url";
+
 import morataLandingImage from "../assets/projects/morata_landing.png?url";
 import emedicardAdminReviewImage from "../assets/projects/emedicard/admin-review.png?url";
 import emedicardCardTypeImage from "../assets/projects/emedicard/card-type.png?url";
@@ -55,7 +55,7 @@ import {
 
 export const prerender = true;
 
-const cvHref = import.meta.env.DEV ? "/docs/cv.pdf" : cvPdf;
+const cvHref = "/docs/cv.pdf";
 
 const navItems = ["Projects", "Experience", "Skills", "Contact"];
 
