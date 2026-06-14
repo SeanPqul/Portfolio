@@ -285,6 +285,12 @@ html[data-theme="light"] .terminal-console {
   color: var(--color-ink);
 }
 
+html[data-theme="light"] .tech-icon[data-tech="Codex"],
+html[data-theme="light"] .tech-icon[data-tech="Expo"],
+html[data-theme="light"] .tech-icon[data-tech="Expo Router"] {
+  filter: invert(1) brightness(0.45);
+}
+
 html[data-theme="light"] .border-white\/5,
 html[data-theme="light"] .border-white\/6,
 html[data-theme="light"] .border-white\/8,
