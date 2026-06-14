@@ -191,6 +191,13 @@ const profileImages = [
     // Photoshoot images with coordinates & specific zoom targets for focus modes
     const images = JSON.parse(container.dataset.profileImages || "[]");
 
+    // Preload all images into the browser cache immediately so there's no
+    // delay or flash when cycling through them on click/hover.
+    images.forEach((entry: { src: string }) => {
+      const preloadImg = new Image();
+      preloadImg.src = entry.src;
+    });
+
     let currentIndex = 0;
     let isTransitioning = false;
     let isFocused = false;

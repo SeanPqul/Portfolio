@@ -75,6 +75,20 @@ const jsonLd = {
       rel="stylesheet" 
     />
 
+    <script is:inline>
+      (() => {
+        const storageKey = "ichihara-theme";
+        const fallbackTheme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+
+        try {
+          const storedTheme = window.localStorage.getItem(storageKey);
+          document.documentElement.dataset.theme = storedTheme || fallbackTheme;
+        } catch {
+          document.documentElement.dataset.theme = fallbackTheme;
+        }
+      })();
+    </script>
+
     <!-- Structured JSON-LD -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>

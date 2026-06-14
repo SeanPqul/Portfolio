@@ -1,7 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <linearGradient id="fav-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#66e0b5" />
+      <stop offset="50%" stop-color="#82aaff" />
+      <stop offset="100%" stop-color="#f6c56f" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Favicon Background -->
   <rect width="32" height="32" rx="8" fill="#0b0f14"/>
-  <rect width="30" height="30" x="1" y="1" rx="7" stroke="#66e0b5" stroke-width="1.5" stroke-opacity="0.2"/>
-  <path d="M11 11L6 16L11 21" stroke="#66e0b5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M21 11L26 16L21 21" stroke="#66e0b5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M18 9L14 23" stroke="#f6c56f" stroke-width="2.5" stroke-linecap="round"/>
+  
+  <!-- Outer Hexagon Tech Border -->
+  <polygon
+    points="16,3.5 28.5,10.5 28.5,21.5 16,28.5 3.5,21.5 3.5,10.5"
+    stroke="url(#fav-gradient)"
+    stroke-width="1.5"
+    stroke-opacity="0.6"
+    stroke-linejoin="round"
+  />
+
+  <!-- Monogram S -->
+  <path
+    d="M 11.5,12.5 C 11.5,9.5 15.5,8.5 16,11 C 16.5,13.5 10.5,14 11,17.5 C 11.5,20.5 15.5,20.5 16,18"
+    stroke="url(#fav-gradient)"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Monogram P -->
+  <path
+    d="M 17.5,10 L 17.5,21.5 M 17.5,11.5 C 20,11.5 22,12 22,14.5 C 22,17 20,17.5 17.5,17.5"
+    stroke="url(#fav-gradient)"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Tech Accent Dot -->
+  <circle cx="16.2" cy="15.8" r="1.2" fill="#f6c56f" />
 </svg>

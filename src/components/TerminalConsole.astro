@@ -10,12 +10,12 @@ import yuukoImageThree from "../assets/yuuko-3.jpg?url";
   data-yuuko-image={yuukoImage}
   data-yuuko-image-two={yuukoImageTwo}
   data-yuuko-image-three={yuukoImageThree}
-  class="flex-1 flex w-full min-w-0 flex-col overflow-hidden bg-[#070b0e] font-mono text-xs text-[#f7f3ea] sm:text-sm"
+  class="terminal-console flex-1 flex w-full min-w-0 flex-col overflow-hidden font-mono text-xs sm:text-sm"
 >
   <!-- Terminal Output/Input Area -->
   <div id="terminal-body" class="flex-1 space-y-2 overflow-y-auto p-3 select-text scrollbar-thin scrollbar-thumb-white/10 sm:p-4">
     <div id="terminal-last-login" class="text-muted text-xs">Loading session...</div>
-    <div class="text-[#cfc6b8]">Welcome to Bash v5.2 (x86_64-pc-linux-gnu)</div>
+    <div class="text-muted/90">Welcome to Bash v5.2 (x86_64-pc-linux-gnu)</div>
     <div class="text-muted">Type <span class="text-amber">help</span> to list available commands.</div>
     <div class="h-1"></div>
 
@@ -29,7 +29,7 @@ import yuukoImageThree from "../assets/yuuko-3.jpg?url";
         <input 
           type="text" 
           id="terminal-input" 
-          class="w-full border-none bg-transparent p-0 text-[#f7f3ea] outline-none focus:ring-0" 
+          class="w-full border-none bg-transparent p-0 text-ink outline-none focus:ring-0" 
           autocomplete="off" 
           autocorrect="off" 
           autocapitalize="off" 
@@ -104,10 +104,11 @@ import yuukoImageThree from "../assets/yuuko-3.jpg?url";
       projects: `Featured projects:<br><br>
   1. <span class="text-amber font-bold">MorataFMS</span>: Web application built with Laravel and React for brokerage/legal workflows, import/export transaction tracking, document handling, and role-based access.<br>
   2. <span class="text-amber font-bold">EMEDICARD</span>: Mobile application built with React Native and Convex to verify member health credentials using a QR code scanner.`,
-      skills: `<span class="text-sky font-bold">Frontend:</span> React, TypeScript, Tailwind CSS, Next.js, Vite, reusable UI components<br>
-  <span class="text-sky font-bold">Backend:</span> Laravel APIs, role permissions, request validation<br>
-  <span class="text-sky font-bold">Database & Cloud:</span> MySQL, Convex NoSQL, Docker, Cloudflare, Amazon S3<br>
-  <span class="text-sky font-bold">Mobile:</span> React Native, Expo, document uploads, QR code verification`,
+      skills: `<span class="text-sky font-bold">Frontend:</span> React, TypeScript, Vite, Tailwind CSS, Next.js, Nuxt.js, Astro<br>
+  <span class="text-sky font-bold">Backend:</span> Laravel, PHP, Node.js, TypeScript, Convex Functions, MySQL, Convex DB, Clerk<br>
+  <span class="text-sky font-bold">Cloud & DevOps:</span> Docker, Cloudflare, Amazon S3<br>
+  <span class="text-sky font-bold">Mobile:</span> React Native, Expo, Expo Router<br>
+  <span class="text-sky font-bold">AI Agents:</span> Codex, Claude Code, Antigravity`,
       contact: `Let's connect! You can reach me via:<br>
   - <span class="text-sky font-bold">Email:</span> <a href="mailto:seanpaullapasanda@gmail.com" class="text-amber hover:underline">seanpaullapasanda@gmail.com</a><br>
   - <span class="text-sky font-bold">GitHub:</span> <a href="https://github.com/SeanPqul" target="_blank" class="text-amber hover:underline">https://github.com/SeanPqul</a><br>
@@ -133,7 +134,7 @@ import yuukoImageThree from "../assets/yuuko-3.jpg?url";
 
         // Print input in history
         const inputLine = document.createElement("div");
-        inputLine.innerHTML = `<span class="text-mint">ichihara@bash:~$</span> <span class="text-white">${fullValue}</span>`;
+        inputLine.innerHTML = `<span class="text-mint">ichihara@bash:~$</span> <span class="text-ink">${fullValue}</span>`;
         terminalHistory.appendChild(inputLine);
 
         // Process command

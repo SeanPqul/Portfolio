@@ -1,0 +1,86 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 100 100"
+  fill="none"
+  class:list={[
+    "select-none transition-all duration-500 ease-out",
+    className
+  ]}
+>
+  <defs>
+    <!-- Modern tech gradient matching the theme's Mint, Sky Blue, and Deep Background -->
+    <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--color-mint, #66e0b5)" />
+      <stop offset="50%" stop-color="var(--color-sky, #82aaff)" />
+      <stop offset="100%" stop-color="var(--color-amber, #f6c56f)" />
+    </linearGradient>
+    <filter id="logo-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Outer Tech Border (Hexagonal shape with dash array animation) -->
+  <polygon
+    points="50,6 88,28 88,72 50,94 12,72 12,28"
+    stroke="url(#logo-gradient)"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-opacity="0.35"
+    class="transition-all duration-700 group-hover:stroke-opacity-90 group-hover:[stroke-dasharray:300] group-hover:[stroke-dashoffset:300] [stroke-dasharray:10,20] [stroke-dashoffset:0]"
+  />
+
+  <!-- Nested Inner Hexagon for premium depth -->
+  <polygon
+    points="50,14 81,32 81,68 50,86 19,68 19,32"
+    stroke="url(#logo-gradient)"
+    stroke-width="1.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-opacity="0.15"
+    class="transition-all duration-500 group-hover:stroke-opacity-50"
+  />
+
+  <g filter="url(#logo-glow)">
+    <!-- Monogram 'S' Path - sleek curves -->
+    <path
+      d="M 36,38 C 36,29 48,26 50,34 C 52,43 32,45 34,56 C 36,66 48,66 50,58"
+      stroke="url(#logo-gradient)"
+      stroke-width="5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="transition-all duration-300 ease-out group-hover:stroke-width-[5.5]"
+    />
+
+    <!-- Monogram 'P' Path - intersecting lines -->
+    <path
+      d="M 54,30 L 54,68 M 54,34 C 62,34 68,36 68,44 C 68,52 62,54 54,54"
+      stroke="url(#logo-gradient)"
+      stroke-width="5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="transition-all duration-300 ease-out group-hover:stroke-width-[5.5]"
+    />
+  </g>
+
+  <!-- Accent Tech Dot representing full-stack precision -->
+  <circle
+    cx="50"
+    cy="50"
+    r="3"
+    fill="var(--color-amber, #f6c56f)"
+    class="transition-transform duration-500 group-hover:scale-125"
+  />
+</svg>
