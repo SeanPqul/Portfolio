@@ -52,10 +52,10 @@ const profileImages = [
       </div>
 
       <!-- Viewfinder Overlay Info (RAW/4K, Autofocus Brackets) -->
-      <div class="absolute inset-0 p-3.5 z-20 font-mono text-[8px] font-bold text-ink pointer-events-none tracking-wider">
+      <div class="camera-hud-overlay absolute inset-0 p-3.5 z-20 font-mono text-[8px] font-bold pointer-events-none tracking-wider">
         <!-- Top Row -->
         <div class="flex items-center justify-end w-full">
-          <div class="flex items-center gap-1 bg-black/45 px-1 py-0.5 rounded text-[7px]">
+          <div class="camera-hud-badge flex items-center gap-1 px-1 py-0.5 rounded text-[7px]">
             <span>RAW</span>
             <span class="text-sky font-normal">4K 60</span>
           </div>
@@ -83,32 +83,32 @@ const profileImages = [
       </div>
 
       <!-- Bottom DSLR Viewfinder Status Bar (Full width, no inset padding, solid background matching real DSLR viewfinders) -->
-      <div class="absolute bottom-0 left-0 right-0 z-20 bg-[#070b0e]/95 border-t border-white/8 px-3.5 py-2 font-mono text-[8px] font-bold text-ink pointer-events-none tracking-wider flex flex-col gap-1 rounded-b-2xl">
+      <div class="dslr-hud absolute bottom-0 left-0 right-0 z-20 flex min-h-[54px] flex-col gap-1.5 rounded-b-2xl px-4 py-2.5 font-mono text-[8px] font-bold tracking-wider pointer-events-none">
         <!-- Exposure Scale -->
-        <div class="flex justify-center items-center gap-1 opacity-70 text-[7px]">
+        <div class="dslr-exposure-scale flex justify-center items-center gap-1.5 text-[8px]">
           <span>-2</span>
           <span>·</span>
           <span>-1</span>
           <span>·</span>
-          <span class="text-amber">0</span>
+          <span class="dslr-exposure-zero">0</span>
           <span>·</span>
           <span>+1</span>
           <span>·</span>
           <span>+2</span>
         </div>
         
-        <div class="flex items-center justify-between text-[7px] sm:text-[8px]">
-          <div class="flex items-center gap-2">
-            <span>SS: <span class="text-mint font-normal">1/125</span></span>
-            <span>F: <span class="text-mint font-normal">2.8</span></span>
-            <span>ISO: <span class="text-mint font-normal">400</span></span>
+        <div class="dslr-readout-row flex items-center justify-between gap-2 text-[8px] sm:text-[9px]">
+          <div class="dslr-camera-values flex items-center gap-2.5">
+            <span><span class="dslr-label">SS:</span> <span class="dslr-value">1/125</span></span>
+            <span><span class="dslr-label">F:</span> <span class="dslr-value">2.8</span></span>
+            <span><span class="dslr-label">ISO:</span> <span class="dslr-value">400</span></span>
           </div>
-          <div class="flex items-center gap-1">
-            <span>BATT</span>
-            <div class="w-5 h-2.5 border border-white/30 rounded-2xs p-0.2 flex items-center">
+          <div class="dslr-battery-group flex items-center gap-1.5">
+            <span class="dslr-label">BATT</span>
+            <div class="dslr-battery relative flex h-3 w-6 items-center rounded-2xs p-0.2">
               <div class="h-full w-4/5 bg-mint rounded-3xs"></div>
             </div>
-            <span>88%</span>
+            <span class="dslr-label">88%</span>
           </div>
         </div>
       </div>
