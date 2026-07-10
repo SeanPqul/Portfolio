@@ -15,7 +15,8 @@ import emedicardCertificateImage from "../assets/projects/emedicard/sample-healt
 import emedicardUploadDocumentsImage from "../assets/projects/emedicard/upload-documents.png?url";
 import reactIcon from "../assets/tech-icons/react.svg?url";
 import typescriptIcon from "../assets/tech-icons/typescript.svg?url";
-import viteIcon from "../assets/tech-icons/vite.svg?url";
+import htmlIcon from "../assets/tech-icons/html.svg?url";
+import vueIcon from "../assets/tech-icons/vue.svg?url";
 import tailwindIcon from "../assets/tech-icons/tailwindcss.svg?url";
 import nextIcon from "../assets/tech-icons/nextdotjs.svg?url";
 import nuxtIcon from "../assets/tech-icons/nuxt.svg?url";
@@ -30,6 +31,8 @@ import clerkIcon from "../assets/tech-icons/clerk.svg?url";
 import dockerIcon from "../assets/tech-icons/docker.svg?url";
 import cloudflareIcon from "../assets/tech-icons/cloudflare.svg?url";
 import amazonS3Icon from "../assets/tech-icons/amazon-s3.svg?url";
+import vercelIcon from "../assets/tech-icons/vercel.svg?url";
+import railwayIcon from "../assets/tech-icons/railway.svg?url";
 import expoIcon from "../assets/tech-icons/expo.svg?url";
 import codexIcon from "../assets/tech-icons/codex.svg?url";
 import claudeIcon from "../assets/tech-icons/claude.svg?url";
@@ -103,7 +106,7 @@ const skills = [
   {
     title: "Frontend",
     icon: Layers,
-    items: ["React", "TypeScript", "Vite", "Tailwind CSS", "Next.js", "Nuxt.js", "Astro"],
+    items: ["React", "TypeScript", "HTML", "Tailwind CSS", "Next.js", "Nuxt.js", "Vue.js", "Astro"],
   },
   {
     title: "Backend",
@@ -113,7 +116,7 @@ const skills = [
   {
     title: "Cloud & DevOps",
     icon: Database,
-    items: ["Docker", "Cloudflare", "Amazon S3"],
+    items: ["Docker", "Cloudflare", "Amazon S3", "Vercel", "Railway"],
   },
   {
     title: "Mobile",
@@ -131,10 +134,11 @@ const techIcons: Record<string, string> = {
   "React": reactIcon,
   "React Native": reactIcon,
   "TypeScript": typescriptIcon,
-  "Vite": viteIcon,
+  "HTML": htmlIcon,
   "Tailwind CSS": tailwindIcon,
   "Next.js": nextIcon,
   "Nuxt.js": nuxtIcon,
+  "Vue.js": vueIcon,
   "Astro": astroIcon,
   "Laravel": laravelIcon,
   "PHP": phpIcon,
@@ -146,6 +150,8 @@ const techIcons: Record<string, string> = {
   "Docker": dockerIcon,
   "Cloudflare": cloudflareIcon,
   "Amazon S3": amazonS3Icon,
+  "Vercel": vercelIcon,
+  "Railway": railwayIcon,
   "Expo": expoIcon,
   "Expo Router": expoIcon,
   "Codex": codexIcon,
@@ -762,15 +768,15 @@ const timelineItems = [
     aria-modal="true"
     aria-labelledby="morata-modal-title"
   >
-    <div class="project-modal-panel max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-2xl border border-white/10 bg-[#0c1016] shadow-2xl">
-      <div class="sticky top-0 z-10 flex items-center justify-between border-b border-white/8 bg-[#0c1016]/95 px-5 py-4 backdrop-blur sm:px-6">
+    <div class="project-modal-panel max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-2xl border border-white/10 bg-bg-deep shadow-2xl">
+      <div class="sticky top-0 z-10 flex items-center justify-between border-b border-white/8 bg-bg-deep/95 px-5 py-4 backdrop-blur sm:px-6">
         <div>
-          <a href="#projects" class="text-[11px] font-bold text-muted hover:text-mint">Project Details</a>
+          <a href="#projects" class="text-[11px] font-bold text-ink/60 hover:text-mint">Project Details</a>
           <h2 id="morata-modal-title" class="mt-1 font-display text-2xl font-extrabold text-ink">MorataFMS</h2>
         </div>
         <button
           type="button"
-          class="project-modal-close grid size-9 place-items-center rounded-full text-muted transition hover:bg-white/8 hover:text-ink"
+          class="project-modal-close grid size-9 place-items-center rounded-full text-ink/70 transition hover:bg-ink/10 hover:text-ink"
           aria-label="Close MorataFMS details"
         >
           <X size={18} />
@@ -829,15 +835,15 @@ const timelineItems = [
     aria-modal="true"
     aria-labelledby="emedicard-modal-title"
   >
-    <div class="project-modal-panel max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-2xl border border-white/10 bg-[#0c1016] shadow-2xl">
-      <div class="sticky top-0 z-10 flex items-center justify-between border-b border-white/8 bg-[#0c1016]/95 px-5 py-4 backdrop-blur sm:px-6">
+    <div class="project-modal-panel max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-2xl border border-white/10 bg-bg-deep shadow-2xl">
+      <div class="sticky top-0 z-10 flex items-center justify-between border-b border-white/8 bg-bg-deep/95 px-5 py-4 backdrop-blur sm:px-6">
         <div>
-          <a href="#projects" class="text-[11px] font-bold text-muted hover:text-sky">Project Details</a>
+          <a href="#projects" class="text-[11px] font-bold text-ink/60 hover:text-sky">Project Details</a>
           <h2 id="emedicard-modal-title" class="mt-1 font-display text-2xl font-extrabold text-ink">EMEDICARD</h2>
         </div>
         <button
           type="button"
-          class="project-modal-close grid size-9 place-items-center rounded-full text-muted transition hover:bg-white/8 hover:text-ink"
+          class="project-modal-close grid size-9 place-items-center rounded-full text-ink/70 transition hover:bg-ink/10 hover:text-ink"
           aria-label="Close EMEDICARD details"
         >
           <X size={18} />
@@ -962,12 +968,12 @@ const timelineItems = [
       <button
         type="button"
         id="image-preview-close"
-        class="absolute right-2 top-2 z-10 grid size-10 place-items-center rounded-full border border-white/15 bg-black/60 text-ink transition hover:bg-white/10"
+        class="absolute right-2 top-2 z-10 grid size-10 place-items-center rounded-full border border-white/30 bg-black/60 text-white transition hover:bg-white/20"
         aria-label="Close image preview"
       >
         <X size={18} />
       </button>
-      <div class="max-h-[88vh] overflow-auto rounded-2xl border border-white/10 bg-[#0c1016] p-3 shadow-2xl">
+      <div class="max-h-[88vh] overflow-auto rounded-2xl border border-white/10 bg-bg-deep p-3 shadow-2xl">
         <img
           id="image-preview-img"
           src=""
@@ -975,7 +981,7 @@ const timelineItems = [
           class="mx-auto block max-h-[82vh] min-w-[18rem] max-w-full rounded-xl object-contain"
         />
       </div>
-      <p id="image-preview-title" class="mt-3 text-center text-xs font-bold uppercase tracking-[0.14em] text-muted"></p>
+      <p id="image-preview-title" class="mt-3 text-center text-xs font-bold uppercase tracking-[0.14em] text-white/70"></p>
     </div>
   </div>
 

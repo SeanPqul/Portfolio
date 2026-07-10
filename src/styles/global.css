@@ -287,7 +287,10 @@ html[data-theme="light"] .terminal-console {
 
 html[data-theme="light"] .tech-icon[data-tech="Codex"],
 html[data-theme="light"] .tech-icon[data-tech="Expo"],
-html[data-theme="light"] .tech-icon[data-tech="Expo Router"] {
+html[data-theme="light"] .tech-icon[data-tech="Expo Router"],
+html[data-theme="light"] .tech-icon[data-tech="Next.js"],
+html[data-theme="light"] .tech-icon[data-tech="Vercel"],
+html[data-theme="light"] .tech-icon[data-tech="Railway"] {
   filter: invert(1) brightness(0.45);
 }
 
