@@ -1,5 +1,4 @@
 ---
-import { Terminal } from "@lucide/astro";
 import yuukoImage from "../assets/yuuko.jpg?url";
 import yuukoImageTwo from "../assets/yuuko-2.jpg?url";
 import yuukoImageThree from "../assets/yuuko-3.jpg?url";
@@ -93,12 +92,13 @@ import yuukoImageThree from "../assets/yuuko-3.jpg?url";
 
     const commands: Record<string, string> = {
       help: `Available commands:<br>
-  - <span class="text-amber">about</span>      : Learn more about Sean Paul<br>
-  - <span class="text-amber">projects</span>   : Showcase of key web and mobile systems<br>
-  - <span class="text-amber">skills</span>     : List technical stacks used<br>
-  - <span class="text-amber">anime</span>      : See my early custom CSS project on MyAnimeList<br>
-  - <span class="text-amber">contact</span>    : Find links to get in touch<br>
-  - <span class="text-amber">clear</span>      : Clear the terminal console screen`,
+  - <span class="text-amber">about</span>         : Learn more about Sean Paul<br>
+  - <span class="text-amber">projects</span>      : Showcase of key web and mobile systems<br>
+  - <span class="text-amber">skills</span>        : List technical stacks used<br>
+  - <span class="text-amber">github</span>        : View GitHub activity stats & profile<br>
+  - <span class="text-amber">anime</span>         : See my early custom CSS project on MyAnimeList<br>
+  - <span class="text-amber">contact</span>       : Find links to get in touch<br>
+  - <span class="text-amber">clear</span>         : Clear the terminal console screen`,
       about: `I'm Sean Paul S. Lapasanda, a Full-Stack Developer focused on building web applications, workflow tools, APIs, and mobile features.
   I work with Laravel, React, and React Native to connect clean interfaces with database-backed functionality, while continuing to learn and adapt to new technologies.`,
       projects: `Featured projects:<br><br>
@@ -109,6 +109,14 @@ import yuukoImageThree from "../assets/yuuko-3.jpg?url";
   <span class="text-sky font-bold">Cloud & DevOps:</span> Docker, Cloudflare, Amazon S3, Vercel, Railway<br>
   <span class="text-sky font-bold">Mobile:</span> React Native, Expo, Expo Router<br>
   <span class="text-sky font-bold">AI Agents:</span> Codex, Claude Code, Antigravity`,
+      github: `🐙 <span class="text-mint font-bold">GitHub Activity (@SeanPqul):</span><br>
+  - <span class="text-sky font-bold">2026:</span> 378 contributions (active daily shipping)<br>
+  - <span class="text-sky font-bold">2025:</span> 240 contributions<br>
+  - <span class="text-sky font-bold">Profile:</span> <a href="https://github.com/SeanPqul" target="_blank" class="text-amber hover:underline">https://github.com/SeanPqul</a>`,
+      contributions: `🐙 <span class="text-mint font-bold">GitHub Activity (@SeanPqul):</span><br>
+  - <span class="text-sky font-bold">2026:</span> 378 contributions (active daily shipping)<br>
+  - <span class="text-sky font-bold">2025:</span> 240 contributions<br>
+  - <span class="text-sky font-bold">Profile:</span> <a href="https://github.com/SeanPqul" target="_blank" class="text-amber hover:underline">https://github.com/SeanPqul</a>`,
       contact: `Let's connect! You can reach me via:<br>
   - <span class="text-sky font-bold">Email:</span> <a href="mailto:seanpaullapasanda@gmail.com" class="text-amber hover:underline">seanpaullapasanda@gmail.com</a><br>
   - <span class="text-sky font-bold">GitHub:</span> <a href="https://github.com/SeanPqul" target="_blank" class="text-amber hover:underline">https://github.com/SeanPqul</a><br>

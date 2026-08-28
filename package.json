@@ -10,6 +10,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.10",
     "@astrojs/vercel": "10.0.8",
     "@lucide/astro": "^1.16.0",
     "@tailwindcss/vite": "^4.1.8",

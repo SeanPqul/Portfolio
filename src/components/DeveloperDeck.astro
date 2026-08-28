@@ -1,25 +1,24 @@
 ---
 import FloatingStatsCard from "./FloatingStatsCard.astro";
 import TerminalConsole from "./TerminalConsole.astro";
-import { Terminal, User } from "@lucide/astro";
 ---
 
 <div class="group/deck relative flex w-full min-w-0 flex-col gap-3 overflow-visible">
-  <!-- Unified Window Container (Starts transparent & borderless for Profile Card view) -->
+  <!-- Unified Window Container (Starts with glass terminal styles as default) -->
   <div 
     id="deck-window" 
-    class="flex w-full flex-col rounded-2xl relative transition-all duration-500 overflow-visible border border-transparent bg-transparent shadow-none"
+    class="glass flex w-full flex-col rounded-2xl relative transition-all duration-500 overflow-hidden border border-white/10 shadow-2xl bg-bg-card"
   >
     
-    <!-- Unified Window Header Bar -->
+    <!-- Unified Window Header Bar (Visible by default for Terminal) -->
     <div 
       id="deck-window-header" 
-      class="flex items-center justify-between border-b border-transparent px-4 py-3 select-none transition-all duration-500"
+      class="flex items-center justify-between border-b border-white/10 px-4 py-3 select-none transition-all duration-500"
     >
-      <!-- macOS-style window controls (hidden in Profile mode, shown in Terminal mode) -->
+      <!-- macOS-style window controls -->
       <div 
         id="deck-window-dots" 
-        class="flex items-center gap-2 opacity-0 pointer-events-none transition-opacity duration-500"
+        class="flex items-center gap-2 transition-opacity duration-500"
       >
         <span id="window-dot-close" class="size-3 rounded-full bg-[#ff5f56] opacity-80 hover:opacity-100 cursor-pointer transition-opacity" title="Close Terminal & show profile"></span>
         <span class="size-3 rounded-full bg-[#ffbd2e] opacity-80 hover:opacity-100 transition-opacity"></span>
@@ -34,13 +33,13 @@ import { Terminal, User } from "@lucide/astro";
 
     <!-- Content Pane Area -->
     <div class="relative flex w-full min-w-0 flex-1 flex-col">
-      <!-- Profile Card Tab Pane -->
-      <div id="deck-pane-profile" class="w-full flex-1">
+      <!-- Profile Card Tab Pane (Hidden by default) -->
+      <div id="deck-pane-profile" class="hidden w-full flex-1">
         <FloatingStatsCard />
       </div>
 
-      <!-- Terminal Console Tab Pane -->
-      <div id="deck-pane-terminal" class="hidden h-[min(420px,70svh)] w-full min-w-0 flex flex-col sm:h-[420px]">
+      <!-- Terminal Console Tab Pane (Visible by default) -->
+      <div id="deck-pane-terminal" class="flex h-[min(460px,70svh)] w-full min-w-0 flex-col sm:h-[480px] lg:h-[510px]">
         <TerminalConsole />
       </div>
     </div>
@@ -55,7 +54,6 @@ import { Terminal, User } from "@lucide/astro";
     const deckWindow = document.getElementById("deck-window");
     const windowHeader = document.getElementById("deck-window-header");
     const windowDots = document.getElementById("deck-window-dots");
-    const windowStatus = null; // removed
     const windowDotClose = document.getElementById("window-dot-close");
 
     // References to the Hero CLI Toggle button on the left column of the page
@@ -66,17 +64,18 @@ import { Terminal, User } from "@lucide/astro";
 
     if (!paneProfile || !paneTerminal) return;
 
-    let currentMode = "profile";
+    const profilePane = paneProfile;
+    const terminalPane = paneTerminal;
+
+    let currentMode = "terminal";
 
     // A. Switch to Profile View
     function showProfile() {
       currentMode = "profile";
 
       // 1. Toggle panes
-      paneProfile.classList.remove("hidden");
-      paneTerminal.classList.add("hidden");
-
-
+      profilePane.classList.remove("hidden");
+      terminalPane.classList.add("hidden");
 
       // 3. Dissolve Window container styles in Profile mode
       if (deckWindow) {
@@ -84,14 +83,11 @@ import { Terminal, User } from "@lucide/astro";
         deckWindow.classList.add("border-transparent", "bg-transparent", "shadow-none", "overflow-visible");
       }
       if (windowHeader) {
-        windowHeader.classList.remove("border-white/10");
-        windowHeader.classList.add("border-transparent");
+        windowHeader.classList.remove("flex", "border-white/10");
+        windowHeader.classList.add("hidden", "border-transparent");
       }
       if (windowDots) {
         windowDots.classList.add("opacity-0", "pointer-events-none");
-      }
-      if (windowStatus) {
-        windowStatus.classList.add("opacity-0", "pointer-events-none");
       }
 
       // 4. Update the Hero CLI Toggle button on the left side
@@ -109,10 +105,8 @@ import { Terminal, User } from "@lucide/astro";
       currentMode = "terminal";
 
       // 1. Toggle panes
-      paneTerminal.classList.remove("hidden");
-      paneProfile.classList.add("hidden");
-
-
+      terminalPane.classList.remove("hidden");
+      profilePane.classList.add("hidden");
 
       // 3. Restore Window wrapper (borders, glass background, shadow) in Terminal mode
       if (deckWindow) {
@@ -120,14 +114,11 @@ import { Terminal, User } from "@lucide/astro";
         deckWindow.classList.add("glass", "border-white/10", "shadow-2xl", "bg-bg-card", "overflow-hidden");
       }
       if (windowHeader) {
-        windowHeader.classList.remove("border-transparent");
-        windowHeader.classList.add("border-white/10");
+        windowHeader.classList.remove("hidden", "border-transparent");
+        windowHeader.classList.add("flex", "border-white/10");
       }
       if (windowDots) {
         windowDots.classList.remove("opacity-0", "pointer-events-none");
-      }
-      if (windowStatus) {
-        windowStatus.classList.remove("opacity-0", "pointer-events-none");
       }
 
       // 4. Update the Hero CLI Toggle button on the left side

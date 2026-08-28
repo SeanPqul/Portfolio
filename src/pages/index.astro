@@ -3,6 +3,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 import DeveloperDeck from "../components/DeveloperDeck.astro";
 import McDonaldsIcon from "../components/McDonaldsIcon.astro";
 import Logo from "../components/Logo.astro";
+import GithubContributions from "../components/GithubContributions.astro";
 
 import morataLandingImage from "../assets/projects/morata_landing.png?url";
 import emedicardAdminReviewImage from "../assets/projects/emedicard/admin-review.png?url";
@@ -86,21 +87,6 @@ const profileLinks = [
     label: "Email",
     href: "mailto:seanpaullapasanda@gmail.com",
     icon: Mail,
-  },
-];
-
-const highlights = [
-  {
-    value: "Laravel & React",
-    label: "web applications",
-  },
-  {
-    value: "React Native & Expo",
-    label: "mobile applications",
-  },
-  {
-    value: "APIs & Databases",
-    label: "backend integrations",
   },
 ];
 
@@ -334,9 +320,9 @@ const timelineItems = [
 
   <main id="top">
     <!-- Hero Section -->
-    <section class="page-shell grid items-center gap-10 py-10 sm:py-12 lg:min-h-[calc(100svh-6rem)] lg:grid-cols-[1.1fr_0.9fr] lg:py-14">
+    <section class="page-shell grid items-center gap-8 py-6 sm:gap-10 sm:py-8 lg:min-h-[calc(100svh-5.5rem)] lg:grid-cols-[1.1fr_0.9fr] lg:py-6">
       <div class="scroll-reveal">
-        <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-ink/90">
+        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-ink/90">
           <Globe size={14} class="text-mint" />
           <span>Available for remote & hybrid opportunities</span>
         </div>
@@ -345,10 +331,10 @@ const timelineItems = [
           <span class="block sm:inline"> building <span class="text-mint">web</span> and</span>
           <span class="block sm:inline"> <span class="text-sky">mobile</span> applications.</span>
         </h1>
-        <p class="mt-6 max-w-2xl text-base leading-relaxed text-muted">
+        <p class="mt-4 max-w-2xl text-base leading-relaxed text-muted">
           I build web systems and mobile apps that digitize real operations — backed by structured databases, secure APIs, and clean user interfaces.
         </p>
-        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
           <a
             id="hero-cta-projects"
             href="#projects"
@@ -368,7 +354,7 @@ const timelineItems = [
             View CV
           </a>
         </div>
-        <div class="mt-10 grid grid-cols-2 items-center gap-3 text-xs text-muted sm:flex sm:flex-wrap sm:gap-4">
+        <div class="mt-8 grid grid-cols-2 items-center gap-3 text-xs text-muted sm:flex sm:flex-wrap sm:gap-4">
           <span class="inline-flex items-center gap-2 rounded-full border border-white/6 bg-white/[0.02] px-3.5 py-2">
             <MapPin size={14} class="text-sky" />
             Philippines
@@ -391,16 +377,16 @@ const timelineItems = [
           <!-- Interactive CLI Toggle Button (UX Pattern C) -->
           <button
             id="hero-cli-toggle"
-            class="col-span-2 inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-white/6 bg-white/[0.02] px-3.5 py-2 font-mono transition-all duration-300 hover:scale-102 hover:border-mint hover:text-mint cursor-pointer select-none sm:col-span-1 sm:justify-start"
+            class="col-span-2 inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-amber/30 bg-white/[0.02] px-3.5 py-2 font-mono text-amber transition-all duration-300 hover:scale-102 hover:border-mint hover:text-mint cursor-pointer select-none sm:col-span-1 sm:justify-start"
             aria-label="Toggle CLI Terminal"
           >
-            <span id="hero-cli-icon-terminal" class="flex items-center">
+            <span id="hero-cli-icon-terminal" class="hidden items-center">
               <Terminal size={14} class="text-mint shrink-0" />
             </span>
-            <span id="hero-cli-icon-profile" class="hidden items-center">
+            <span id="hero-cli-icon-profile" class="flex items-center">
               <User size={14} class="text-sky shrink-0" />
             </span>
-            <span id="hero-cli-text" class="text-ink">Launch CLI</span>
+            <span id="hero-cli-text" class="text-ink">Close CLI</span>
           </button>
         </div>
       </div>
@@ -505,6 +491,11 @@ const timelineItems = [
               </button>
             </div>
           </article>
+        </div>
+
+        <!-- GitHub Contributions Graph -->
+        <div class="mt-8">
+          <GithubContributions />
         </div>
       </div>
     </section>
