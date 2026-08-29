@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *, .dark, .dark *));
+
 @theme {
   --color-ink: #f7f3ea;
   --color-muted: #b9b2a6;
@@ -382,11 +384,30 @@ html[data-theme="light"] .bg-\[\#0b0f14\]\/40 {
 }
 
 html[data-theme="light"] .bg-bg-deep\/55 {
-  background-color: rgba(255, 255, 255, 0.72);
+  background-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
 }
 
-html[data-theme="light"] .bg-bg-deep\/70 {
-  background-color: rgba(247, 248, 251, 0.88);
+html[data-theme="light"] .project-modal-panel {
+  background-color: #ffffff;
+  border-color: rgba(25, 27, 32, 0.14);
+}
+
+html[data-theme="light"] .project-modal-header {
+  background-color: rgba(255, 255, 255, 0.96);
+  border-color: rgba(25, 27, 32, 0.1);
+}
+
+html[data-theme="light"] .project-card-btn {
+  background-color: #191b20;
+  color: #ffffff;
+  border-color: #191b20;
+}
+
+html[data-theme="light"] .project-card-btn:hover {
+  background-color: #087f66;
+  border-color: #087f66;
+  color: #ffffff;
 }
 
 html[data-theme="light"] #hero-cta-projects,

@@ -82,9 +82,12 @@ const jsonLd = {
 
         try {
           const storedTheme = window.localStorage.getItem(storageKey);
-          document.documentElement.dataset.theme = storedTheme || fallbackTheme;
+          const activeTheme = storedTheme || fallbackTheme;
+          document.documentElement.dataset.theme = activeTheme;
+          document.documentElement.classList.toggle("dark", activeTheme === "dark");
         } catch {
           document.documentElement.dataset.theme = fallbackTheme;
+          document.documentElement.classList.toggle("dark", fallbackTheme === "dark");
         }
       })();
     </script>

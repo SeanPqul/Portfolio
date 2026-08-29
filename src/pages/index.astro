@@ -14,6 +14,7 @@ import emedicardPaymentMethodsImage from "../assets/projects/emedicard/payment-m
 import emedicardReviewSubmitImage from "../assets/projects/emedicard/review-submit.png?url";
 import emedicardCertificateImage from "../assets/projects/emedicard/sample-health-certificate.svg?url";
 import emedicardUploadDocumentsImage from "../assets/projects/emedicard/upload-documents.png?url";
+import portfolioDeckImage from "../assets/projects/portfolio-deck.svg?url";
 import reactIcon from "../assets/tech-icons/react.svg?url";
 import typescriptIcon from "../assets/tech-icons/typescript.svg?url";
 import htmlIcon from "../assets/tech-icons/html.svg?url";
@@ -426,144 +427,151 @@ const timelineItems = [
         </div>
 
         <!-- 3-Column Card Grid -->
+        <!-- 3-Column Card Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           
-          <!-- Card 1: MorataFMS -->
-          <article class="group scroll-reveal flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white/80 p-5 sm:p-6 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-mint/50 hover:shadow-[0_0_20px_rgba(102,224,181,0.15)] dark:border-white/10 dark:bg-bg-deep/55 dark:shadow-2xl">
-            <div class="flex flex-col flex-1">
-              <!-- Top Row Badges -->
-              <div class="flex flex-wrap items-center gap-2 sm:gap-2.5">
-                <span class="rounded-md border border-mint/25 bg-mint/8 px-2 py-0.5 font-mono text-xs font-black text-mint">01</span>
-                <span class="inline-flex items-center gap-1.5 rounded-full border border-mint/15 bg-mint/8 px-2.5 py-0.5 text-xs font-bold text-mint">
-                  <ServerCog size={12} />
-                  Web App
-                </span>
-                <span class="rounded-full border border-slate-200/80 bg-slate-100/80 px-2.5 py-0.5 text-[11px] font-medium text-slate-600 dark:border-white/8 dark:bg-white/[0.03] dark:text-muted">
-                  OJT Project
-                </span>
+          <!-- Card 1: F.M. Morata Customs Brokerage & Law Firm -->
+          <article class="group scroll-reveal project-card flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-bg-deep/55 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-mint/30 hover:shadow-2xl">
+            <div>
+              <!-- Visual Screenshot Preview Frame -->
+              <div class="aspect-[16/10] w-full overflow-hidden border-b border-white/8 bg-[#070b0e] relative flex items-center justify-center">
+                <img
+                  src={morataLandingImage}
+                  alt="F.M. Morata Customs Brokerage & Law Firm web system screenshot"
+                  class="size-full object-contain object-center transition-transform duration-500 group-hover:scale-102"
+                  loading="lazy"
+                />
               </div>
 
-              <!-- Title & Description -->
-              <h3 class="mt-4 font-display text-xl sm:text-2xl font-extrabold text-slate-900 transition-colors group-hover:text-mint dark:text-ink">
-                MorataFMS
-              </h3>
-              <p class="mt-2.5 text-sm leading-relaxed text-slate-600 dark:text-muted flex-1">
-                An operations system for brokerage and legal workflows, focused on import/export transaction tracking, document handling, archiving, and role-based access.
-              </p>
-
-              <!-- Tech Stack Chips -->
-              <div class="mt-4 flex flex-wrap gap-1.5">
-                {["Laravel", "React", "TypeScript", "Vite", "MySQL"].map((tech) => (
-                  <span class="rounded-lg border border-slate-200/70 bg-slate-50/70 px-2 py-0.5 font-mono text-[11px] font-medium text-slate-600 dark:border-white/8 dark:bg-white/[0.03] dark:text-muted">
-                    {tech}
+              <!-- Card Body Content -->
+              <div class="p-5 sm:p-6">
+                <!-- Category Pills -->
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-muted">
+                    Logistics
                   </span>
-                ))}
+                  <span class="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-muted">
+                    Brokerage
+                  </span>
+                </div>
+
+                <!-- Title & Description -->
+                <h3 class="mt-3.5 font-display text-xl font-bold text-ink transition-colors group-hover:text-mint">
+                  F.M. Morata Customs Brokerage & Law Firm
+                </h3>
+                <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted">
+                  Operations system for brokerage workflows — import/export transaction tracking, records, and document archiving.
+                </p>
               </div>
             </div>
 
             <!-- CTA Trigger -->
-            <div class="mt-6 pt-4 border-t border-slate-200/80 dark:border-white/8">
+            <div class="p-5 pt-0 sm:p-6 sm:pt-0">
               <button
                 type="button"
-                class="project-modal-trigger inline-flex w-full items-center justify-center gap-2 rounded-xl border border-mint/30 bg-mint/10 py-2.5 text-xs font-extrabold text-mint transition hover:bg-mint hover:text-bg-deep cursor-pointer"
+                class="project-card-btn project-modal-trigger inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 py-2.5 text-xs font-bold text-ink transition hover:bg-mint hover:text-[#07100d] hover:border-mint cursor-pointer shadow-sm"
                 data-project-modal-target="morata-modal"
                 aria-haspopup="dialog"
               >
-                <span>View Details</span>
+                <span>Details</span>
                 <ArrowUpRight size={14} />
               </button>
             </div>
           </article>
 
           <!-- Card 2: EMEDICARD -->
-          <article class="group scroll-reveal flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white/80 p-5 sm:p-6 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-sky/50 hover:shadow-[0_0_20px_rgba(104,196,255,0.15)] dark:border-white/10 dark:bg-bg-deep/55 dark:shadow-2xl" style="transition-delay: 100ms;">
-            <div class="flex flex-col flex-1">
-              <!-- Top Row Badges -->
-              <div class="flex flex-wrap items-center gap-2 sm:gap-2.5">
-                <span class="rounded-md border border-sky/25 bg-sky/8 px-2 py-0.5 font-mono text-xs font-black text-sky">02</span>
-                <span class="inline-flex items-center gap-1.5 rounded-full border border-sky/15 bg-sky/8 px-2.5 py-0.5 text-xs font-bold text-sky">
-                  <Smartphone size={12} />
-                  Web & Mobile
-                </span>
-                <span class="rounded-full border border-slate-200/80 bg-slate-100/80 px-2.5 py-0.5 text-[11px] font-medium text-slate-600 dark:border-white/8 dark:bg-white/[0.03] dark:text-muted">
-                  Capstone
-                </span>
+          <article class="group scroll-reveal project-card flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-bg-deep/55 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-sky/30 hover:shadow-2xl" style="transition-delay: 100ms;">
+            <div>
+              <!-- Visual Screenshot Preview Frame -->
+              <div class="aspect-[16/10] w-full overflow-hidden border-b border-white/8 bg-[#070b0e] relative flex items-center justify-center">
+                <img
+                  src={emedicardAdminReviewImage}
+                  alt="EMEDICARD digital platform screenshot"
+                  class="size-full object-contain object-center transition-transform duration-500 group-hover:scale-102"
+                  loading="lazy"
+                />
               </div>
 
-              <!-- Title & Description -->
-              <h3 class="mt-4 font-display text-xl sm:text-2xl font-extrabold text-slate-900 transition-colors group-hover:text-sky dark:text-ink">
-                EMEDICARD
-              </h3>
-              <p class="mt-2.5 text-sm leading-relaxed text-slate-600 dark:text-muted flex-1">
-                A web and mobile health card management system for classification-based applications, required document uploads, admin review, QR verification, and generated certificates.
-              </p>
-
-              <!-- Tech Stack Chips -->
-              <div class="mt-4 flex flex-wrap gap-1.5">
-                {["React Native", "Expo", "Next.js", "TypeScript", "Convex", "Clerk"].map((tech) => (
-                  <span class="rounded-lg border border-slate-200/70 bg-slate-50/70 px-2 py-0.5 font-mono text-[11px] font-medium text-slate-600 dark:border-white/8 dark:bg-white/[0.03] dark:text-muted">
-                    {tech}
+              <!-- Card Body Content -->
+              <div class="p-5 sm:p-6">
+                <!-- Category Pills -->
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-muted">
+                    Healthcare
                   </span>
-                ))}
+                  <span class="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-muted">
+                    City System
+                  </span>
+                </div>
+
+                <!-- Title & Description -->
+                <h3 class="mt-3.5 font-display text-xl font-bold text-ink transition-colors group-hover:text-sky">
+                  EMEDICARD
+                </h3>
+                <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted">
+                  Digital health card platform for Davao City — applicant submissions, document verification, and QR cards.
+                </p>
               </div>
             </div>
 
             <!-- CTA Trigger -->
-            <div class="mt-6 pt-4 border-t border-slate-200/80 dark:border-white/8">
+            <div class="p-5 pt-0 sm:p-6 sm:pt-0">
               <button
                 type="button"
-                class="project-modal-trigger inline-flex w-full items-center justify-center gap-2 rounded-xl border border-sky/30 bg-sky/10 py-2.5 text-xs font-extrabold text-sky transition hover:bg-sky hover:text-bg-deep cursor-pointer"
+                class="project-card-btn project-modal-trigger inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 py-2.5 text-xs font-bold text-ink transition hover:bg-sky hover:text-[#07100d] hover:border-sky cursor-pointer shadow-sm"
                 data-project-modal-target="emedicard-modal"
                 aria-haspopup="dialog"
               >
-                <span>View Details</span>
+                <span>Details</span>
                 <ArrowUpRight size={14} />
               </button>
             </div>
           </article>
 
-          <!-- Card 3: Developer Portfolio & CLI Platform -->
-          <article class="group scroll-reveal flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white/80 p-5 sm:p-6 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-amber/50 hover:shadow-[0_0_20px_rgba(255,184,77,0.15)] dark:border-white/10 dark:bg-bg-deep/55 dark:shadow-2xl" style="transition-delay: 200ms;">
-            <div class="flex flex-col flex-1">
-              <!-- Top Row Badges -->
-              <div class="flex flex-wrap items-center gap-2 sm:gap-2.5">
-                <span class="rounded-md border border-amber/25 bg-amber/8 px-2 py-0.5 font-mono text-xs font-black text-amber">03</span>
-                <span class="inline-flex items-center gap-1.5 rounded-full border border-amber/15 bg-amber/8 px-2.5 py-0.5 text-xs font-bold text-amber">
-                  <Code size={12} />
-                  Developer System
-                </span>
-                <span class="rounded-full border border-slate-200/80 bg-slate-100/80 px-2.5 py-0.5 text-[11px] font-medium text-slate-600 dark:border-white/8 dark:bg-white/[0.03] dark:text-muted">
-                  Personal
-                </span>
+          <!-- Card 3: Portfolio Deck -->
+          <article class="group scroll-reveal project-card flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-bg-deep/55 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-amber/30 hover:shadow-2xl" style="transition-delay: 200ms;">
+            <div>
+              <!-- Visual Screenshot Preview Frame -->
+              <div class="aspect-[16/10] w-full overflow-hidden border-b border-white/8 bg-[#070b0e] relative flex items-center justify-center">
+                <img
+                  src={portfolioDeckImage}
+                  alt="Portfolio Deck telemetry and CLI interface"
+                  class="size-full object-contain object-center transition-transform duration-500 group-hover:scale-102"
+                  loading="lazy"
+                />
               </div>
 
-              <!-- Title & Description -->
-              <h3 class="mt-4 font-display text-xl sm:text-2xl font-extrabold text-slate-900 transition-colors group-hover:text-amber dark:text-ink">
-                Portfolio Deck
-              </h3>
-              <p class="mt-2.5 text-sm leading-relaxed text-slate-600 dark:text-muted flex-1">
-                High-performance portfolio engine featuring live GitHub activity telemetry, interactive terminal CLI emulator, DSLR camera HUD, and adaptive design tokens.
-              </p>
-
-              <!-- Tech Stack Chips -->
-              <div class="mt-4 flex flex-wrap gap-1.5">
-                {["Astro", "TypeScript", "Tailwind CSS", "Lucide", "Vercel"].map((tech) => (
-                  <span class="rounded-lg border border-slate-200/70 bg-slate-50/70 px-2 py-0.5 font-mono text-[11px] font-medium text-slate-600 dark:border-white/8 dark:bg-white/[0.03] dark:text-muted">
-                    {tech}
+              <!-- Card Body Content -->
+              <div class="p-5 sm:p-6">
+                <!-- Category Pills -->
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-muted">
+                    Developer Tool
                   </span>
-                ))}
+                  <span class="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-muted">
+                    Portfolio
+                  </span>
+                </div>
+
+                <!-- Title & Description -->
+                <h3 class="mt-3.5 font-display text-xl font-bold text-ink transition-colors group-hover:text-amber">
+                  Portfolio Deck
+                </h3>
+                <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted">
+                  Personal developer portfolio featuring live GitHub activity telemetry, terminal CLI emulator, and adaptive theme tokens.
+                </p>
               </div>
             </div>
 
             <!-- CTA Trigger / Link -->
-            <div class="mt-6 pt-4 border-t border-slate-200/80 dark:border-white/8">
+            <div class="p-5 pt-0 sm:p-6 sm:pt-0">
               <a
                 href="https://github.com/SeanPqul/Portfolio"
                 target="_blank"
                 rel="noreferrer"
-                class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-amber/30 bg-amber/10 py-2.5 text-xs font-extrabold text-amber-700 transition hover:bg-amber hover:text-bg-deep dark:text-amber"
+                class="project-card-btn inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 py-2.5 text-xs font-bold text-ink transition hover:bg-amber hover:text-[#07100d] hover:border-amber shadow-sm"
               >
-                <span>View Source</span>
+                <span>GitHub</span>
                 <ArrowUpRight size={14} />
               </a>
             </div>
@@ -835,51 +843,51 @@ const timelineItems = [
 
   <div
     id="morata-modal"
-    class="project-modal fixed inset-0 z-[100] hidden items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+    class="project-modal fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
     role="dialog"
     aria-modal="true"
     aria-labelledby="morata-modal-title"
   >
     <div class="project-modal-panel max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-2xl border border-white/10 bg-bg-deep shadow-2xl">
-      <div class="sticky top-0 z-10 flex items-center justify-between border-b border-white/8 bg-bg-deep/95 px-5 py-4 backdrop-blur sm:px-6">
+      <div class="project-modal-header sticky top-0 z-10 flex items-center justify-between border-b border-white/8 bg-bg-deep/95 px-5 py-4 backdrop-blur sm:px-6">
         <div>
-          <a href="#projects" class="text-[11px] font-bold text-ink/60 hover:text-mint">Project Details</a>
-          <h2 id="morata-modal-title" class="mt-1 font-display text-2xl font-extrabold text-ink">MorataFMS</h2>
+          <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-muted">Logistics & Customs Brokerage</span>
+          <h2 id="morata-modal-title" class="font-display text-2xl font-extrabold text-ink">F.M. Morata Customs Brokerage & Law Firm</h2>
+          <div class="mt-2 flex flex-wrap gap-1.5">
+            {["Laravel", "React", "TypeScript", "Vite", "MySQL"].map((tech) => (
+              <span class="rounded-md border border-mint/20 bg-mint/8 px-2 py-0.5 font-mono text-[10px] font-semibold text-mint">
+                {tech}
+              </span>
+            ))}
+          </div>
         </div>
         <button
           type="button"
-          class="project-modal-close grid size-9 place-items-center rounded-full text-ink/70 transition hover:bg-ink/10 hover:text-ink"
-          aria-label="Close MorataFMS details"
+          class="project-modal-close grid size-9 place-items-center rounded-full text-ink/70 transition hover:bg-white/10 hover:text-ink cursor-pointer"
+          aria-label="Close details"
         >
           <X size={18} />
         </button>
       </div>
 
-      <div class="grid gap-8 p-5 sm:p-6 lg:grid-cols-[minmax(18rem,0.72fr)_minmax(0,1.28fr)]">
-        <div class="min-w-0 space-y-5">
+      <div class="grid gap-6 p-5 sm:p-6 lg:grid-cols-[minmax(18rem,0.72fr)_minmax(0,1.28fr)]">
+        <div class="min-w-0 space-y-4">
           <div>
-            <p class="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted">Context</p>
-            <p class="mt-2 text-base leading-relaxed text-muted">
-              Internal operations system for F.M. Morata, supporting brokerage and legal workflows through structured import/export transaction tracking, records, documents, and archiving.
-            </p>
-          </div>
-
-          <div class="border-t border-white/8 pt-4">
-            <p class="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted">My Role</p>
-            <p class="mt-2 text-sm leading-relaxed text-muted">
-              Built Laravel API work and React dashboard features for records, uploads, filters, role access, and transaction oversight during internship work.
-            </p>
-          </div>
-
-          <div class="border-t border-white/8 pt-4">
-            <p class="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted">Key Work</p>
-            <div class="mt-3 flex flex-wrap gap-2">
-              {["Import/export workflows", "Document handling", "Transaction filters", "Request validation", "Access policies"].map((item) => (
-                <span class="rounded-full border border-mint/15 bg-mint/8 px-3 py-1 text-xs font-bold text-mint">
-                  {item}
-                </span>
-              ))}
-            </div>
+            <p class="font-mono text-[10px] font-bold uppercase tracking-wider text-muted">Key Highlights</p>
+            <ul class="mt-3 space-y-2.5 text-xs sm:text-sm leading-relaxed text-muted">
+              <li class="flex items-start gap-2">
+                <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-mint"></span>
+                <span>Built REST APIs and React dashboard for customs import/export transaction tracking.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-mint"></span>
+                <span>Implemented role-based access control policies and document upload validation.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-mint"></span>
+                <span>Designed records archiving and filtered lookup system for brokerage operations.</span>
+              </li>
+            </ul>
           </div>
         </div>
 
@@ -887,7 +895,7 @@ const timelineItems = [
           <div class="overflow-hidden rounded-xl border border-white/10 bg-black/30">
             <img
               src={morataLandingImage}
-              alt="MorataFMS public landing screen"
+              alt="F.M. Morata Customs Brokerage & Law Firm public landing screen"
               class="w-full object-contain"
               loading="lazy"
             />
@@ -899,51 +907,51 @@ const timelineItems = [
 
   <div
     id="emedicard-modal"
-    class="project-modal fixed inset-0 z-[100] hidden items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+    class="project-modal fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
     role="dialog"
     aria-modal="true"
     aria-labelledby="emedicard-modal-title"
   >
     <div class="project-modal-panel max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-2xl border border-white/10 bg-bg-deep shadow-2xl">
-      <div class="sticky top-0 z-10 flex items-center justify-between border-b border-white/8 bg-bg-deep/95 px-5 py-4 backdrop-blur sm:px-6">
+      <div class="project-modal-header sticky top-0 z-10 flex items-center justify-between border-b border-white/8 bg-bg-deep/95 px-5 py-4 backdrop-blur sm:px-6">
         <div>
-          <a href="#projects" class="text-[11px] font-bold text-ink/60 hover:text-sky">Project Details</a>
-          <h2 id="emedicard-modal-title" class="mt-1 font-display text-2xl font-extrabold text-ink">EMEDICARD</h2>
+          <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-muted">Healthcare & City System</span>
+          <h2 id="emedicard-modal-title" class="font-display text-2xl font-extrabold text-ink">EMEDICARD</h2>
+          <div class="mt-2 flex flex-wrap gap-1.5">
+            {["React Native", "Expo", "Next.js", "TypeScript", "Convex", "Clerk"].map((tech) => (
+              <span class="rounded-md border border-sky/20 bg-sky/8 px-2 py-0.5 font-mono text-[10px] font-semibold text-sky">
+                {tech}
+              </span>
+            ))}
+          </div>
         </div>
         <button
           type="button"
-          class="project-modal-close grid size-9 place-items-center rounded-full text-ink/70 transition hover:bg-ink/10 hover:text-ink"
+          class="project-modal-close grid size-9 place-items-center rounded-full text-ink/70 transition hover:bg-white/10 hover:text-ink cursor-pointer"
           aria-label="Close EMEDICARD details"
         >
           <X size={18} />
         </button>
       </div>
 
-      <div class="grid gap-8 p-5 sm:p-6 lg:grid-cols-[0.72fr_1.28fr]">
-        <div class="space-y-5">
+      <div class="grid gap-6 p-5 sm:p-6 lg:grid-cols-[0.72fr_1.28fr]">
+        <div class="space-y-4">
           <div>
-            <p class="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted">Context</p>
-            <p class="mt-2 text-base leading-relaxed text-muted">
-              Web and mobile health card system for Davao City workflows, covering applications, required documents, payments, admin review, certificate release, and QR verification.
-            </p>
-          </div>
-
-          <div class="border-t border-white/8 pt-4">
-            <p class="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted">My Role</p>
-            <p class="mt-2 text-sm leading-relaxed text-muted">
-              Built mobile application flows and data-driven states for applicant submission, document uploads, payments, status tracking, and QR-ready card verification.
-            </p>
-          </div>
-
-          <div class="border-t border-white/8 pt-4">
-            <p class="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted">Key Work</p>
-            <div class="mt-3 flex flex-wrap gap-2">
-              {["Document upload flow", "Application review", "Payment states", "Certificate generation", "QR verification"].map((item) => (
-                <span class="rounded-full border border-sky/20 bg-sky/8 px-3 py-1 text-xs font-bold text-sky">
-                  {item}
-                </span>
-              ))}
-            </div>
+            <p class="font-mono text-[10px] font-bold uppercase tracking-wider text-muted">Key Highlights</p>
+            <ul class="mt-3 space-y-2.5 text-xs sm:text-sm leading-relaxed text-muted">
+              <li class="flex items-start gap-2">
+                <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-sky"></span>
+                <span>Engineered mobile submission workflows, health card category selection, and document upload stages.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-sky"></span>
+                <span>Built web admin review interface for staff document verification and application approval.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-sky"></span>
+                <span>Implemented digital health certificate generation with instant QR verification.</span>
+              </li>
+            </ul>
           </div>
         </div>
 
@@ -964,7 +972,7 @@ const timelineItems = [
               <figure>
                 <button
                   type="button"
-                  class="image-preview-trigger block w-full overflow-hidden rounded-xl border border-white/10 bg-[#e8e2d6] transition hover:border-sky/40 focus:outline-none focus:ring-2 focus:ring-sky/60"
+                  class="image-preview-trigger block w-full overflow-hidden rounded-xl border border-white/10 bg-[#e8e2d6] transition hover:border-sky/40 focus:outline-none focus:ring-2 focus:ring-sky/60 cursor-pointer"
                   data-image-src={preview.src}
                   data-image-alt={preview.alt}
                   data-image-label={preview.label}
@@ -996,7 +1004,7 @@ const timelineItems = [
               <figure class="w-32 shrink-0 sm:w-36">
                 <button
                   type="button"
-                  class="image-preview-trigger block overflow-hidden rounded-2xl border border-white/10 bg-white transition hover:border-sky/40 focus:outline-none focus:ring-2 focus:ring-sky/60"
+                  class="image-preview-trigger block overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition hover:border-sky/40 focus:outline-none focus:ring-2 focus:ring-sky/60 cursor-pointer"
                   data-image-src={screen.src}
                   data-image-alt={screen.alt}
                   data-image-label={screen.label}
@@ -1015,12 +1023,6 @@ const timelineItems = [
               </figure>
             ))}
           </div>
-          <p class="text-xs leading-relaxed text-muted">
-            Web admin review, sample certificate output, and selected screens from the latest mobile UI.
-          </p>
-          <p class="rounded-xl border border-white/8 bg-white/[0.025] px-3 py-2 text-xs leading-relaxed text-muted">
-            Academic capstone project. Screenshots use sample data and the system is not an official deployment.
-          </p>
         </div>
       </div>
     </div>
@@ -1084,6 +1086,7 @@ const timelineItems = [
 
     function setTheme(theme: "light" | "dark") {
       document.documentElement.dataset.theme = theme;
+      document.documentElement.classList.toggle("dark", theme === "dark");
       themeToggle?.setAttribute("aria-pressed", String(theme === "light"));
       themeToggle?.setAttribute("aria-label", theme === "light" ? "Switch to dark mode" : "Switch to light mode");
 
@@ -1100,6 +1103,7 @@ const timelineItems = [
     });
 
     const initialTheme = document.documentElement.dataset.theme === "light" ? "light" : "dark";
+    document.documentElement.classList.toggle("dark", initialTheme === "dark");
     themeToggle?.setAttribute("aria-pressed", String(initialTheme === "light"));
     themeToggle?.setAttribute("aria-label", initialTheme === "light" ? "Switch to dark mode" : "Switch to light mode");
 
