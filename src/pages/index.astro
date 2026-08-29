@@ -67,7 +67,7 @@ export const prerender = true;
 
 const cvHref = "/docs/cv.pdf";
 
-const navItems = ["Projects", "Experience", "Skills", "Contact"];
+const navItems = ["Projects", "Skills", "Experience", "Contact"];
 
 const profileLinks = [
   {
@@ -408,19 +408,13 @@ const timelineItems = [
       <div class="absolute left-1/2 top-24 h-72 w-3/4 -translate-x-1/2 rounded-full bg-mint/5 blur-3xl pointer-events-none"></div>
 
       <div class="page-shell relative z-10">
-        <div class="mb-8 flex flex-col gap-5 scroll-reveal lg:flex-row lg:items-end lg:justify-between">
-          <div class="max-w-3xl">
-            <h2 class="font-display text-3xl font-extrabold leading-tight text-ink sm:text-4xl">
-              Projects
-            </h2>
-            <p class="mt-2.5 max-w-2xl text-sm leading-relaxed text-muted">
-              Systems built across internship, capstone, and personal development in web and mobile.
-            </p>
-          </div>
-          <div class="flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs text-muted">
-            <span class="font-mono font-bold text-mint">03</span>
-            projects
-          </div>
+        <div class="mb-8 max-w-3xl scroll-reveal">
+          <h2 class="font-display text-3xl font-extrabold leading-tight text-ink sm:text-4xl">
+            Projects
+          </h2>
+          <p class="mt-2.5 max-w-2xl text-sm leading-relaxed text-muted">
+            Systems built across internship, capstone, and personal development in web and mobile.
+          </p>
         </div>
 
         <!-- 3-Column Card Grid -->
@@ -571,187 +565,190 @@ const timelineItems = [
       </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="page-shell fluid-section">
-      <div class="mb-12 scroll-reveal text-center">
-        <p class="section-kicker">Journey</p>
-        <h2 class="mt-3 font-display text-3xl font-extrabold text-ink sm:text-4xl">
-          Work &amp; Education
+    <!-- Technical Stack Section -->
+    <section id="skills" class="page-shell pt-8 pb-14 sm:pt-10 sm:pb-16 lg:pt-12 lg:pb-20">
+      <div class="mb-8 max-w-3xl scroll-reveal">
+        <h2 class="font-display text-3xl font-extrabold leading-tight text-ink sm:text-4xl">
+          Tech Stack
         </h2>
+        <p class="mt-2.5 max-w-2xl text-sm leading-relaxed text-muted">
+          Languages, frameworks, and tools I use to build across frontend, backend, and mobile.
+        </p>
       </div>
-
-      <!-- Alternating Split Timeline Container -->
-      <div class="relative space-y-12 lg:space-y-6 mt-10">
-        <!-- Vertical Center Timeline Line -->
-        <div class="timeline-rail absolute left-3.5 lg:left-1/2 lg:-translate-x-1/2 top-2 bottom-2"></div>
-
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(min(15rem,100%),1fr))] gap-5">
         {
-          timelineItems.map((item) => (
-            <div class="relative flex flex-col lg:flex-row items-center justify-between w-full group/timeline">
-              <!-- Center Dot Node -->
-              <div class="absolute left-3.5 lg:left-1/2 lg:-translate-x-1/2 top-[38px] lg:top-1/2 lg:-translate-y-1/2 z-10 flex flex-col items-center">
-                <div class={`w-3.5 h-3.5 rounded-full border-2 transition-transform duration-300 group-hover/timeline:scale-125 bg-bg-deep ${
-                  item.highlight 
-                    ? `${item.accentColor} border-current shadow-[0_0_8px_rgba(255,255,255,0.15)]`
-                    : `border-white/20 group-hover/timeline:border-current ${item.accentColor}`
-                }`}></div>
+          skills.map(({ title, icon: Icon, items }) => (
+            <article class="scroll-reveal glass rounded-2xl p-5 hover:-translate-y-1 hover:border-mint/20 transition-all duration-300">
+              <div class="mb-6 flex items-center justify-between">
+                <h3 class="text-sm font-bold text-ink font-display uppercase tracking-wide">{title}</h3>
+                <Icon size={20} class="text-mint" />
               </div>
-
-              <!-- Left Column: Education details on left, hidden spacer for experience -->
-              <div class={`w-full lg:w-[calc(50%-2.5rem)] order-1 ${item.type === 'education' ? 'block pl-10 lg:pl-0' : 'hidden lg:block lg:opacity-0 lg:pointer-events-none'}`}>
-                {item.type === 'education' && (
-                  <article class={`scroll-reveal glass rounded-2xl border border-white/8 p-4 sm:p-5 ${item.borderColor} hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden group/card flex flex-col justify-between`}>
-                    <span class={`absolute -right-8 -top-8 size-20 ${item.glowColor} rounded-full blur-xl ${item.innerGlowColor} transition-all duration-300 pointer-events-none`}></span>
-                    
-                    <div>
-                      <!-- Header -->
-                      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                        <div class="flex min-w-0 items-center gap-3">
-                          <span class={`grid size-9 place-items-center rounded-xl bg-white/[0.03] border border-white/8 ${item.accentColor}`}>
-                            <item.icon size={18} />
-                          </span>
-                          <span class="text-[9px] font-mono font-bold tracking-widest text-muted uppercase">
-                            {item.tag}
-                          </span>
-                        </div>
-                        <span class="w-fit rounded-full border border-white/5 bg-white/5 px-2 py-0.5 font-mono text-[9px] text-muted">
-                          {item.date}
+              <div class="flex flex-wrap gap-1.5">
+                {
+                  items.map((item) => (
+                    <span class="inline-flex items-center gap-1.5 rounded border border-white/5 bg-white/4 px-2 py-1 text-[11px] font-medium text-muted">
+                      {techIcons[item] ? (
+                        <img
+                          src={techIcons[item]}
+                          alt=""
+                          aria-hidden="true"
+                          data-tech={item}
+                          class="tech-icon size-3.5 shrink-0"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <span class="grid size-3.5 shrink-0 place-items-center rounded-[4px] border border-white/10 bg-white/5 font-mono text-[8px] font-black text-mint/80">
+                          {item.slice(0, 1)}
                         </span>
-                      </div>
-
-                      <!-- Title & Company -->
-                      <div class="mt-3.5 text-left">
-                        <h3 class={`text-base font-bold font-display transition-colors group-hover/card:${item.accentColor} ${item.highlight ? item.accentColor : "text-ink"}`}>
-                          {item.role}
-                        </h3>
-                        <p class="text-xs text-muted font-medium mt-1">{item.company}</p>
-                      </div>
-
-                      <!-- Bullets -->
-                      <ul class="mt-4 space-y-2.5 text-xs text-muted list-none leading-relaxed text-left">
-                        {item.bullets.map((bullet) => (
-                          <li class={`relative pl-4 before:absolute before:left-0 before:top-2 before:size-1.5 before:rounded-full ${item.dotColor}`}>
-                            {bullet}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <!-- Tech Tags -->
-                    {item.techTags && item.techTags.length > 0 && (
-                      <div class="mt-5 flex flex-wrap gap-1 justify-start">
-                        {item.techTags.map((tech) => (
-                          <span class="rounded bg-white/4 border border-white/5 px-2 py-0.5 text-[10px] font-medium text-muted transition-colors group-hover/card:border-current group-hover/card:text-ink">
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </article>
-                )}
+                      )}
+                      {item}
+                    </span>
+                  ))
+                }
               </div>
-
-              <!-- Right Column: Experience details on right, hidden spacer for education -->
-              <div class={`w-full lg:w-[calc(50%-2.5rem)] order-2 ${item.type === 'experience' ? 'block pl-10 lg:pl-0' : 'hidden lg:block lg:opacity-0 lg:pointer-events-none'}`}>
-                {item.type === 'experience' && (
-                  <article class={`scroll-reveal glass rounded-2xl border border-white/8 p-4 sm:p-5 ${item.borderColor} hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden group/card flex flex-col justify-between`}>
-                    <span class={`absolute -right-8 -top-8 size-20 ${item.glowColor} rounded-full blur-xl ${item.innerGlowColor} transition-all duration-300 pointer-events-none`}></span>
-                    
-                    <div>
-                      <!-- Header -->
-                      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                        <div class="flex min-w-0 items-center gap-3">
-                          <span class={`grid size-9 place-items-center rounded-xl bg-white/[0.03] border border-white/8 ${item.accentColor}`}>
-                            <item.icon size={18} />
-                          </span>
-                          <span class="text-[9px] font-mono font-bold tracking-widest text-muted uppercase">
-                            {item.tag}
-                          </span>
-                        </div>
-                        <span class="w-fit rounded-full border border-white/5 bg-white/5 px-2 py-0.5 font-mono text-[9px] text-muted">
-                          {item.date}
-                        </span>
-                      </div>
-
-                      <!-- Title & Company -->
-                      <div class="mt-3.5 text-left">
-                        <h3 class={`text-base font-bold font-display transition-colors group-hover/card:${item.accentColor} ${item.highlight ? item.accentColor : "text-ink"}`}>
-                          {item.role}
-                        </h3>
-                        <p class="text-xs text-muted font-medium mt-1">{item.company}</p>
-                      </div>
-
-                      <!-- Bullets -->
-                      <ul class="mt-4 space-y-2.5 text-xs text-muted list-none leading-relaxed text-left">
-                        {item.bullets.map((bullet) => (
-                          <li class={`relative pl-4 before:absolute before:left-0 before:top-2 before:size-1.5 before:rounded-full ${item.dotColor}`}>
-                            {bullet}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <!-- Tech Tags -->
-                    {item.techTags && item.techTags.length > 0 && (
-                      <div class="mt-5 flex flex-wrap gap-1 justify-start">
-                        {item.techTags.map((tech) => (
-                          <span class="rounded bg-white/4 border border-white/5 px-2 py-0.5 text-[10px] font-medium text-muted transition-colors group-hover/card:border-current group-hover/card:text-ink">
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </article>
-                )}
-              </div>
-            </div>
+            </article>
           ))
         }
       </div>
     </section>
 
-    <!-- Technical Stack Section -->
-    <section id="skills" class="fluid-section relative bg-bg-card">
+    <!-- Experience Section -->
+    <section id="experience" class="fluid-section relative border-y border-white/10 bg-bg-card">
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(102,224,181,0.04),transparent_50%)] pointer-events-none"></div>
-      
+
       <div class="page-shell relative z-10">
-        <div class="mb-14 max-w-3xl scroll-reveal">
-          <h2 class="font-display text-3xl font-extrabold leading-tight text-ink sm:text-4xl">
-            Tech Stack
+        <div class="mb-12 scroll-reveal text-center">
+          <p class="section-kicker">Journey</p>
+          <h2 class="mt-3 font-display text-3xl font-extrabold text-ink sm:text-4xl">
+            Work &amp; Education
           </h2>
         </div>
-        <div class="grid grid-cols-[repeat(auto-fit,minmax(min(15rem,100%),1fr))] gap-5">
+
+        <!-- Alternating Split Timeline Container -->
+        <div class="relative space-y-12 lg:space-y-6 mt-10">
+          <!-- Vertical Center Timeline Line -->
+          <div class="timeline-rail absolute left-3.5 lg:left-1/2 lg:-translate-x-1/2 top-2 bottom-2"></div>
+
           {
-            skills.map(({ title, icon: Icon, items }) => (
-              <article class="scroll-reveal glass rounded-2xl p-5 hover:-translate-y-1 hover:border-mint/20 transition-all duration-300">
-                <div class="mb-6 flex items-center justify-between">
-                  <h3 class="text-sm font-bold text-ink font-display uppercase tracking-wide">{title}</h3>
-                  <Icon size={20} class="text-mint" />
+            timelineItems.map((item) => (
+              <div class="relative flex flex-col lg:flex-row items-center justify-between w-full group/timeline">
+                <!-- Center Dot Node -->
+                <div class="absolute left-3.5 lg:left-1/2 lg:-translate-x-1/2 top-[38px] lg:top-1/2 lg:-translate-y-1/2 z-10 flex flex-col items-center">
+                  <div class={`w-3.5 h-3.5 rounded-full border-2 transition-transform duration-300 group-hover/timeline:scale-125 bg-bg-deep ${
+                    item.highlight 
+                      ? `${item.accentColor} border-current shadow-[0_0_8px_rgba(255,255,255,0.15)]`
+                      : `border-white/20 group-hover/timeline:border-current ${item.accentColor}`
+                  }`}></div>
                 </div>
-                <div class="flex flex-wrap gap-1.5">
-                  {
-                    items.map((item) => (
-                      <span class="inline-flex items-center gap-1.5 rounded border border-white/5 bg-white/4 px-2 py-1 text-[11px] font-medium text-muted">
-                        {techIcons[item] ? (
-                          <img
-                            src={techIcons[item]}
-                            alt=""
-                            aria-hidden="true"
-                            data-tech={item}
-                            class="tech-icon size-3.5 shrink-0"
-                            loading="lazy"
-                          />
-                        ) : (
-                          <span class="grid size-3.5 shrink-0 place-items-center rounded-[4px] border border-white/10 bg-white/5 font-mono text-[8px] font-black text-mint/80">
-                            {item.slice(0, 1)}
+
+                <!-- Left Column: Education details on left, hidden spacer for experience -->
+                <div class={`w-full lg:w-[calc(50%-2.5rem)] order-1 ${item.type === 'education' ? 'block pl-10 lg:pl-0' : 'hidden lg:block lg:opacity-0 lg:pointer-events-none'}`}>
+                  {item.type === 'education' && (
+                    <article class={`scroll-reveal glass rounded-2xl border border-white/8 p-4 sm:p-5 ${item.borderColor} hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden group/card flex flex-col justify-between`}>
+                      <span class={`absolute -right-8 -top-8 size-20 ${item.glowColor} rounded-full blur-xl ${item.innerGlowColor} transition-all duration-300 pointer-events-none`}></span>
+                      
+                      <div>
+                        <!-- Header -->
+                        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                          <div class="flex min-w-0 items-center gap-3">
+                            <span class={`grid size-9 place-items-center rounded-xl bg-white/[0.03] border border-white/8 ${item.accentColor}`}>
+                              <item.icon size={18} />
+                            </span>
+                            <span class="text-[9px] font-mono font-bold tracking-widest text-muted uppercase">
+                              {item.tag}
+                            </span>
+                          </div>
+                          <span class="w-fit rounded-full border border-white/5 bg-white/5 px-2 py-0.5 font-mono text-[9px] text-muted">
+                            {item.date}
                           </span>
-                        )}
-                        {item}
-                      </span>
-                    ))
-                  }
+                        </div>
+
+                        <!-- Title & Company -->
+                        <div class="mt-3.5 text-left">
+                          <h3 class={`text-base font-bold font-display transition-colors group-hover/card:${item.accentColor} ${item.highlight ? item.accentColor : "text-ink"}`}>
+                            {item.role}
+                          </h3>
+                          <p class="text-xs text-muted font-medium mt-1">{item.company}</p>
+                        </div>
+
+                        <!-- Bullets -->
+                        <ul class="mt-4 space-y-2.5 text-xs text-muted list-none leading-relaxed text-left">
+                          {item.bullets.map((bullet) => (
+                            <li class={`relative pl-4 before:absolute before:left-0 before:top-2 before:size-1.5 before:rounded-full ${item.dotColor}`}>
+                              {bullet}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <!-- Tech Tags -->
+                      {item.techTags && item.techTags.length > 0 && (
+                        <div class="mt-5 flex flex-wrap gap-1 justify-start">
+                          {item.techTags.map((tech) => (
+                            <span class="rounded bg-white/4 border border-white/5 px-2 py-0.5 text-[10px] font-medium text-muted transition-colors group-hover/card:border-current group-hover/card:text-ink">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </article>
+                  )}
                 </div>
-              </article>
+
+                <!-- Right Column: Experience details on right, hidden spacer for education -->
+                <div class={`w-full lg:w-[calc(50%-2.5rem)] order-2 ${item.type === 'experience' ? 'block pl-10 lg:pl-0' : 'hidden lg:block lg:opacity-0 lg:pointer-events-none'}`}>
+                  {item.type === 'experience' && (
+                    <article class={`scroll-reveal glass rounded-2xl border border-white/8 p-4 sm:p-5 ${item.borderColor} hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden group/card flex flex-col justify-between`}>
+                      <span class={`absolute -right-8 -top-8 size-20 ${item.glowColor} rounded-full blur-xl ${item.innerGlowColor} transition-all duration-300 pointer-events-none`}></span>
+                      
+                      <div>
+                        <!-- Header -->
+                        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                          <div class="flex min-w-0 items-center gap-3">
+                            <span class={`grid size-9 place-items-center rounded-xl bg-white/[0.03] border border-white/8 ${item.accentColor}`}>
+                              <item.icon size={18} />
+                            </span>
+                            <span class="text-[9px] font-mono font-bold tracking-widest text-muted uppercase">
+                              {item.tag}
+                            </span>
+                          </div>
+                          <span class="w-fit rounded-full border border-white/5 bg-white/5 px-2 py-0.5 font-mono text-[9px] text-muted">
+                            {item.date}
+                          </span>
+                        </div>
+
+                        <!-- Title & Company -->
+                        <div class="mt-3.5 text-left">
+                          <h3 class={`text-base font-bold font-display transition-colors group-hover/card:${item.accentColor} ${item.highlight ? item.accentColor : "text-ink"}`}>
+                            {item.role}
+                          </h3>
+                          <p class="text-xs text-muted font-medium mt-1">{item.company}</p>
+                        </div>
+
+                        <!-- Bullets -->
+                        <ul class="mt-4 space-y-2.5 text-xs text-muted list-none leading-relaxed text-left">
+                          {item.bullets.map((bullet) => (
+                            <li class={`relative pl-4 before:absolute before:left-0 before:top-2 before:size-1.5 before:rounded-full ${item.dotColor}`}>
+                              {bullet}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <!-- Tech Tags -->
+                      {item.techTags && item.techTags.length > 0 && (
+                        <div class="mt-5 flex flex-wrap gap-1 justify-start">
+                          {item.techTags.map((tech) => (
+                            <span class="rounded bg-white/4 border border-white/5 px-2 py-0.5 text-[10px] font-medium text-muted transition-colors group-hover/card:border-current group-hover/card:text-ink">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </article>
+                  )}
+                </div>
+              </div>
             ))
           }
         </div>
