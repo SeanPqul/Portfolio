@@ -1,5 +1,5 @@
 ---
-import { ExternalLink } from "@lucide/astro";
+import { ArrowUpRight } from "@lucide/astro";
 
 interface ContributionDay {
   date: string;
@@ -12,10 +12,31 @@ interface ApiResponse {
   contributions: ContributionDay[];
 }
 
+interface GithubUser {
+  name: string;
+  login: string;
+  avatar_url: string;
+  public_repos: number;
+  followers: number;
+  following: number;
+  html_url: string;
+}
+
 const username = "SeanPqul";
 const profileUrl = `https://github.com/${username}`;
 
-// Fallback data in case the build-time API call is unavailable or times out
+// Fallback GitHub User Profile
+let userProfile: GithubUser = {
+  name: "Sean Paul Lapasanda",
+  login: username,
+  avatar_url: "https://avatars.githubusercontent.com/u/79244807?v=4",
+  public_repos: 13,
+  followers: 4,
+  following: 2,
+  html_url: profileUrl,
+};
+
+// Fallback Contribution Totals
 const fallbackTotal: Record<string, number> = {
   "2026": 378,
   "2025": 240,
@@ -27,18 +48,40 @@ let allContributions: ContributionDay[] = [];
 let totalContributionsByYear: Record<string, number> = fallbackTotal;
 
 try {
-  const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}`, {
-    signal: AbortSignal.timeout(6000),
-  });
-  if (res.ok) {
-    const data: ApiResponse = await res.json();
+  const [resContrib, resUser] = await Promise.allSettled([
+    fetch(`https://github-contributions-api.jogruber.de/v4/${username}`, {
+      signal: AbortSignal.timeout(6000),
+    }),
+    fetch(`https://api.github.com/users/${username}`, {
+      signal: AbortSignal.timeout(6000),
+      headers: { "User-Agent": "SeanPortfolio-App" },
+    }),
+  ]);
+
+  if (resContrib.status === "fulfilled" && resContrib.value.ok) {
+    const data: ApiResponse = await resContrib.value.json();
     if (data && data.contributions && data.total) {
       allContributions = data.contributions;
       totalContributionsByYear = data.total;
     }
   }
+
+  if (resUser.status === "fulfilled" && resUser.value.ok) {
+    const userData = await resUser.value.json();
+    if (userData && userData.login) {
+      userProfile = {
+        name: userData.name || "Sean Paul Lapasanda",
+        login: userData.login,
+        avatar_url: userData.avatar_url || userProfile.avatar_url,
+        public_repos: userData.public_repos ?? userProfile.public_repos,
+        followers: userData.followers ?? userProfile.followers,
+        following: userData.following ?? userProfile.following,
+        html_url: userData.html_url || profileUrl,
+      };
+    }
+  }
 } catch (err) {
-  // If build-time fetch fails, fallback gracefully
+  // Graceful fallback if network is offline
 }
 
 // Available years sorted descending
@@ -63,17 +106,12 @@ function buildYearGrid(year: string, days: ContributionDay[]) {
   const startDate = new Date(`${year}-01-01T00:00:00Z`);
   const endDate = new Date(`${year}-12-31T23:59:59Z`);
 
-  // Start from the Sunday preceding or on Jan 1
   const startDayOfWeek = startDate.getUTCDay(); // 0 = Sun, 1 = Mon ...
   const gridStart = new Date(startDate);
   gridStart.setUTCDate(startDate.getUTCDate() - startDayOfWeek);
 
   const weeks: { days: { date: string; count: number; level: number; inYear: boolean }[] }[] = [];
-  const monthHeaders: { label: string; weekIndex: number }[] = [];
-
   const curr = new Date(gridStart);
-  let lastMonth = -1;
-  let weekIndex = 0;
 
   while (curr <= endDate || curr.getUTCDay() !== 0) {
     const weekDays = [];
@@ -81,13 +119,6 @@ function buildYearGrid(year: string, days: ContributionDay[]) {
       const dateStr = curr.toISOString().split("T")[0];
       const inYear = curr.getUTCFullYear() === Number(year);
       const dayData = dayMap.get(dateStr);
-
-      // Track first occurrence of a month
-      if (inYear && curr.getUTCMonth() !== lastMonth && curr.getUTCDate() <= 14) {
-        lastMonth = curr.getUTCMonth();
-        const monthLabel = curr.toLocaleString("en-US", { month: "short", timeZone: "UTC" });
-        monthHeaders.push({ label: monthLabel, weekIndex });
-      }
 
       weekDays.push({
         date: dateStr,
@@ -99,154 +130,172 @@ function buildYearGrid(year: string, days: ContributionDay[]) {
       curr.setUTCDate(curr.getUTCDate() + 1);
     }
     weeks.push({ days: weekDays });
-    weekIndex++;
   }
 
-  return { weeks, monthHeaders };
+  return { weeks };
 }
 
 const initialGrid = buildYearGrid(defaultYear, contributionsByYear[defaultYear] || []);
 ---
 
-<div class="scroll-reveal glass relative overflow-hidden rounded-2xl border border-white/10 p-5 sm:p-7 md:p-8 transition-all hover:border-mint/20">
+<!-- GitHub Developer Activity Section (Directly below Hero) -->
+<div class="scroll-reveal relative flex flex-col gap-4 overflow-visible">
   
-  <!-- Subtle ambient glow in top corner -->
-  <div class="absolute -right-16 -top-16 size-48 rounded-full bg-mint/5 blur-3xl pointer-events-none"></div>
+  <!-- Single Bespoke Glass Command Card -->
+  <div 
+    id="gh-telemetry-card" 
+    class="glass relative flex flex-col rounded-2xl border border-slate-200/80 bg-white/80 p-5 shadow-xl transition-all duration-300 sm:p-6 lg:p-7 dark:border-white/10 dark:bg-bg-card dark:shadow-2xl"
+  >
+    <!-- Background Ambient Glow -->
+    <div class="pointer-events-none absolute -right-20 -top-20 size-64 rounded-full bg-mint/5 blur-3xl"></div>
+    <div class="pointer-events-none absolute -left-20 -bottom-20 size-64 rounded-full bg-amber/5 blur-3xl"></div>
 
-  <!-- Header Row: Title & Year Tabs -->
-  <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-    <div>
-      <div class="flex items-center gap-2">
-        <!-- GitHub SVG Icon -->
-        <svg class="size-4.5 text-mint" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
-        </svg>
-        <span class="text-[11px] font-mono font-bold uppercase tracking-widest text-mint">GitHub Activity</span>
-      </div>
-      <h3 class="mt-1 font-display text-2xl font-extrabold text-ink sm:text-3xl">
-        <span id="gh-total-count">{defaultTotal}</span> contributions in <span id="gh-selected-year">{defaultYear}</span>
-      </h3>
-    </div>
-
-    <!-- Year Tabs & Profile Button -->
-    <div class="flex flex-wrap items-center gap-2">
-      <!-- Year Switcher Buttons -->
-      <div 
-        id="gh-year-tabs" 
-        class="inline-flex items-center rounded-full border border-white/8 bg-white/[0.03] p-1 text-xs"
-        role="tablist"
-        aria-label="Filter contributions by year"
-      >
-        {
-          availableYears.map((year, idx) => (
-            <button
-              type="button"
-              class={`gh-year-btn rounded-full px-3 py-1 font-mono font-semibold transition-all ${
-                idx === 0
-                  ? "bg-mint text-[#07100d] font-bold shadow-sm"
-                  : "text-muted hover:text-ink"
-              }`}
-              data-year={year}
-              role="tab"
-              aria-selected={idx === 0 ? "true" : "false"}
-            >
-              {year}
-            </button>
-          ))
-        }
-      </div>
-
-      <!-- View Profile External Link -->
-      <a
-        href={profileUrl}
-        target="_blank"
-        rel="noreferrer"
-        class="inline-flex min-h-8 items-center gap-1.5 rounded-full border border-white/8 bg-white/[0.02] px-3.5 py-1 text-xs font-semibold text-muted transition hover:border-mint hover:text-mint"
-      >
-        <span>View profile</span>
-        <ExternalLink size={13} />
-      </a>
-    </div>
-  </div>
-
-  <!-- Heatmap Container Area -->
-  <div class="mt-6 w-full overflow-x-auto pb-2 select-none scrollbar-thin scrollbar-thumb-white/10" id="gh-scroll-container">
-    <div class="min-w-[680px] w-full flex flex-col gap-1.5" id="gh-heatmap-wrapper">
+    <!-- Top Single Balanced Header Row: Total Metric + Year Switcher + Profile Link -->
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-slate-200/80 pb-4 dark:border-white/8">
       
-      <!-- Month Labels Row -->
-      <div class="flex text-[10px] font-mono text-muted pl-7 pr-1 justify-between select-none" id="gh-month-labels">
-        {
-          ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"].map((m) => (
-            <span class="w-8 text-left">{m}</span>
-          ))
-        }
+      <!-- Left: GitHub Mark & Annual Metric -->
+      <div class="flex items-center gap-3 sm:gap-3.5">
+        <a 
+          href={userProfile.html_url} 
+          target="_blank" 
+          rel="noreferrer"
+          class="group flex size-11 shrink-0 items-center justify-center rounded-xl border border-slate-200/80 bg-slate-100/80 transition-all duration-300 hover:border-emerald-500/50 hover:bg-emerald-50 hover:shadow-md dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-mint/50 dark:hover:bg-mint/10"
+          title="View GitHub Profile (@SeanPqul)"
+        >
+          <svg class="size-6 text-slate-800 transition-transform duration-300 group-hover:scale-110 group-hover:text-emerald-600 dark:text-ink dark:group-hover:text-mint" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+          </svg>
+        </a>
+
+        <div class="flex items-baseline gap-2">
+          <span id="gh-total-count" class="font-display text-2xl sm:text-3xl font-black text-slate-900 dark:text-ink">
+            {defaultTotal}
+          </span>
+          <span class="font-mono text-xs sm:text-sm text-slate-600 dark:text-muted">
+            contributions in <strong id="gh-selected-year" class="text-emerald-700 dark:text-amber font-bold">{defaultYear}</strong>
+          </span>
+        </div>
       </div>
 
-      <!-- Grid Body (Day Labels + Week Columns) -->
-      <div class="flex items-start gap-2">
-        <!-- Day of Week Labels (Mon, Wed, Fri) -->
-        <div class="flex flex-col justify-between text-[9px] font-mono text-muted/70 h-[92px] sm:h-[105px] pt-1.5 pb-1 select-none">
-          <span>Mon</span>
-          <span>Wed</span>
-          <span>Fri</span>
-        </div>
-
-        <!-- 53 Week Columns Heatmap -->
+      <!-- Right: Year Filter Controls & Direct Link -->
+      <div class="flex flex-wrap items-center gap-2.5">
+        <!-- Year Pill Group -->
         <div 
-          id="gh-grid" 
-          class="flex flex-1 gap-[3px] sm:gap-1"
-          data-all-contributions={JSON.stringify(contributionsByYear)}
-          data-all-totals={JSON.stringify(totalContributionsByYear)}
+          id="gh-year-tabs" 
+          class="flex items-center rounded-xl border border-slate-200/80 bg-slate-100/80 p-1 text-xs dark:border-white/8 dark:bg-white/[0.03]"
+          role="tablist"
+          aria-label="Filter contributions by year"
         >
           {
-            initialGrid.weeks.map((week) => (
-              <div class="flex flex-col gap-[3px] sm:gap-1 flex-1">
-                {week.days.map((day) => (
-                  <div
-                    class={`gh-cell aspect-square w-full rounded-[2.5px] sm:rounded-[3px] transition-all duration-200 hover:scale-125 hover:z-30 cursor-pointer ${
-                      day.inYear ? `gh-cell-${day.level}` : "opacity-0 pointer-events-none"
-                    }`}
-                    data-date={day.date}
-                    data-count={day.count}
-                    data-level={day.level}
-                  />
-                ))}
-              </div>
+            availableYears.map((year, idx) => (
+              <button
+                type="button"
+                class={`gh-year-btn relative rounded-lg px-3 py-1 font-mono text-xs font-bold transition-all duration-200 ${
+                  idx === 0
+                    ? "gh-year-active bg-emerald-600 text-white shadow-xs dark:bg-mint dark:text-[#07100d] dark:shadow-[0_0_12px_rgba(102,224,181,0.35)]"
+                    : "text-slate-600 hover:text-slate-950 hover:bg-slate-200/60 dark:text-muted dark:hover:text-ink dark:hover:bg-white/[0.04]"
+                }`}
+                data-year={year}
+                role="tab"
+                aria-selected={idx === 0 ? "true" : "false"}
+              >
+                {year}
+              </button>
             ))
           }
         </div>
+
+        <!-- Direct GitHub Profile Link -->
+        <a
+          href={userProfile.html_url}
+          target="_blank"
+          rel="noreferrer"
+          class="group inline-flex min-h-9 items-center gap-1.5 rounded-xl border border-slate-200/80 bg-slate-100/70 px-3.5 py-1.5 font-mono text-xs font-semibold text-slate-700 transition-all duration-200 hover:border-emerald-500 hover:bg-emerald-50 hover:text-emerald-700 dark:border-white/10 dark:bg-white/[0.03] dark:text-muted dark:hover:border-mint/40 dark:hover:bg-mint/10 dark:hover:text-mint"
+        >
+          <span>github.com/{username}</span>
+          <ArrowUpRight size={13} class="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Heatmap Radar Matrix Area -->
+    <div class="mt-4 flex flex-col gap-2">
+      <!-- Matrix Heatmap Scroll Area -->
+      <div class="w-full overflow-x-auto rounded-xl border border-slate-200/80 bg-slate-100/60 p-4 select-none scrollbar-thin scrollbar-thumb-slate-300 dark:border-white/6 dark:bg-[#070b0e]/70 dark:scrollbar-thumb-white/10">
+        <div class="min-w-[700px] w-full flex flex-col gap-2">
+          
+          <!-- Month Header Indicators -->
+          <div class="flex text-[10px] font-mono font-bold text-slate-600 dark:text-muted/80 pl-6 pr-1 justify-between select-none">
+            {
+              ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"].map((m) => (
+                <span class="w-8 text-left font-bold tracking-wider">{m}</span>
+              ))
+            }
+          </div>
+
+          <!-- Heatmap Body with Mon, Wed, Fri Day Labels -->
+          <div class="flex items-start gap-2">
+            <!-- Day labels -->
+            <div class="flex flex-col justify-between text-[9px] font-mono font-bold text-slate-500 dark:text-muted/60 h-[88px] sm:h-[102px] pt-1 pb-1 select-none">
+              <span>M</span>
+              <span>W</span>
+              <span>F</span>
+            </div>
+
+            <!-- Heatmap Tiles Grid -->
+            <div 
+              id="gh-grid" 
+              class="flex flex-1 gap-[3px] sm:gap-[3.5px]"
+              data-all-contributions={JSON.stringify(contributionsByYear)}
+              data-all-totals={JSON.stringify(totalContributionsByYear)}
+            >
+              {
+                initialGrid.weeks.map((week) => (
+                  <div class="flex flex-col gap-[3px] sm:gap-[3.5px] flex-1">
+                    {week.days.map((day) => (
+                      <div
+                        class={`gh-cell aspect-square w-full rounded-[2px] sm:rounded-[3px] transition-transform duration-150 hover:scale-135 hover:z-30 cursor-pointer ${
+                          day.inYear ? `gh-cell-${day.level}` : "opacity-0 pointer-events-none"
+                        }`}
+                        data-date={day.date}
+                        data-count={day.count}
+                        data-level={day.level}
+                      />
+                    ))}
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Intensity Legend -->
+    <div class="mt-3 flex items-center justify-end">
+      <div class="flex items-center gap-2 font-mono text-[10px] font-semibold text-slate-600 dark:text-muted select-none">
+        <span>Less</span>
+        <div class="flex items-center gap-1">
+          <span class="gh-cell gh-cell-0 size-3 rounded-[2px]" title="0 contributions"></span>
+          <span class="gh-cell gh-cell-1 size-3 rounded-[2px]" title="1-3 contributions"></span>
+          <span class="gh-cell gh-cell-2 size-3 rounded-[2px]" title="4-7 contributions"></span>
+          <span class="gh-cell gh-cell-3 size-3 rounded-[2px]" title="8-12 contributions"></span>
+          <span class="gh-cell gh-cell-4 size-3 rounded-[2px]" title="13+ contributions"></span>
+        </div>
+        <span>More</span>
       </div>
     </div>
   </div>
 
-  <!-- Footer Legend & Info -->
-  <div class="mt-4 flex flex-col gap-3 border-t border-white/6 pt-4 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
-    <div class="flex items-center gap-2">
-      <span class="size-2 rounded-full bg-mint animate-pulse"></span>
-      <span class="font-mono text-[11px]">Active public & private repository commits</span>
-    </div>
-
-    <!-- Intensity Scale Legend -->
-    <div class="flex items-center gap-1.5 font-mono text-[10px] select-none">
-      <span>Less</span>
-      <span class="gh-cell gh-cell-0 size-2.5 sm:size-3 rounded-[2px]"></span>
-      <span class="gh-cell gh-cell-1 size-2.5 sm:size-3 rounded-[2px]"></span>
-      <span class="gh-cell gh-cell-2 size-2.5 sm:size-3 rounded-[2px]"></span>
-      <span class="gh-cell gh-cell-3 size-2.5 sm:size-3 rounded-[2px]"></span>
-      <span class="gh-cell gh-cell-4 size-2.5 sm:size-3 rounded-[2px]"></span>
-      <span>More</span>
-    </div>
-  </div>
-
-  <!-- Interactive Floating Tooltip -->
+  <!-- Interactive Floating Tooltip (Attached to document.body dynamically) -->
   <div
     id="gh-tooltip"
-    class="pointer-events-none fixed z-[9999] opacity-0 transition-opacity duration-150 -translate-x-1/2 -translate-y-full rounded-lg border border-white/20 bg-[#070b0e]/95 px-3 py-1.5 font-mono text-[11px] text-white shadow-2xl backdrop-blur-md whitespace-nowrap"
+    class="pointer-events-none fixed z-[9999] opacity-0 transition-opacity duration-100 -translate-x-1/2 -translate-y-full rounded-lg border border-white/20 bg-[#080d11]/95 px-3 py-1.5 font-mono text-[11px] text-white shadow-2xl backdrop-blur-md whitespace-nowrap"
     role="tooltip"
     style="top: 0; left: 0;"
   >
     <div id="gh-tooltip-text" class="flex items-center gap-1.5 leading-none">0 contributions</div>
-    <div class="absolute left-1/2 top-full -translate-x-1/2 -mt-[1px] border-4 border-transparent border-t-[#070b0e]"></div>
+    <div class="absolute left-1/2 top-full -translate-x-1/2 -mt-[1px] border-4 border-transparent border-t-[#080d11]"></div>
   </div>
 </div>
 
@@ -261,7 +310,7 @@ const initialGrid = buildYearGrid(defaultYear, contributionsByYear[defaultYear] 
 
     if (!gridContainer) return;
 
-    // Ensure tooltip is attached to document.body so position:fixed is relative to window viewport
+    // Attach tooltip to document.body to ensure position:fixed coordinates are relative to global screen
     if (tooltip && tooltip.parentElement !== document.body) {
       document.body.appendChild(tooltip);
     }
@@ -269,12 +318,12 @@ const initialGrid = buildYearGrid(defaultYear, contributionsByYear[defaultYear] 
     const allContributions = JSON.parse(gridContainer.dataset.allContributions || "{}");
     const allTotals = JSON.parse(gridContainer.dataset.allTotals || "{}");
 
-    // Format date string to "Aug 29, 2026"
     function formatDate(dateStr: string) {
       if (!dateStr) return "";
       const [y, m, d] = dateStr.split("-").map(Number);
       const date = new Date(Date.UTC(y, m - 1, d));
       return date.toLocaleDateString("en-US", {
+        weekday: "short",
         month: "short",
         day: "numeric",
         year: "numeric",
@@ -294,8 +343,15 @@ const initialGrid = buildYearGrid(defaultYear, contributionsByYear[defaultYear] 
           if (!tooltip || !tooltipText) return;
           const formatted = formatDate(dateStr);
           const countNum = Number(count || 0);
-          const unit = countNum === 1 ? "contribution" : "contributions";
-          tooltipText.innerHTML = `<span class="text-mint font-bold">${countNum}</span> <span class="text-gray-200">${unit}</span> on <span class="text-white font-semibold">${formatted}</span>`;
+          const unit = countNum === 1 ? "commit" : "commits";
+          
+          tooltipText.innerHTML = `
+            <span class="size-1.5 rounded-full ${countNum > 0 ? 'bg-mint' : 'bg-muted'}"></span>
+            <span class="text-mint font-bold">${countNum}</span> 
+            <span class="text-gray-200">${unit}</span>
+            <span class="text-white/40">|</span>
+            <span class="text-white font-semibold">${formatted}</span>
+          `;
           
           const rect = (e.target as HTMLElement).getBoundingClientRect();
           const targetX = rect.left + rect.width / 2;
@@ -336,7 +392,7 @@ const initialGrid = buildYearGrid(defaultYear, contributionsByYear[defaultYear] 
       let html = "";
 
       while (curr <= endDate || curr.getUTCDay() !== 0) {
-        html += `<div class="flex flex-col gap-[3px] sm:gap-1 flex-1">`;
+        html += `<div class="flex flex-col gap-[3px] sm:gap-[3.5px] flex-1">`;
         for (let i = 0; i < 7; i++) {
           const dateStr = curr.toISOString().split("T")[0];
           const inYear = curr.getUTCFullYear() === Number(year);
@@ -346,7 +402,7 @@ const initialGrid = buildYearGrid(defaultYear, contributionsByYear[defaultYear] 
 
           if (inYear) {
             html += `<div 
-              class="gh-cell gh-cell-${level} aspect-square w-full rounded-[2.5px] sm:rounded-[3px] transition-all duration-200 hover:scale-125 hover:z-30 cursor-pointer" 
+              class="gh-cell gh-cell-${level} aspect-square w-full rounded-[2px] sm:rounded-[3px] transition-transform duration-150 hover:scale-135 hover:z-30 cursor-pointer" 
               data-date="${dateStr}" 
               data-count="${count}" 
               data-level="${level}"
@@ -366,19 +422,37 @@ const initialGrid = buildYearGrid(defaultYear, contributionsByYear[defaultYear] 
     }
 
     // Switch active year tab styling
+    const activeClasses = [
+      "gh-year-active",
+      "bg-emerald-600",
+      "text-white",
+      "shadow-xs",
+      "dark:bg-mint",
+      "dark:text-[#07100d]",
+      "dark:shadow-[0_0_12px_rgba(102,224,181,0.35)]",
+    ];
+    const inactiveClasses = [
+      "text-slate-600",
+      "hover:text-slate-950",
+      "hover:bg-slate-200/60",
+      "dark:text-muted",
+      "dark:hover:text-ink",
+      "dark:hover:bg-white/[0.04]",
+    ];
+
     yearTabs.forEach((tab) => {
       tab.addEventListener("click", () => {
         const year = tab.getAttribute("data-year");
         if (!year) return;
 
         yearTabs.forEach((t) => {
-          t.classList.remove("bg-mint", "text-[#07100d]", "font-bold", "shadow-sm");
-          t.classList.add("text-muted");
+          t.classList.remove(...activeClasses);
+          t.classList.add(...inactiveClasses);
           t.setAttribute("aria-selected", "false");
         });
 
-        tab.classList.remove("text-muted");
-        tab.classList.add("bg-mint", "text-[#07100d]", "font-bold", "shadow-sm");
+        tab.classList.remove(...inactiveClasses);
+        tab.classList.add(...activeClasses);
         tab.setAttribute("aria-selected", "true");
 
         renderYear(year);
