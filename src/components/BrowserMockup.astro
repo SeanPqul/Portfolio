@@ -1,5 +1,5 @@
 ---
-import { Search, Filter, RefreshCw, FileText, CheckCircle, Clock } from "@lucide/astro";
+import { Search, SlidersHorizontal, RefreshCw, FileText, CircleCheck, Clock } from "@lucide/astro";
 ---
 
 <div class="mockup-card glass w-full min-w-0 max-w-full select-none overflow-hidden rounded-2xl border border-white/10 bg-bg-card/90 text-xs text-[#f7f3ea] shadow-2xl">
@@ -37,7 +37,7 @@ import { Search, Filter, RefreshCw, FileText, CheckCircle, Clock } from "@lucide
           <Clock size={10} /> Active Files
         </span>
         <span class="flex items-center gap-2 px-2 py-1.5 text-[10px] font-medium text-muted hover:text-white transition cursor-pointer">
-          <CheckCircle size={10} /> Approvals
+          <CircleCheck size={10} /> Approvals
         </span>
       </nav>
     </aside>
@@ -52,7 +52,7 @@ import { Search, Filter, RefreshCw, FileText, CheckCircle, Clock } from "@lucide
         </div>
         <div class="flex flex-wrap gap-1">
           <span class="flex items-center gap-1 rounded border border-white/10 bg-white/[0.02] px-1.5 py-0.5 text-[9px] font-medium text-muted">
-            <Filter size={8} /> Filters
+            <SlidersHorizontal size={8} /> Filters
           </span>
           <span class="rounded bg-mint text-bg-deep px-1.5 py-0.5 text-[9px] font-bold">
             + New Record
