@@ -17,7 +17,10 @@ import emedicardPaymentMethodsImage from "../assets/projects/emedicard/payment-m
 import emedicardReviewSubmitImage from "../assets/projects/emedicard/review-submit.png?url";
 import emedicardCertificateImage from "../assets/projects/emedicard/sample-health-certificate.svg?url";
 import emedicardUploadDocumentsImage from "../assets/projects/emedicard/upload-documents.png?url";
-import portfolioDeckImage from "../assets/projects/portfolio-deck.svg?url";
+import readoramaPreviewImage from "../assets/projects/readorama/readorama_purpose.png";
+import readoramaBookSellingImage from "../assets/projects/readorama/readorama-book-selling.png?url";
+import readoramaDesignSystemImage from "../assets/projects/readorama/readorama_preview.png?url";
+import figmaIcon from "../assets/tech-icons/figma.svg?url";
 import reactIcon from "../assets/tech-icons/react.svg?url";
 import typescriptIcon from "../assets/tech-icons/typescript.svg?url";
 import htmlIcon from "../assets/tech-icons/html.svg?url";
@@ -98,7 +101,7 @@ const skills = [
   {
     title: "Frontend",
     icon: Layers,
-    items: ["React", "TypeScript", "HTML", "Tailwind CSS", "Next.js", "Nuxt.js", "Vue.js", "Astro"],
+    items: ["React", "TypeScript", "HTML", "Tailwind CSS", "Next.js", "Astro", "Figma", "Nuxt.js", "Vue.js"],
   },
   {
     title: "Backend",
@@ -132,6 +135,7 @@ const techIcons: Record<string, string> = {
   "Nuxt.js": nuxtIcon,
   "Vue.js": vueIcon,
   "Astro": astroIcon,
+  "Figma": figmaIcon,
   "Laravel": laravelIcon,
   "PHP": phpIcon,
   "Python": pythonIcon,
@@ -582,17 +586,17 @@ const timelineItems = [
             </div>
           </article>
 
-          <!-- Card 4: Portfolio Deck -->
+          <!-- Card 4: Readorama -->
           <article class="group scroll-reveal project-card relative flex flex-col justify-between overflow-hidden rounded-2xl bg-bg-deep/55 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl" style="transition-delay: 220ms;">
             <!-- Dedicated border overlay that always paints on top of scaling images -->
             <div class="pointer-events-none absolute inset-0 z-20 rounded-2xl border border-white/10 transition-colors duration-300 group-hover:border-mint/30"></div>
             <div>
               <!-- Visual Screenshot Preview Frame -->
               <div class="aspect-[2.11/1] w-full overflow-hidden border-b border-white/8 bg-[#070b0e] relative">
-                <img
-                  src={portfolioDeckImage}
-                  alt="Portfolio Deck telemetry and CLI interface"
-                  class="size-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                <Image
+                  src={readoramaPreviewImage}
+                  alt="Readorama mobile marketplace UI/UX design presentation"
+                  class="size-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
               </div>
@@ -602,34 +606,34 @@ const timelineItems = [
                 <!-- Category Pills -->
                 <div class="flex flex-wrap items-center gap-2">
                   <span class="rounded-full border border-mint/30 bg-mint/5 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-mint">
-                    Developer Tool
+                    UI/UX Design
                   </span>
                   <span class="rounded-full border border-mint/30 bg-mint/5 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-mint">
-                    Portfolio
+                    Figma
                   </span>
                 </div>
 
                 <!-- Title & Description -->
                 <h3 class="mt-3.5 font-display text-xl font-bold text-ink">
-                  Portfolio Deck
+                  Readorama
                 </h3>
                 <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted">
-                  Personal developer portfolio featuring live GitHub activity telemetry, terminal CLI emulator, and adaptive theme tokens.
+                  Mobile marketplace UI/UX design for book exchange and acquisition — community trade flows, categorized discovery, and checkout prototypes in Figma.
                 </p>
               </div>
             </div>
 
-            <!-- CTA Trigger / Link -->
+            <!-- CTA Trigger -->
             <div class="p-5 pt-0 sm:p-6 sm:pt-0">
-              <a
-                href="https://github.com/SeanPqul/Portfolio"
-                target="_blank"
-                rel="noreferrer"
-                class="project-card-btn inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 py-2.5 text-xs font-bold text-ink transition hover:bg-mint hover:text-[#07100d] hover:border-mint shadow-sm"
+              <button
+                type="button"
+                class="project-card-btn project-modal-trigger inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 py-2.5 text-xs font-bold text-ink transition hover:bg-mint hover:text-[#07100d] hover:border-mint cursor-pointer shadow-sm"
+                data-project-modal-target="readorama-modal"
+                aria-haspopup="dialog"
               >
-                <span>GitHub</span>
+                <span>Details</span>
                 <ArrowUpRight size={14} />
-              </a>
+              </button>
             </div>
           </article>
 
@@ -1011,6 +1015,138 @@ const timelineItems = [
                 </button>
                 <figcaption class="mt-2 text-center text-[10px] font-bold uppercase tracking-[0.12em] text-muted">
                   {screen.label}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Readorama Case Study / Contributions Modal -->
+  <div
+    id="readorama-modal"
+    class="project-modal fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="readorama-modal-title"
+  >
+    <div class="project-modal-panel max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-2xl border border-white/10 bg-bg-deep shadow-2xl">
+      <div class="project-modal-header sticky top-0 z-10 flex items-center justify-between border-b border-white/8 bg-bg-deep/95 px-5 py-4 backdrop-blur sm:px-6">
+        <div>
+          <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-mint">UI/UX Design • Academic Group Project</span>
+          <h2 id="readorama-modal-title" class="font-display text-2xl font-extrabold text-ink">Readorama</h2>
+          <div class="mt-2 flex flex-wrap gap-1.5">
+            {["Figma", "UI/UX Design", "Wireframing", "Interactive Prototyping", "Design System"].map((tech) => (
+              <span class="rounded-md border border-mint/30 bg-mint/5 px-2 py-0.5 font-mono text-[10px] font-semibold text-mint">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <a
+            href="https://www.figma.com/design/9YsrKmz6fTSyGthAlcwRA6/Group-5?node-id=0-1&p=f&t=oSqlp4PKdApFvZAr-0"
+            target="_blank"
+            rel="noreferrer"
+            class="hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-mint/30 bg-mint/10 px-3 py-1.5 text-xs font-bold text-mint transition hover:bg-mint hover:text-[#07100d]"
+          >
+            <span>Open in Figma</span>
+            <ArrowUpRight size={13} />
+          </a>
+          <button
+            type="button"
+            class="project-modal-close grid size-9 place-items-center rounded-full text-ink/70 transition hover:bg-white/10 hover:text-ink cursor-pointer"
+            aria-label="Close Readorama details"
+          >
+            <X size={18} />
+          </button>
+        </div>
+      </div>
+
+      <div class="grid gap-6 p-5 sm:p-6 lg:grid-cols-[0.95fr_1.05fr]">
+        <div class="space-y-5">
+          <!-- Individual Contribution Section -->
+          <div class="rounded-xl border border-mint/20 bg-mint/5 p-4 sm:p-5">
+            <div class="flex items-center gap-2">
+              <span class="grid size-5 place-items-center rounded-full bg-mint text-bg-deep text-[10px] font-black">✓</span>
+              <p class="font-mono text-xs font-bold uppercase tracking-wider text-mint">My Key Contributions</p>
+            </div>
+            <ul class="mt-3.5 space-y-3 text-xs sm:text-sm leading-relaxed text-ink/90">
+              <li class="flex items-start gap-2.5">
+                <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-mint"></span>
+                <div>
+                  <strong class="text-ink font-semibold">Sell Books Module (Listing Flow)</strong>:
+                  <p class="text-muted text-xs mt-0.5">Designed complete book seller workflow — cover photo uploads, title, author, edition metadata, book condition, and price setting.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-mint"></span>
+                <div>
+                  <strong class="text-ink font-semibold">Forum &amp; Trading Chat Interface</strong>:
+                  <p class="text-muted text-xs mt-0.5">Crafted community discussion threads and direct messaging screens for peer-to-peer book swaps and trades.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Project Concept -->
+          <div>
+            <p class="font-mono text-[10px] font-bold uppercase tracking-wider text-muted">Project Concept &amp; Purpose</p>
+            <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted">
+              Readorama is designed to connect readers, sellers, and enthusiasts to facilitate the exchange and acquisition of books. The app provides a convenient marketplace to buy, sell, or trade new and used books at affordable rates.
+            </p>
+          </div>
+
+          <!-- Mobile CTA Link on smaller screens -->
+          <div class="block sm:hidden pt-2">
+            <a
+              href="https://www.figma.com/design/9YsrKmz6fTSyGthAlcwRA6/Group-5?node-id=0-1&p=f&t=oSqlp4PKdApFvZAr-0"
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-mint/30 bg-mint/10 py-2.5 text-xs font-bold text-mint transition hover:bg-mint hover:text-[#07100d]"
+            >
+              <span>Open in Figma</span>
+              <ArrowUpRight size={13} />
+            </a>
+          </div>
+        </div>
+
+        <!-- Visual Previews -->
+        <div class="space-y-4">
+          <p class="font-mono text-[10px] font-bold uppercase tracking-wider text-muted">Design Artifacts</p>
+          <div class="grid gap-3 sm:grid-cols-2">
+            {[
+              {
+                src: readoramaBookSellingImage,
+                alt: "Readorama book selling and listing interface workflow",
+                label: "Book Selling & Listing Flow",
+              },
+              {
+                src: readoramaDesignSystemImage,
+                alt: "Readorama brand guidelines and design system overview",
+                label: "Brand Guidelines & System Overview",
+              },
+            ].map((preview) => (
+              <figure>
+                <button
+                  type="button"
+                  class="image-preview-trigger block w-full overflow-hidden rounded-xl border border-white/10 bg-bg-card transition hover:border-mint/40 focus:outline-none focus:ring-2 focus:ring-mint/60 cursor-pointer"
+                  data-image-src={preview.src}
+                  data-image-alt={preview.alt}
+                  data-image-label={preview.label}
+                  aria-label={`Preview ${preview.label}`}
+                >
+                  <img
+                    src={preview.src}
+                    alt={preview.alt}
+                    class="aspect-[16/11] w-full object-cover object-top"
+                    loading="lazy"
+                  />
+                </button>
+                <figcaption class="mt-2 text-[10px] font-bold uppercase tracking-[0.12em] text-muted">
+                  {preview.label}
                 </figcaption>
               </figure>
             ))}
