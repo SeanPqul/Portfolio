@@ -1,11 +1,14 @@
 ---
+import { Image } from "astro:assets";
 import MainLayout from "../layouts/MainLayout.astro";
 import DeveloperDeck from "../components/DeveloperDeck.astro";
 import McDonaldsIcon from "../components/McDonaldsIcon.astro";
 import Logo from "../components/Logo.astro";
 import GithubContributions from "../components/GithubContributions.astro";
 
-import morataLandingImage from "../assets/projects/morata_landing.png?url";
+import morataLandingImage from "../assets/projects/fmmcbs/morata_landing.png";
+import fmmCbsLandingImage from "../assets/projects/fmmcbs/fmm_cbs_landing.png";
+import emedicardLandingImage from "../assets/projects/emedicard/landing-page.png";
 import emedicardAdminReviewImage from "../assets/projects/emedicard/admin-review.png?url";
 import emedicardCardTypeImage from "../assets/projects/emedicard/card-type.png?url";
 import emedicardDocumentRequirementsImage from "../assets/projects/emedicard/document-requirements.png?url";
@@ -58,6 +61,7 @@ import {
   GraduationCap,
   Code,
   Globe,
+  Lock,
   Menu,
   Moon,
   Sun,
@@ -426,19 +430,20 @@ const timelineItems = [
           </p>
         </div>
 
-        <!-- 3-Column Card Grid -->
-        <!-- 3-Column Card Grid -->
+        <!-- Project Cards Grid (3 Columns) -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           
           <!-- Card 1: F.M. Morata Customs Brokerage & Law Firm -->
-          <article class="group scroll-reveal project-card flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-bg-deep/55 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-mint/30 hover:shadow-2xl">
+          <article class="group scroll-reveal project-card relative flex flex-col justify-between overflow-hidden rounded-2xl bg-bg-deep/55 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl">
+            <!-- Dedicated border overlay that always paints on top of scaling images -->
+            <div class="pointer-events-none absolute inset-0 z-20 rounded-2xl border border-white/10 transition-colors duration-300 group-hover:border-mint/30"></div>
             <div>
               <!-- Visual Screenshot Preview Frame -->
-              <div class="aspect-[16/10] w-full overflow-hidden border-b border-white/8 bg-[#070b0e] relative flex items-center justify-center">
-                <img
+              <div class="aspect-[2.11/1] w-full overflow-hidden border-b border-white/8 bg-[#070b0e] relative">
+                <Image
                   src={morataLandingImage}
                   alt="F.M. Morata Customs Brokerage & Law Firm web system screenshot"
-                  class="size-full object-contain object-center transition-transform duration-500 group-hover:scale-102"
+                  class="size-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
               </div>
@@ -447,16 +452,16 @@ const timelineItems = [
               <div class="p-5 sm:p-6">
                 <!-- Category Pills -->
                 <div class="flex flex-wrap items-center gap-2">
-                  <span class="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-muted">
+                  <span class="rounded-full border border-mint/30 bg-mint/5 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-mint">
                     Logistics
                   </span>
-                  <span class="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-muted">
+                  <span class="rounded-full border border-mint/30 bg-mint/5 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-mint">
                     Brokerage
                   </span>
                 </div>
 
                 <!-- Title & Description -->
-                <h3 class="mt-3.5 font-display text-xl font-bold text-ink transition-colors group-hover:text-mint">
+                <h3 class="mt-3.5 font-display text-xl font-bold text-ink">
                   F.M. Morata Customs Brokerage & Law Firm
                 </h3>
                 <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted">
@@ -465,29 +470,28 @@ const timelineItems = [
               </div>
             </div>
 
-            <!-- CTA Trigger -->
+            <!-- CTA Badge -->
             <div class="p-5 pt-0 sm:p-6 sm:pt-0">
-              <button
-                type="button"
-                class="project-card-btn project-modal-trigger inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 py-2.5 text-xs font-bold text-ink transition hover:bg-mint hover:text-[#07100d] hover:border-mint cursor-pointer shadow-sm"
-                data-project-modal-target="morata-modal"
-                aria-haspopup="dialog"
+              <div
+                class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white/[0.04] border border-white/10 py-2.5 text-xs font-bold text-muted cursor-default select-none shadow-xs"
               >
-                <span>Details</span>
-                <ArrowUpRight size={14} />
-              </button>
+                <Lock size={13} class="opacity-75 text-mint" />
+                <span class="text-ink/90">Internship Work</span>
+              </div>
             </div>
           </article>
 
-          <!-- Card 2: EMEDICARD -->
-          <article class="group scroll-reveal project-card flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-bg-deep/55 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-sky/30 hover:shadow-2xl" style="transition-delay: 100ms;">
+          <!-- Card 2: FMM-CBS Corporate Website -->
+          <article class="group scroll-reveal project-card relative flex flex-col justify-between overflow-hidden rounded-2xl bg-bg-deep/55 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl" style="transition-delay: 80ms;">
+            <!-- Dedicated border overlay that always paints on top of scaling images -->
+            <div class="pointer-events-none absolute inset-0 z-20 rounded-2xl border border-white/10 transition-colors duration-300 group-hover:border-mint/30"></div>
             <div>
               <!-- Visual Screenshot Preview Frame -->
-              <div class="aspect-[16/10] w-full overflow-hidden border-b border-white/8 bg-[#070b0e] relative flex items-center justify-center">
-                <img
-                  src={emedicardAdminReviewImage}
-                  alt="EMEDICARD digital platform screenshot"
-                  class="size-full object-contain object-center transition-transform duration-500 group-hover:scale-102"
+              <div class="aspect-[2.11/1] w-full overflow-hidden border-b border-white/8 bg-[#070b0e] relative">
+                <Image
+                  src={fmmCbsLandingImage}
+                  alt="FMM-CBS Corporate Website landing screen"
+                  class="size-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
               </div>
@@ -496,16 +500,67 @@ const timelineItems = [
               <div class="p-5 sm:p-6">
                 <!-- Category Pills -->
                 <div class="flex flex-wrap items-center gap-2">
-                  <span class="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-muted">
+                  <span class="rounded-full border border-mint/30 bg-mint/5 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-mint">
+                    Corporate
+                  </span>
+                  <span class="rounded-full border border-mint/30 bg-mint/5 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-mint">
+                    Brokerage
+                  </span>
+                </div>
+
+                <!-- Title & Description -->
+                <h3 class="mt-3.5 font-display text-xl font-bold text-ink">
+                  FMM-CBS Corporate Website
+                </h3>
+                <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted">
+                  Corporate website for a customs brokerage firm — showcasing services, destinations, and inquiries.
+                </p>
+              </div>
+            </div>
+
+            <!-- CTA Link -->
+            <div class="p-5 pt-0 sm:p-6 sm:pt-0">
+              <a
+                href="https://blog.fmmcbs.com"
+                target="_blank"
+                rel="noreferrer"
+                class="project-card-btn inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 py-2.5 text-xs font-bold text-ink transition hover:bg-mint hover:text-[#07100d] hover:border-mint shadow-sm"
+              >
+                <span>Visit</span>
+                <ArrowUpRight size={14} />
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 3: EMEDICARD -->
+          <article class="group scroll-reveal project-card relative flex flex-col justify-between overflow-hidden rounded-2xl bg-bg-deep/55 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl" style="transition-delay: 150ms;">
+            <!-- Dedicated border overlay that always paints on top of scaling images -->
+            <div class="pointer-events-none absolute inset-0 z-20 rounded-2xl border border-white/10 transition-colors duration-300 group-hover:border-mint/30"></div>
+            <div>
+              <!-- Visual Screenshot Preview Frame -->
+              <div class="aspect-[2.11/1] w-full overflow-hidden border-b border-white/8 bg-[#070b0e] relative">
+                <Image
+                  src={emedicardLandingImage}
+                  alt="EMEDICARD digital platform landing page"
+                  class="size-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+
+              <!-- Card Body Content -->
+              <div class="p-5 sm:p-6">
+                <!-- Category Pills -->
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="rounded-full border border-mint/30 bg-mint/5 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-mint">
                     Healthcare
                   </span>
-                  <span class="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-muted">
+                  <span class="rounded-full border border-mint/30 bg-mint/5 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-mint">
                     City System
                   </span>
                 </div>
 
                 <!-- Title & Description -->
-                <h3 class="mt-3.5 font-display text-xl font-bold text-ink transition-colors group-hover:text-sky">
+                <h3 class="mt-3.5 font-display text-xl font-bold text-ink">
                   EMEDICARD
                 </h3>
                 <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted">
@@ -518,7 +573,7 @@ const timelineItems = [
             <div class="p-5 pt-0 sm:p-6 sm:pt-0">
               <button
                 type="button"
-                class="project-card-btn project-modal-trigger inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 py-2.5 text-xs font-bold text-ink transition hover:bg-sky hover:text-[#07100d] hover:border-sky cursor-pointer shadow-sm"
+                class="project-card-btn project-modal-trigger inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 py-2.5 text-xs font-bold text-ink transition hover:bg-mint hover:text-[#07100d] hover:border-mint cursor-pointer shadow-sm"
                 data-project-modal-target="emedicard-modal"
                 aria-haspopup="dialog"
               >
@@ -528,15 +583,17 @@ const timelineItems = [
             </div>
           </article>
 
-          <!-- Card 3: Portfolio Deck -->
-          <article class="group scroll-reveal project-card flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-bg-deep/55 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-amber/30 hover:shadow-2xl" style="transition-delay: 200ms;">
+          <!-- Card 4: Portfolio Deck -->
+          <article class="group scroll-reveal project-card relative flex flex-col justify-between overflow-hidden rounded-2xl bg-bg-deep/55 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl" style="transition-delay: 220ms;">
+            <!-- Dedicated border overlay that always paints on top of scaling images -->
+            <div class="pointer-events-none absolute inset-0 z-20 rounded-2xl border border-white/10 transition-colors duration-300 group-hover:border-mint/30"></div>
             <div>
               <!-- Visual Screenshot Preview Frame -->
-              <div class="aspect-[16/10] w-full overflow-hidden border-b border-white/8 bg-[#070b0e] relative flex items-center justify-center">
+              <div class="aspect-[2.11/1] w-full overflow-hidden border-b border-white/8 bg-[#070b0e] relative">
                 <img
                   src={portfolioDeckImage}
                   alt="Portfolio Deck telemetry and CLI interface"
-                  class="size-full object-contain object-center transition-transform duration-500 group-hover:scale-102"
+                  class="size-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
               </div>
@@ -545,16 +602,16 @@ const timelineItems = [
               <div class="p-5 sm:p-6">
                 <!-- Category Pills -->
                 <div class="flex flex-wrap items-center gap-2">
-                  <span class="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-muted">
+                  <span class="rounded-full border border-mint/30 bg-mint/5 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-mint">
                     Developer Tool
                   </span>
-                  <span class="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-muted">
+                  <span class="rounded-full border border-mint/30 bg-mint/5 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-mint">
                     Portfolio
                   </span>
                 </div>
 
                 <!-- Title & Description -->
-                <h3 class="mt-3.5 font-display text-xl font-bold text-ink transition-colors group-hover:text-amber">
+                <h3 class="mt-3.5 font-display text-xl font-bold text-ink">
                   Portfolio Deck
                 </h3>
                 <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted">
@@ -569,7 +626,7 @@ const timelineItems = [
                 href="https://github.com/SeanPqul/Portfolio"
                 target="_blank"
                 rel="noreferrer"
-                class="project-card-btn inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 py-2.5 text-xs font-bold text-ink transition hover:bg-amber hover:text-[#07100d] hover:border-amber shadow-sm"
+                class="project-card-btn inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 py-2.5 text-xs font-bold text-ink transition hover:bg-mint hover:text-[#07100d] hover:border-mint shadow-sm"
               >
                 <span>GitHub</span>
                 <ArrowUpRight size={14} />
@@ -840,70 +897,6 @@ const timelineItems = [
       </div>
     </section>
   </main>
-
-  <div
-    id="morata-modal"
-    class="project-modal fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="morata-modal-title"
-  >
-    <div class="project-modal-panel max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-2xl border border-white/10 bg-bg-deep shadow-2xl">
-      <div class="project-modal-header sticky top-0 z-10 flex items-center justify-between border-b border-white/8 bg-bg-deep/95 px-5 py-4 backdrop-blur sm:px-6">
-        <div>
-          <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-muted">Logistics & Customs Brokerage</span>
-          <h2 id="morata-modal-title" class="font-display text-2xl font-extrabold text-ink">F.M. Morata Customs Brokerage & Law Firm</h2>
-          <div class="mt-2 flex flex-wrap gap-1.5">
-            {["Laravel", "React", "TypeScript", "Vite", "MySQL"].map((tech) => (
-              <span class="rounded-md border border-mint/20 bg-mint/8 px-2 py-0.5 font-mono text-[10px] font-semibold text-mint">
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
-        <button
-          type="button"
-          class="project-modal-close grid size-9 place-items-center rounded-full text-ink/70 transition hover:bg-white/10 hover:text-ink cursor-pointer"
-          aria-label="Close details"
-        >
-          <X size={18} />
-        </button>
-      </div>
-
-      <div class="grid gap-6 p-5 sm:p-6 lg:grid-cols-[minmax(18rem,0.72fr)_minmax(0,1.28fr)]">
-        <div class="min-w-0 space-y-4">
-          <div>
-            <p class="font-mono text-[10px] font-bold uppercase tracking-wider text-muted">Key Highlights</p>
-            <ul class="mt-3 space-y-2.5 text-xs sm:text-sm leading-relaxed text-muted">
-              <li class="flex items-start gap-2">
-                <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-mint"></span>
-                <span>Built REST APIs and React dashboard for customs import/export transaction tracking.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-mint"></span>
-                <span>Implemented role-based access control policies and document upload validation.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-mint"></span>
-                <span>Designed records archiving and filtered lookup system for brokerage operations.</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="space-y-3">
-          <div class="overflow-hidden rounded-xl border border-white/10 bg-black/30">
-            <img
-              src={morataLandingImage}
-              alt="F.M. Morata Customs Brokerage & Law Firm public landing screen"
-              class="w-full object-contain"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div
     id="emedicard-modal"
