@@ -55,6 +55,7 @@ import {
   Layers,
   Mail,
   MapPin,
+  Maximize2,
   Smartphone,
   Terminal,
   User,
@@ -436,7 +437,7 @@ const timelineItems = [
         <!-- Project Cards Grid (3 Columns) -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           
-          <!-- Card 1: F.M. Morata — Operations System -->
+          <!-- Card 1: F.M. Morata Customs Brokerage & Law Firm (Operations System) -->
           <article class="group scroll-reveal project-card relative flex flex-col justify-between overflow-hidden rounded-2xl bg-bg-deep/55 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl">
             <!-- Dedicated border overlay that always paints on top of scaling images -->
             <div class="pointer-events-none absolute inset-0 z-20 rounded-2xl border border-white/10 transition-colors duration-300 group-hover:border-mint/30"></div>
@@ -445,7 +446,7 @@ const timelineItems = [
               <div class="aspect-[2.11/1] w-full overflow-hidden border-b border-white/8 bg-[#070b0e] relative">
                 <Image
                   src={morataLandingImage}
-                  alt="F.M. Morata — Operations System screenshot"
+                  alt="F.M. Morata Customs Brokerage & Law Firm screenshot"
                   class="size-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
@@ -456,19 +457,22 @@ const timelineItems = [
                 <!-- Category Pills -->
                 <div class="flex flex-wrap items-center gap-2">
                   <span class="rounded-full border border-mint/30 bg-mint/5 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-mint">
+                    Web Application
+                  </span>
+                  <span class="rounded-full border border-mint/30 bg-mint/5 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-mint">
                     Logistics
                   </span>
                   <span class="rounded-full border border-mint/30 bg-mint/5 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-mint">
-                    Brokerage
+                    Legal
                   </span>
                 </div>
 
                 <!-- Title & Description -->
                 <h3 class="mt-3.5 font-display text-xl font-bold text-ink">
-                  F.M. Morata — Operations System
+                  F.M. Morata Customs Brokerage &amp; Law Firm
                 </h3>
                 <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted">
-                  Operations system for brokerage workflows — import/export transaction tracking, records, and document archiving.
+                  Operations system for brokerage and law firm workflows — import/export transaction tracking, legal document records, and archiving.
                 </p>
               </div>
             </div>
@@ -484,7 +488,7 @@ const timelineItems = [
             </div>
           </article>
 
-          <!-- Card 2: F.M. Morata — Corporate Website -->
+          <!-- Card 2: F.M. Morata Customs Brokerage & Law Firm (Static Website) -->
           <article class="group scroll-reveal project-card relative flex flex-col justify-between overflow-hidden rounded-2xl bg-bg-deep/55 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl" style="transition-delay: 80ms;">
             <!-- Dedicated border overlay that always paints on top of scaling images -->
             <div class="pointer-events-none absolute inset-0 z-20 rounded-2xl border border-white/10 transition-colors duration-300 group-hover:border-mint/30"></div>
@@ -493,7 +497,7 @@ const timelineItems = [
               <div class="aspect-[2.11/1] w-full overflow-hidden border-b border-white/8 bg-[#070b0e] relative">
                 <Image
                   src={fmmCbsLandingImage}
-                  alt="F.M. Morata — Corporate Website landing screen"
+                  alt="F.M. Morata Customs Brokerage & Law Firm landing screen"
                   class="size-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
@@ -504,16 +508,13 @@ const timelineItems = [
                 <!-- Category Pills -->
                 <div class="flex flex-wrap items-center gap-2">
                   <span class="rounded-full border border-mint/30 bg-mint/5 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-mint">
-                    Corporate
-                  </span>
-                  <span class="rounded-full border border-mint/30 bg-mint/5 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-mint">
-                    Brokerage
+                    Static Website
                   </span>
                 </div>
 
                 <!-- Title & Description -->
                 <h3 class="mt-3.5 font-display text-xl font-bold text-ink">
-                  F.M. Morata — Corporate Website
+                  F.M. Morata Customs Brokerage &amp; Law Firm
                 </h3>
                 <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted">
                   Corporate website for a customs brokerage firm — showcasing services, destinations, and inquiries.
@@ -901,252 +902,382 @@ const timelineItems = [
     </section>
   </main>
 
+  <!-- EMEDICARD Case Study Modal (Unified Mint Theme) -->
   <div
     id="emedicard-modal"
-    class="project-modal fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+    class="project-modal fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 p-4 backdrop-blur-md sm:p-6"
     role="dialog"
     aria-modal="true"
     aria-labelledby="emedicard-modal-title"
   >
-    <div class="project-modal-panel max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-2xl border border-white/10 bg-bg-deep shadow-2xl">
-      <div class="project-modal-header sticky top-0 z-10 flex items-center justify-between border-b border-white/8 bg-bg-deep/95 px-5 py-4 backdrop-blur sm:px-6">
-        <div>
-          <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-muted">Healthcare & City System</span>
-          <h2 id="emedicard-modal-title" class="font-display text-2xl font-extrabold text-ink">EMEDICARD</h2>
-          <div class="mt-2 flex flex-wrap gap-1.5">
-            {["React Native", "Expo", "Next.js", "TypeScript", "Convex", "Clerk"].map((tech) => (
-              <span class="rounded-md border border-sky/20 bg-sky/8 px-2 py-0.5 font-mono text-[10px] font-semibold text-sky">
-                {tech}
-              </span>
-            ))}
+    <div class="project-modal-panel max-h-[90vh] w-full max-w-5xl overflow-y-auto overflow-x-hidden rounded-2xl border border-slate-200/90 bg-white text-slate-950 shadow-2xl transition-all dark:border-white/10 dark:bg-[#0c1015] dark:text-ink">
+      <!-- Modal Header -->
+      <div class="project-modal-header sticky top-0 z-20 flex flex-col gap-3 border-b border-slate-200/80 bg-white/95 px-6 py-4.5 backdrop-blur-md dark:border-white/8 dark:bg-[#0c1015]/95 sm:flex-row sm:items-center sm:justify-between">
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <h2 id="emedicard-modal-title" class="font-display text-2xl font-bold tracking-tight text-ink">
+              EMEDICARD
+            </h2>
+            <span class="rounded-md border border-mint/30 bg-mint/10 px-2 py-0.5 font-mono text-[10px] font-semibold text-mint">
+              Capstone Project
+            </span>
           </div>
+          <p class="text-xs text-muted">
+            Academic Capstone Project • Digital Health Certificate &amp; Sanitary Permit Application Platform
+          </p>
         </div>
-        <button
-          type="button"
-          class="project-modal-close grid size-9 place-items-center rounded-full text-ink/70 transition hover:bg-white/10 hover:text-ink cursor-pointer"
-          aria-label="Close EMEDICARD details"
-        >
-          <X size={18} />
-        </button>
+        <div class="flex items-center gap-2.5">
+          <button
+            type="button"
+            class="project-modal-close inline-flex size-8 items-center justify-center rounded-lg border border-transparent text-muted transition-colors hover:border-slate-200 hover:bg-slate-100 hover:text-ink dark:hover:border-white/10 dark:hover:bg-white/10 dark:hover:text-ink cursor-pointer"
+            aria-label="Close EMEDICARD details"
+          >
+            <X size={16} />
+          </button>
+        </div>
       </div>
 
-      <div class="grid gap-6 p-5 sm:p-6 lg:grid-cols-[0.72fr_1.28fr]">
-        <div class="space-y-4">
-          <div>
-            <p class="font-mono text-[10px] font-bold uppercase tracking-wider text-muted">Key Highlights</p>
-            <ul class="mt-3 space-y-2.5 text-xs sm:text-sm leading-relaxed text-muted">
-              <li class="flex items-start gap-2">
-                <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-sky"></span>
-                <span>Engineered mobile submission workflows, health card category selection, and document upload stages.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-sky"></span>
-                <span>Built web admin review interface for staff document verification and application approval.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-sky"></span>
-                <span>Implemented digital health certificate generation with instant QR verification.</span>
-              </li>
-            </ul>
+      <!-- Modal Body Grid (strictly bounded) -->
+      <div class="grid min-w-0 gap-6 p-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-8">
+        <!-- Left Column: Scope & Overview (Typography-First) -->
+        <div class="min-w-0 flex flex-col justify-between space-y-6">
+          <div class="space-y-6">
+            <!-- Key Engineering Highlights -->
+            <div class="space-y-3.5">
+              <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-mint">
+                Key Engineering Highlights
+              </span>
+              <ul class="space-y-4">
+                <li class="space-y-1">
+                  <div class="flex items-center gap-2">
+                    <span class="size-1.5 shrink-0 rounded-full bg-mint"></span>
+                    <h3 class="font-sans text-sm font-semibold text-ink">Mobile Application &amp; Multi-Step Submissions</h3>
+                  </div>
+                  <p class="pl-3.5 text-xs sm:text-sm text-muted leading-relaxed">
+                    Engineered cross-platform mobile submission workflows with category selection, automated document checklists, and secure multi-file upload stages in React Native (Expo).
+                  </p>
+                </li>
+
+                <li class="space-y-1">
+                  <div class="flex items-center gap-2">
+                    <span class="size-1.5 shrink-0 rounded-full bg-mint"></span>
+                    <h3 class="font-sans text-sm font-semibold text-ink">Web Admin Document Verification Portal</h3>
+                  </div>
+                  <p class="pl-3.5 text-xs sm:text-sm text-muted leading-relaxed">
+                    Built a dedicated administrative review dashboard in Next.js for city health department staff to audit citizen requirements, verify lab results, and manage approvals.
+                  </p>
+                </li>
+
+                <li class="space-y-1">
+                  <div class="flex items-center gap-2">
+                    <span class="size-1.5 shrink-0 rounded-full bg-mint"></span>
+                    <h3 class="font-sans text-sm font-semibold text-ink">Digital Certificate &amp; Instant QR Verification</h3>
+                  </div>
+                  <p class="pl-3.5 text-xs sm:text-sm text-muted leading-relaxed">
+                    Implemented official digital health card and certificate generation featuring tamper-resistant QR codes for real-time field validation by city inspectors.
+                  </p>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Subtle Divider -->
+            <div class="border-t border-slate-200/70 dark:border-white/8"></div>
+
+            <!-- Project Concept -->
+            <div class="space-y-2">
+              <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-muted">
+                About the System
+              </span>
+              <p class="text-xs sm:text-sm text-muted leading-relaxed">
+                EMEDICARD modernizes local government health services by replacing slow, paper-based health certificate queues with a unified citizen mobile app and back-office verification portal.
+              </p>
+            </div>
+          </div>
+
+          <!-- Tech Stack Footer -->
+          <div class="flex flex-wrap items-center justify-between gap-2 border-t border-slate-200/70 pt-4 dark:border-white/8 text-xs text-muted">
+            <div class="flex items-center gap-2">
+              <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-muted">Stack:</span>
+              <span>React Native • Expo • Next.js • TypeScript • Convex • Clerk</span>
+            </div>
           </div>
         </div>
 
-        <div class="min-w-0 space-y-4">
-          <div class="grid gap-3 xl:grid-cols-2">
-            {[
-              {
-                src: emedicardAdminReviewImage,
-                alt: "EMEDICARD web admin document verification screen",
-                label: "Web Admin Review",
-              },
-              {
-                src: emedicardCertificateImage,
-                alt: "EMEDICARD sanitized sample health certificate",
-                label: "Sample Certificate",
-              },
-            ].map((preview) => (
-              <figure>
+        <!-- Right Column: System Interfaces Showcase (Strictly Contained) -->
+        <div class="min-w-0 space-y-5">
+          <!-- Web Admin & Certificate Showcase -->
+          <div class="space-y-3.5">
+            <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-muted">
+              Web Admin &amp; Digital Certificate
+            </span>
+            <div class="grid min-w-0 gap-4 sm:grid-cols-2">
+              <figure class="group flex min-w-0 flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50/60 shadow-xs transition-all hover:border-mint/50 hover:shadow-md dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-mint/40">
                 <button
                   type="button"
-                  class="image-preview-trigger block w-full overflow-hidden rounded-xl border border-white/10 bg-[#e8e2d6] transition hover:border-sky/40 focus:outline-none focus:ring-2 focus:ring-sky/60 cursor-pointer"
-                  data-image-src={preview.src}
-                  data-image-alt={preview.alt}
-                  data-image-label={preview.label}
-                  aria-label={`Preview ${preview.label}`}
+                  class="image-preview-trigger relative block w-full overflow-hidden bg-[#e8e2d6] cursor-pointer focus:outline-none focus:ring-2 focus:ring-mint/60"
+                  data-image-src={emedicardAdminReviewImage}
+                  data-image-alt="EMEDICARD web admin document verification screen"
+                  data-image-label="Web Admin Verification"
+                  aria-label="Preview Web Admin Verification"
                 >
                   <img
-                    src={preview.src}
-                    alt={preview.alt}
-                    class="aspect-[16/7] w-full object-contain"
+                    src={emedicardAdminReviewImage}
+                    alt="EMEDICARD web admin document verification screen"
+                    class="aspect-[16/10] w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
                     loading="lazy"
                   />
+                  <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 backdrop-blur-[1px] transition-opacity duration-200 group-hover:opacity-100">
+                    <span class="inline-flex items-center gap-1.5 rounded-md border border-white/20 bg-black/70 px-2.5 py-1 text-[11px] font-semibold text-white shadow-md">
+                      <Maximize2 size={12} />
+                      <span>View Full Size</span>
+                    </span>
+                  </div>
                 </button>
-                <figcaption class="mt-2 text-[10px] font-bold uppercase tracking-[0.12em] text-muted">
-                  {preview.label}
+                <figcaption class="flex flex-col p-3 border-t border-slate-200/60 bg-white/60 dark:border-white/6 dark:bg-transparent">
+                  <span class="text-xs font-semibold text-ink">
+                    Web Admin Verification
+                  </span>
+                  <span class="mt-0.5 text-[11px] text-muted leading-tight">
+                    Staff review &amp; approval dashboard
+                  </span>
                 </figcaption>
               </figure>
-            ))}
+
+              <figure class="group flex min-w-0 flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50/60 shadow-xs transition-all hover:border-mint/50 hover:shadow-md dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-mint/40">
+                <button
+                  type="button"
+                  class="image-preview-trigger relative block w-full overflow-hidden bg-[#fdfbf7] dark:bg-[#151b22] cursor-pointer focus:outline-none focus:ring-2 focus:ring-mint/60"
+                  data-image-src={emedicardCertificateImage}
+                  data-image-alt="EMEDICARD sanitized sample health certificate"
+                  data-image-label="Digital Health Certificate"
+                  aria-label="Preview Digital Health Certificate"
+                >
+                  <img
+                    src={emedicardCertificateImage}
+                    alt="EMEDICARD sanitized sample health certificate"
+                    class="aspect-[16/10] w-full object-contain p-2 transition-transform duration-300 group-hover:scale-[1.02]"
+                    loading="lazy"
+                  />
+                  <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 backdrop-blur-[1px] transition-opacity duration-200 group-hover:opacity-100">
+                    <span class="inline-flex items-center gap-1.5 rounded-md border border-white/20 bg-black/70 px-2.5 py-1 text-[11px] font-semibold text-white shadow-md">
+                      <Maximize2 size={12} />
+                      <span>View Full Size</span>
+                    </span>
+                  </div>
+                </button>
+                <figcaption class="flex flex-col p-3 border-t border-slate-200/60 bg-white/60 dark:border-white/6 dark:bg-transparent">
+                  <span class="text-xs font-semibold text-ink">
+                    Digital Health Certificate
+                  </span>
+                  <span class="mt-0.5 text-[11px] text-muted leading-tight">
+                    Instant QR-verified compliance document
+                  </span>
+                </figcaption>
+              </figure>
+            </div>
           </div>
 
-          <div class="flex min-w-0 gap-3 overflow-x-auto rounded-xl border border-white/10 bg-black/20 p-3">
-            {[
-              { src: emedicardCardTypeImage, alt: "EMEDICARD health card type selection screen", label: "Card Type" },
-              { src: emedicardDocumentRequirementsImage, alt: "EMEDICARD document requirements checklist screen", label: "Requirements" },
-              { src: emedicardUploadDocumentsImage, alt: "EMEDICARD required document upload screen", label: "Upload Docs" },
-              { src: emedicardReviewSubmitImage, alt: "EMEDICARD review and submit document summary screen", label: "Review" },
-              { src: emedicardPaymentMethodsImage, alt: "EMEDICARD payment methods screen", label: "Payment" },
-              { src: emedicardHealthCardImage, alt: "EMEDICARD digital health card QR screen", label: "Health card" },
-            ].map((screen) => (
-              <figure class="w-32 shrink-0 sm:w-36">
-                <button
-                  type="button"
-                  class="image-preview-trigger block overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition hover:border-sky/40 focus:outline-none focus:ring-2 focus:ring-sky/60 cursor-pointer"
-                  data-image-src={screen.src}
-                  data-image-alt={screen.alt}
-                  data-image-label={screen.label}
-                  aria-label={`Preview ${screen.label} screen`}
-                >
-                  <img
-                    src={screen.src}
-                    alt={screen.alt}
-                    class="aspect-[9/19] w-full object-cover object-top"
-                    loading="lazy"
-                  />
-                </button>
-                <figcaption class="mt-2 text-center text-[10px] font-bold uppercase tracking-[0.12em] text-muted">
-                  {screen.label}
-                </figcaption>
-              </figure>
-            ))}
+          <!-- Mobile App Workflow Reel (strictly contained) -->
+          <div class="min-w-0 space-y-3">
+            <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-muted">
+              Mobile Applicant Workflow (6 Screens)
+            </span>
+            <div class="w-full max-w-full overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50/50 p-3 dark:border-white/8 dark:bg-black/20">
+              <div class="flex w-full gap-3 overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-white/10">
+                {[
+                  { src: emedicardCardTypeImage, alt: "EMEDICARD health card type selection screen", label: "Card Type" },
+                  { src: emedicardDocumentRequirementsImage, alt: "EMEDICARD document requirements checklist screen", label: "Requirements" },
+                  { src: emedicardUploadDocumentsImage, alt: "EMEDICARD required document upload screen", label: "Upload Docs" },
+                  { src: emedicardReviewSubmitImage, alt: "EMEDICARD review and submit document summary screen", label: "Review" },
+                  { src: emedicardPaymentMethodsImage, alt: "EMEDICARD payment methods screen", label: "Payment" },
+                  { src: emedicardHealthCardImage, alt: "EMEDICARD digital health card QR screen", label: "Health card" },
+                ].map((screen) => (
+                  <figure class="w-28 shrink-0 sm:w-32 group">
+                    <button
+                      type="button"
+                      class="image-preview-trigger relative block overflow-hidden rounded-xl border border-slate-200/80 bg-white transition hover:border-mint/50 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-mint/60 dark:border-white/10 dark:bg-white/5 dark:hover:border-mint/40 cursor-pointer"
+                      data-image-src={screen.src}
+                      data-image-alt={screen.alt}
+                      data-image-label={screen.label}
+                      aria-label={`Preview ${screen.label} screen`}
+                    >
+                      <img
+                        src={screen.src}
+                        alt={screen.alt}
+                        class="aspect-[9/19] w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.03]"
+                        loading="lazy"
+                      />
+                      <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 backdrop-blur-[1px] transition-opacity duration-200 group-hover:opacity-100">
+                        <Maximize2 size={14} class="text-white" />
+                      </div>
+                    </button>
+                    <figcaption class="mt-1.5 text-center font-mono text-[10px] font-semibold text-muted">
+                      {screen.label}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Readorama Case Study / Contributions Modal -->
+  <!-- Readorama Case Study Modal (High-End Clean Showcase) -->
   <div
     id="readorama-modal"
-    class="project-modal fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+    class="project-modal fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 p-4 backdrop-blur-md sm:p-6"
     role="dialog"
     aria-modal="true"
     aria-labelledby="readorama-modal-title"
   >
-    <div class="project-modal-panel max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-2xl border border-white/10 bg-bg-deep shadow-2xl">
-      <div class="project-modal-header sticky top-0 z-10 flex items-center justify-between border-b border-white/8 bg-bg-deep/95 px-5 py-4 backdrop-blur sm:px-6">
-        <div>
-          <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-mint">UI/UX Design • Academic Group Project</span>
-          <h2 id="readorama-modal-title" class="font-display text-2xl font-extrabold text-ink">Readorama</h2>
-          <div class="mt-2 flex flex-wrap gap-1.5">
-            {["Figma", "UI/UX Design", "Wireframing", "Interactive Prototyping", "Design System"].map((tech) => (
-              <span class="rounded-md border border-mint/30 bg-mint/5 px-2 py-0.5 font-mono text-[10px] font-semibold text-mint">
-                {tech}
-              </span>
-            ))}
+    <div class="project-modal-panel max-h-[90vh] w-full max-w-5xl overflow-y-auto overflow-x-hidden rounded-2xl border border-slate-200/90 bg-white text-slate-950 shadow-2xl transition-all dark:border-white/10 dark:bg-[#0c1015] dark:text-ink">
+      <!-- Modal Header -->
+      <div class="project-modal-header sticky top-0 z-20 flex flex-col gap-3 border-b border-slate-200/80 bg-white/95 px-6 py-4.5 backdrop-blur-md dark:border-white/8 dark:bg-[#0c1015]/95 sm:flex-row sm:items-center sm:justify-between">
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <h2 id="readorama-modal-title" class="font-display text-2xl font-bold tracking-tight text-ink">
+              Readorama
+            </h2>
+            <span class="rounded-md border border-mint/30 bg-mint/10 px-2 py-0.5 font-mono text-[10px] font-semibold text-mint">
+              2023 • Figma Design
+            </span>
           </div>
+          <p class="text-xs text-muted">
+            Academic Group Project • Mobile Book Exchange &amp; Marketplace
+          </p>
         </div>
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2.5">
           <a
             href="https://www.figma.com/design/9YsrKmz6fTSyGthAlcwRA6/Group-5?node-id=0-1&p=f&t=oSqlp4PKdApFvZAr-0"
             target="_blank"
             rel="noreferrer"
-            class="hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-mint/30 bg-mint/10 px-3 py-1.5 text-xs font-bold text-mint transition hover:bg-mint hover:text-[#07100d]"
+            class="inline-flex h-8 items-center justify-center gap-1.5 rounded-lg bg-mint px-3 text-xs font-bold text-[#07100d] shadow-sm transition-all hover:bg-mint/90 hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint"
           >
             <span>Open in Figma</span>
             <ArrowUpRight size={13} />
           </a>
           <button
             type="button"
-            class="project-modal-close grid size-9 place-items-center rounded-full text-ink/70 transition hover:bg-white/10 hover:text-ink cursor-pointer"
+            class="project-modal-close inline-flex size-8 items-center justify-center rounded-lg border border-transparent text-muted transition-colors hover:border-slate-200 hover:bg-slate-100 hover:text-ink dark:hover:border-white/10 dark:hover:bg-white/10 dark:hover:text-ink cursor-pointer"
             aria-label="Close Readorama details"
           >
-            <X size={18} />
+            <X size={16} />
           </button>
         </div>
       </div>
 
-      <div class="grid gap-6 p-5 sm:p-6 lg:grid-cols-[0.95fr_1.05fr]">
-        <div class="space-y-5">
-          <!-- Individual Contribution Section -->
-          <div class="rounded-xl border border-mint/20 bg-mint/5 p-4 sm:p-5">
-            <div class="flex items-center gap-2">
-              <span class="grid size-5 place-items-center rounded-full bg-mint text-bg-deep text-[10px] font-black">✓</span>
-              <p class="font-mono text-xs font-bold uppercase tracking-wider text-mint">My Key Contributions</p>
+      <!-- Modal Body Grid -->
+      <div class="grid min-w-0 gap-6 p-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-8">
+        <!-- Left Column: Scope & Overview (Typography-First) -->
+        <div class="min-w-0 flex flex-col justify-between space-y-6">
+          <div class="space-y-6">
+            <!-- Individual Contributions -->
+            <div class="space-y-3.5">
+              <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-mint">
+                Role &amp; Individual Contributions
+              </span>
+              <ul class="space-y-4">
+                <li class="space-y-1">
+                  <div class="flex items-center gap-2">
+                    <span class="size-1.5 shrink-0 rounded-full bg-mint"></span>
+                    <h3 class="font-sans text-sm font-semibold text-ink">Sell Books Listing Workflow</h3>
+                  </div>
+                  <p class="pl-3.5 text-xs sm:text-sm text-muted leading-relaxed">
+                    Inspired by MyAnimeList’s catalog and metadata architecture — designed a structured mobile listing flow featuring cover art uploads, edition metadata, condition grading, and pricing controls optimized for quick mobile browsing.
+                  </p>
+                </li>
+
+                <li class="space-y-1">
+                  <div class="flex items-center gap-2">
+                    <span class="size-1.5 shrink-0 rounded-full bg-mint"></span>
+                    <h3 class="font-sans text-sm font-semibold text-ink">Community Forum &amp; P2P Trading Chat</h3>
+                  </div>
+                  <p class="pl-3.5 text-xs sm:text-sm text-muted leading-relaxed">
+                    Designed community forum boards and direct chat interfaces enabling readers to connect, discuss titles, and arrange peer-to-peer book trades.
+                  </p>
+                </li>
+              </ul>
             </div>
-            <ul class="mt-3.5 space-y-3 text-xs sm:text-sm leading-relaxed text-ink/90">
-              <li class="flex items-start gap-2.5">
-                <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-mint"></span>
-                <div>
-                  <strong class="text-ink font-semibold">Sell Books Module (Listing Flow)</strong>:
-                  <p class="text-muted text-xs mt-0.5">Designed complete book seller workflow — cover photo uploads, title, author, edition metadata, book condition, and price setting.</p>
-                </div>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-mint"></span>
-                <div>
-                  <strong class="text-ink font-semibold">Forum &amp; Trading Chat Interface</strong>:
-                  <p class="text-muted text-xs mt-0.5">Crafted community discussion threads and direct messaging screens for peer-to-peer book swaps and trades.</p>
-                </div>
-              </li>
-            </ul>
+
+            <!-- Subtle Divider -->
+            <div class="border-t border-slate-200/70 dark:border-white/8"></div>
+
+            <!-- Project Concept -->
+            <div class="space-y-2">
+              <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-muted">
+                About the Project
+              </span>
+              <p class="text-xs sm:text-sm text-muted leading-relaxed">
+                Readorama is a mobile book marketplace designed to connect readers, sellers, and collectors — enabling users to buy, sell, or trade new and used books at affordable rates.
+              </p>
+            </div>
           </div>
 
-          <!-- Project Concept -->
-          <div>
-            <p class="font-mono text-[10px] font-bold uppercase tracking-wider text-muted">Project Concept &amp; Purpose</p>
-            <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted">
-              Readorama is designed to connect readers, sellers, and enthusiasts to facilitate the exchange and acquisition of books. The app provides a convenient marketplace to buy, sell, or trade new and used books at affordable rates.
-            </p>
-          </div>
-
-          <!-- Mobile CTA Link on smaller screens -->
-          <div class="block sm:hidden pt-2">
-            <a
-              href="https://www.figma.com/design/9YsrKmz6fTSyGthAlcwRA6/Group-5?node-id=0-1&p=f&t=oSqlp4PKdApFvZAr-0"
-              target="_blank"
-              rel="noreferrer"
-              class="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-mint/30 bg-mint/10 py-2.5 text-xs font-bold text-mint transition hover:bg-mint hover:text-[#07100d]"
-            >
-              <span>Open in Figma</span>
-              <ArrowUpRight size={13} />
-            </a>
+          <!-- Timeline & Tools Footer -->
+          <div class="flex flex-wrap items-center justify-between gap-2 border-t border-slate-200/70 pt-4 dark:border-white/8 text-xs text-muted">
+            <div class="flex items-center gap-2">
+              <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-muted">Timeline:</span>
+              <span>2023 (Academic Project)</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-muted">Tools:</span>
+              <span>Figma • Wireframing • Prototyping</span>
+            </div>
           </div>
         </div>
 
-        <!-- Visual Previews -->
-        <div class="space-y-4">
-          <p class="font-mono text-[10px] font-bold uppercase tracking-wider text-muted">Design Artifacts</p>
-          <div class="grid gap-3 sm:grid-cols-2">
+        <!-- Right Column: Design Artifacts Showcase -->
+        <div class="space-y-3.5">
+          <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-muted">
+            Design Artifacts
+          </span>
+
+          <div class="space-y-4">
             {[
               {
                 src: readoramaBookSellingImage,
                 alt: "Readorama book selling and listing interface workflow",
-                label: "Book Selling & Listing Flow",
+                title: "Book Selling & Listing Flow",
+                subtitle: "MyAnimeList-inspired catalog & listing screens",
               },
               {
                 src: readoramaDesignSystemImage,
                 alt: "Readorama brand guidelines and design system overview",
-                label: "Brand Guidelines & System Overview",
+                title: "Brand Guidelines & System",
+                subtitle: "Typography scale, palette & components",
               },
             ].map((preview) => (
-              <figure>
+              <figure class="group flex flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50/60 shadow-xs transition-all hover:border-mint/50 hover:shadow-md dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-mint/40">
                 <button
                   type="button"
-                  class="image-preview-trigger block w-full overflow-hidden rounded-xl border border-white/10 bg-bg-card transition hover:border-mint/40 focus:outline-none focus:ring-2 focus:ring-mint/60 cursor-pointer"
+                  class="image-preview-trigger relative block w-full overflow-hidden bg-bg-deep cursor-pointer focus:outline-none focus:ring-2 focus:ring-mint/60"
                   data-image-src={preview.src}
                   data-image-alt={preview.alt}
-                  data-image-label={preview.label}
-                  aria-label={`Preview ${preview.label}`}
+                  data-image-label={preview.title}
+                  aria-label={`Preview ${preview.title}`}
                 >
                   <img
                     src={preview.src}
                     alt={preview.alt}
-                    class="aspect-[16/11] w-full object-cover object-top"
+                    class="aspect-[16/10] w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
                     loading="lazy"
                   />
+                  <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 backdrop-blur-[1px] transition-opacity duration-200 group-hover:opacity-100">
+                    <span class="inline-flex items-center gap-1.5 rounded-md border border-white/20 bg-black/70 px-2.5 py-1 text-[11px] font-semibold text-white shadow-md">
+                      <Maximize2 size={12} />
+                      <span>View Full Size</span>
+                    </span>
+                  </div>
                 </button>
-                <figcaption class="mt-2 text-[10px] font-bold uppercase tracking-[0.12em] text-muted">
-                  {preview.label}
+                <figcaption class="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3.5 border-t border-slate-200/60 bg-white/60 dark:border-white/6 dark:bg-transparent gap-1">
+                  <span class="text-xs sm:text-sm font-semibold text-ink">
+                    {preview.title}
+                  </span>
+                  <span class="text-xs text-muted">
+                    {preview.subtitle}
+                  </span>
                 </figcaption>
               </figure>
             ))}
@@ -1156,9 +1287,10 @@ const timelineItems = [
     </div>
   </div>
 
+  <!-- Image Preview Fullscreen Modal (shadcn style) -->
   <div
     id="image-preview-modal"
-    class="fixed inset-0 z-[120] hidden items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+    class="fixed inset-0 z-[120] hidden items-center justify-center bg-black/85 p-4 backdrop-blur-md sm:p-6"
     role="dialog"
     aria-modal="true"
     aria-labelledby="image-preview-title"
@@ -1167,20 +1299,23 @@ const timelineItems = [
       <button
         type="button"
         id="image-preview-close"
-        class="absolute right-2 top-2 z-10 grid size-10 place-items-center rounded-full border border-white/30 bg-black/60 text-white transition hover:bg-white/20"
+        class="absolute -top-12 right-0 z-10 inline-flex items-center gap-1.5 rounded-md border border-white/20 bg-black/60 px-3 py-1.5 text-xs font-semibold text-white shadow-lg backdrop-blur-md transition-all hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/40 cursor-pointer"
         aria-label="Close image preview"
       >
-        <X size={18} />
+        <X size={14} />
+        <span>Close</span>
       </button>
-      <div class="max-h-[88vh] overflow-auto rounded-2xl border border-white/10 bg-bg-deep p-3 shadow-2xl">
+      <div class="max-h-[85vh] overflow-auto rounded-xl border border-white/15 bg-[#080d11] p-3 shadow-2xl">
         <img
           id="image-preview-img"
           src=""
           alt=""
-          class="mx-auto block max-h-[82vh] min-w-[18rem] max-w-full rounded-xl object-contain"
+          class="mx-auto block max-h-[78vh] min-w-[18rem] max-w-full rounded-lg object-contain"
         />
       </div>
-      <p id="image-preview-title" class="mt-3 text-center text-xs font-bold uppercase tracking-[0.14em] text-white/70"></p>
+      <div class="mt-3">
+        <p id="image-preview-title" class="rounded-full border border-white/15 bg-black/60 px-3.5 py-1 text-center font-mono text-xs font-semibold uppercase tracking-wider text-white/90 shadow-md backdrop-blur-md"></p>
+      </div>
     </div>
   </div>
 
