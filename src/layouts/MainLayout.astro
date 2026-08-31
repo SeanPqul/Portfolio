@@ -37,7 +37,7 @@ const jsonLd = {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -78,16 +78,16 @@ const jsonLd = {
     <script is:inline>
       (() => {
         const storageKey = "ichihara-theme";
-        const fallbackTheme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
 
         try {
           const storedTheme = window.localStorage.getItem(storageKey);
-          const activeTheme = storedTheme || fallbackTheme;
+          // Default to dark mode on first visit; honor stored user preference if present
+          const activeTheme = storedTheme === "light" || storedTheme === "dark" ? storedTheme : "dark";
           document.documentElement.dataset.theme = activeTheme;
           document.documentElement.classList.toggle("dark", activeTheme === "dark");
         } catch {
-          document.documentElement.dataset.theme = fallbackTheme;
-          document.documentElement.classList.toggle("dark", fallbackTheme === "dark");
+          document.documentElement.dataset.theme = "dark";
+          document.documentElement.classList.toggle("dark", true);
         }
       })();
     </script>
