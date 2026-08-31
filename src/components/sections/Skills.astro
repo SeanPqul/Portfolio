@@ -1,0 +1,50 @@
+---
+import { skills, techIcons } from "@/data/skills";
+---
+
+<!-- Technical Stack Section -->
+<section id="skills" class="page-shell pt-8 pb-14 sm:pt-10 sm:pb-16 lg:pt-12 lg:pb-20">
+  <div class="mb-8 max-w-3xl scroll-reveal">
+    <h2 class="font-display text-3xl font-extrabold leading-tight text-ink sm:text-4xl">
+      Tech Stack
+    </h2>
+    <p class="mt-2.5 max-w-2xl text-sm leading-relaxed text-muted">
+      Languages, frameworks, and tools I use to build across frontend, backend, and mobile.
+    </p>
+  </div>
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(min(15rem,100%),1fr))] gap-5">
+    {
+      skills.map(({ title, icon: Icon, items }) => (
+        <article class="scroll-reveal glass rounded-2xl p-5 hover:-translate-y-1 hover:border-mint/20 transition-all duration-300">
+          <div class="mb-6 flex items-center justify-between">
+            <h3 class="text-sm font-bold text-ink font-display uppercase tracking-wide">{title}</h3>
+            <Icon size={20} class="text-mint" />
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            {
+              items.map((item) => (
+                <span class="inline-flex items-center gap-1.5 rounded border border-white/5 bg-white/4 px-2 py-1 text-[11px] font-medium text-muted">
+                  {techIcons[item] ? (
+                    <img
+                      src={techIcons[item]}
+                      alt=""
+                      aria-hidden="true"
+                      data-tech={item}
+                      class="tech-icon size-3.5 shrink-0"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <span class="grid size-3.5 shrink-0 place-items-center rounded-[4px] border border-white/10 bg-white/5 font-mono text-[8px] font-black text-mint/80">
+                      {item.slice(0, 1)}
+                    </span>
+                  )}
+                  {item}
+                </span>
+              ))
+            }
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>

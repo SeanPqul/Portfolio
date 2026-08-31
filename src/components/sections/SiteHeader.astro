@@ -1,0 +1,139 @@
+---
+import Logo from "@/components/Logo.astro";
+import { ArrowUpRight, Mail, Menu, Moon, Sun } from "@lucide/astro";
+import { navItems } from "@/data/site";
+---
+
+<header class="page-shell sticky top-0 z-50 py-3 sm:py-4">
+  <nav
+    class="glass grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-2xl px-3 py-3 text-sm text-ink sm:rounded-full sm:px-5 sm:py-3.5 md:flex md:flex-wrap md:justify-between"
+    aria-label="Primary navigation"
+  >
+    <a href="#top" id="logo" class="flex min-w-0 items-center gap-2 font-semibold group">
+      <Logo class="size-9 shrink-0 sm:size-8" />
+      <span class="font-display text-sm font-bold tracking-tight text-ink transition-colors group-hover:text-mint sm:text-base">Ichihara</span>
+    </a>
+    <div class="hidden items-center gap-1.5 md:flex">
+      {
+        navItems.map((item) => (
+          <a
+            id={`nav-link-${item.toLowerCase()}`}
+            href={`#${item.toLowerCase()}`}
+            class="rounded-full px-4 py-2 text-muted font-medium transition hover:bg-white/8 hover:text-ink"
+          >
+            {item}
+          </a>
+        ))
+      }
+    </div>
+    <div class="flex min-w-0 items-center justify-end gap-2">
+      <a
+        id="nav-contact-button"
+        href="#contact"
+        aria-label="Contact Ichihara"
+        class="hidden min-h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-ink px-4 py-2 text-xs font-bold text-bg-deep transition hover:-translate-y-0.5 hover:bg-mint hover:shadow-lg hover:shadow-mint/20 md:inline-flex"
+      >
+        <Mail size={14} />
+        <span>Let's Talk</span>
+      </a>
+      <button
+        id="theme-toggle"
+        type="button"
+        class="theme-toggle grid size-11 shrink-0 place-items-center rounded-full text-ink transition hover:-translate-y-0.5 hover:border-mint hover:text-mint sm:size-10"
+        aria-label="Switch color theme"
+        aria-pressed="false"
+      >
+        <Sun size={17} class="theme-icon-sun" />
+        <Moon size={17} class="theme-icon-moon" />
+        <span class="sr-only">Toggle color theme</span>
+      </button>
+      <button
+        id="mobile-menu-toggle"
+        type="button"
+        class="inline-flex min-h-11 max-w-full shrink-0 items-center justify-center gap-2 rounded-full border border-white/8 bg-white/[0.03] px-3.5 text-xs font-bold text-ink transition hover:border-mint hover:text-mint md:hidden"
+        aria-controls="mobile-nav-panel"
+        aria-expanded="false"
+      >
+        <Menu size={16} />
+        <span id="mobile-menu-label">Menu</span>
+      </button>
+    </div>
+    <div
+      id="mobile-nav-panel"
+      class="col-span-2 hidden w-full border-t border-white/8 pt-3 md:hidden"
+    >
+      <div class="grid gap-2">
+      {
+        navItems.map((item) => (
+          <a
+            id={`mobile-nav-link-${item.toLowerCase()}`}
+            href={`#${item.toLowerCase()}`}
+            class="mobile-nav-link inline-flex min-h-11 items-center justify-between rounded-xl border border-white/6 bg-white/[0.02] px-4 text-sm font-semibold text-muted transition hover:border-mint hover:text-mint"
+          >
+            <span>{item}</span>
+            <ArrowUpRight size={15} />
+          </a>
+        ))
+      }
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // 0. Theme toggle
+    const themeToggle = document.getElementById("theme-toggle");
+    const storageKey = "ichihara-theme";
+
+    function setTheme(theme: "light" | "dark") {
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.classList.toggle("dark", theme === "dark");
+      themeToggle?.setAttribute("aria-pressed", String(theme === "light"));
+      themeToggle?.setAttribute("aria-label", theme === "light" ? "Switch to dark mode" : "Switch to light mode");
+
+      try {
+        window.localStorage.setItem(storageKey, theme);
+      } catch {
+        // Storage may be disabled; the visual toggle should still work for this page view.
+      }
+    }
+
+    themeToggle?.addEventListener("click", () => {
+      const currentTheme = document.documentElement.dataset.theme === "light" ? "light" : "dark";
+      setTheme(currentTheme === "light" ? "dark" : "light");
+    });
+
+    const initialTheme = document.documentElement.dataset.theme === "light" ? "light" : "dark";
+    document.documentElement.classList.toggle("dark", initialTheme === "dark");
+    themeToggle?.setAttribute("aria-pressed", String(initialTheme === "light"));
+    themeToggle?.setAttribute("aria-label", initialTheme === "light" ? "Switch to dark mode" : "Switch to light mode");
+
+    // 2. Mobile navigation disclosure
+    const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+    const mobileNavPanel = document.getElementById("mobile-nav-panel");
+    const mobileMenuLabel = document.getElementById("mobile-menu-label");
+    const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+
+    function setMobileMenu(open: boolean) {
+      if (!mobileMenuToggle || !mobileNavPanel || !mobileMenuLabel) return;
+
+      mobileMenuToggle.setAttribute("aria-expanded", String(open));
+      mobileMenuLabel.textContent = open ? "Close" : "Menu";
+      mobileNavPanel.classList.toggle("hidden", !open);
+    }
+
+    mobileMenuToggle?.addEventListener("click", () => {
+      const isOpen = mobileMenuToggle.getAttribute("aria-expanded") === "true";
+      setMobileMenu(!isOpen);
+    });
+
+    mobileNavLinks.forEach((link) => {
+      link.addEventListener("click", () => setMobileMenu(false));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setMobileMenu(false);
+    });
+  });
+</script>

@@ -1,0 +1,30 @@
+---
+import ProjectCard from "@/components/projects/ProjectCard.astro";
+import { projects } from "@/data/projects";
+---
+
+<!-- Projects Section -->
+<section id="projects" class="relative border-y border-white/10 bg-bg-card pt-8 pb-14 sm:pt-10 sm:pb-16 lg:pt-12 lg:pb-20">
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-mint/30 to-transparent"></div>
+  <div class="absolute left-1/2 top-24 h-72 w-3/4 -translate-x-1/2 rounded-full bg-mint/5 blur-3xl pointer-events-none"></div>
+
+  <div class="page-shell relative z-10">
+    <div class="mb-8 max-w-3xl scroll-reveal">
+      <h2 class="font-display text-3xl font-extrabold leading-tight text-ink sm:text-4xl">
+        Projects
+      </h2>
+      <p class="mt-2.5 max-w-2xl text-sm leading-relaxed text-muted">
+        Systems built across internship, capstone, and personal development in web and mobile.
+      </p>
+    </div>
+
+    <!-- Project Cards Grid (3 Columns) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+      {
+        projects.map((project) => (
+          <ProjectCard project={project} />
+        ))
+      }
+    </div>
+  </div>
+</section>

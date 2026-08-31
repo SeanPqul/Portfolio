@@ -1,0 +1,83 @@
+---
+import DeveloperDeck from "@/components/DeveloperDeck.astro";
+import { Briefcase, FileText, Globe, MapPin, Terminal, User } from "@lucide/astro";
+import { cvHref, profileLinks } from "@/data/site";
+---
+
+<!-- Hero Section -->
+<section class="page-shell grid items-center gap-8 py-6 sm:gap-10 sm:py-8 lg:min-h-[calc(100svh-5.5rem)] lg:grid-cols-[1.1fr_0.9fr] lg:py-6">
+  <div class="scroll-reveal">
+    <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-ink/90">
+      <Globe size={14} class="text-mint" />
+      <span>Available for remote & hybrid opportunities</span>
+    </div>
+    <h1 class="fluid-heading max-w-4xl font-display font-extrabold leading-[1.05] tracking-tight text-ink sm:text-balance">
+      <span class="block sm:inline">Full-stack developer</span>
+      <span class="block sm:inline"> building <span class="text-mint">web</span> and</span>
+      <span class="block sm:inline"> <span class="text-sky">mobile</span> applications.</span>
+    </h1>
+    <p class="mt-4 max-w-2xl text-base leading-relaxed text-muted">
+      I build web systems and mobile apps that digitize real operations — backed by structured databases, secure APIs, and clean user interfaces.
+    </p>
+    <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+      <a
+        id="hero-cta-projects"
+        href="#projects"
+        class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-mint px-5.5 py-3 text-sm font-extrabold text-[#07100d] transition hover:-translate-y-0.5 hover:bg-[#7af0c8] hover:shadow-lg hover:shadow-mint/20 sm:justify-start"
+      >
+        <Briefcase size={18} />
+        View Work
+      </a>
+      <a
+        id="hero-cta-cv"
+        href={cvHref}
+        target="_blank"
+        rel="noreferrer"
+        class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-mint px-5.5 py-3 text-sm font-extrabold text-[#07100d] transition hover:-translate-y-0.5 hover:bg-[#7af0c8] hover:shadow-lg hover:shadow-mint/20 sm:justify-start"
+      >
+        <FileText size={18} />
+        View CV
+      </a>
+    </div>
+    <div class="mt-8 grid grid-cols-2 items-center gap-3 text-xs text-muted sm:flex sm:flex-wrap sm:gap-4">
+      <span class="inline-flex items-center gap-2 rounded-full border border-white/6 bg-white/[0.02] px-3.5 py-2">
+        <MapPin size={14} class="text-sky" />
+        Philippines
+      </span>
+      {
+        profileLinks.map(({ id, label, href, icon: Icon }) => (
+          <a
+            id={id}
+            href={href}
+            target={href.startsWith("http") ? "_blank" : undefined}
+            rel={href.startsWith("http") ? "noreferrer" : undefined}
+            class="inline-flex min-h-10 items-center gap-2 rounded-full border border-white/6 bg-white/[0.01] px-3.5 py-2 hover:border-mint hover:text-mint"
+          >
+            <Icon size={14} />
+            {label}
+          </a>
+        ))
+      }
+
+      <!-- Interactive CLI Toggle Button (UX Pattern C) -->
+      <button
+        id="hero-cli-toggle"
+        class="col-span-2 inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-amber/30 bg-white/[0.02] px-3.5 py-2 font-mono text-amber transition-all duration-300 hover:scale-102 hover:border-mint hover:text-mint cursor-pointer select-none sm:col-span-1 sm:justify-start"
+        aria-label="Toggle CLI Terminal"
+      >
+        <span id="hero-cli-icon-terminal" class="hidden items-center">
+          <Terminal size={14} class="text-mint shrink-0" />
+        </span>
+        <span id="hero-cli-icon-profile" class="flex items-center">
+          <User size={14} class="text-sky shrink-0" />
+        </span>
+        <span id="hero-cli-text" class="text-ink">Close CLI</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Right Column: Interactive CLI & profile -->
+  <div class="scroll-reveal" style="transition-delay: 150ms;">
+    <DeveloperDeck />
+  </div>
+</section>

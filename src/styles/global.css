@@ -546,19 +546,6 @@ html[data-theme="light"] .timeline-rail {
   animation: blink 1s step-end infinite;
 }
 
-.mockup-container {
-  perspective: 1000px;
-}
-
-.mockup-card {
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.mockup-card:hover {
-  transform: rotateY(-3deg) rotateX(2deg) translateY(-4px);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(102, 224, 181, 0.1);
-}
-
 #terminal-body,
 #terminal-history {
   overflow-wrap: anywhere;
@@ -571,10 +558,6 @@ html[data-theme="light"] .timeline-rail {
 
   body::before {
     background-size: 2.25rem 2.25rem;
-  }
-
-  .mockup-card:hover {
-    transform: none;
   }
 
   .hero-float-badge {

@@ -1,0 +1,53 @@
+---
+import TimelineCard from "@/components/TimelineCard.astro";
+import { timelineItems } from "@/data/timeline";
+---
+
+<!-- Experience Section -->
+<section id="experience" class="fluid-section relative border-y border-white/10 bg-bg-card">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(102,224,181,0.04),transparent_50%)] pointer-events-none"></div>
+
+  <div class="page-shell relative z-10">
+    <div class="mb-12 scroll-reveal text-center">
+      <p class="section-kicker">Journey</p>
+      <h2 class="mt-3 font-display text-3xl font-extrabold text-ink sm:text-4xl">
+        Work &amp; Education
+      </h2>
+    </div>
+
+    <!-- Alternating Split Timeline Container -->
+    <div class="relative space-y-12 lg:space-y-6 mt-10">
+      <!-- Vertical Center Timeline Line -->
+      <div class="timeline-rail absolute left-3.5 lg:left-1/2 lg:-translate-x-1/2 top-2 bottom-2"></div>
+
+      {
+        timelineItems.map((item) => (
+          <div class="relative flex flex-col lg:flex-row items-center justify-between w-full group/timeline">
+            <!-- Center Dot Node -->
+            <div class="absolute left-3.5 lg:left-1/2 lg:-translate-x-1/2 top-[38px] lg:top-1/2 lg:-translate-y-1/2 z-10 flex flex-col items-center">
+              <div class={`w-3.5 h-3.5 rounded-full border-2 transition-transform duration-300 group-hover/timeline:scale-125 bg-bg-deep ${
+                item.highlight
+                  ? `${item.accentColor} border-current shadow-[0_0_8px_rgba(255,255,255,0.15)]`
+                  : `border-white/20 group-hover/timeline:border-current ${item.accentColor}`
+              }`}></div>
+            </div>
+
+            <!-- Left Column: Education details on left, hidden spacer for experience -->
+            <div class={`w-full lg:w-[calc(50%-2.5rem)] order-1 ${item.type === 'education' ? 'block pl-10 lg:pl-0' : 'hidden lg:block lg:opacity-0 lg:pointer-events-none'}`}>
+              {item.type === 'education' && (
+                <TimelineCard item={item} />
+              )}
+            </div>
+
+            <!-- Right Column: Experience details on right, hidden spacer for education -->
+            <div class={`w-full lg:w-[calc(50%-2.5rem)] order-2 ${item.type === 'experience' ? 'block pl-10 lg:pl-0' : 'hidden lg:block lg:opacity-0 lg:pointer-events-none'}`}>
+              {item.type === 'experience' && (
+                <TimelineCard item={item} />
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

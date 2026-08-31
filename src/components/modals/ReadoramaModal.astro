@@ -1,0 +1,172 @@
+---
+import { ArrowUpRight, Maximize2, X } from "@lucide/astro";
+
+import readoramaBookSellingImage from "../../assets/projects/readorama/readorama-book-selling.png?url";
+import readoramaDesignSystemImage from "../../assets/projects/readorama/readorama_preview.png?url";
+---
+
+<!-- Readorama Case Study Modal (High-End Clean Showcase) -->
+<div
+  id="readorama-modal"
+  class="project-modal fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 p-4 backdrop-blur-md sm:p-6"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="readorama-modal-title"
+>
+  <div class="project-modal-panel max-h-[90vh] w-full max-w-5xl overflow-y-auto overflow-x-hidden rounded-2xl border border-slate-200/90 bg-white text-slate-950 shadow-2xl transition-all dark:border-white/10 dark:bg-[#0c1015] dark:text-ink">
+    <!-- Modal Header -->
+    <div class="project-modal-header sticky top-0 z-20 flex flex-col gap-3 border-b border-slate-200/80 bg-white/95 px-6 py-4.5 backdrop-blur-md dark:border-white/8 dark:bg-[#0c1015]/95 sm:flex-row sm:items-center sm:justify-between">
+      <div class="space-y-1">
+        <div class="flex items-center gap-2">
+          <h2 id="readorama-modal-title" class="font-display text-2xl font-bold tracking-tight text-ink">
+            Readorama
+          </h2>
+          <span class="rounded-md border border-mint/30 bg-mint/10 px-2 py-0.5 font-mono text-[10px] font-semibold text-mint">
+            2023 • Figma Design
+          </span>
+        </div>
+        <p class="text-xs text-muted">
+          Academic Group Project • Mobile Book Exchange &amp; Marketplace
+        </p>
+      </div>
+      <div class="flex items-center gap-2.5">
+        <a
+          href="https://www.figma.com/design/9YsrKmz6fTSyGthAlcwRA6/Group-5?node-id=0-1&p=f&t=oSqlp4PKdApFvZAr-0"
+          target="_blank"
+          rel="noreferrer"
+          class="inline-flex h-8 items-center justify-center gap-1.5 rounded-lg bg-mint px-3 text-xs font-bold text-[#07100d] shadow-sm transition-all hover:bg-mint/90 hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint"
+        >
+          <span>Open in Figma</span>
+          <ArrowUpRight size={13} />
+        </a>
+        <button
+          type="button"
+          class="project-modal-close inline-flex size-8 items-center justify-center rounded-lg border border-transparent text-muted transition-colors hover:border-slate-200 hover:bg-slate-100 hover:text-ink dark:hover:border-white/10 dark:hover:bg-white/10 dark:hover:text-ink cursor-pointer"
+          aria-label="Close Readorama details"
+        >
+          <X size={16} />
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal Body Grid -->
+    <div class="grid min-w-0 gap-6 p-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-8">
+      <!-- Left Column: Scope & Overview (Typography-First) -->
+      <div class="min-w-0 flex flex-col justify-between space-y-6">
+        <div class="space-y-6">
+          <!-- Individual Contributions -->
+          <div class="space-y-3.5">
+            <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-mint">
+              Role &amp; Individual Contributions
+            </span>
+            <ul class="space-y-4">
+              <li class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <span class="size-1.5 shrink-0 rounded-full bg-mint"></span>
+                  <h3 class="font-sans text-sm font-semibold text-ink">Sell Books Listing Workflow</h3>
+                </div>
+                <p class="pl-3.5 text-xs sm:text-sm text-muted leading-relaxed">
+                  Inspired by MyAnimeList’s catalog and metadata architecture — designed a structured mobile listing flow featuring cover art uploads, edition metadata, condition grading, and pricing controls optimized for quick mobile browsing.
+                </p>
+              </li>
+
+              <li class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <span class="size-1.5 shrink-0 rounded-full bg-mint"></span>
+                  <h3 class="font-sans text-sm font-semibold text-ink">Community Forum &amp; P2P Trading Chat</h3>
+                </div>
+                <p class="pl-3.5 text-xs sm:text-sm text-muted leading-relaxed">
+                  Designed community forum boards and direct chat interfaces enabling readers to connect, discuss titles, and arrange peer-to-peer book trades.
+                </p>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Subtle Divider -->
+          <div class="border-t border-slate-200/70 dark:border-white/8"></div>
+
+          <!-- Project Concept -->
+          <div class="space-y-2">
+            <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-muted">
+              About the Project
+            </span>
+            <p class="text-xs sm:text-sm text-muted leading-relaxed">
+              Readorama is a mobile book marketplace designed to connect readers, sellers, and collectors — enabling users to buy, sell, or trade new and used books at affordable rates.
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline & Tools Footer -->
+        <div class="flex flex-wrap items-center justify-between gap-2 border-t border-slate-200/70 pt-4 dark:border-white/8 text-xs text-muted">
+          <div class="flex items-center gap-2">
+            <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-muted">Timeline:</span>
+            <span>2023 (Academic Project)</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-muted">Tools:</span>
+            <span>Figma • Wireframing • Prototyping</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Design Artifacts Showcase -->
+      <div class="space-y-3.5">
+        <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-muted">
+          Design Artifacts
+        </span>
+
+        <div class="space-y-4">
+          {[
+            {
+              src: readoramaBookSellingImage,
+              alt: "Readorama book selling and listing interface workflow",
+              title: "Book Selling & Listing Flow",
+              subtitle: "MyAnimeList-inspired catalog & listing screens",
+            },
+            {
+              src: readoramaDesignSystemImage,
+              alt: "Readorama brand guidelines and design system overview",
+              title: "Brand Guidelines & System",
+              subtitle: "Typography scale, palette & components",
+            },
+          ].map((preview) => (
+            <figure class="group flex flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50/60 shadow-xs transition-all hover:border-mint/50 hover:shadow-md dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-mint/40">
+              <button
+                type="button"
+                class="image-preview-trigger relative block w-full overflow-hidden bg-bg-deep cursor-pointer focus:outline-none focus:ring-2 focus:ring-mint/60"
+                data-gallery="readorama"
+                data-image-src={preview.src}
+                data-image-alt={preview.alt}
+                data-image-label={preview.title}
+                aria-label={`Preview ${preview.title}`}
+              >
+                <img
+                  src={preview.src}
+                  alt={preview.alt}
+                  class="aspect-[16/10] w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 backdrop-blur-[1px] transition-opacity duration-200 group-hover:opacity-100">
+                  <span class="inline-flex items-center gap-1.5 rounded-md border border-white/20 bg-black/70 px-2.5 py-1 text-[11px] font-semibold text-white shadow-md">
+                    <Maximize2 size={12} />
+                    <span>View Full Size</span>
+                  </span>
+                </div>
+              </button>
+              <figcaption class="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3.5 border-t border-slate-200/60 bg-white/60 dark:border-white/6 dark:bg-transparent gap-1">
+                <div>
+                  <p class="text-xs font-semibold text-ink">
+                    {preview.title}
+                  </p>
+                  <p class="text-[11px] text-muted">
+                    {preview.subtitle}
+                  </p>
+                </div>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,287 @@
+---
+import { Maximize2, X } from "@lucide/astro";
+
+import emedicardAdminReviewImage from "../../assets/projects/emedicard/admin-review.png?url";
+import emedicardAdminReview2Image from "../../assets/projects/emedicard/admin-review2.png?url";
+import emedicardAdminApplicationListImage from "../../assets/projects/emedicard/admin-application-list.png?url";
+import emedicardCardTypeImage from "../../assets/projects/emedicard/card-type.png?url";
+import emedicardDocumentRequirementsImage from "../../assets/projects/emedicard/document-requirements.png?url";
+import emedicardHealthCardImage from "../../assets/projects/emedicard/health-card.png?url";
+import emedicardPaymentMethodsImage from "../../assets/projects/emedicard/payment-methods.png?url";
+import emedicardReviewSubmitImage from "../../assets/projects/emedicard/review-submit.png?url";
+import emedicardCertificateImage from "../../assets/projects/emedicard/sample-health-certificate.svg?url";
+import emedicardUploadDocumentsImage from "../../assets/projects/emedicard/upload-documents.png?url";
+import emedicardInspectorScannerImage from "../../assets/projects/emedicard/inspector-qr-scanner.png?url";
+---
+
+<!-- eMediCard Case Study Modal (Unified Mint Theme) -->
+<div
+  id="emedicard-modal"
+  class="project-modal fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 p-4 backdrop-blur-md sm:p-6"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="emedicard-modal-title"
+>
+  <div class="project-modal-panel max-h-[90vh] w-full max-w-5xl overflow-y-auto overflow-x-hidden rounded-2xl border border-slate-200/90 bg-white text-slate-950 shadow-2xl transition-all dark:border-white/10 dark:bg-[#0c1015] dark:text-ink">
+    <!-- Modal Header -->
+    <div class="project-modal-header sticky top-0 z-20 flex flex-col gap-3 border-b border-slate-200/80 bg-white/95 px-6 py-4.5 backdrop-blur-md dark:border-white/8 dark:bg-[#0c1015]/95 sm:flex-row sm:items-center sm:justify-between">
+      <div class="space-y-1">
+        <div class="flex items-center gap-2">
+          <h2 id="emedicard-modal-title" class="font-display text-2xl font-bold tracking-tight text-ink">
+            eMediCard
+          </h2>
+          <span class="rounded-md border border-mint/30 bg-mint/10 px-2 py-0.5 font-mono text-[10px] font-semibold text-mint">
+            Capstone Project
+          </span>
+        </div>
+        <p class="text-xs text-muted">
+          Academic Capstone Project • Digital Health Certificate &amp; Sanitary Permit Application Platform
+        </p>
+      </div>
+      <div class="flex items-center gap-2.5">
+        <button
+          type="button"
+          class="project-modal-close inline-flex size-8 items-center justify-center rounded-lg border border-transparent text-muted transition-colors hover:border-slate-200 hover:bg-slate-100 hover:text-ink dark:hover:border-white/10 dark:hover:bg-white/10 dark:hover:text-ink cursor-pointer"
+          aria-label="Close eMediCard details"
+        >
+          <X size={16} />
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal Body Grid (strictly bounded) -->
+    <div class="grid min-w-0 gap-6 p-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-8">
+      <!-- Left Column: Scope & Overview (Typography-First) -->
+      <div class="min-w-0 flex flex-col justify-between space-y-6">
+        <div class="space-y-6">
+          <!-- Key Engineering Highlights -->
+          <div class="space-y-3.5">
+            <div class="flex items-center justify-between border-b border-slate-200/60 pb-2 dark:border-white/8 min-h-[29px]">
+              <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-mint">
+                Key Engineering Highlights
+              </span>
+            </div>
+            <ul class="space-y-4">
+              <li class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <span class="size-1.5 shrink-0 rounded-full bg-mint"></span>
+                  <h3 class="font-sans text-sm font-semibold text-ink">Mobile Application &amp; Multi-Step Submissions</h3>
+                </div>
+                <p class="pl-3.5 text-xs sm:text-sm text-muted leading-relaxed">
+                  Engineered cross-platform mobile submission workflows with category selection, automated document checklists, and secure multi-file upload stages in React Native (Expo).
+                </p>
+              </li>
+
+              <li class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <span class="size-1.5 shrink-0 rounded-full bg-mint"></span>
+                  <h3 class="font-sans text-sm font-semibold text-ink">Web Admin Document Verification Portal</h3>
+                </div>
+                <p class="pl-3.5 text-xs sm:text-sm text-muted leading-relaxed">
+                  Collaborated with a teammate to build a dedicated administrative review dashboard using Next.js, enabling city health department staff to review citizen requirements, verify laboratory results, and manage application approvals.
+                </p>
+              </li>
+
+              <li class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <span class="size-1.5 shrink-0 rounded-full bg-mint"></span>
+                  <h3 class="font-sans text-sm font-semibold text-ink">Digital Certificate &amp; Instant QR Verification</h3>
+                </div>
+                <p class="pl-3.5 text-xs sm:text-sm text-muted leading-relaxed">
+                  Implemented official digital health card and certificate generation featuring tamper-resistant QR codes for real-time field validation by city inspectors.
+                </p>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Subtle Divider -->
+          <div class="border-t border-slate-200/70 dark:border-white/8"></div>
+
+          <!-- Project Concept -->
+          <div class="space-y-2">
+            <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-muted">
+              About the System
+            </span>
+            <p class="text-xs sm:text-sm text-muted leading-relaxed">
+              eMediCard modernizes local government health services by replacing slow, paper-based health certificate queues with a unified citizen mobile app and back-office verification portal.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tech Stack Footer -->
+        <div class="flex flex-wrap items-center justify-between gap-2 border-t border-slate-200/70 pt-4 dark:border-white/8 text-xs text-muted">
+          <div class="flex items-center gap-2">
+            <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-muted">Stack:</span>
+            <span>React Native • Expo • Next.js • TypeScript • Convex • Clerk</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: System Interfaces Showcase (Strictly Contained) -->
+      <div class="min-w-0 space-y-5">
+        <!-- Top Unified Header Bar (Selected Pages & Screens Notice) -->
+        <div class="flex items-center justify-between border-b border-slate-200/60 pb-2 dark:border-white/8 min-h-[29px]">
+          <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-ink">
+            System Interfaces
+          </span>
+          <span class="rounded-full border border-mint/25 bg-mint/10 px-2.5 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider text-mint shadow-xs backdrop-blur-sm">
+            Selected Pages &amp; Screens
+          </span>
+        </div>
+
+        <!-- Web Admin & Certificate Showcase (Clean 2-Card Layout) -->
+        <div class="space-y-3.5">
+          <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-muted">
+            Web Admin &amp; Digital Certificate
+          </span>
+          <div class="grid min-w-0 gap-4 sm:grid-cols-2">
+            <!-- Card 1: Web Admin Verification (Multi-Page Gallery with 3 Pages) -->
+            <figure class="group flex min-w-0 flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50/60 shadow-xs transition-all hover:border-mint/50 hover:shadow-md dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-mint/40">
+              <button
+                type="button"
+                class="image-preview-trigger relative block w-full overflow-hidden bg-[#e8e2d6] cursor-pointer focus:outline-none focus:ring-2 focus:ring-mint/60"
+                data-gallery="emedicard-admin"
+                data-image-src={emedicardAdminReviewImage}
+                data-image-alt="eMediCard web admin application review and document verification screen"
+                data-image-label="Web Admin — Application Review"
+                aria-label="Preview Web Admin Verification"
+              >
+                <img
+                  src={emedicardAdminReviewImage}
+                  alt="eMediCard web admin document verification screen"
+                  class="aspect-[16/10] w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 backdrop-blur-[1px] transition-opacity duration-200 group-hover:opacity-100">
+                  <span class="inline-flex items-center gap-1.5 rounded-md border border-white/20 bg-black/70 px-2.5 py-1 text-[11px] font-semibold text-white shadow-md">
+                    <Maximize2 size={12} />
+                    <span>View Full Size (3 Pages)</span>
+                  </span>
+                </div>
+                <!-- Multi-Page Indicator Badge -->
+                <div class="absolute bottom-2.5 right-2.5 rounded-md border border-white/15 bg-black/75 px-2 py-0.5 font-mono text-[9.5px] font-semibold text-mint shadow-md backdrop-blur-sm">
+                  3 Pages
+                </div>
+              </button>
+
+              <!-- Hidden triggers for the other 2 admin views in the same gallery -->
+              <button
+                type="button"
+                class="image-preview-trigger hidden"
+                data-gallery="emedicard-admin"
+                data-image-src={emedicardAdminReview2Image}
+                data-image-alt="eMediCard web admin laboratory requirements audit screen"
+                data-image-label="Web Admin — Application Review"
+                tabindex="-1"
+                aria-hidden="true"
+              ></button>
+              <button
+                type="button"
+                class="image-preview-trigger hidden"
+                data-gallery="emedicard-admin"
+                data-image-src={emedicardAdminApplicationListImage}
+                data-image-alt="eMediCard web admin applicant registry and queue list"
+                data-image-label="Web Admin — Application Queue"
+                tabindex="-1"
+                aria-hidden="true"
+              ></button>
+
+              <figcaption class="flex flex-col p-3 border-t border-slate-200/60 bg-white/60 dark:border-white/6 dark:bg-transparent">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-semibold text-ink">
+                    Web Admin Verification
+                  </span>
+                  <span class="font-mono text-[10px] text-muted">
+                    3 Pages
+                  </span>
+                </div>
+                <span class="mt-0.5 text-[11px] text-muted leading-tight">
+                  Staff review, applicant queue &amp; lab requirement audit
+                </span>
+              </figcaption>
+            </figure>
+
+            <!-- Card 2: Digital Health Certificate -->
+            <figure class="group flex min-w-0 flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50/60 shadow-xs transition-all hover:border-mint/50 hover:shadow-md dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-mint/40">
+              <button
+                type="button"
+                class="image-preview-trigger relative block w-full overflow-hidden bg-[#fdfbf7] dark:bg-[#151b22] cursor-pointer focus:outline-none focus:ring-2 focus:ring-mint/60"
+                data-gallery="emedicard-certificate"
+                data-image-src={emedicardCertificateImage}
+                data-image-alt="eMediCard sanitized sample health certificate"
+                data-image-label="Digital Health Certificate"
+                aria-label="Preview Digital Health Certificate"
+              >
+                <img
+                  src={emedicardCertificateImage}
+                  alt="eMediCard sanitized sample health certificate"
+                  class="aspect-[16/10] w-full object-contain p-2 transition-transform duration-300 group-hover:scale-[1.02]"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 backdrop-blur-[1px] transition-opacity duration-200 group-hover:opacity-100">
+                  <span class="inline-flex items-center gap-1.5 rounded-md border border-white/20 bg-black/70 px-2.5 py-1 text-[11px] font-semibold text-white shadow-md">
+                    <Maximize2 size={12} />
+                    <span>View Full Size</span>
+                  </span>
+                </div>
+              </button>
+              <figcaption class="flex flex-col p-3 border-t border-slate-200/60 bg-white/60 dark:border-white/6 dark:bg-transparent">
+                <span class="text-xs font-semibold text-ink">
+                  Digital Health Certificate
+                </span>
+                <span class="mt-0.5 text-[11px] text-muted leading-tight">
+                  Instant QR-verified compliance document
+                </span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <!-- Mobile App Workflow Reel (strictly contained) -->
+        <div class="min-w-0 space-y-3">
+          <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-muted">
+            Mobile Applicant &amp; Inspector Workflow
+          </span>
+          <div class="w-full max-w-full overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50/50 p-3 dark:border-white/8 dark:bg-black/20">
+            <div class="flex w-full gap-3 overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-white/10">
+              {[
+                { src: emedicardCardTypeImage, alt: "eMediCard health card type selection screen", label: "Card Type" },
+                { src: emedicardDocumentRequirementsImage, alt: "eMediCard document requirements checklist screen", label: "Requirements" },
+                { src: emedicardUploadDocumentsImage, alt: "eMediCard required document upload screen", label: "Upload Docs" },
+                { src: emedicardReviewSubmitImage, alt: "eMediCard review and submit document summary screen", label: "Review" },
+                { src: emedicardPaymentMethodsImage, alt: "eMediCard payment methods screen", label: "Payment" },
+                { src: emedicardHealthCardImage, alt: "eMediCard digital health card QR screen", label: "Health Card" },
+                { src: emedicardInspectorScannerImage, alt: "eMediCard sanitary inspector QR scanner verification screen", label: "Inspector QR Scanner" },
+              ].map((screen) => (
+                <figure class="w-28 shrink-0 sm:w-32 group">
+                  <button
+                    type="button"
+                    class="image-preview-trigger relative block overflow-hidden rounded-xl border border-slate-200/80 bg-white transition hover:border-mint/50 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-mint/60 dark:border-white/10 dark:bg-white/5 dark:hover:border-mint/40 cursor-pointer"
+                    data-gallery="emedicard-mobile"
+                    data-image-src={screen.src}
+                    data-image-alt={screen.alt}
+                    data-image-label={`Mobile Workflow — ${screen.label}`}
+                    aria-label={`Preview ${screen.label} screen`}
+                  >
+                    <img
+                      src={screen.src}
+                      alt={screen.alt}
+                      class="aspect-[9/19] w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.03]"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 backdrop-blur-[1px] transition-opacity duration-200 group-hover:opacity-100">
+                      <Maximize2 size={14} class="text-white" />
+                    </div>
+                  </button>
+                  <figcaption class="mt-1.5 text-center font-mono text-[10px] font-semibold text-muted">
+                    {screen.label}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
