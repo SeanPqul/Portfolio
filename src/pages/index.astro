@@ -10,6 +10,8 @@ import morataLandingImage from "../assets/projects/fmmcbs/morata_landing.png";
 import fmmCbsLandingImage from "../assets/projects/fmmcbs/fmm_cbs_landing.png";
 import emedicardLandingImage from "../assets/projects/emedicard/landing-page.png";
 import emedicardAdminReviewImage from "../assets/projects/emedicard/admin-review.png?url";
+import emedicardAdminReview2Image from "../assets/projects/emedicard/admin-review2.png?url";
+import emedicardAdminApplicationListImage from "../assets/projects/emedicard/admin-application-list.png?url";
 import emedicardCardTypeImage from "../assets/projects/emedicard/card-type.png?url";
 import emedicardDocumentRequirementsImage from "../assets/projects/emedicard/document-requirements.png?url";
 import emedicardHealthCardImage from "../assets/projects/emedicard/health-card.png?url";
@@ -17,6 +19,7 @@ import emedicardPaymentMethodsImage from "../assets/projects/emedicard/payment-m
 import emedicardReviewSubmitImage from "../assets/projects/emedicard/review-submit.png?url";
 import emedicardCertificateImage from "../assets/projects/emedicard/sample-health-certificate.svg?url";
 import emedicardUploadDocumentsImage from "../assets/projects/emedicard/upload-documents.png?url";
+import emedicardInspectorScannerImage from "../assets/projects/emedicard/inspector-qr-scanner.png?url";
 import readoramaPreviewImage from "../assets/projects/readorama/readorama_purpose.png";
 import readoramaBookSellingImage from "../assets/projects/readorama/readorama-book-selling.png?url";
 import readoramaDesignSystemImage from "../assets/projects/readorama/readorama_preview.png?url";
@@ -49,6 +52,8 @@ import claudeIcon from "../assets/tech-icons/claude.svg?url";
 import antigravityIcon from "../assets/tech-icons/antigravity.svg?url";
 import {
   ArrowUpRight,
+  ChevronLeft,
+  ChevronRight,
   Database,
   ExternalLink,
   FileText,
@@ -189,7 +194,7 @@ const timelineItems = [
     date: "2022 — 2026",
     bullets: [
       "Studied core computer science and IT concepts, specializing in database systems, computer networking, and system design.",
-      "Developed the EMEDICARD Capstone web and mobile health card management system using React Native, Expo, and Convex NoSQL.",
+      "Developed the eMediCard Capstone web and mobile health card management system using React Native, Expo, and Convex NoSQL.",
       "Implemented mobile QR code scanning verification and shared TypeScript schema validations across backend functions."
     ],
     highlight: false,
@@ -477,8 +482,11 @@ const timelineItems = [
               </div>
             </div>
 
-            <!-- CTA Badge -->
-            <div class="p-5 pt-0 sm:p-6 sm:pt-0">
+            <!-- CTA Badge & Tech Stack -->
+            <div class="p-5 pt-0 sm:p-6 sm:pt-0 space-y-3">
+              <p class="font-mono text-[10.5px] text-muted/80 truncate">
+                React • Tailwind CSS • Laravel • MySQL
+              </p>
               <div
                 class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white/[0.04] border border-white/10 py-2.5 text-xs font-bold text-muted cursor-default select-none shadow-xs"
               >
@@ -522,8 +530,11 @@ const timelineItems = [
               </div>
             </div>
 
-            <!-- CTA Link -->
-            <div class="p-5 pt-0 sm:p-6 sm:pt-0">
+            <!-- CTA Link & Tech Stack -->
+            <div class="p-5 pt-0 sm:p-6 sm:pt-0 space-y-3">
+              <p class="font-mono text-[10.5px] text-muted/80 truncate">
+                React • Tailwind CSS • Resend
+              </p>
               <a
                 href="https://blog.fmmcbs.com"
                 target="_blank"
@@ -536,7 +547,7 @@ const timelineItems = [
             </div>
           </article>
 
-          <!-- Card 3: EMEDICARD -->
+          <!-- Card 3: eMediCard -->
           <article class="group scroll-reveal project-card relative flex flex-col justify-between overflow-hidden rounded-2xl bg-bg-deep/55 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl" style="transition-delay: 150ms;">
             <!-- Dedicated border overlay that always paints on top of scaling images -->
             <div class="pointer-events-none absolute inset-0 z-20 rounded-2xl border border-white/10 transition-colors duration-300 group-hover:border-mint/30"></div>
@@ -545,7 +556,7 @@ const timelineItems = [
               <div class="aspect-[2.11/1] w-full overflow-hidden border-b border-white/8 bg-[#070b0e] relative">
                 <Image
                   src={emedicardLandingImage}
-                  alt="EMEDICARD digital platform landing page"
+                  alt="eMediCard digital platform landing page"
                   class="size-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
@@ -565,7 +576,7 @@ const timelineItems = [
 
                 <!-- Title & Description -->
                 <h3 class="mt-3.5 font-display text-xl font-bold text-ink">
-                  EMEDICARD
+                  eMediCard
                 </h3>
                 <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted">
                   Digital health card platform for Davao City — applicant submissions, document verification, and QR cards.
@@ -573,8 +584,11 @@ const timelineItems = [
               </div>
             </div>
 
-            <!-- CTA Trigger -->
-            <div class="p-5 pt-0 sm:p-6 sm:pt-0">
+            <!-- CTA Trigger & Tech Stack -->
+            <div class="p-5 pt-0 sm:p-6 sm:pt-0 space-y-3">
+              <p class="font-mono text-[10.5px] text-muted/80 truncate">
+                React Native • Expo • Next.js • Convex • Clerk
+              </p>
               <button
                 type="button"
                 class="project-card-btn project-modal-trigger inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 py-2.5 text-xs font-bold text-ink transition hover:bg-mint hover:text-[#07100d] hover:border-mint cursor-pointer shadow-sm"
@@ -624,8 +638,11 @@ const timelineItems = [
               </div>
             </div>
 
-            <!-- CTA Trigger -->
-            <div class="p-5 pt-0 sm:p-6 sm:pt-0">
+            <!-- CTA Trigger & Tech Stack -->
+            <div class="p-5 pt-0 sm:p-6 sm:pt-0 space-y-3">
+              <p class="font-mono text-[10.5px] text-muted/80 truncate">
+                Figma • UI/UX Design • Wireframing • Prototyping
+              </p>
               <button
                 type="button"
                 class="project-card-btn project-modal-trigger inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 py-2.5 text-xs font-bold text-ink transition hover:bg-mint hover:text-[#07100d] hover:border-mint cursor-pointer shadow-sm"
@@ -902,7 +919,7 @@ const timelineItems = [
     </section>
   </main>
 
-  <!-- EMEDICARD Case Study Modal (Unified Mint Theme) -->
+  <!-- eMediCard Case Study Modal (Unified Mint Theme) -->
   <div
     id="emedicard-modal"
     class="project-modal fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 p-4 backdrop-blur-md sm:p-6"
@@ -916,7 +933,7 @@ const timelineItems = [
         <div class="space-y-1">
           <div class="flex items-center gap-2">
             <h2 id="emedicard-modal-title" class="font-display text-2xl font-bold tracking-tight text-ink">
-              EMEDICARD
+              eMediCard
             </h2>
             <span class="rounded-md border border-mint/30 bg-mint/10 px-2 py-0.5 font-mono text-[10px] font-semibold text-mint">
               Capstone Project
@@ -930,7 +947,7 @@ const timelineItems = [
           <button
             type="button"
             class="project-modal-close inline-flex size-8 items-center justify-center rounded-lg border border-transparent text-muted transition-colors hover:border-slate-200 hover:bg-slate-100 hover:text-ink dark:hover:border-white/10 dark:hover:bg-white/10 dark:hover:text-ink cursor-pointer"
-            aria-label="Close EMEDICARD details"
+            aria-label="Close eMediCard details"
           >
             <X size={16} />
           </button>
@@ -964,7 +981,7 @@ const timelineItems = [
                     <h3 class="font-sans text-sm font-semibold text-ink">Web Admin Document Verification Portal</h3>
                   </div>
                   <p class="pl-3.5 text-xs sm:text-sm text-muted leading-relaxed">
-                    Built a dedicated administrative review dashboard in Next.js for city health department staff to audit citizen requirements, verify lab results, and manage approvals.
+                    Collaborated with a teammate to build a dedicated administrative review dashboard using Next.js, enabling city health department staff to review citizen requirements, verify laboratory results, and manage application approvals.
                   </p>
                 </li>
 
@@ -989,7 +1006,7 @@ const timelineItems = [
                 About the System
               </span>
               <p class="text-xs sm:text-sm text-muted leading-relaxed">
-                EMEDICARD modernizes local government health services by replacing slow, paper-based health certificate queues with a unified citizen mobile app and back-office verification portal.
+                eMediCard modernizes local government health services by replacing slow, paper-based health certificate queues with a unified citizen mobile app and back-office verification portal.
               </p>
             </div>
           </div>
@@ -1005,56 +1022,97 @@ const timelineItems = [
 
         <!-- Right Column: System Interfaces Showcase (Strictly Contained) -->
         <div class="min-w-0 space-y-5">
-          <!-- Web Admin & Certificate Showcase -->
+          <!-- Web Admin & Certificate Showcase (Clean 2-Card Layout) -->
           <div class="space-y-3.5">
-            <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-muted">
-              Web Admin &amp; Digital Certificate
-            </span>
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-muted">
+                Web Admin &amp; Digital Certificate
+              </span>
+              <span class="rounded-full border border-mint/25 bg-mint/10 px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider text-mint shadow-xs backdrop-blur-sm">
+                Selected Pages
+              </span>
+            </div>
             <div class="grid min-w-0 gap-4 sm:grid-cols-2">
+              <!-- Card 1: Web Admin Verification (Multi-Page Gallery with 3 Pages) -->
               <figure class="group flex min-w-0 flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50/60 shadow-xs transition-all hover:border-mint/50 hover:shadow-md dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-mint/40">
                 <button
                   type="button"
                   class="image-preview-trigger relative block w-full overflow-hidden bg-[#e8e2d6] cursor-pointer focus:outline-none focus:ring-2 focus:ring-mint/60"
+                  data-gallery="emedicard-admin"
                   data-image-src={emedicardAdminReviewImage}
-                  data-image-alt="EMEDICARD web admin document verification screen"
-                  data-image-label="Web Admin Verification"
+                  data-image-alt="eMediCard web admin application review and document verification screen"
+                  data-image-label="Web Admin — Application Review"
                   aria-label="Preview Web Admin Verification"
                 >
                   <img
                     src={emedicardAdminReviewImage}
-                    alt="EMEDICARD web admin document verification screen"
+                    alt="eMediCard web admin document verification screen"
                     class="aspect-[16/10] w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
                     loading="lazy"
                   />
                   <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 backdrop-blur-[1px] transition-opacity duration-200 group-hover:opacity-100">
                     <span class="inline-flex items-center gap-1.5 rounded-md border border-white/20 bg-black/70 px-2.5 py-1 text-[11px] font-semibold text-white shadow-md">
                       <Maximize2 size={12} />
-                      <span>View Full Size</span>
+                      <span>View Full Size (3 Pages)</span>
                     </span>
                   </div>
+                  <!-- Multi-Page Indicator Badge -->
+                  <div class="absolute bottom-2.5 right-2.5 rounded-md border border-white/15 bg-black/75 px-2 py-0.5 font-mono text-[9.5px] font-semibold text-mint shadow-md backdrop-blur-sm">
+                    3 Pages
+                  </div>
                 </button>
+
+                <!-- Hidden triggers for the other 2 admin views in the same gallery -->
+                <button
+                  type="button"
+                  class="image-preview-trigger hidden"
+                  data-gallery="emedicard-admin"
+                  data-image-src={emedicardAdminReview2Image}
+                  data-image-alt="eMediCard web admin laboratory requirements audit screen"
+                  data-image-label="Web Admin — Application Review"
+                  tabindex="-1"
+                  aria-hidden="true"
+                ></button>
+                <button
+                  type="button"
+                  class="image-preview-trigger hidden"
+                  data-gallery="emedicard-admin"
+                  data-image-src={emedicardAdminApplicationListImage}
+                  data-image-alt="eMediCard web admin applicant registry and queue list"
+                  data-image-label="Web Admin — Application Queue"
+                  tabindex="-1"
+                  aria-hidden="true"
+                ></button>
+
                 <figcaption class="flex flex-col p-3 border-t border-slate-200/60 bg-white/60 dark:border-white/6 dark:bg-transparent">
-                  <span class="text-xs font-semibold text-ink">
-                    Web Admin Verification
-                  </span>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-semibold text-ink">
+                      Web Admin Verification
+                    </span>
+                    <span class="font-mono text-[10px] text-muted">
+                      3 Pages
+                    </span>
+                  </div>
                   <span class="mt-0.5 text-[11px] text-muted leading-tight">
-                    Staff review &amp; approval dashboard
+                    Staff review, applicant queue &amp; lab requirement audit
                   </span>
                 </figcaption>
               </figure>
 
+              <!-- Card 2: Digital Health Certificate -->
               <figure class="group flex min-w-0 flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50/60 shadow-xs transition-all hover:border-mint/50 hover:shadow-md dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-mint/40">
                 <button
                   type="button"
                   class="image-preview-trigger relative block w-full overflow-hidden bg-[#fdfbf7] dark:bg-[#151b22] cursor-pointer focus:outline-none focus:ring-2 focus:ring-mint/60"
+                  data-gallery="emedicard-certificate"
                   data-image-src={emedicardCertificateImage}
-                  data-image-alt="EMEDICARD sanitized sample health certificate"
+                  data-image-alt="eMediCard sanitized sample health certificate"
                   data-image-label="Digital Health Certificate"
                   aria-label="Preview Digital Health Certificate"
                 >
                   <img
                     src={emedicardCertificateImage}
-                    alt="EMEDICARD sanitized sample health certificate"
+                    alt="eMediCard sanitized sample health certificate"
                     class="aspect-[16/10] w-full object-contain p-2 transition-transform duration-300 group-hover:scale-[1.02]"
                     loading="lazy"
                   />
@@ -1079,26 +1137,33 @@ const timelineItems = [
 
           <!-- Mobile App Workflow Reel (strictly contained) -->
           <div class="min-w-0 space-y-3">
-            <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-muted">
-              Mobile Applicant Workflow (6 Screens)
-            </span>
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-muted">
+                Mobile Applicant &amp; Inspector Workflow
+              </span>
+              <span class="rounded-full border border-mint/25 bg-mint/10 px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider text-mint shadow-xs backdrop-blur-sm">
+                7 Selected Screens
+              </span>
+            </div>
             <div class="w-full max-w-full overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50/50 p-3 dark:border-white/8 dark:bg-black/20">
               <div class="flex w-full gap-3 overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-white/10">
                 {[
-                  { src: emedicardCardTypeImage, alt: "EMEDICARD health card type selection screen", label: "Card Type" },
-                  { src: emedicardDocumentRequirementsImage, alt: "EMEDICARD document requirements checklist screen", label: "Requirements" },
-                  { src: emedicardUploadDocumentsImage, alt: "EMEDICARD required document upload screen", label: "Upload Docs" },
-                  { src: emedicardReviewSubmitImage, alt: "EMEDICARD review and submit document summary screen", label: "Review" },
-                  { src: emedicardPaymentMethodsImage, alt: "EMEDICARD payment methods screen", label: "Payment" },
-                  { src: emedicardHealthCardImage, alt: "EMEDICARD digital health card QR screen", label: "Health card" },
+                  { src: emedicardCardTypeImage, alt: "eMediCard health card type selection screen", label: "Card Type" },
+                  { src: emedicardDocumentRequirementsImage, alt: "eMediCard document requirements checklist screen", label: "Requirements" },
+                  { src: emedicardUploadDocumentsImage, alt: "eMediCard required document upload screen", label: "Upload Docs" },
+                  { src: emedicardReviewSubmitImage, alt: "eMediCard review and submit document summary screen", label: "Review" },
+                  { src: emedicardPaymentMethodsImage, alt: "eMediCard payment methods screen", label: "Payment" },
+                  { src: emedicardHealthCardImage, alt: "eMediCard digital health card QR screen", label: "Health Card" },
+                  { src: emedicardInspectorScannerImage, alt: "eMediCard sanitary inspector QR scanner verification screen", label: "Inspector QR Scanner" },
                 ].map((screen) => (
                   <figure class="w-28 shrink-0 sm:w-32 group">
                     <button
                       type="button"
                       class="image-preview-trigger relative block overflow-hidden rounded-xl border border-slate-200/80 bg-white transition hover:border-mint/50 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-mint/60 dark:border-white/10 dark:bg-white/5 dark:hover:border-mint/40 cursor-pointer"
+                      data-gallery="emedicard-mobile"
                       data-image-src={screen.src}
                       data-image-alt={screen.alt}
-                      data-image-label={screen.label}
+                      data-image-label={`Mobile Workflow — ${screen.label}`}
                       aria-label={`Preview ${screen.label} screen`}
                     >
                       <img
@@ -1253,6 +1318,7 @@ const timelineItems = [
                 <button
                   type="button"
                   class="image-preview-trigger relative block w-full overflow-hidden bg-bg-deep cursor-pointer focus:outline-none focus:ring-2 focus:ring-mint/60"
+                  data-gallery="readorama"
                   data-image-src={preview.src}
                   data-image-alt={preview.alt}
                   data-image-label={preview.title}
@@ -1272,12 +1338,14 @@ const timelineItems = [
                   </div>
                 </button>
                 <figcaption class="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3.5 border-t border-slate-200/60 bg-white/60 dark:border-white/6 dark:bg-transparent gap-1">
-                  <span class="text-xs sm:text-sm font-semibold text-ink">
-                    {preview.title}
-                  </span>
-                  <span class="text-xs text-muted">
-                    {preview.subtitle}
-                  </span>
+                  <div>
+                    <p class="text-xs font-semibold text-ink">
+                      {preview.title}
+                    </p>
+                    <p class="text-[11px] text-muted">
+                      {preview.subtitle}
+                    </p>
+                  </div>
                 </figcaption>
               </figure>
             ))}
@@ -1287,34 +1355,60 @@ const timelineItems = [
     </div>
   </div>
 
-  <!-- Image Preview Fullscreen Modal (shadcn style) -->
+  <!-- Image Preview Fullscreen Modal (shadcn style with gallery carousel navigation) -->
   <div
     id="image-preview-modal"
-    class="fixed inset-0 z-[120] hidden items-center justify-center bg-black/85 p-4 backdrop-blur-md sm:p-6"
+    class="fixed inset-0 z-[120] hidden items-center justify-center bg-black/90 p-4 backdrop-blur-md sm:p-6"
     role="dialog"
     aria-modal="true"
     aria-labelledby="image-preview-title"
   >
     <div class="relative flex max-h-[94vh] w-full max-w-5xl flex-col items-center">
+      <!-- Close Button -->
       <button
         type="button"
         id="image-preview-close"
-        class="absolute -top-12 right-0 z-10 inline-flex items-center gap-1.5 rounded-md border border-white/20 bg-black/60 px-3 py-1.5 text-xs font-semibold text-white shadow-lg backdrop-blur-md transition-all hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/40 cursor-pointer"
+        class="absolute -top-12 right-0 z-30 inline-flex items-center gap-1.5 rounded-md border border-white/20 bg-black/70 px-3 py-1.5 text-xs font-semibold text-white shadow-lg backdrop-blur-md transition-all hover:bg-white/20 hover:border-white/40 focus:outline-none focus:ring-2 focus:ring-mint/60 cursor-pointer"
         aria-label="Close image preview"
       >
         <X size={14} />
         <span>Close</span>
       </button>
-      <div class="max-h-[85vh] overflow-auto rounded-xl border border-white/15 bg-[#080d11] p-3 shadow-2xl">
+
+      <!-- Previous Image Navigation Button -->
+      <button
+        type="button"
+        id="image-preview-prev"
+        class="absolute left-2 sm:-left-14 top-1/2 -translate-y-1/2 z-30 inline-flex size-10 sm:size-12 items-center justify-center rounded-full border border-white/20 bg-black/75 text-white shadow-xl backdrop-blur-md transition hover:bg-mint hover:text-[#07100d] hover:border-mint focus:outline-none focus:ring-2 focus:ring-mint/60 cursor-pointer"
+        aria-label="Previous image"
+      >
+        <ChevronLeft size={22} />
+      </button>
+
+      <!-- Next Image Navigation Button -->
+      <button
+        type="button"
+        id="image-preview-next"
+        class="absolute right-2 sm:-right-14 top-1/2 -translate-y-1/2 z-30 inline-flex size-10 sm:size-12 items-center justify-center rounded-full border border-white/20 bg-black/75 text-white shadow-xl backdrop-blur-md transition hover:bg-mint hover:text-[#07100d] hover:border-mint focus:outline-none focus:ring-2 focus:ring-mint/60 cursor-pointer"
+        aria-label="Next image"
+      >
+        <ChevronRight size={22} />
+      </button>
+
+      <!-- Image Box Container -->
+      <div class="max-h-[82vh] overflow-auto rounded-xl border border-white/15 bg-[#080d11] p-3 shadow-2xl">
         <img
           id="image-preview-img"
           src=""
           alt=""
-          class="mx-auto block max-h-[78vh] min-w-[18rem] max-w-full rounded-lg object-contain"
+          class="mx-auto block max-h-[75vh] min-w-[18rem] max-w-full rounded-lg object-contain transition-opacity duration-200"
         />
       </div>
-      <div class="mt-3">
-        <p id="image-preview-title" class="rounded-full border border-white/15 bg-black/60 px-3.5 py-1 text-center font-mono text-xs font-semibold uppercase tracking-wider text-white/90 shadow-md backdrop-blur-md"></p>
+
+      <!-- Title & Counter Footer -->
+      <div class="mt-3.5 flex flex-wrap items-center justify-center gap-2">
+        <p id="image-preview-title" class="rounded-full border border-white/15 bg-black/70 px-3.5 py-1 text-center font-mono text-xs font-semibold uppercase tracking-wider text-white/90 shadow-md backdrop-blur-md"></p>
+        <span id="image-preview-counter" class="rounded-full border border-mint/30 bg-mint/10 px-2.5 py-1 text-center font-mono text-[11px] font-semibold text-mint shadow-md backdrop-blur-md"></span>
       </div>
     </div>
   </div>
@@ -1413,16 +1507,21 @@ const timelineItems = [
       if (event.key === "Escape") setMobileMenu(false);
     });
 
-    // 3. Project detail modals
+    // 3. Project detail modals & Image preview lightbox with Gallery Navigation
     const modalTriggers = document.querySelectorAll<HTMLElement>(".project-modal-trigger");
     const modals = document.querySelectorAll<HTMLElement>(".project-modal");
     const imagePreviewModal = document.getElementById("image-preview-modal");
     const imagePreviewImg = document.getElementById("image-preview-img") as HTMLImageElement | null;
     const imagePreviewTitle = document.getElementById("image-preview-title");
+    const imagePreviewCounter = document.getElementById("image-preview-counter");
     const imagePreviewClose = document.getElementById("image-preview-close");
+    const imagePreviewPrev = document.getElementById("image-preview-prev");
+    const imagePreviewNext = document.getElementById("image-preview-next");
     const imagePreviewTriggers = document.querySelectorAll<HTMLElement>(".image-preview-trigger");
+
     let activeModalTrigger: HTMLElement | null = null;
-    let activeImagePreviewTrigger: HTMLElement | null = null;
+    let currentGalleryList: HTMLElement[] = [];
+    let currentGalleryIndex = 0;
 
     function closeProjectModal() {
       modals.forEach((modal) => {
@@ -1445,30 +1544,87 @@ const timelineItems = [
       modal.querySelector<HTMLElement>(".project-modal-close")?.focus();
     }
 
+    function updateImagePreviewDisplay() {
+      if (!imagePreviewImg || !imagePreviewTitle || currentGalleryList.length === 0) return;
+      const currentTrigger = currentGalleryList[currentGalleryIndex];
+      if (!currentTrigger) return;
+
+      const src = currentTrigger.dataset.imageSrc || "";
+      const alt = currentTrigger.dataset.imageAlt || "Project screen preview";
+      const label = currentTrigger.dataset.imageLabel || "";
+
+      imagePreviewImg.style.opacity = "0.35";
+      imagePreviewImg.src = src;
+      imagePreviewImg.alt = alt;
+      imagePreviewTitle.textContent = label;
+
+      if (imagePreviewCounter) {
+        if (currentGalleryList.length > 1) {
+          imagePreviewCounter.textContent = `${currentGalleryIndex + 1} / ${currentGalleryList.length}`;
+          imagePreviewCounter.classList.remove("hidden");
+        } else {
+          imagePreviewCounter.classList.add("hidden");
+        }
+      }
+
+      setTimeout(() => {
+        if (imagePreviewImg) imagePreviewImg.style.opacity = "1";
+      }, 50);
+
+      // Hide or show prev/next buttons if only 1 item
+      if (imagePreviewPrev && imagePreviewNext) {
+        const hasMultiple = currentGalleryList.length > 1;
+        imagePreviewPrev.style.display = hasMultiple ? "inline-flex" : "none";
+        imagePreviewNext.style.display = hasMultiple ? "inline-flex" : "none";
+      }
+    }
+
+    function showNextImage() {
+      if (currentGalleryList.length <= 1) return;
+      currentGalleryIndex = (currentGalleryIndex + 1) % currentGalleryList.length;
+      updateImagePreviewDisplay();
+    }
+
+    function showPrevImage() {
+      if (currentGalleryList.length <= 1) return;
+      currentGalleryIndex = (currentGalleryIndex - 1 + currentGalleryList.length) % currentGalleryList.length;
+      updateImagePreviewDisplay();
+    }
+
+    function openImagePreview(trigger: HTMLElement) {
+      if (!imagePreviewModal) return;
+
+      const galleryName = trigger.dataset.gallery;
+      if (galleryName) {
+        currentGalleryList = Array.from(document.querySelectorAll<HTMLElement>(`.image-preview-trigger[data-gallery="${galleryName}"]`));
+      } else {
+        const parentModal = trigger.closest(".project-modal") || trigger.closest("section");
+        currentGalleryList = parentModal 
+          ? Array.from(parentModal.querySelectorAll<HTMLElement>(".image-preview-trigger"))
+          : [trigger];
+      }
+
+      currentGalleryIndex = currentGalleryList.indexOf(trigger);
+      if (currentGalleryIndex === -1) currentGalleryIndex = 0;
+
+      updateImagePreviewDisplay();
+      imagePreviewModal.classList.remove("hidden");
+      imagePreviewModal.classList.add("flex");
+      imagePreviewClose?.focus();
+    }
+
     function closeImagePreview() {
       imagePreviewModal?.classList.add("hidden");
       imagePreviewModal?.classList.remove("flex");
-      activeImagePreviewTrigger?.focus();
-      activeImagePreviewTrigger = null;
+      if (currentGalleryList[currentGalleryIndex]) {
+        currentGalleryList[currentGalleryIndex].focus();
+      }
       if (imagePreviewImg) {
         imagePreviewImg.src = "";
         imagePreviewImg.alt = "";
       }
       if (imagePreviewTitle) imagePreviewTitle.textContent = "";
-    }
-
-    function openImagePreview(trigger: HTMLElement) {
-      if (!imagePreviewModal || !imagePreviewImg || !imagePreviewTitle) return;
-      const src = trigger.dataset.imageSrc;
-      if (!src) return;
-
-      activeImagePreviewTrigger = trigger;
-      imagePreviewImg.src = src;
-      imagePreviewImg.alt = trigger.dataset.imageAlt || "Project screen preview";
-      imagePreviewTitle.textContent = trigger.dataset.imageLabel || "";
-      imagePreviewModal.classList.remove("hidden");
-      imagePreviewModal.classList.add("flex");
-      imagePreviewClose?.focus();
+      if (imagePreviewCounter) imagePreviewCounter.textContent = "";
     }
 
     modalTriggers.forEach((trigger) => {
@@ -1498,13 +1654,30 @@ const timelineItems = [
 
     imagePreviewClose?.addEventListener("click", closeImagePreview);
 
+    imagePreviewPrev?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      showPrevImage();
+    });
+
+    imagePreviewNext?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      showNextImage();
+    });
+
     document.addEventListener("keydown", (event) => {
-      if (event.key !== "Escape") return;
       if (imagePreviewModal?.classList.contains("flex")) {
-        closeImagePreview();
+        if (event.key === "Escape") {
+          closeImagePreview();
+        } else if (event.key === "ArrowRight") {
+          showNextImage();
+        } else if (event.key === "ArrowLeft") {
+          showPrevImage();
+        }
         return;
       }
-      closeProjectModal();
+      if (event.key === "Escape") {
+        closeProjectModal();
+      }
     });
 
   });
