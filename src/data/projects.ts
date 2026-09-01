@@ -2,6 +2,7 @@ import type { ImageMetadata } from "astro";
 
 import morataLandingImage from "../assets/projects/fmmcbs/morata_landing.png";
 import fmmCbsLandingImage from "../assets/projects/fmmcbs/fmm_cbs_landing.png";
+import fukurouCoverImage from "../assets/projects/fukurou/fukurou_cover.png";
 import emedicardLandingImage from "../assets/projects/emedicard/landing-page.png";
 import readoramaPreviewImage from "../assets/projects/readorama/readorama_purpose.png";
 
@@ -26,6 +27,19 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "fukurou",
+    title: "Fukurou — Automated Schedule Import & Shift Management",
+    description:
+      "Mobile schedule organizer — extracts shifts, timetables, and rosters from images, PDFs, and spreadsheets with live countdowns and Android widgets.",
+    image: fukurouCoverImage,
+    imageAlt: "Fukurou mobile schedule import and shift management app",
+    imagePosition: "object-center",
+    categoryPills: ["Mobile App", "OCR", "Productivity"],
+    stack: "React Native • FastAPI • PaddleOCR • PostgreSQL",
+    delay: "",
+    cta: { type: "modal", label: "Details", target: "fukurou-modal" },
+  },
+  {
     id: "fmmcbs-ops",
     title: "F.M. Morata Customs Brokerage & Law Firm",
     description:
@@ -33,9 +47,9 @@ export const projects: Project[] = [
     image: morataLandingImage,
     imageAlt: "F.M. Morata Customs Brokerage & Law Firm screenshot",
     imagePosition: "object-top",
-    categoryPills: ["Web Application", "Logistics", "Legal"],
+    categoryPills: ["Web App", "Logistics", "Legal"],
     stack: "React • Tailwind CSS • Laravel • MySQL",
-    delay: "",
+    delay: "60ms",
     cta: { type: "locked", label: "Internship Work" },
   },
   {
@@ -48,25 +62,25 @@ export const projects: Project[] = [
     imagePosition: "object-top",
     categoryPills: ["Static Website"],
     stack: "React • Tailwind CSS • Resend",
-    delay: "80ms",
+    delay: "120ms",
     cta: { type: "link", label: "Visit", href: "https://blog.fmmcbs.com" },
   },
   {
     id: "emedicard",
-    title: "eMediCard",
+    title: "eMediCard — Digital Health Card Platform",
     description:
       "Digital health card platform for Davao City — applicant submissions, document verification, and QR cards.",
     image: emedicardLandingImage,
     imageAlt: "eMediCard digital platform landing page",
     imagePosition: "object-top",
-    categoryPills: ["Web Application", "Healthcare", "City System"],
+    categoryPills: ["Mobile App", "Web App", "Healthcare"],
     stack: "React Native • Expo • Next.js • Convex • Clerk",
-    delay: "150ms",
+    delay: "180ms",
     cta: { type: "modal", label: "Details", target: "emedicard-modal" },
   },
   {
     id: "readorama",
-    title: "Readorama",
+    title: "Readorama — Mobile Book Marketplace",
     description:
       "Mobile marketplace UI/UX design for book exchange and acquisition — community trade flows, categorized discovery, and checkout prototypes in Figma.",
     image: readoramaPreviewImage,
@@ -74,7 +88,7 @@ export const projects: Project[] = [
     imagePosition: "object-center",
     categoryPills: ["UI/UX Design", "Figma"],
     stack: "Figma • UI/UX Design • Wireframing • Prototyping",
-    delay: "220ms",
+    delay: "240ms",
     cta: { type: "modal", label: "Details", target: "readorama-modal" },
   },
 ];

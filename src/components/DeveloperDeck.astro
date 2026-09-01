@@ -3,7 +3,7 @@ import FloatingStatsCard from "./FloatingStatsCard.astro";
 import TerminalConsole from "./TerminalConsole.astro";
 ---
 
-<div class="group/deck relative flex w-full min-w-0 flex-col gap-3 overflow-visible">
+<div class="group/deck relative flex w-full min-w-0 max-w-full flex-col gap-3 overflow-hidden">
   <!-- Unified Window Container (Starts with glass terminal styles as default) -->
   <div 
     id="deck-window" 
@@ -39,7 +39,7 @@ import TerminalConsole from "./TerminalConsole.astro";
       </div>
 
       <!-- Terminal Console Tab Pane (Visible by default) -->
-      <div id="deck-pane-terminal" class="flex h-[min(460px,70svh)] w-full min-w-0 flex-col sm:h-[480px] lg:h-[510px]">
+      <div id="deck-pane-terminal" class="flex h-[360px] w-full min-w-0 flex-col sm:h-[460px] lg:h-[510px]">
         <TerminalConsole />
       </div>
     </div>

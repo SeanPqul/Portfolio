@@ -31,9 +31,9 @@ const { project } = Astro.props;
     </div>
 
     <!-- Card Body Content -->
-    <div class="p-5 sm:p-6">
+    <div class="p-4 sm:p-6">
       <!-- Category Pills -->
-      <div class="flex flex-wrap items-center gap-2">
+      <div class="flex min-h-[1.625rem] flex-wrap items-center gap-2">
         {
           project.categoryPills.map((pill) => (
             <span class="rounded-full border border-mint/30 bg-mint/5 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-mint">
@@ -44,7 +44,7 @@ const { project } = Astro.props;
       </div>
 
       <!-- Title & Description -->
-      <h3 class="mt-3.5 font-display text-xl font-bold text-ink">
+      <h3 class="mt-3.5 font-display text-xl font-bold text-ink sm:min-h-[3.5rem]">
         {project.title}
       </h3>
       <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted">
@@ -54,7 +54,7 @@ const { project } = Astro.props;
   </div>
 
   <!-- CTA & Tech Stack -->
-  <div class="p-5 pt-0 sm:p-6 sm:pt-0 space-y-3">
+  <div class="p-4 pt-0 sm:p-6 sm:pt-0 space-y-3">
     <p class="font-mono text-[10.5px] text-muted/80 truncate">
       {project.stack}
     </p>

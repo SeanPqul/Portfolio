@@ -9,6 +9,7 @@ import Experience from "@/components/sections/Experience.astro";
 import Contact from "@/components/sections/Contact.astro";
 import SiteFooter from "@/components/sections/SiteFooter.astro";
 import EmedicardModal from "@/components/modals/EmedicardModal.astro";
+import FukurouModal from "@/components/modals/FukurouModal.astro";
 import ReadoramaModal from "@/components/modals/ReadoramaModal.astro";
 import ImagePreviewModal from "@/components/modals/ImagePreviewModal.astro";
 
@@ -21,7 +22,7 @@ export const prerender = true;
 >
   <SiteHeader />
 
-  <main id="top">
+  <main id="top" class="w-full max-w-full overflow-x-hidden">
     <Hero />
     <GithubActivity />
     <Projects />
@@ -30,6 +31,7 @@ export const prerender = true;
     <Contact />
   </main>
 
+  <FukurouModal />
   <EmedicardModal />
   <ReadoramaModal />
   <ImagePreviewModal />

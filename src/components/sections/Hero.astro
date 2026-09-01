@@ -5,25 +5,23 @@ import { cvHref, profileLinks } from "@/data/site";
 ---
 
 <!-- Hero Section -->
-<section class="page-shell grid items-center gap-8 py-6 sm:gap-10 sm:py-8 lg:min-h-[calc(100svh-5.5rem)] lg:grid-cols-[1.1fr_0.9fr] lg:py-6">
+<section class="page-shell grid items-center gap-8 py-6 sm:gap-10 sm:py-8 lg:min-h-[calc(100svh-5.5rem)] lg:grid-cols-[1.1fr_0.9fr] lg:py-6 overflow-hidden">
   <div class="scroll-reveal">
     <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-ink/90">
       <Globe size={14} class="text-mint" />
       <span>Available for remote & hybrid opportunities</span>
     </div>
-    <h1 class="fluid-heading max-w-4xl font-display font-extrabold leading-[1.05] tracking-tight text-ink sm:text-balance">
-      <span class="block sm:inline">Full-stack developer</span>
-      <span class="block sm:inline"> building <span class="text-mint">web</span> and</span>
-      <span class="block sm:inline"> <span class="text-sky">mobile</span> applications.</span>
+    <h1 class="fluid-heading max-w-4xl font-display font-extrabold leading-[1.08] tracking-tight text-ink text-balance">
+      Full-stack developer building <span class="text-mint">web</span> and <span class="text-sky">mobile</span> applications.
     </h1>
-    <p class="mt-4 max-w-2xl text-base leading-relaxed text-muted">
+    <p class="mt-4 max-w-2xl text-sm sm:text-base leading-relaxed text-muted">
       I build web systems and mobile apps that digitize real operations — backed by structured databases, secure APIs, and clean user interfaces.
     </p>
-    <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+    <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
       <a
         id="hero-cta-projects"
         href="#projects"
-        class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-mint px-5.5 py-3 text-sm font-extrabold text-[#07100d] transition hover:-translate-y-0.5 hover:bg-[#7af0c8] hover:shadow-lg hover:shadow-mint/20 sm:justify-start"
+        class="inline-flex min-h-12 w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-mint px-6 py-3 text-sm font-extrabold text-[#07100d] transition hover:-translate-y-0.5 hover:bg-[#7af0c8] hover:shadow-lg hover:shadow-mint/20"
       >
         <Briefcase size={18} />
         View Work
@@ -33,13 +31,13 @@ import { cvHref, profileLinks } from "@/data/site";
         href={cvHref}
         target="_blank"
         rel="noreferrer"
-        class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-mint px-5.5 py-3 text-sm font-extrabold text-[#07100d] transition hover:-translate-y-0.5 hover:bg-[#7af0c8] hover:shadow-lg hover:shadow-mint/20 sm:justify-start"
+        class="inline-flex min-h-12 w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-6 py-3 text-sm font-extrabold text-ink transition hover:-translate-y-0.5 hover:border-mint hover:bg-mint/10 hover:text-mint"
       >
         <FileText size={18} />
         View CV
       </a>
     </div>
-    <div class="mt-8 grid grid-cols-2 items-center gap-3 text-xs text-muted sm:flex sm:flex-wrap sm:gap-4">
+    <div class="mt-8 flex flex-wrap items-center gap-2 sm:gap-3 text-xs text-muted">
       <span class="inline-flex items-center gap-2 rounded-full border border-white/6 bg-white/[0.02] px-3.5 py-2">
         <MapPin size={14} class="text-sky" />
         Philippines
@@ -62,7 +60,7 @@ import { cvHref, profileLinks } from "@/data/site";
       <!-- Interactive CLI Toggle Button (UX Pattern C) -->
       <button
         id="hero-cli-toggle"
-        class="col-span-2 inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-amber/30 bg-white/[0.02] px-3.5 py-2 font-mono text-amber transition-all duration-300 hover:scale-102 hover:border-mint hover:text-mint cursor-pointer select-none sm:col-span-1 sm:justify-start"
+        class="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-amber/30 bg-white/[0.02] px-3.5 py-2 font-mono text-amber transition-all duration-300 hover:scale-102 hover:border-mint hover:text-mint cursor-pointer select-none"
         aria-label="Toggle CLI Terminal"
       >
         <span id="hero-cli-icon-terminal" class="hidden items-center">

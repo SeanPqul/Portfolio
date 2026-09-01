@@ -94,6 +94,11 @@ html[data-theme="light"] {
 html {
   scroll-behavior: smooth;
   background: var(--color-bg-deep);
+  overflow-x: clip;
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+  overscroll-behavior-x: none;
 }
 
 body {
@@ -101,10 +106,22 @@ body {
   isolation: isolate;
   margin: 0;
   min-width: 320px;
+  max-width: 100%;
+  width: 100%;
   background: var(--page-bg);
   color: var(--color-ink);
+  overflow-x: clip;
   overflow-x: hidden;
+  touch-action: pan-y pinch-zoom;
+  overscroll-behavior-x: none;
   transition: background 0.35s ease, color 0.25s ease;
+}
+
+main {
+  overflow-x: clip;
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
 }
 
 body::before {
@@ -138,8 +155,22 @@ a {
 }
 
 .page-shell {
-  width: min(1200px, calc(100% - clamp(1rem, 6vw, 2.5rem)));
+  width: 100%;
+  max-width: 1200px;
   margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 640px) {
+  .page-shell {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-shell {
+    padding-inline: 2rem;
+  }
 }
 
 .glass {
@@ -453,7 +484,8 @@ html[data-theme="light"] #nav-contact-button:hover {
 }
 
 .fluid-heading {
-  font-size: clamp(2rem, 1.18rem + 3.4vw, 3.75rem);
+  font-size: clamp(2.15rem, 1.4rem + 3.8vw, 3.75rem);
+  line-height: 1.08;
 }
 
 .fluid-section {
@@ -552,10 +584,6 @@ html[data-theme="light"] .timeline-rail {
 }
 
 @media (max-width: 640px) {
-  .page-shell {
-    width: min(1200px, calc(100% - 2rem));
-  }
-
   body::before {
     background-size: 2.25rem 2.25rem;
   }
@@ -581,16 +609,16 @@ html[data-theme="light"] .timeline-rail {
 
   .hero-float-badge-web {
     top: 1.15rem;
-    right: -0.65rem;
+    right: 0;
   }
 
   .hero-float-badge-mobile {
     top: 40%;
-    left: -0.65rem;
+    left: 0;
   }
 
   .hero-float-badge-stack {
-    right: -0.65rem;
+    right: 0;
     bottom: 1.45rem;
   }
 }
