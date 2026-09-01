@@ -12,8 +12,10 @@ import EmedicardModal from "@/components/modals/EmedicardModal.astro";
 import FukurouModal from "@/components/modals/FukurouModal.astro";
 import ReadoramaModal from "@/components/modals/ReadoramaModal.astro";
 import ImagePreviewModal from "@/components/modals/ImagePreviewModal.astro";
+import { projects } from "@/data/projects";
 
 export const prerender = true;
+const showFukurou = projects.some((p) => p.id === "fukurou");
 ---
 
 <MainLayout
@@ -31,7 +33,7 @@ export const prerender = true;
     <Contact />
   </main>
 
-  <FukurouModal />
+  {showFukurou && <FukurouModal />}
   <EmedicardModal />
   <ReadoramaModal />
   <ImagePreviewModal />

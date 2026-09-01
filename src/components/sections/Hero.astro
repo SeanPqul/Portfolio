@@ -1,6 +1,6 @@
 ---
 import DeveloperDeck from "@/components/DeveloperDeck.astro";
-import { Briefcase, FileText, Globe, MapPin, Terminal, User } from "@lucide/astro";
+import { Briefcase, FileText, Globe, MapPin } from "@lucide/astro";
 import { cvHref, profileLinks } from "@/data/site";
 ---
 
@@ -56,25 +56,10 @@ import { cvHref, profileLinks } from "@/data/site";
           </a>
         ))
       }
-
-      <!-- Interactive CLI Toggle Button (UX Pattern C) -->
-      <button
-        id="hero-cli-toggle"
-        class="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-amber/30 bg-white/[0.02] px-3.5 py-2 font-mono text-amber transition-all duration-300 hover:scale-102 hover:border-mint hover:text-mint cursor-pointer select-none"
-        aria-label="Toggle CLI Terminal"
-      >
-        <span id="hero-cli-icon-terminal" class="hidden items-center">
-          <Terminal size={14} class="text-mint shrink-0" />
-        </span>
-        <span id="hero-cli-icon-profile" class="flex items-center">
-          <User size={14} class="text-sky shrink-0" />
-        </span>
-        <span id="hero-cli-text" class="text-ink">Close CLI</span>
-      </button>
     </div>
   </div>
 
-  <!-- Right Column: Interactive CLI & profile -->
+  <!-- Right Column: Interactive CLI Terminal -->
   <div class="scroll-reveal" style="transition-delay: 150ms;">
     <DeveloperDeck />
   </div>

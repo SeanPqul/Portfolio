@@ -23,11 +23,14 @@ export interface Project {
   /** Inline style transition-delay for staggered reveal, e.g. "150ms" */
   delay: string;
   cta: ProjectCta;
+  /** When true, only visible in local dev mode (import.meta.env.DEV) */
+  draft?: boolean;
 }
 
-export const projects: Project[] = [
+export const allProjects: Project[] = [
   {
     id: "fukurou",
+    draft: true,
     title: "Fukurou — Automated Schedule Import & Shift Management",
     description:
       "Mobile schedule organizer — extracts shifts, timetables, and rosters from images, PDFs, and spreadsheets with live countdowns and Android widgets.",
@@ -92,3 +95,7 @@ export const projects: Project[] = [
     cta: { type: "modal", label: "Details", target: "readorama-modal" },
   },
 ];
+
+export const projects: Project[] = allProjects.filter(
+  (project) => !project.draft || import.meta.env.DEV
+);
